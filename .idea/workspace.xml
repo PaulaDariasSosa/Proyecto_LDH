@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d1f5fc02-7c04-47c8-83ee-29bb3e155ea8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ghost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ghost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Level.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ShadowPac.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShadowPac.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Level.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Level.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ShadowPac.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ShadowPac.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +51,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="ShadowPac" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ShadowPac" />
@@ -83,7 +83,7 @@
       <workItem from="1682521307666" duration="10000" />
       <workItem from="1682686415393" duration="510000" />
       <workItem from="1682728706366" duration="8382000" />
-      <workItem from="1682772105985" duration="2214000" />
+      <workItem from="1682772105985" duration="2545000" />
     </task>
     <servers />
   </component>

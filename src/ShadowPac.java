@@ -114,7 +114,16 @@ public class ShadowPac extends AbstractGame  {
                         level1.walls.add(new Wall(point));
                         break;
                     case "GhostRed":
-                        level1.ghosts.add(new Ghost(point));
+                        level1.ghosts.add(new GhostRed(point));
+                        break;
+                    case "GhostBlue":
+                        level1.ghosts.add(new GhostBlue(point));
+                        break;
+                    case "GhostGreen":
+                        level1.ghosts.add(new GhostGreen(point));
+                        break;
+                    case "GhostPink":
+                        level1.ghosts.add(new GhostPink(point));
                         break;
                     case "Pellet":
                         level1.pellets.add(new Pellet(point));
