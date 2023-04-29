@@ -17,7 +17,7 @@ public class GhostRed extends Ghost {
 
         boolean colliding = false;
         for (Wall wall : walls) {
-            if (ghostRectangle.intersects(wall.getWallRectangle())) {
+            if (this.collidesWith(wall)) {
                 ghostRectangle = new Rectangle(origin, GHOST_RED_IMAGE.getWidth(), GHOST_RED_IMAGE.getHeight());
                 this.changeDirection();
                 colliding = true;

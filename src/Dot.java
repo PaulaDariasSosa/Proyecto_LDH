@@ -6,17 +6,10 @@ public class Dot {
     private final static Image DOT_IMAGE = new Image("res/dot.png");
     private final static int SCORE = 10;
     private final Rectangle dotRectangle;
-    private boolean eaten;
     public Dot(Point topLeft) {
         dotRectangle = new Rectangle(topLeft, DOT_IMAGE.getWidth(), DOT_IMAGE.getHeight());
-        eaten = false;
     }
-    public void eat() {
-        eaten = true;
-    }
-    public boolean isEaten() {
-        return eaten;
-    }
+
     public static int getScore() {
         return SCORE;
     }
@@ -34,8 +27,6 @@ public class Dot {
      * at the coordinate of the dot Rectangle
      */
     public void draw() {
-        if (!eaten) {
-            DOT_IMAGE.drawFromTopLeft(dotRectangle.left(), dotRectangle.top());
-        }
+        DOT_IMAGE.drawFromTopLeft(dotRectangle.left(), dotRectangle.top());
     }
 }

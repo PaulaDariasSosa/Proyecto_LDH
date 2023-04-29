@@ -7,7 +7,6 @@ import java.util.ArrayList;
 public abstract class Ghost {
     private final static Image GHOST_IMAGE = new Image("res/ghostRed.png");
     final Point ghostStartPoint;
-    public boolean colliding = false;
     Point origin;
     Rectangle ghostRectangle;
 

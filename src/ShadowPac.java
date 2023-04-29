@@ -242,12 +242,10 @@ public class ShadowPac extends AbstractGame  {
                     // player does not collide with any wall or ghost
                     level0.player.goCommit();
                     for (Dot dot : level0.dots) {
-                        if (!dot.isEaten()) {
-                            if (dot.collidesWith(level0.player)) {
-                                dot.eat();
-                                level0.player.increaseScore(Dot.getScore());
-                                break;
-                            }
+                        if (dot.collidesWith(level0.player)) {
+                            level0.dots.remove(dot);
+                            level0.player.increaseScore(Dot.getScore());
+                            break;
                         }
                     }
                 }
@@ -314,12 +312,10 @@ public class ShadowPac extends AbstractGame  {
                     // player does not collide with any wall or ghost
                     level1.player.goCommit();
                     for (Dot dot : level1.dots) {
-                        if (!dot.isEaten()) {
-                            if (dot.collidesWith(level1.player)) {
-                                dot.eat();
-                                level1.player.increaseScore(Dot.getScore());
-                                break;
-                            }
+                        if (dot.collidesWith(level1.player)) {
+                            level1.dots.remove(dot);
+                            level1.player.increaseScore(Dot.getScore());
+                            break;
                         }
                     }
                     for (Cherry cherry : level1.cherries) {
@@ -332,13 +328,12 @@ public class ShadowPac extends AbstractGame  {
                         }
                     }
                     for (Pellet pellet : level1.pellets) {
-                        if (!pellet.isEaten()) {
-                            if (pellet.collidesWith(level1.player)) {
-                                pellet.eat();
-                                break;
-                            }
+                        if (pellet.collidesWith(level1.player)) {
+                            level1.pellets.remove(pellet);
+                            break;
                         }
                     }
+
                 }
 
                 if (!level1.player.hasLost()) {
