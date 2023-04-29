@@ -15,17 +15,27 @@ public class ShadowPac extends AbstractGame  {
     private final static double TITLE_POINT_X = 260;
     private final static double TITLE_POINT_Y = 250;
 
-    private final static String[] INSTRUCTION_MESSAGE = {"PRESS SPACE TO START", "USE ARROW KEYS TO MOVE"};
-    private final Font instructionFont = new Font("res/FSO8BITR.ttf", 24);
-    private final static double INSTRUCTION_POINT_X = TITLE_POINT_X + 60;
-    private final static double INSTRUCTION_POINT_Y1 = TITLE_POINT_Y + 190;
-    private final static double INSTRUCTION_POINT_Y2 = INSTRUCTION_POINT_Y1 + 40;
+    private final static String[] INSTRUCTION0_MESSAGE = {"PRESS SPACE TO START", "USE ARROW KEYS TO MOVE"};
+    private final Font instruction0Font = new Font("res/FSO8BITR.ttf", 24);
+    private final static double INSTRUCTION0_POINT_X = TITLE_POINT_X + 60;
+    private final static double INSTRUCTION0_POINT_Y1 = TITLE_POINT_Y + 190;
+    private final static double INSTRUCTION0_POINT_Y2 = INSTRUCTION0_POINT_Y1 + 40;
+
+    private final static String[] INSTRUCTION1_MESSAGE = {"PRESS SPACE TO START", "USE ARROW KEYS TO MOVE", "EAT THE PELLET TO ATTACK"};
+    private final Font instruction1Font = new Font("res/FSO8BITR.ttf", 40);
+    private final static double INSTRUCTION1_POINT_X = 200;
+    private final static double INSTRUCTION1_POINT_Y1 = 350;
+    private final static double INSTRUCTION1_POINT_Y2 = INSTRUCTION1_POINT_Y1 + 40;
+    private final static double INSTRUCTION1_POINT_Y3 = INSTRUCTION1_POINT_Y2 + 40;
+
+
     private final Image BACKGROUND_IMAGE = new Image("res/background0.png");
 
-    private final static int TITLE_SCREEN = -2;
-    private final static int LEVEL_COMPLETE_SCREEN = -1;
-    private final static int LEVEL_0 = 0;
-    private final static int LEVEL_1 = 1;
+    private final static int TITLE_SCREEN = 0;
+    private final static int LEVEL_0 = 1;
+    private final static int LEVEL_COMPLETE_SCREEN = 2;
+    private final static int INSTRUCTION_1_SCREEN = 3;
+    private final static int LEVEL_1 = 4;
     private int screenStatus = TITLE_SCREEN;
 
 
@@ -49,7 +59,7 @@ public class ShadowPac extends AbstractGame  {
     private final static int SWITCH_FRAME = 15;
 
     private int levelCompleteFrameCount = 0;
-    private final static int LEVEL_COMPLETE_FRAME = 300;
+    private final static int COMPLETE_MESSAGE_FRAME = 300;
 
     private final static int MAX_WALLS = 145;
     private final static int MAX_GHOSTS = 4;
@@ -121,38 +131,51 @@ public class ShadowPac extends AbstractGame  {
         }
         else {
             BACKGROUND_IMAGE.draw(Window.getWidth() / 2.0, Window.getHeight() / 2.0);
-            if (screenStatus == TITLE_SCREEN && input.wasPressed(Keys.SPACE)) {
-                screenStatus = LEVEL_0;
+
+            if (screenStatus == TITLE_SCREEN) {
+                if (input.wasPressed(Keys.SPACE)) {
+                    screenStatus = LEVEL_0;
+                }
+                if (input.wasPressed(Keys.W)) {
+                    screenStatus = LEVEL_1;
+                }
             }
 
-            if (levelCompleteFrameCount == LEVEL_COMPLETE_FRAME) {
+            else if (screenStatus == INSTRUCTION_1_SCREEN && input.wasPressed(Keys.SPACE)) {
                 screenStatus = LEVEL_1;
             }
 
-            if (screenStatus == LEVEL_COMPLETE_SCREEN) {
+            else if (screenStatus == LEVEL_COMPLETE_SCREEN && levelCompleteFrameCount == COMPLETE_MESSAGE_FRAME) {
+                screenStatus = INSTRUCTION_1_SCREEN;
+            }
+
+            if (screenStatus == TITLE_SCREEN) {
+                defaultFont.drawString(GAME_TITLE, TITLE_POINT_X, TITLE_POINT_Y);
+                instruction0Font.drawString(INSTRUCTION0_MESSAGE[0], INSTRUCTION0_POINT_X, INSTRUCTION0_POINT_Y1);
+                instruction0Font.drawString(INSTRUCTION0_MESSAGE[1], INSTRUCTION0_POINT_X, INSTRUCTION0_POINT_Y2);
+            }
+
+            else if (screenStatus == LEVEL_COMPLETE_SCREEN) {
                 defaultFont.drawString(LEVEL_COMPLETE, LEVEL_COMPLETE_POINT.x, LEVEL_COMPLETE_POINT.y);
                 levelCompleteFrameCount++;
             }
 
-            else if (screenStatus == TITLE_SCREEN) {
-                defaultFont.drawString(GAME_TITLE, TITLE_POINT_X, TITLE_POINT_Y);
-                instructionFont.drawString(INSTRUCTION_MESSAGE[0], INSTRUCTION_POINT_X, INSTRUCTION_POINT_Y1);
-                instructionFont.drawString(INSTRUCTION_MESSAGE[1], INSTRUCTION_POINT_X, INSTRUCTION_POINT_Y2);
-            }
-
-            else if (player.hasLost()) {
-                defaultFont.drawString(LOSE_MESSAGE, LOSE_MESSAGE_POINT.x, LOSE_MESSAGE_POINT.y);
+            else if (screenStatus == INSTRUCTION_1_SCREEN) {
+                instruction1Font.drawString(INSTRUCTION1_MESSAGE[0], INSTRUCTION1_POINT_X, INSTRUCTION1_POINT_Y1);
+                instruction1Font.drawString(INSTRUCTION1_MESSAGE[1], INSTRUCTION1_POINT_X, INSTRUCTION1_POINT_Y2);
+                instruction1Font.drawString(INSTRUCTION1_MESSAGE[2], INSTRUCTION1_POINT_X, INSTRUCTION1_POINT_Y3);
             }
 
             else if (screenStatus == LEVEL_0 && player.getPlayerScore() == MAX_SCORE_LVL_0) {
                 screenStatus = LEVEL_COMPLETE_SCREEN;
             }
-
+            else if (player.hasLost()) {
+                defaultFont.drawString(LOSE_MESSAGE, LOSE_MESSAGE_POINT.x, LOSE_MESSAGE_POINT.y);
+            }
             else if (screenStatus == LEVEL_1 && player.getPlayerScore() == MAX_SCORE_LVL_1) {
                 // player has won
                 defaultFont.drawString(WIN_MESSAGE, WIN_MESSAGE_POINT.x, WIN_MESSAGE_POINT.y);
             }
-
 
             else if (screenStatus == LEVEL_0) {
                 // Playing level 0

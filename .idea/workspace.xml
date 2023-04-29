@@ -7,6 +7,7 @@
     <list default="true" id="d1f5fc02-7c04-47c8-83ee-29bb3e155ea8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ShadowPac.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShadowPac.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Message.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ShadowPac.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ShadowPac.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,7 +80,7 @@
       <workItem from="1682487465868" duration="930000" />
       <workItem from="1682521307666" duration="10000" />
       <workItem from="1682686415393" duration="510000" />
-      <workItem from="1682728706366" duration="2970000" />
+      <workItem from="1682728706366" duration="5786000" />
     </task>
     <servers />
   </component>
