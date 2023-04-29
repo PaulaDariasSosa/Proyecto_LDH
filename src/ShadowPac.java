@@ -313,18 +313,16 @@ public class ShadowPac extends AbstractGame  {
                     level1.player.goCommit();
                     for (Dot dot : level1.dots) {
                         if (dot.collidesWith(level1.player)) {
-                            level1.dots.remove(dot);
                             level1.player.increaseScore(Dot.getScore());
+                            level1.dots.remove(dot);
                             break;
                         }
                     }
                     for (Cherry cherry : level1.cherries) {
-                        if (!cherry.isEaten()) {
-                            if (cherry.collidesWith(level1.player)) {
-                                cherry.eat();
-                                level1.player.increaseScore(Cherry.getScore());
-                                break;
-                            }
+                        if (cherry.collidesWith(level1.player)) {
+                            level1.player.increaseScore(Cherry.getScore());
+                            level1.cherries.remove(cherry);
+                            break;
                         }
                     }
                     for (Pellet pellet : level1.pellets) {
