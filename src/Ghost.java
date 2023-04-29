@@ -2,9 +2,18 @@ import bagel.Image;
 import bagel.util.Point;
 import bagel.util.Rectangle;
 
-public class Ghost {
+public abstract class Ghost {
+
+    final static int LEFT = 0;
+    final static int RIGHT = 1;
+    final static int UP = 2;
+    final static int DOWN = 3;
+
     private final static Image GHOST_IMAGE = new Image("res/ghostRed.png");
-    final Rectangle ghostRectangle;
+    Point origin;
+    Rectangle ghostRectangle;
+
+
     public Ghost(Point topLeft) {
         ghostRectangle = new Rectangle(topLeft, GHOST_IMAGE.getWidth(), GHOST_IMAGE.getHeight());
     }
@@ -17,12 +26,17 @@ public class Ghost {
         return player.getPlayerGo().intersects(this.ghostRectangle);
     }
 
+    public boolean collidesWith(Wall wall) {
+        return wall.getWallRectangle().intersects(this.ghostRectangle);
+    }
+
+    public abstract void move();
+    public abstract void changeDirection();
+
     /**
      * Draws the ghost image at the
      * coordinate of the ghost Rectangle
      */
-    public void draw() {
-        GHOST_IMAGE.drawFromTopLeft(ghostRectangle.left(), ghostRectangle.top());
-    }
+    public abstract void draw();
 }
 

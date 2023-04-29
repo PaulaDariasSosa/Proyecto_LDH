@@ -6,8 +6,12 @@ public class GhostPink extends Ghost {
     public GhostPink(Point topLeft) {
         super(topLeft);
     }
+    public void move() {
+    }
 
-    @Override
+    public void changeDirection() {
+    }
+
     public void draw() {
         GHOST_PINK_IMAGE.drawFromTopLeft(ghostRectangle.left(), ghostRectangle.top());
     }

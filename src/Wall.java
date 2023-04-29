@@ -9,6 +9,10 @@ public class Wall {
         wallRectangle = new Rectangle(topLeft, WALL_IMAGE.getWidth(), WALL_IMAGE.getHeight());
     }
 
+    public Rectangle getWallRectangle() {
+        return wallRectangle;
+    }
+
     /**
      * Checks if the potential moved position
      * of the player collides with the wall

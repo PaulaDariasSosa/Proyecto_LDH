@@ -90,7 +90,7 @@ public class ShadowPac extends AbstractGame  {
                         level0.walls.add(new Wall(point));
                         break;
                     case "Ghost":
-                        level0.ghosts.add(new Ghost(point));
+                        level0.ghosts.add(new GhostRed(point));
                         break;
                     default:
                         level0.dots.add(new Dot(point));
@@ -296,16 +296,20 @@ public class ShadowPac extends AbstractGame  {
 
                 boolean colliding = false;
                 for (Wall wall : level1.walls) {
+                    for (Ghost ghost : level1.ghosts) {
+                        if (ghost.collidesWith(wall)) {
+                            ghost.changeDirection();
+                        }
+                    }
                     if (wall.collidesWith(level1.player)) {
                         colliding = true;
-                        break;
                     }
                 }
                 for (Ghost ghost : level1.ghosts) {
+                    ghost.move();
                     if (ghost.collidesWith(level1.player)) {
                         level1.player.loseLife();
                         colliding = true;
-                        break;
                     }
                 }
 
@@ -349,9 +353,6 @@ public class ShadowPac extends AbstractGame  {
                     for (Wall wall : level1.walls) {
                         wall.draw();
                     }
-                    for (Ghost ghost : level1.ghosts) {
-                        ghost.draw();
-                    }
                     for (Dot dot : level1.dots) {
                         dot.draw();
                     }
@@ -360,6 +361,9 @@ public class ShadowPac extends AbstractGame  {
                     }
                     for (Pellet pellet : level1.pellets) {
                         pellet.draw();
+                    }
+                    for (Ghost ghost : level1.ghosts) {
+                        ghost.draw();
                     }
 
                     // draw remaining lives and score

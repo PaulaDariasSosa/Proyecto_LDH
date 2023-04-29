@@ -1,5 +1,6 @@
 import bagel.Image;
 import bagel.util.Point;
+import bagel.util.Rectangle;
 
 public class GhostGreen extends Ghost {
     private final static Image GHOST_GREEN_IMAGE = new Image("res/ghostGreen.png");
@@ -7,7 +8,12 @@ public class GhostGreen extends Ghost {
         super(topLeft);
     }
 
-    @Override
+    public void move() {
+    }
+
+    public void changeDirection() {
+    }
+
     public void draw() {
         GHOST_GREEN_IMAGE.drawFromTopLeft(ghostRectangle.left(), ghostRectangle.top());
     }

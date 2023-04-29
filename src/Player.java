@@ -8,7 +8,7 @@ public class Player {
     private final static Image HEART_IMAGE = new Image("res/heart.png");
     private final static int MAX_LIFE = 3;
     private final static int HEART_GAP = 30;
-    private final static double STEP_SIZE = 3;
+    private static double speed = 3;
 
     private final Point playerStartPoint;
     private Point origin;
@@ -19,7 +19,7 @@ public class Player {
     private Point pointGo;
     private final DrawOptions rotationGo;
 
-    private int lifeCount;
+    private static int lifeCount;
     private int playerScore;
 
     public Player(Point topLeft) {
@@ -40,22 +40,22 @@ public class Player {
      * direction of keyboard inputs, with distance of STEP_SIZE
      */
     public void goLeft() {
-        pointGo = new Point(origin.x - STEP_SIZE, origin.y);
+        pointGo = new Point(origin.x - speed, origin.y);
         playerGo = new Rectangle(pointGo, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
         rotationGo.setRotation(Math.PI);
     }
     public void goRight() {
-        pointGo = new Point(origin.x + STEP_SIZE, origin.y);
+        pointGo = new Point(origin.x + speed, origin.y);
         playerGo = new Rectangle(pointGo, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
         rotationGo.setRotation(0);
     }
     public void goUp() {
-        pointGo = new Point(origin.x, origin.y - STEP_SIZE);
+        pointGo = new Point(origin.x, origin.y - speed);
         playerGo = new Rectangle(pointGo, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
         rotationGo.setRotation(1.5 * Math.PI);
     }
     public void goDown() {
-        pointGo = new Point(origin.x, origin.y + STEP_SIZE);
+        pointGo = new Point(origin.x, origin.y + speed);
         playerGo = new Rectangle(pointGo, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
         rotationGo.setRotation(0.5 * Math.PI);
     }
