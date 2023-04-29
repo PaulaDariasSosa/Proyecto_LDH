@@ -125,6 +125,9 @@ public class ShadowPac extends AbstractGame  {
                     case "GhostPink":
                         level1.ghosts.add(new GhostPink(point));
                         break;
+                    case "Cherry":
+                        level1.cherries.add(new Cherry(point));
+                        break;
                     case "Pellet":
                         level1.pellets.add(new Pellet(point));
                         break;
@@ -194,13 +197,13 @@ public class ShadowPac extends AbstractGame  {
                 instruction1Font.drawString(INSTRUCTION1_MESSAGE[2], INSTRUCTION1_POINT_X, INSTRUCTION1_POINT_Y3);
             }
 
-            else if (screenStatus == LEVEL_0 && level0.player.getPlayerScore() == MAX_SCORE_LVL_0) {
+            else if (screenStatus == LEVEL_0 && level0.player.getPlayerScore() >= MAX_SCORE_LVL_0) {
                 screenStatus = LEVEL_COMPLETE_SCREEN;
             }
             else if (level0.player.hasLost()) {
                 defaultFont.drawString(LOSE_MESSAGE, LOSE_MESSAGE_POINT.x, LOSE_MESSAGE_POINT.y);
             }
-            else if (screenStatus == LEVEL_1 && level1.player.getPlayerScore() == MAX_SCORE_LVL_1) {
+            else if (screenStatus == LEVEL_1 && level1.player.getPlayerScore() >= MAX_SCORE_LVL_1) {
                 // player has won
                 defaultFont.drawString(WIN_MESSAGE, WIN_MESSAGE_POINT.x, WIN_MESSAGE_POINT.y);
             }
@@ -318,6 +321,15 @@ public class ShadowPac extends AbstractGame  {
                             }
                         }
                     }
+                    for (Cherry cherry : level1.cherries) {
+                        if (!cherry.isEaten()) {
+                            if (cherry.collidesWith(level1.player)) {
+                                cherry.eat();
+                                level1.player.increaseScore(Cherry.getScore());
+                                break;
+                            }
+                        }
+                    }
                 }
 
                 if (!level1.player.hasLost()) {
@@ -334,6 +346,9 @@ public class ShadowPac extends AbstractGame  {
                     }
                     for (Dot dot : level1.dots) {
                         dot.draw();
+                    }
+                    for (Cherry cherry : level1.cherries) {
+                        cherry.draw();
                     }
                     for (Pellet pellet : level1.pellets) {
                         pellet.draw();

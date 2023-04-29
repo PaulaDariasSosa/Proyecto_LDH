@@ -5,6 +5,7 @@ public class Level {
     public final ArrayList<Wall> walls = new ArrayList<>();
     public final ArrayList<Ghost> ghosts = new ArrayList<>();
     public final ArrayList<Dot> dots = new ArrayList<>();
+    public final ArrayList<Cherry> cherries = new ArrayList<>();
     public final ArrayList<Pellet> pellets = new ArrayList<>();
 
 }
