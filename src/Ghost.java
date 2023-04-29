@@ -3,20 +3,16 @@ import bagel.util.Point;
 import bagel.util.Rectangle;
 
 public abstract class Ghost {
-
-    final static int LEFT = 0;
-    final static int RIGHT = 1;
-    final static int UP = 2;
-    final static int DOWN = 3;
-
     private final static Image GHOST_IMAGE = new Image("res/ghostRed.png");
+    final Point ghostStartPoint;
     Point origin;
     Rectangle ghostRectangle;
 
 
     public Ghost(Point topLeft) {
         origin = topLeft;
-        ghostRectangle = new Rectangle(topLeft, GHOST_IMAGE.getWidth(), GHOST_IMAGE.getHeight());
+        ghostStartPoint = topLeft;
+        ghostRectangle = new Rectangle(origin, GHOST_IMAGE.getWidth(), GHOST_IMAGE.getHeight());
     }
 
     /**
@@ -33,6 +29,10 @@ public abstract class Ghost {
 
     public abstract void move();
     public abstract void changeDirection();
+    public void resetPosition() {
+        origin = ghostStartPoint;
+        ghostRectangle = new Rectangle(origin, GHOST_IMAGE.getWidth(), GHOST_IMAGE.getHeight());
+    }
 
     /**
      * Draws the ghost image at the

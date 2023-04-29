@@ -310,6 +310,7 @@ public class ShadowPac extends AbstractGame  {
                     if (ghost.collidesWith(level1.player)) {
                         level1.player.loseLife();
                         colliding = true;
+                        ghost.resetPosition();
                     }
                 }
 
