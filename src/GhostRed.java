@@ -12,8 +12,21 @@ public class GhostRed extends Ghost {
     }
 
     public void move(ArrayList<Wall> walls) {
-        origin = new Point(origin.x + speed, origin.y);
-        ghostRectangle = new Rectangle(origin, GHOST_RED_IMAGE.getWidth(), GHOST_RED_IMAGE.getHeight());
+        Point pointGo = new Point(origin.x + speed, origin.y);
+        ghostRectangle = new Rectangle(pointGo, GHOST_RED_IMAGE.getWidth(), GHOST_RED_IMAGE.getHeight());
+
+        boolean colliding = false;
+        for (Wall wall : walls) {
+            if (ghostRectangle.intersects(wall.getWallRectangle())) {
+                ghostRectangle = new Rectangle(origin, GHOST_RED_IMAGE.getWidth(), GHOST_RED_IMAGE.getHeight());
+                this.changeDirection();
+                colliding = true;
+                break;
+            }
+        }
+        if (!colliding) {
+            origin = pointGo;
+        }
     }
 
     public void changeDirection() {

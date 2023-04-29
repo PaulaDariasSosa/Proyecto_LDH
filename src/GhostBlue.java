@@ -11,8 +11,21 @@ public class GhostBlue extends Ghost {
         super(topLeft);
     }
     public void move(ArrayList<Wall> walls) {
-        origin = new Point(origin.x, origin.y+ speed);
-        ghostRectangle = new Rectangle(origin, GHOST_BLUE_IMAGE.getWidth(), GHOST_BLUE_IMAGE.getHeight());
+        Point pointGo = new Point(origin.x, origin.y + speed);
+        ghostRectangle = new Rectangle(pointGo, GHOST_BLUE_IMAGE.getWidth(), GHOST_BLUE_IMAGE.getHeight());
+
+        boolean colliding = false;
+        for (Wall wall : walls) {
+            if (ghostRectangle.intersects(wall.getWallRectangle())) {
+                ghostRectangle = new Rectangle(origin, GHOST_BLUE_IMAGE.getWidth(), GHOST_BLUE_IMAGE.getHeight());
+                this.changeDirection();
+                colliding = true;
+                break;
+            }
+        }
+        if (!colliding) {
+            origin = pointGo;
+        }
     }
 
     public void changeDirection() {

@@ -297,11 +297,6 @@ public class ShadowPac extends AbstractGame  {
                 boolean colliding = false;
 
                 for (Wall wall : level1.walls) {
-                    for (Ghost ghost : level1.ghosts) {
-                        if (ghost.collidesWith(wall)) {
-                            ghost.changeDirection();
-                        }
-                    }
                     if (wall.collidesWith(level1.player)) {
                         colliding = true;
                     }

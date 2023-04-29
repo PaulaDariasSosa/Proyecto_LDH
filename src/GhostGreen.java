@@ -15,15 +15,29 @@ public class GhostGreen extends Ghost {
     }
 
     public void move(ArrayList<Wall> walls) {
+        Point pointGo;
         if (direction == 0) {
             // vertical
-            origin = new Point(origin.x + speed, origin.y);
+            pointGo = new Point(origin.x + speed, origin.y);
         }
         else {
             // horizontal
-            origin = new Point(origin.x, origin.y + speed);
+            pointGo = new Point(origin.x, origin.y + speed);
         }
-        ghostRectangle = new Rectangle(origin, GHOST_GREEN_IMAGE.getWidth(), GHOST_GREEN_IMAGE.getHeight());
+        ghostRectangle = new Rectangle(pointGo, GHOST_GREEN_IMAGE.getWidth(), GHOST_GREEN_IMAGE.getHeight());
+
+        boolean colliding = false;
+        for (Wall wall : walls) {
+            if (ghostRectangle.intersects(wall.getWallRectangle())) {
+                ghostRectangle = new Rectangle(origin, GHOST_GREEN_IMAGE.getWidth(), GHOST_GREEN_IMAGE.getHeight());
+                this.changeDirection();
+                colliding = true;
+                break;
+            }
+        }
+        if (!colliding) {
+            origin = pointGo;
+        }
     }
 
     public void changeDirection() {

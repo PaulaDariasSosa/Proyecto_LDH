@@ -17,7 +17,6 @@ public class GhostPink extends Ghost {
     }
     public void move(ArrayList<Wall> walls) {
         Point pointGo;
-        boolean colliding = false;
         if (direction == 0) {
             // left
             pointGo = new Point(origin.x - speed, origin.y);
@@ -33,6 +32,7 @@ public class GhostPink extends Ghost {
         }
         ghostRectangle = new Rectangle(pointGo, GHOST_PINK_IMAGE.getWidth(), GHOST_PINK_IMAGE.getHeight());
 
+        boolean colliding = false;
         for (Wall wall : walls) {
             if (ghostRectangle.intersects(wall.getWallRectangle())) {
                 ghostRectangle = new Rectangle(origin, GHOST_PINK_IMAGE.getWidth(), GHOST_PINK_IMAGE.getHeight());
