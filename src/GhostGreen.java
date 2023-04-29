@@ -2,18 +2,19 @@ import bagel.Image;
 import bagel.util.Point;
 import bagel.util.Rectangle;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class GhostGreen extends Ghost {
     private final static Image GHOST_GREEN_IMAGE = new Image("res/ghostGreen.png");
     private double speed = 4;
-    Random rand = new Random();
-    int direction = rand.nextInt(2);
+    private Random rand = new Random();
+    private int direction = rand.nextInt(2);
     public GhostGreen(Point topLeft) {
         super(topLeft);
     }
 
-    public void move() {
+    public void move(ArrayList<Wall> walls) {
         if (direction == 0) {
             // vertical
             origin = new Point(origin.x + speed, origin.y);

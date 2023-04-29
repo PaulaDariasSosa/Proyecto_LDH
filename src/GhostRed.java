@@ -2,6 +2,8 @@ import bagel.Image;
 import bagel.util.Point;
 import bagel.util.Rectangle;
 
+import java.util.ArrayList;
+
 public class GhostRed extends Ghost {
     private final static Image GHOST_RED_IMAGE = new Image("res/ghostRed.png");
     private double speed = 1;
@@ -9,7 +11,7 @@ public class GhostRed extends Ghost {
         super(topLeft);
     }
 
-    public void move() {
+    public void move(ArrayList<Wall> walls) {
         origin = new Point(origin.x + speed, origin.y);
         ghostRectangle = new Rectangle(origin, GHOST_RED_IMAGE.getWidth(), GHOST_RED_IMAGE.getHeight());
     }

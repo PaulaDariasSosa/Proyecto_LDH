@@ -295,6 +295,7 @@ public class ShadowPac extends AbstractGame  {
                 }
 
                 boolean colliding = false;
+
                 for (Wall wall : level1.walls) {
                     for (Ghost ghost : level1.ghosts) {
                         if (ghost.collidesWith(wall)) {
@@ -306,7 +307,7 @@ public class ShadowPac extends AbstractGame  {
                     }
                 }
                 for (Ghost ghost : level1.ghosts) {
-                    ghost.move();
+                    ghost.move(level1.walls);
                     if (ghost.collidesWith(level1.player)) {
                         level1.player.loseLife();
                         colliding = true;
