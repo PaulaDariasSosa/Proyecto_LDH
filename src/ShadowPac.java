@@ -330,6 +330,14 @@ public class ShadowPac extends AbstractGame  {
                             }
                         }
                     }
+                    for (Pellet pellet : level1.pellets) {
+                        if (!pellet.isEaten()) {
+                            if (pellet.collidesWith(level1.player)) {
+                                pellet.eat();
+                                break;
+                            }
+                        }
+                    }
                 }
 
                 if (!level1.player.hasLost()) {
