@@ -3,10 +3,10 @@ import bagel.util.Point;
 import bagel.util.Rectangle;
 
 public class Ghost {
-    private final static Image GHOST_RED_IMAGE = new Image("res/ghostRed.png");
-    private final Rectangle ghostRectangle;
+    private final static Image GHOST_IMAGE = new Image("res/ghostRed.png");
+    final Rectangle ghostRectangle;
     public Ghost(Point topLeft) {
-        ghostRectangle = new Rectangle(topLeft, GHOST_RED_IMAGE.getWidth(), GHOST_RED_IMAGE.getHeight());
+        ghostRectangle = new Rectangle(topLeft, GHOST_IMAGE.getWidth(), GHOST_IMAGE.getHeight());
     }
 
     /**
@@ -22,7 +22,7 @@ public class Ghost {
      * coordinate of the ghost Rectangle
      */
     public void draw() {
-        GHOST_RED_IMAGE.drawFromTopLeft(ghostRectangle.left(), ghostRectangle.top());
+        GHOST_IMAGE.drawFromTopLeft(ghostRectangle.left(), ghostRectangle.top());
     }
 }
 

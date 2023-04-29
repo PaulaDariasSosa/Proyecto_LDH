@@ -64,7 +64,6 @@ public class ShadowPac extends AbstractGame  {
     private final static int MAX_SCORE_LVL_0 = 1210;
     private final static int MAX_SCORE_LVL_1 = 800;
 
-    private Player player;
     private final Level level0 = new Level();
     private final Level level1 = new Level();
 
@@ -85,7 +84,7 @@ public class ShadowPac extends AbstractGame  {
 
                 switch (cells[0]) {
                     case "Player":
-                        player = new Player(point);
+                        level0.player = new Player(point);
                         break;
                     case "Wall":
                         level0.walls.add(new Wall(point));
@@ -109,12 +108,12 @@ public class ShadowPac extends AbstractGame  {
 
                 switch (cells[0]) {
                     case "Player":
-                        player = new Player(point);
+                        level1.player = new Player(point);
                         break;
                     case "Wall":
                         level1.walls.add(new Wall(point));
                         break;
-                    case "Ghost":
+                    case "GhostRed":
                         level1.ghosts.add(new Ghost(point));
                         break;
                     case "Pellet":
@@ -186,13 +185,13 @@ public class ShadowPac extends AbstractGame  {
                 instruction1Font.drawString(INSTRUCTION1_MESSAGE[2], INSTRUCTION1_POINT_X, INSTRUCTION1_POINT_Y3);
             }
 
-            else if (screenStatus == LEVEL_0 && player.getPlayerScore() == MAX_SCORE_LVL_0) {
+            else if (screenStatus == LEVEL_0 && level0.player.getPlayerScore() == MAX_SCORE_LVL_0) {
                 screenStatus = LEVEL_COMPLETE_SCREEN;
             }
-            else if (player.hasLost()) {
+            else if (level0.player.hasLost()) {
                 defaultFont.drawString(LOSE_MESSAGE, LOSE_MESSAGE_POINT.x, LOSE_MESSAGE_POINT.y);
             }
-            else if (screenStatus == LEVEL_1 && player.getPlayerScore() == MAX_SCORE_LVL_1) {
+            else if (screenStatus == LEVEL_1 && level1.player.getPlayerScore() == MAX_SCORE_LVL_1) {
                 // player has won
                 defaultFont.drawString(WIN_MESSAGE, WIN_MESSAGE_POINT.x, WIN_MESSAGE_POINT.y);
             }
@@ -200,28 +199,28 @@ public class ShadowPac extends AbstractGame  {
             else if (screenStatus == LEVEL_0) {
                 // Playing level 0
                 if (input.isDown(Keys.LEFT)) {
-                    player.goLeft();
+                    level0.player.goLeft();
                 }
                 else if (input.isDown(Keys.RIGHT)) {
-                    player.goRight();
+                    level0.player.goRight();
                 }
                 else if (input.isDown(Keys.UP)) {
-                    player.goUp();
+                    level0.player.goUp();
                 }
                 else if (input.isDown(Keys.DOWN)) {
-                    player.goDown();
+                    level0.player.goDown();
                 }
 
                 boolean colliding = false;
                 for (Wall wall : level0.walls) {
-                    if (wall.collidesWith(player)) {
+                    if (wall.collidesWith(level0.player)) {
                         colliding = true;
                         break;
                     }
                 }
                 for (Ghost ghost : level0.ghosts) {
-                    if (ghost.collidesWith(player)) {
-                        player.loseLife();
+                    if (ghost.collidesWith(level0.player)) {
+                        level0.player.loseLife();
                         colliding = true;
                         break;
                     }
@@ -229,22 +228,22 @@ public class ShadowPac extends AbstractGame  {
 
                 if (!colliding) {
                     // player does not collide with any wall or ghost
-                    player.goCommit();
+                    level0.player.goCommit();
                     for (Dot dot : level0.dots) {
                         if (!dot.isEaten()) {
-                            if (dot.collidesWith(player)) {
+                            if (dot.collidesWith(level0.player)) {
                                 dot.eat();
-                                player.increaseScore(Dot.getScore());
+                                level0.player.increaseScore(Dot.getScore());
                                 break;
                             }
                         }
                     }
                 }
 
-                if (!player.hasLost()) {
+                if (!level0.player.hasLost()) {
                     // Player still has more than 0 life:
                     // draw player, switch between opening and closing mouth every 15 frames
-                    player.draw(switchFrameCount, SWITCH_FRAME);
+                    level0.player.draw(switchFrameCount, SWITCH_FRAME);
 
                     // draw stationary objects on screen
                     for (Wall wall : level0.walls) {
@@ -258,8 +257,8 @@ public class ShadowPac extends AbstractGame  {
                     }
 
                     // draw remaining lives and score
-                    player.drawLives(FIRST_HEART_POINT);
-                    scoreFont.drawString("SCORE " + player.getPlayerScore(), SCORE_POINT.x, SCORE_POINT.y);
+                    level0.player.drawLives(FIRST_HEART_POINT);
+                    scoreFont.drawString("SCORE " + level0.player.getPlayerScore(), SCORE_POINT.x, SCORE_POINT.y);
 
                     switchFrameCount++;
                     if (switchFrameCount == SWITCH_FRAME * 2) {
@@ -271,28 +270,28 @@ public class ShadowPac extends AbstractGame  {
             else {
                 // Playing level 1
                 if (input.isDown(Keys.LEFT)) {
-                    player.goLeft();
+                    level1.player.goLeft();
                 }
                 else if (input.isDown(Keys.RIGHT)) {
-                    player.goRight();
+                    level1.player.goRight();
                 }
                 else if (input.isDown(Keys.UP)) {
-                    player.goUp();
+                    level1.player.goUp();
                 }
                 else if (input.isDown(Keys.DOWN)) {
-                    player.goDown();
+                    level1.player.goDown();
                 }
 
                 boolean colliding = false;
                 for (Wall wall : level1.walls) {
-                    if (wall.collidesWith(player)) {
+                    if (wall.collidesWith(level1.player)) {
                         colliding = true;
                         break;
                     }
                 }
                 for (Ghost ghost : level1.ghosts) {
-                    if (ghost.collidesWith(player)) {
-                        player.loseLife();
+                    if (ghost.collidesWith(level1.player)) {
+                        level1.player.loseLife();
                         colliding = true;
                         break;
                     }
@@ -300,22 +299,22 @@ public class ShadowPac extends AbstractGame  {
 
                 if (!colliding) {
                     // player does not collide with any wall or ghost
-                    player.goCommit();
+                    level1.player.goCommit();
                     for (Dot dot : level1.dots) {
                         if (!dot.isEaten()) {
-                            if (dot.collidesWith(player)) {
+                            if (dot.collidesWith(level1.player)) {
                                 dot.eat();
-                                player.increaseScore(Dot.getScore());
+                                level1.player.increaseScore(Dot.getScore());
                                 break;
                             }
                         }
                     }
                 }
 
-                if (!player.hasLost()) {
+                if (!level1.player.hasLost()) {
                     // Player still has more than 0 life:
                     // draw player, switch between opening and closing mouth every 15 frames
-                    player.draw(switchFrameCount, SWITCH_FRAME);
+                    level1.player.draw(switchFrameCount, SWITCH_FRAME);
 
                     // draw stationary objects on screen
                     for (Wall wall : level1.walls) {
@@ -332,8 +331,8 @@ public class ShadowPac extends AbstractGame  {
                     }
 
                     // draw remaining lives and score
-                    player.drawLives(FIRST_HEART_POINT);
-                    scoreFont.drawString("SCORE " + player.getPlayerScore(), SCORE_POINT.x, SCORE_POINT.y);
+                    level1.player.drawLives(FIRST_HEART_POINT);
+                    scoreFont.drawString("SCORE " + level1.player.getPlayerScore(), SCORE_POINT.x, SCORE_POINT.y);
 
                     switchFrameCount++;
                     if (switchFrameCount == SWITCH_FRAME * 2) {
