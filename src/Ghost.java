@@ -15,6 +15,7 @@ public abstract class Ghost {
 
 
     public Ghost(Point topLeft) {
+        origin = topLeft;
         ghostRectangle = new Rectangle(topLeft, GHOST_IMAGE.getWidth(), GHOST_IMAGE.getHeight());
     }
 

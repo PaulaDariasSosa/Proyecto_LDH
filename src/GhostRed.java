@@ -7,7 +7,6 @@ public class GhostRed extends Ghost {
     private double speed = 1;
     public GhostRed(Point topLeft) {
         super(topLeft);
-        origin = topLeft;
     }
 
     public void move() {
