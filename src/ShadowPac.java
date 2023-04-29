@@ -3,7 +3,7 @@ import bagel.*;
 import bagel.util.Point;
 
 /**
- * SWEN20003 Project 1, Semester 1, 2023
+ * SWEN20003 Project 2B, Semester 1, 2023
  * Tung Khanh Ho
  */
 public class ShadowPac extends AbstractGame  {
@@ -20,12 +20,21 @@ public class ShadowPac extends AbstractGame  {
     private final static double INSTRUCTION_POINT_X = TITLE_POINT_X + 60;
     private final static double INSTRUCTION_POINT_Y1 = TITLE_POINT_Y + 190;
     private final static double INSTRUCTION_POINT_Y2 = INSTRUCTION_POINT_Y1 + 40;
-
     private final Image BACKGROUND_IMAGE = new Image("res/background0.png");
-    private boolean titleScreen = true;
 
+    private final static int TITLE_SCREEN = -2;
+    private final static int LEVEL_COMPLETE_SCREEN = -1;
+    private final static int LEVEL_0 = 0;
+    private final static int LEVEL_1 = 1;
+    private int screenStatus = TITLE_SCREEN;
+
+
+    private final static String LEVEL_COMPLETE = "LEVEL COMPLETE!";
     private final static String WIN_MESSAGE = "WELL DONE!";
     private final static String LOSE_MESSAGE = "GAME OVER!";
+
+    private final Point LEVEL_COMPLETE_POINT = new Point((double)WINDOW_WIDTH/2 - defaultFont.getWidth(LEVEL_COMPLETE)/2,
+            (double)WINDOW_HEIGHT/2 + (double)DEFAULT_FONT_SIZE/2);
     private final Point WIN_MESSAGE_POINT = new Point((double)WINDOW_WIDTH/2 - defaultFont.getWidth(WIN_MESSAGE)/2,
             (double)WINDOW_HEIGHT/2 + (double)DEFAULT_FONT_SIZE/2);
     private final Point LOSE_MESSAGE_POINT = new Point((double)WINDOW_WIDTH/2 - defaultFont.getWidth(LOSE_MESSAGE)/2,
@@ -36,13 +45,17 @@ public class ShadowPac extends AbstractGame  {
     private final static Point SCORE_POINT = new Point(25, 25);
 
     // count the frame number to switch between open and closed images
-    private int frameCount = 0;
+    private int switchFrameCount = 0;
     private final static int SWITCH_FRAME = 15;
+
+    private int levelCompleteFrameCount = 0;
+    private final static int LEVEL_COMPLETE_FRAME = 300;
 
     private final static int MAX_WALLS = 145;
     private final static int MAX_GHOSTS = 4;
     private final static int MAX_DOTS = 121;
-    private final static int MAX_SCORE = 1210;
+    private final static int MAX_SCORE_LVL_0 = 1210;
+    private final static int MAX_SCORE_LVL_1 = 800;
 
     private Player player;
     private final Wall[] walls = new Wall[MAX_WALLS];
@@ -108,23 +121,41 @@ public class ShadowPac extends AbstractGame  {
         }
         else {
             BACKGROUND_IMAGE.draw(Window.getWidth() / 2.0, Window.getHeight() / 2.0);
-            if (input.wasPressed(Keys.SPACE)) {
-                titleScreen = false;
+            if (screenStatus == TITLE_SCREEN && input.wasPressed(Keys.SPACE)) {
+                screenStatus = LEVEL_0;
             }
 
-            if (titleScreen) {
+            if (levelCompleteFrameCount == LEVEL_COMPLETE_FRAME) {
+                screenStatus = LEVEL_1;
+            }
+
+            if (screenStatus == LEVEL_COMPLETE_SCREEN) {
+                defaultFont.drawString(LEVEL_COMPLETE, LEVEL_COMPLETE_POINT.x, LEVEL_COMPLETE_POINT.y);
+                levelCompleteFrameCount++;
+            }
+
+            else if (screenStatus == TITLE_SCREEN) {
                 defaultFont.drawString(GAME_TITLE, TITLE_POINT_X, TITLE_POINT_Y);
                 instructionFont.drawString(INSTRUCTION_MESSAGE[0], INSTRUCTION_POINT_X, INSTRUCTION_POINT_Y1);
                 instructionFont.drawString(INSTRUCTION_MESSAGE[1], INSTRUCTION_POINT_X, INSTRUCTION_POINT_Y2);
             }
-            else if (player.getPlayerScore() == MAX_SCORE) {
-                // player has won
-                defaultFont.drawString(WIN_MESSAGE, WIN_MESSAGE_POINT.x, WIN_MESSAGE_POINT.y);
-            } else if (player.hasLost()) {
+
+            else if (player.hasLost()) {
                 defaultFont.drawString(LOSE_MESSAGE, LOSE_MESSAGE_POINT.x, LOSE_MESSAGE_POINT.y);
             }
-            else {
-                // Playing the game
+
+            else if (screenStatus == LEVEL_0 && player.getPlayerScore() == MAX_SCORE_LVL_0) {
+                screenStatus = LEVEL_COMPLETE_SCREEN;
+            }
+
+            else if (screenStatus == LEVEL_1 && player.getPlayerScore() == MAX_SCORE_LVL_1) {
+                // player has won
+                defaultFont.drawString(WIN_MESSAGE, WIN_MESSAGE_POINT.x, WIN_MESSAGE_POINT.y);
+            }
+
+
+            else if (screenStatus == LEVEL_0) {
+                // Playing level 0
                 if (input.isDown(Keys.LEFT)) {
                     player.goLeft();
                 }
@@ -170,7 +201,7 @@ public class ShadowPac extends AbstractGame  {
                 if (!player.hasLost()) {
                     // Player still has more than 0 life:
                     // draw player, switch between opening and closing mouth every 15 frames
-                    player.draw(frameCount, SWITCH_FRAME);
+                    player.draw(switchFrameCount, SWITCH_FRAME);
 
                     // draw stationary objects on screen
                     for (Wall wall : walls) {
@@ -187,12 +218,84 @@ public class ShadowPac extends AbstractGame  {
                     player.drawLives(FIRST_HEART_POINT);
                     scoreFont.drawString("SCORE " + player.getPlayerScore(), SCORE_POINT.x, SCORE_POINT.y);
 
-                    frameCount++;
-                    if (frameCount == SWITCH_FRAME * 2) {
-                        frameCount = 0;
+                    switchFrameCount++;
+                    if (switchFrameCount == SWITCH_FRAME * 2) {
+                        switchFrameCount = 0;
                     }
                 }
             }
+
+            else {
+                // Playing level 1
+                if (input.isDown(Keys.LEFT)) {
+                    player.goLeft();
+                }
+                else if (input.isDown(Keys.RIGHT)) {
+                    player.goRight();
+                }
+                else if (input.isDown(Keys.UP)) {
+                    player.goUp();
+                }
+                else if (input.isDown(Keys.DOWN)) {
+                    player.goDown();
+                }
+
+                boolean colliding = false;
+                for (Wall wall : walls) {
+                    if (wall.collidesWith(player)) {
+                        colliding = true;
+                        break;
+                    }
+                }
+                for (Ghost ghost : ghosts) {
+                    if (ghost.collidesWith(player)) {
+                        player.loseLife();
+                        colliding = true;
+                        break;
+                    }
+                }
+
+                if (!colliding) {
+                    // player does not collide with any wall or ghost
+                    player.goCommit();
+                    for (Dot dot : dots) {
+                        if (!dot.isEaten()) {
+                            if (dot.collidesWith(player)) {
+                                dot.eat();
+                                player.increaseScore(Dot.getScore());
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                if (!player.hasLost()) {
+                    // Player still has more than 0 life:
+                    // draw player, switch between opening and closing mouth every 15 frames
+                    player.draw(switchFrameCount, SWITCH_FRAME);
+
+                    // draw stationary objects on screen
+                    for (Wall wall : walls) {
+                        wall.draw();
+                    }
+                    for (Ghost ghost : ghosts) {
+                        ghost.draw();
+                    }
+                    for (Dot dot : dots) {
+                        dot.draw();
+                    }
+
+                    // draw remaining lives and score
+                    player.drawLives(FIRST_HEART_POINT);
+                    scoreFont.drawString("SCORE " + player.getPlayerScore(), SCORE_POINT.x, SCORE_POINT.y);
+
+                    switchFrameCount++;
+                    if (switchFrameCount == SWITCH_FRAME * 2) {
+                        switchFrameCount = 0;
+                    }
+                }
+            }
+
         }
     }
 }
