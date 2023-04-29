@@ -61,16 +61,12 @@ public class ShadowPac extends AbstractGame  {
     private int levelCompleteFrameCount = 0;
     private final static int COMPLETE_MESSAGE_FRAME = 300;
 
-    private final static int MAX_WALLS = 145;
-    private final static int MAX_GHOSTS = 4;
-    private final static int MAX_DOTS = 121;
     private final static int MAX_SCORE_LVL_0 = 1210;
     private final static int MAX_SCORE_LVL_1 = 800;
 
     private Player player;
-    private final Wall[] walls = new Wall[MAX_WALLS];
-    private final Ghost[] ghosts = new Ghost[MAX_GHOSTS];
-    private final Dot[] dots = new Dot[MAX_DOTS];
+    private final Level level0 = new Level();
+    private final Level level1 = new Level();
 
     public ShadowPac(){
         super(WINDOW_WIDTH, WINDOW_HEIGHT, GAME_TITLE);
@@ -81,9 +77,8 @@ public class ShadowPac extends AbstractGame  {
      * this method as you wish).
      */
     private void readCSV() {
+        String text;
         try (BufferedReader br = new BufferedReader(new FileReader("res/level0.csv"))) {
-            String text;
-            int wallCount = 0, ghostCount = 0, dotCount = 0;
             while ((text = br.readLine()) != null) {
                 String[] cells = text.split(",");
                 Point point = new Point(Integer.parseInt(cells[1]), Integer.parseInt(cells[2]));
@@ -93,22 +88,47 @@ public class ShadowPac extends AbstractGame  {
                         player = new Player(point);
                         break;
                     case "Wall":
-                        walls[wallCount] = new Wall(point);
-                        wallCount++;
+                        level0.walls.add(new Wall(point));
                         break;
                     case "Ghost":
-                        ghosts[ghostCount] = new Ghost(point);
-                        ghostCount++;
+                        level0.ghosts.add(new Ghost(point));
                         break;
                     default:
-                        dots[dotCount] = new Dot(point);
-                        dotCount++;
+                        level0.dots.add(new Dot(point));
                         break;
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        try (BufferedReader br = new BufferedReader(new FileReader("res/level1.csv"))) {
+            while ((text = br.readLine()) != null) {
+                String[] cells = text.split(",");
+                Point point = new Point(Integer.parseInt(cells[1]), Integer.parseInt(cells[2]));
+
+                switch (cells[0]) {
+                    case "Player":
+                        player = new Player(point);
+                        break;
+                    case "Wall":
+                        level1.walls.add(new Wall(point));
+                        break;
+                    case "Ghost":
+                        level1.ghosts.add(new Ghost(point));
+                        break;
+                    case "Pellet":
+                        level1.pellets.add(new Pellet(point));
+                        break;
+                    default:
+                        level1.dots.add(new Dot(point));
+                        break;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     /**
@@ -193,13 +213,13 @@ public class ShadowPac extends AbstractGame  {
                 }
 
                 boolean colliding = false;
-                for (Wall wall : walls) {
+                for (Wall wall : level0.walls) {
                     if (wall.collidesWith(player)) {
                         colliding = true;
                         break;
                     }
                 }
-                for (Ghost ghost : ghosts) {
+                for (Ghost ghost : level0.ghosts) {
                     if (ghost.collidesWith(player)) {
                         player.loseLife();
                         colliding = true;
@@ -210,7 +230,7 @@ public class ShadowPac extends AbstractGame  {
                 if (!colliding) {
                     // player does not collide with any wall or ghost
                     player.goCommit();
-                    for (Dot dot : dots) {
+                    for (Dot dot : level0.dots) {
                         if (!dot.isEaten()) {
                             if (dot.collidesWith(player)) {
                                 dot.eat();
@@ -227,13 +247,13 @@ public class ShadowPac extends AbstractGame  {
                     player.draw(switchFrameCount, SWITCH_FRAME);
 
                     // draw stationary objects on screen
-                    for (Wall wall : walls) {
+                    for (Wall wall : level0.walls) {
                         wall.draw();
                     }
-                    for (Ghost ghost : ghosts) {
+                    for (Ghost ghost : level0.ghosts) {
                         ghost.draw();
                     }
-                    for (Dot dot : dots) {
+                    for (Dot dot : level0.dots) {
                         dot.draw();
                     }
 
@@ -264,13 +284,13 @@ public class ShadowPac extends AbstractGame  {
                 }
 
                 boolean colliding = false;
-                for (Wall wall : walls) {
+                for (Wall wall : level1.walls) {
                     if (wall.collidesWith(player)) {
                         colliding = true;
                         break;
                     }
                 }
-                for (Ghost ghost : ghosts) {
+                for (Ghost ghost : level1.ghosts) {
                     if (ghost.collidesWith(player)) {
                         player.loseLife();
                         colliding = true;
@@ -281,7 +301,7 @@ public class ShadowPac extends AbstractGame  {
                 if (!colliding) {
                     // player does not collide with any wall or ghost
                     player.goCommit();
-                    for (Dot dot : dots) {
+                    for (Dot dot : level1.dots) {
                         if (!dot.isEaten()) {
                             if (dot.collidesWith(player)) {
                                 dot.eat();
@@ -298,14 +318,17 @@ public class ShadowPac extends AbstractGame  {
                     player.draw(switchFrameCount, SWITCH_FRAME);
 
                     // draw stationary objects on screen
-                    for (Wall wall : walls) {
+                    for (Wall wall : level1.walls) {
                         wall.draw();
                     }
-                    for (Ghost ghost : ghosts) {
+                    for (Ghost ghost : level1.ghosts) {
                         ghost.draw();
                     }
-                    for (Dot dot : dots) {
+                    for (Dot dot : level1.dots) {
                         dot.draw();
+                    }
+                    for (Pellet pellet : level1.pellets) {
+                        pellet.draw();
                     }
 
                     // draw remaining lives and score
