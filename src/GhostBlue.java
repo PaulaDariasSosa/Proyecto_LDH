@@ -11,7 +11,7 @@ public class GhostBlue extends Ghost {
     private int direction = DOWN;
 
     public GhostBlue(Point topLeft) {
-        super(topLeft);
+        super(GHOST_BLUE_IMAGE, topLeft);
     }
     public void move(ArrayList<Wall> walls, boolean frenzyMode) {
         double curSpeed;

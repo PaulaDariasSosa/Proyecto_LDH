@@ -14,7 +14,7 @@ public class GhostPink extends Ghost {
     private int direction = rand.nextInt(4);
 
     public GhostPink(Point topLeft) {
-        super(topLeft);
+        super(GHOST_PINK_IMAGE, topLeft);
     }
     public void move(ArrayList<Wall> walls, boolean frenzyMode) {
         double curSpeed;

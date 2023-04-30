@@ -14,7 +14,7 @@ public class GhostGreen extends Ghost {
     // randomly generation direction between DOWN and RIGHT
     private int direction = rand.nextInt(2);
     public GhostGreen(Point topLeft) {
-        super(topLeft);
+        super(GHOST_GREEN_IMAGE, topLeft);
     }
 
     public void move(ArrayList<Wall> walls, boolean frenzyMode) {

@@ -12,7 +12,7 @@ public class GhostRed extends Ghost {
     private int direction = RIGHT;
 
     public GhostRed(Point topLeft) {
-        super(topLeft);
+        super(GHOST_RED_IMAGE, topLeft);
     }
 
     public void move(ArrayList<Wall> walls, boolean frenzyMode) {

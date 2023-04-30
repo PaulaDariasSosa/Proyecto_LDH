@@ -5,8 +5,8 @@ import bagel.util.Rectangle;
 import java.util.ArrayList;
 
 public abstract class Ghost {
-    private final static Image GHOST_IMAGE = new Image("res/ghostRed.png");
     final static Image GHOST_FRENZY_IMAGE = new Image("res/ghostFrenzy.png");
+    private final Image image;
 
     final static int DOWN = 0;
     final static int RIGHT = 1;
@@ -22,10 +22,13 @@ public abstract class Ghost {
     Rectangle ghostRectangle;
 
 
-    public Ghost(Point topLeft) {
-        origin = topLeft;
+    public Ghost(Image image, Point topLeft) {
+        this.image = image;
         ghostStartPoint = topLeft;
-        ghostRectangle = new Rectangle(origin, GHOST_IMAGE.getWidth(), GHOST_IMAGE.getHeight());
+        origin = topLeft;
+
+        this.ghostRectangle = new Rectangle(topLeft, image.getWidth(), image.getHeight());
+
     }
 
     /**
@@ -44,7 +47,7 @@ public abstract class Ghost {
     public abstract void changeDirection();
     public void resetPosition() {
         origin = ghostStartPoint;
-        ghostRectangle = new Rectangle(origin, GHOST_IMAGE.getWidth(), GHOST_IMAGE.getHeight());
+        ghostRectangle = new Rectangle(origin, image.getWidth(), image.getHeight());
     }
 
     /**
