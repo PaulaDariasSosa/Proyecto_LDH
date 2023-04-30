@@ -34,28 +34,24 @@ public class Message {
     private static final Point LOSE_MESSAGE_POINT = new Point((double)WINDOW_WIDTH/2 - defaultFont.getWidth(LOSE_MESSAGE)/2,
             (double)WINDOW_HEIGHT/2 + (double)DEFAULT_FONT_SIZE/2);
 
-    public static void writeTitleScreen(String gameTitle) {
+    public static void titleScreen(String gameTitle) {
         defaultFont.drawString(gameTitle, TITLE_POINT_X, TITLE_POINT_Y);
         instruction0Font.drawString(INSTRUCTION0_MESSAGE[0], INSTRUCTION0_POINT_X, INSTRUCTION0_POINT_Y1);
         instruction0Font.drawString(INSTRUCTION0_MESSAGE[1], INSTRUCTION0_POINT_X, INSTRUCTION0_POINT_Y2);
     }
-
-    public static void writeLevelCompleteScreen() {
+    public static void levelCompleteScreen() {
         defaultFont.drawString(LEVEL_COMPLETE, LEVEL_COMPLETE_POINT.x, LEVEL_COMPLETE_POINT.y);
     }
-
-    public static void writeInstruction1() {
+    public static void instructionLevel1() {
         instruction1Font.drawString(INSTRUCTION1_MESSAGE[0], INSTRUCTION1_POINT_X, INSTRUCTION1_POINT_Y1);
         instruction1Font.drawString(INSTRUCTION1_MESSAGE[1], INSTRUCTION1_POINT_X, INSTRUCTION1_POINT_Y2);
         instruction1Font.drawString(INSTRUCTION1_MESSAGE[2], INSTRUCTION1_POINT_X, INSTRUCTION1_POINT_Y3);
     }
-
-    public static void writeLoseMessage() {
-        defaultFont.drawString(LOSE_MESSAGE, LOSE_MESSAGE_POINT.x, LOSE_MESSAGE_POINT.y);
-    }
-
-    public static void writeWinMessage() {
+    public static void win() {
         defaultFont.drawString(WIN_MESSAGE, WIN_MESSAGE_POINT.x, WIN_MESSAGE_POINT.y);
+    }
+    public static void lose() {
+        defaultFont.drawString(LOSE_MESSAGE, LOSE_MESSAGE_POINT.x, LOSE_MESSAGE_POINT.y);
     }
 
 }

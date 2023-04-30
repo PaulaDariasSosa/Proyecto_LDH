@@ -157,27 +157,27 @@ public class ShadowPac extends AbstractGame  {
             }
 
             if (screenStatus == TITLE_SCREEN) {
-                Message.writeTitleScreen(GAME_TITLE);
+                Message.titleScreen(GAME_TITLE);
             }
 
             else if (screenStatus == LEVEL_COMPLETE_SCREEN) {
-                Message.writeLevelCompleteScreen();
+                Message.levelCompleteScreen();
                 levelCompleteFrameCount++;
             }
 
             else if (screenStatus == INSTRUCTION_1_SCREEN) {
-                Message.writeInstruction1();
+                Message.instructionLevel1();
             }
 
             else if (screenStatus == LEVEL_0 && level0.player.getPlayerScore() >= MAX_SCORE_LVL_0) {
                 screenStatus = LEVEL_COMPLETE_SCREEN;
             }
             else if (level0.player.hasLost()) {
-                Message.writeLoseMessage();
+                Message.lose();
             }
             else if (screenStatus == LEVEL_1 && level1.player.getPlayerScore() >= MAX_SCORE_LVL_1) {
                 // player has won
-                Message.writeWinMessage();
+                Message.win();
             }
 
             else if (screenStatus == LEVEL_0) {
@@ -306,6 +306,7 @@ public class ShadowPac extends AbstractGame  {
                     }
                     if (frenzyFrameCount == FRENZY_MODE_FRAMES) {
                         frenzyMode = false;
+                        frenzyFrameCount = 0;
                         for (Ghost ghost : level1.ghosts) {
                             if (ghost.isEaten()) {
                                 ghost.resetPosition();
