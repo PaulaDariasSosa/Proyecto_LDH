@@ -2,6 +2,8 @@ import bagel.*;
 import bagel.util.Point;
 import bagel.util.Rectangle;
 
+import java.util.ArrayList;
+
 public class Player {
     private final static Image PAC_IMAGE = new Image("res/pac.png");
     private final static Image PAC_OPEN_IMAGE = new Image("res/pacOpen.png");
@@ -16,8 +18,6 @@ public class Player {
 
     // Rectangle object for potential Go positions
     private Rectangle playerGo;
-    private Point pointGo;
-    private final DrawOptions rotationGo;
 
     private static int lifeCount;
     private int playerScore;
@@ -27,9 +27,7 @@ public class Player {
         origin = playerStartPoint;
         rotation = new DrawOptions();
 
-        pointGo = origin;
-        playerGo = new Rectangle(pointGo, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
-        rotationGo = rotation;
+        playerGo = new Rectangle(origin, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
 
         lifeCount = MAX_LIFE;
         playerScore = 0;
@@ -39,34 +37,73 @@ public class Player {
      * go methods to set the Go attributes to move in the
      * direction of keyboard inputs, with distance of STEP_SIZE
      */
-    public void goLeft() {
-        pointGo = new Point(origin.x - speed, origin.y);
+    public void goLeft(ArrayList<Wall> walls) {
+        Point pointGo = new Point(origin.x - speed, origin.y);
         playerGo = new Rectangle(pointGo, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
-        rotationGo.setRotation(Math.PI);
-    }
-    public void goRight() {
-        pointGo = new Point(origin.x + speed, origin.y);
-        playerGo = new Rectangle(pointGo, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
-        rotationGo.setRotation(0);
-    }
-    public void goUp() {
-        pointGo = new Point(origin.x, origin.y - speed);
-        playerGo = new Rectangle(pointGo, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
-        rotationGo.setRotation(1.5 * Math.PI);
-    }
-    public void goDown() {
-        pointGo = new Point(origin.x, origin.y + speed);
-        playerGo = new Rectangle(pointGo, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
-        rotationGo.setRotation(0.5 * Math.PI);
-    }
+        rotation.setRotation(Math.PI);
 
-    /**
-     * The player does not collide with any walls or ghosts.
-     * Set the state of the player to the Go attributes
-     */
-    public void goCommit() {
-        origin = pointGo;
-        rotation = rotationGo;
+        boolean colliding = false;
+        for (Wall wall : walls) {
+            if (wall.collidesWith(this)) {
+                playerGo = new Rectangle(origin, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
+                colliding = true;
+                break;
+            }
+        }
+        if (!colliding) {
+            origin = pointGo;
+        }
+    }
+    public void goRight(ArrayList<Wall> walls) {
+        Point pointGo = new Point(origin.x + speed, origin.y);
+        playerGo = new Rectangle(pointGo, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
+        rotation.setRotation(0);
+
+        boolean colliding = false;
+        for (Wall wall : walls) {
+            if (wall.collidesWith(this)) {
+                playerGo = new Rectangle(origin, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
+                colliding = true;
+                break;
+            }
+        }
+        if (!colliding) {
+            origin = pointGo;
+        }
+    }
+    public void goUp(ArrayList<Wall> walls) {
+        Point pointGo = new Point(origin.x, origin.y - speed);
+        playerGo = new Rectangle(pointGo, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
+        rotation.setRotation(1.5 * Math.PI);
+
+        boolean colliding = false;
+        for (Wall wall : walls) {
+            if (wall.collidesWith(this)) {
+                playerGo = new Rectangle(origin, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
+                colliding = true;
+                break;
+            }
+        }
+        if (!colliding) {
+            origin = pointGo;
+        }
+    }
+    public void goDown(ArrayList<Wall> walls) {
+        Point pointGo = new Point(origin.x, origin.y + speed);
+        playerGo = new Rectangle(pointGo, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
+        rotation.setRotation(0.5 * Math.PI);
+
+        boolean colliding = false;
+        for (Wall wall : walls) {
+            if (wall.collidesWith(this)) {
+                playerGo = new Rectangle(origin, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
+                colliding = true;
+                break;
+            }
+        }
+        if (!colliding) {
+            origin = pointGo;
+        }
     }
 
     public Rectangle getPlayerGo() {
@@ -81,9 +118,7 @@ public class Player {
     public void loseLife() {
         lifeCount--;
         origin = playerStartPoint;
-
-        pointGo = origin;
-        playerGo = new Rectangle(pointGo, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
+        playerGo = new Rectangle(origin, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
     }
 
     public int getPlayerScore() {

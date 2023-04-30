@@ -58,14 +58,18 @@ public class ShadowPac extends AbstractGame  {
     private int switchFrameCount = 0;
     private final static int SWITCH_FRAME = 15;
 
+    private final static int COMPLETE_MESSAGE_FRAMES = 300;
     private int levelCompleteFrameCount = 0;
-    private final static int COMPLETE_MESSAGE_FRAME = 300;
 
     private final static int MAX_SCORE_LVL_0 = 1210;
     private final static int MAX_SCORE_LVL_1 = 800;
 
     private final Level level0 = new Level();
     private final Level level1 = new Level();
+
+    // Frenzy mode attributes
+    private final static int FRENZY_MODE_FRAMES = 1000;
+    private int frenzyFrameCount = 0;
 
     public ShadowPac(){
         super(WINDOW_WIDTH, WINDOW_HEIGHT, GAME_TITLE);
@@ -176,7 +180,7 @@ public class ShadowPac extends AbstractGame  {
                 screenStatus = LEVEL_1;
             }
 
-            else if (screenStatus == LEVEL_COMPLETE_SCREEN && levelCompleteFrameCount == COMPLETE_MESSAGE_FRAME) {
+            else if (screenStatus == LEVEL_COMPLETE_SCREEN && levelCompleteFrameCount == COMPLETE_MESSAGE_FRAMES) {
                 screenStatus = INSTRUCTION_1_SCREEN;
             }
 
@@ -211,42 +215,30 @@ public class ShadowPac extends AbstractGame  {
             else if (screenStatus == LEVEL_0) {
                 // Playing level 0
                 if (input.isDown(Keys.LEFT)) {
-                    level0.player.goLeft();
+                    level0.player.goLeft(level0.walls);
                 }
                 else if (input.isDown(Keys.RIGHT)) {
-                    level0.player.goRight();
+                    level0.player.goRight(level0.walls);
                 }
                 else if (input.isDown(Keys.UP)) {
-                    level0.player.goUp();
+                    level0.player.goUp(level0.walls);
                 }
                 else if (input.isDown(Keys.DOWN)) {
-                    level0.player.goDown();
+                    level0.player.goDown(level0.walls);
                 }
 
-                boolean colliding = false;
-                for (Wall wall : level0.walls) {
-                    if (wall.collidesWith(level0.player)) {
-                        colliding = true;
-                        break;
-                    }
-                }
                 for (Ghost ghost : level0.ghosts) {
                     if (ghost.collidesWith(level0.player)) {
                         level0.player.loseLife();
-                        colliding = true;
                         break;
                     }
                 }
 
-                if (!colliding) {
-                    // player does not collide with any wall or ghost
-                    level0.player.goCommit();
-                    for (Dot dot : level0.dots) {
-                        if (dot.collidesWith(level0.player)) {
-                            level0.dots.remove(dot);
-                            level0.player.increaseScore(Dot.getScore());
-                            break;
-                        }
+                for (Dot dot : level0.dots) {
+                    if (dot.collidesWith(level0.player)) {
+                        level0.dots.remove(dot);
+                        level0.player.increaseScore(Dot.getScore());
+                        break;
                     }
                 }
 
@@ -280,58 +272,47 @@ public class ShadowPac extends AbstractGame  {
             else {
                 // Playing level 1
                 if (input.isDown(Keys.LEFT)) {
-                    level1.player.goLeft();
+                    level1.player.goLeft(level1.walls);
                 }
                 else if (input.isDown(Keys.RIGHT)) {
-                    level1.player.goRight();
+                    level1.player.goRight(level1.walls);
                 }
                 else if (input.isDown(Keys.UP)) {
-                    level1.player.goUp();
+                    level1.player.goUp(level1.walls);
                 }
                 else if (input.isDown(Keys.DOWN)) {
-                    level1.player.goDown();
+                    level1.player.goDown(level1.walls);
                 }
 
-                boolean colliding = false;
-
-                for (Wall wall : level1.walls) {
-                    if (wall.collidesWith(level1.player)) {
-                        colliding = true;
+                for (Pellet pellet : level1.pellets) {
+                    if (pellet.collidesWith(level1.player)) {
+                        level1.pellets.remove(pellet);
+                        frenzyFrameCount++;
+                        break;
                     }
                 }
+
                 for (Ghost ghost : level1.ghosts) {
                     ghost.move(level1.walls);
                     if (ghost.collidesWith(level1.player)) {
                         level1.player.loseLife();
-                        colliding = true;
                         ghost.resetPosition();
                     }
                 }
 
-                if (!colliding) {
-                    // player does not collide with any wall or ghost
-                    level1.player.goCommit();
-                    for (Dot dot : level1.dots) {
-                        if (dot.collidesWith(level1.player)) {
-                            level1.player.increaseScore(Dot.getScore());
-                            level1.dots.remove(dot);
-                            break;
-                        }
+                for (Dot dot : level1.dots) {
+                    if (dot.collidesWith(level1.player)) {
+                        level1.player.increaseScore(Dot.getScore());
+                        level1.dots.remove(dot);
+                        break;
                     }
-                    for (Cherry cherry : level1.cherries) {
-                        if (cherry.collidesWith(level1.player)) {
-                            level1.player.increaseScore(Cherry.getScore());
-                            level1.cherries.remove(cherry);
-                            break;
-                        }
+                }
+                for (Cherry cherry : level1.cherries) {
+                    if (cherry.collidesWith(level1.player)) {
+                        level1.player.increaseScore(Cherry.getScore());
+                        level1.cherries.remove(cherry);
+                        break;
                     }
-                    for (Pellet pellet : level1.pellets) {
-                        if (pellet.collidesWith(level1.player)) {
-                            level1.pellets.remove(pellet);
-                            break;
-                        }
-                    }
-
                 }
 
                 if (!level1.player.hasLost()) {
