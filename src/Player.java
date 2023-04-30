@@ -10,13 +10,15 @@ public class Player {
     private final static Image HEART_IMAGE = new Image("res/heart.png");
     private final static int MAX_LIFE = 3;
     private final static int HEART_GAP = 30;
-    private static double speed = 3;
+    private final static double SPEED = 3;
+    private final static double FRENZY_SPEED = 4;
 
     private final Point playerStartPoint;
     private Point origin;
-    private DrawOptions rotation;
+    private final DrawOptions rotation;
 
     // Rectangle object for potential Go positions
+    private Point pointGo;
     private Rectangle playerGo;
 
     private static int lifeCount;
@@ -37,8 +39,12 @@ public class Player {
      * go methods to set the Go attributes to move in the
      * direction of keyboard inputs, with distance of STEP_SIZE
      */
-    public void goLeft(ArrayList<Wall> walls) {
-        Point pointGo = new Point(origin.x - speed, origin.y);
+    public void goLeft(ArrayList<Wall> walls, boolean frenzyMode) {
+        if (frenzyMode) {
+            pointGo = new Point(origin.x - FRENZY_SPEED, origin.y);
+        } else {
+            pointGo = new Point(origin.x - SPEED, origin.y);
+        }
         playerGo = new Rectangle(pointGo, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
         rotation.setRotation(Math.PI);
 
@@ -54,8 +60,12 @@ public class Player {
             origin = pointGo;
         }
     }
-    public void goRight(ArrayList<Wall> walls) {
-        Point pointGo = new Point(origin.x + speed, origin.y);
+    public void goRight(ArrayList<Wall> walls, boolean frenzyMode) {
+        if (frenzyMode) {
+            pointGo = new Point(origin.x + FRENZY_SPEED, origin.y);
+        } else {
+            pointGo = new Point(origin.x + SPEED, origin.y);
+        }
         playerGo = new Rectangle(pointGo, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
         rotation.setRotation(0);
 
@@ -71,8 +81,12 @@ public class Player {
             origin = pointGo;
         }
     }
-    public void goUp(ArrayList<Wall> walls) {
-        Point pointGo = new Point(origin.x, origin.y - speed);
+    public void goUp(ArrayList<Wall> walls, boolean frenzyMode) {
+        if (frenzyMode) {
+            pointGo = new Point(origin.x, origin.y - FRENZY_SPEED);
+        } else {
+            pointGo = new Point(origin.x, origin.y - SPEED);
+        }
         playerGo = new Rectangle(pointGo, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
         rotation.setRotation(1.5 * Math.PI);
 
@@ -88,8 +102,12 @@ public class Player {
             origin = pointGo;
         }
     }
-    public void goDown(ArrayList<Wall> walls) {
-        Point pointGo = new Point(origin.x, origin.y + speed);
+    public void goDown(ArrayList<Wall> walls, boolean frenzyMode) {
+        if (frenzyMode) {
+            pointGo = new Point(origin.x, origin.y + FRENZY_SPEED);
+        } else {
+            pointGo = new Point(origin.x, origin.y + SPEED);
+        }
         playerGo = new Rectangle(pointGo, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
         rotation.setRotation(0.5 * Math.PI);
 

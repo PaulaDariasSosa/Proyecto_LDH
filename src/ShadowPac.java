@@ -69,7 +69,8 @@ public class ShadowPac extends AbstractGame  {
 
     // Frenzy mode attributes
     private final static int FRENZY_MODE_FRAMES = 1000;
-    private int frenzyFrameCount = 0;
+    private boolean frenzyMode = false;
+    private int frenzyFrameCount;
 
     public ShadowPac(){
         super(WINDOW_WIDTH, WINDOW_HEIGHT, GAME_TITLE);
@@ -215,16 +216,16 @@ public class ShadowPac extends AbstractGame  {
             else if (screenStatus == LEVEL_0) {
                 // Playing level 0
                 if (input.isDown(Keys.LEFT)) {
-                    level0.player.goLeft(level0.walls);
+                    level0.player.goLeft(level0.walls, frenzyMode);
                 }
                 else if (input.isDown(Keys.RIGHT)) {
-                    level0.player.goRight(level0.walls);
+                    level0.player.goRight(level0.walls, frenzyMode);
                 }
                 else if (input.isDown(Keys.UP)) {
-                    level0.player.goUp(level0.walls);
+                    level0.player.goUp(level0.walls, frenzyMode);
                 }
                 else if (input.isDown(Keys.DOWN)) {
-                    level0.player.goDown(level0.walls);
+                    level0.player.goDown(level0.walls, frenzyMode);
                 }
 
                 for (Ghost ghost : level0.ghosts) {
@@ -272,24 +273,28 @@ public class ShadowPac extends AbstractGame  {
             else {
                 // Playing level 1
                 if (input.isDown(Keys.LEFT)) {
-                    level1.player.goLeft(level1.walls);
+                    level1.player.goLeft(level1.walls, frenzyMode);
                 }
                 else if (input.isDown(Keys.RIGHT)) {
-                    level1.player.goRight(level1.walls);
+                    level1.player.goRight(level1.walls, frenzyMode);
                 }
                 else if (input.isDown(Keys.UP)) {
-                    level1.player.goUp(level1.walls);
+                    level1.player.goUp(level1.walls, frenzyMode);
                 }
                 else if (input.isDown(Keys.DOWN)) {
-                    level1.player.goDown(level1.walls);
+                    level1.player.goDown(level1.walls, frenzyMode);
                 }
 
                 for (Pellet pellet : level1.pellets) {
                     if (pellet.collidesWith(level1.player)) {
+                        frenzyMode = true;
+                        frenzyFrameCount = 0;
                         level1.pellets.remove(pellet);
-                        frenzyFrameCount++;
                         break;
                     }
+                }
+                if (frenzyMode) {
+                    frenzyFrameCount++;
                 }
 
                 for (Ghost ghost : level1.ghosts) {
@@ -344,6 +349,9 @@ public class ShadowPac extends AbstractGame  {
                     switchFrameCount++;
                     if (switchFrameCount == SWITCH_FRAME * 2) {
                         switchFrameCount = 0;
+                    }
+                    if (frenzyFrameCount == FRENZY_MODE_FRAMES) {
+                        frenzyMode = false;
                     }
                 }
             }
