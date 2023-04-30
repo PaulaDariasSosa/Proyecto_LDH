@@ -50,7 +50,11 @@ public class GhostGreen extends Ghost {
         direction = rand.nextInt(2);
     }
 
-    public void draw() {
-        GHOST_GREEN_IMAGE.drawFromTopLeft(ghostRectangle.left(), ghostRectangle.top());
+    public void draw(boolean frenzyMode) {
+        if (frenzyMode) {
+            GHOST_FRENZY_IMAGE.drawFromTopLeft(ghostRectangle.left(), ghostRectangle.top());
+        } else {
+            GHOST_GREEN_IMAGE.drawFromTopLeft(ghostRectangle.left(), ghostRectangle.top());
+        }
     }
 }

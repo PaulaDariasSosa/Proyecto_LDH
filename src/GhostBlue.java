@@ -32,7 +32,11 @@ public class GhostBlue extends Ghost {
         speed *= -1;
     }
 
-    public void draw() {
-        GHOST_BLUE_IMAGE.drawFromTopLeft(ghostRectangle.left(), ghostRectangle.top());
+    public void draw(boolean frenzyMode) {
+        if (frenzyMode) {
+            GHOST_FRENZY_IMAGE.drawFromTopLeft(ghostRectangle.left(), ghostRectangle.top());
+        } else {
+            GHOST_BLUE_IMAGE.drawFromTopLeft(ghostRectangle.left(), ghostRectangle.top());
+        }
     }
 }

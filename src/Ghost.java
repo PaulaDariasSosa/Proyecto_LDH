@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public abstract class Ghost {
     private final static Image GHOST_IMAGE = new Image("res/ghostRed.png");
+    final static Image GHOST_FRENZY_IMAGE = new Image("res/ghostFrenzy.png");
     final Point ghostStartPoint;
     Point origin;
     Rectangle ghostRectangle;
@@ -40,6 +41,6 @@ public abstract class Ghost {
      * Draws the ghost image at the
      * coordinate of the ghost Rectangle
      */
-    public abstract void draw();
+    public abstract void draw(boolean frenzyMode);
 }
 

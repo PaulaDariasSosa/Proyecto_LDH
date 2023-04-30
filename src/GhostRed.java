@@ -37,7 +37,11 @@ public class GhostRed extends Ghost {
      * Draws the ghost image at the
      * coordinate of the ghost Rectangle
      */
-    public void draw() {
-        GHOST_RED_IMAGE.drawFromTopLeft(ghostRectangle.left(), ghostRectangle.top());
+    public void draw(boolean frenzyMode) {
+        if (frenzyMode) {
+            GHOST_FRENZY_IMAGE.drawFromTopLeft(ghostRectangle.left(), ghostRectangle.top());
+        } else {
+            GHOST_RED_IMAGE.drawFromTopLeft(ghostRectangle.left(), ghostRectangle.top());
+        }
     }
 }

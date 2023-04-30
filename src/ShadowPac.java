@@ -253,7 +253,7 @@ public class ShadowPac extends AbstractGame  {
                         wall.draw();
                     }
                     for (Ghost ghost : level0.ghosts) {
-                        ghost.draw();
+                        ghost.draw(frenzyMode);
                     }
                     for (Dot dot : level0.dots) {
                         dot.draw();
@@ -339,7 +339,7 @@ public class ShadowPac extends AbstractGame  {
                         pellet.draw();
                     }
                     for (Ghost ghost : level1.ghosts) {
-                        ghost.draw();
+                        ghost.draw(frenzyMode);
                     }
 
                     // draw remaining lives and score
