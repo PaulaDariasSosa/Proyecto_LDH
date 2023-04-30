@@ -12,6 +12,12 @@
       <change beforePath="$PROJECT_DIR$/src/GhostPink.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GhostPink.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GhostRed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GhostRed.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ShadowPac.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShadowPac.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Ghost.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Ghost.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/GhostBlue.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GhostBlue.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/GhostGreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GhostGreen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/GhostPink.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GhostPink.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/GhostRed.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GhostRed.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ShadowPac.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ShadowPac.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +98,7 @@
       <workItem from="1682728706366" duration="8382000" />
       <workItem from="1682772105985" duration="14109000" />
       <workItem from="1682788439764" duration="116000" />
-      <workItem from="1682826674591" duration="3548000" />
+      <workItem from="1682826674591" duration="5544000" />
     </task>
     <servers />
   </component>

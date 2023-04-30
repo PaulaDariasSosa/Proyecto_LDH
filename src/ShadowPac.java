@@ -298,7 +298,7 @@ public class ShadowPac extends AbstractGame  {
                 }
 
                 for (Ghost ghost : level1.ghosts) {
-                    ghost.move(level1.walls);
+                    ghost.move(level1.walls, frenzyMode);
                     if (ghost.collidesWith(level1.player)) {
                         level1.player.loseLife();
                         ghost.resetPosition();

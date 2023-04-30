@@ -8,27 +8,30 @@ import java.util.Random;
 public class GhostPink extends Ghost {
     private final static Image GHOST_PINK_IMAGE = new Image("res/ghostPink.png");
 
-    private double speed = 3;
-    private Random rand = new Random();
+    private final static double SPEED = 3;
+    private final static double FRENZY_SPEED = SPEED - 0.5;
+    private final Random rand = new Random();
     private int direction = rand.nextInt(4);
 
     public GhostPink(Point topLeft) {
         super(topLeft);
     }
-    public void move(ArrayList<Wall> walls) {
-        Point pointGo;
-        if (direction == 0) {
-            // left
-            pointGo = new Point(origin.x - speed, origin.y);
-        } else if (direction == 1) {
-            // right
-            pointGo = new Point(origin.x + speed, origin.y);
-        } else if (direction == 2) {
-            // up
-            pointGo = new Point(origin.x, origin.y - speed);
+    public void move(ArrayList<Wall> walls, boolean frenzyMode) {
+        double curSpeed;
+        if (frenzyMode) {
+            curSpeed = FRENZY_SPEED;
+        } else {
+            curSpeed = SPEED;
+        }
+        if (direction == LEFT) {
+            pointGo = new Point(origin.x - curSpeed, origin.y);
+        } else if (direction == RIGHT) {
+            pointGo = new Point(origin.x + curSpeed, origin.y);
+        } else if (direction == UP) {
+            pointGo = new Point(origin.x, origin.y - curSpeed);
         } else {
             // down
-            pointGo = new Point(origin.x, origin.y + speed);
+            pointGo = new Point(origin.x, origin.y + curSpeed);
         }
         ghostRectangle = new Rectangle(pointGo, GHOST_PINK_IMAGE.getWidth(), GHOST_PINK_IMAGE.getHeight());
 

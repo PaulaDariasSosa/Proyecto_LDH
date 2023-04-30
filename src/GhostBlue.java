@@ -6,12 +6,25 @@ import java.util.ArrayList;
 
 public class GhostBlue extends Ghost {
     private final static Image GHOST_BLUE_IMAGE = new Image("res/ghostBlue.png");
-    private double speed = 2;
+    private final static double SPEED = 2;
+    private final static double FRENZY_SPEED = SPEED - 0.5;
+    private int direction = DOWN;
+
     public GhostBlue(Point topLeft) {
         super(topLeft);
     }
-    public void move(ArrayList<Wall> walls) {
-        Point pointGo = new Point(origin.x, origin.y + speed);
+    public void move(ArrayList<Wall> walls, boolean frenzyMode) {
+        double curSpeed;
+        if (frenzyMode) {
+            curSpeed = FRENZY_SPEED;
+        } else {
+            curSpeed = SPEED;
+        }
+        if (direction == DOWN) {
+            pointGo = new Point(origin.x, origin.y + curSpeed);
+        } else {
+            pointGo = new Point(origin.x, origin.y - curSpeed);
+        }
         ghostRectangle = new Rectangle(pointGo, GHOST_BLUE_IMAGE.getWidth(), GHOST_BLUE_IMAGE.getHeight());
 
         boolean colliding = false;
@@ -29,7 +42,11 @@ public class GhostBlue extends Ghost {
     }
 
     public void changeDirection() {
-        speed *= -1;
+        if (direction == DOWN) {
+            direction = UP;
+        } else {
+            direction = DOWN;
+        }
     }
 
     public void draw(boolean frenzyMode) {

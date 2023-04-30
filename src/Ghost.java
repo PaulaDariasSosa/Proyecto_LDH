@@ -7,8 +7,16 @@ import java.util.ArrayList;
 public abstract class Ghost {
     private final static Image GHOST_IMAGE = new Image("res/ghostRed.png");
     final static Image GHOST_FRENZY_IMAGE = new Image("res/ghostFrenzy.png");
+
+    final static int DOWN = 0;
+    final static int RIGHT = 1;
+    final static int UP = 2;
+    final static int LEFT = 3;
+
+
     final Point ghostStartPoint;
     Point origin;
+    Point pointGo;
     Rectangle ghostRectangle;
 
 
@@ -30,7 +38,7 @@ public abstract class Ghost {
         return wall.getWallRectangle().intersects(this.ghostRectangle);
     }
 
-    public abstract void move(ArrayList<Wall> walls);
+    public abstract void move(ArrayList<Wall> walls, boolean frenzyMode);
     public abstract void changeDirection();
     public void resetPosition() {
         origin = ghostStartPoint;
