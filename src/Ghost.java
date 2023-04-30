@@ -36,8 +36,8 @@ public abstract class Ghost {
         return player.getPlayerGo().intersects(this.ghostRectangle);
     }
 
-    public boolean collidesWith(Wall wall) {
-        return wall.getWallRectangle().intersects(this.ghostRectangle);
+    public Rectangle getGhostRectangle() {
+        return ghostRectangle;
     }
 
     public abstract void move(ArrayList<Wall> walls, boolean frenzyMode);

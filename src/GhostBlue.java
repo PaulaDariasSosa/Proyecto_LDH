@@ -29,7 +29,7 @@ public class GhostBlue extends Ghost {
 
         boolean colliding = false;
         for (Wall wall : walls) {
-            if (this.collidesWith(wall)) {
+            if (wall.collidesWith(this)) {
                 ghostRectangle = new Rectangle(origin, GHOST_BLUE_IMAGE.getWidth(), GHOST_BLUE_IMAGE.getHeight());
                 this.changeDirection();
                 colliding = true;

@@ -19,6 +19,14 @@ public abstract class StationaryObject {
     }
 
     /**
+     * Checks if the ghost
+     * collides with the object
+     */
+    public boolean collidesWith(Ghost ghost) {
+        return ghost.getGhostRectangle().intersects(this.rectangle);
+    }
+
+    /**
      * Draw the image at the coordinate of the rectangle
      */
     public void draw() {
