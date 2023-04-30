@@ -215,18 +215,7 @@ public class ShadowPac extends AbstractGame  {
 
             else if (screenStatus == LEVEL_0) {
                 // Playing level 0
-                if (input.isDown(Keys.LEFT)) {
-                    level0.player.goLeft(level0.walls, frenzyMode);
-                }
-                else if (input.isDown(Keys.RIGHT)) {
-                    level0.player.goRight(level0.walls, frenzyMode);
-                }
-                else if (input.isDown(Keys.UP)) {
-                    level0.player.goUp(level0.walls, frenzyMode);
-                }
-                else if (input.isDown(Keys.DOWN)) {
-                    level0.player.goDown(level0.walls, frenzyMode);
-                }
+                playerInput(input, level0);
 
                 for (Ghost ghost : level0.ghosts) {
                     if (ghost.collidesWith(level0.player)) {
@@ -272,18 +261,7 @@ public class ShadowPac extends AbstractGame  {
 
             else {
                 // Playing level 1
-                if (input.isDown(Keys.LEFT)) {
-                    level1.player.goLeft(level1.walls, frenzyMode);
-                }
-                else if (input.isDown(Keys.RIGHT)) {
-                    level1.player.goRight(level1.walls, frenzyMode);
-                }
-                else if (input.isDown(Keys.UP)) {
-                    level1.player.goUp(level1.walls, frenzyMode);
-                }
-                else if (input.isDown(Keys.DOWN)) {
-                    level1.player.goDown(level1.walls, frenzyMode);
-                }
+                playerInput(input, level1);
 
                 for (Pellet pellet : level1.pellets) {
                     if (pellet.collidesWith(level1.player)) {
@@ -371,6 +349,21 @@ public class ShadowPac extends AbstractGame  {
                 }
             }
 
+        }
+    }
+
+    private void playerInput(Input input, Level level) {
+        if (input.isDown(Keys.LEFT)) {
+            level.player.goLeft(level.walls, frenzyMode);
+        }
+        else if (input.isDown(Keys.RIGHT)) {
+            level.player.goRight(level.walls, frenzyMode);
+        }
+        else if (input.isDown(Keys.UP)) {
+            level.player.goUp(level.walls, frenzyMode);
+        }
+        else if (input.isDown(Keys.DOWN)) {
+            level.player.goDown(level.walls, frenzyMode);
         }
     }
 }

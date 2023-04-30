@@ -20,6 +20,7 @@ public class Player {
     // Rectangle object for potential Go positions
     private Point pointGo;
     private Rectangle playerGo;
+    boolean colliding = false;
 
     private static int lifeCount;
     private int playerScore;
@@ -35,6 +36,20 @@ public class Player {
         playerScore = 0;
     }
 
+    private void checkCollision(ArrayList<Wall> walls) {
+        for (Wall wall : walls) {
+            if (wall.collidesWith(this)) {
+                playerGo = new Rectangle(origin, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
+                colliding = true;
+                break;
+            }
+        }
+        if (!colliding) {
+            origin = pointGo;
+        }
+        colliding = false;
+    }
+
     /**
      * go methods to set the Go attributes to move in the
      * direction of keyboard inputs, with distance of STEP_SIZE
@@ -48,18 +63,9 @@ public class Player {
         playerGo = new Rectangle(pointGo, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
         rotation.setRotation(Math.PI);
 
-        boolean colliding = false;
-        for (Wall wall : walls) {
-            if (wall.collidesWith(this)) {
-                playerGo = new Rectangle(origin, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
-                colliding = true;
-                break;
-            }
-        }
-        if (!colliding) {
-            origin = pointGo;
-        }
+        checkCollision(walls);
     }
+
     public void goRight(ArrayList<Wall> walls, boolean frenzyMode) {
         if (frenzyMode) {
             pointGo = new Point(origin.x + FRENZY_SPEED, origin.y);
@@ -69,17 +75,7 @@ public class Player {
         playerGo = new Rectangle(pointGo, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
         rotation.setRotation(0);
 
-        boolean colliding = false;
-        for (Wall wall : walls) {
-            if (wall.collidesWith(this)) {
-                playerGo = new Rectangle(origin, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
-                colliding = true;
-                break;
-            }
-        }
-        if (!colliding) {
-            origin = pointGo;
-        }
+        checkCollision(walls);
     }
     public void goUp(ArrayList<Wall> walls, boolean frenzyMode) {
         if (frenzyMode) {
@@ -90,17 +86,7 @@ public class Player {
         playerGo = new Rectangle(pointGo, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
         rotation.setRotation(1.5 * Math.PI);
 
-        boolean colliding = false;
-        for (Wall wall : walls) {
-            if (wall.collidesWith(this)) {
-                playerGo = new Rectangle(origin, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
-                colliding = true;
-                break;
-            }
-        }
-        if (!colliding) {
-            origin = pointGo;
-        }
+        checkCollision(walls);
     }
     public void goDown(ArrayList<Wall> walls, boolean frenzyMode) {
         if (frenzyMode) {
@@ -111,17 +97,7 @@ public class Player {
         playerGo = new Rectangle(pointGo, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
         rotation.setRotation(0.5 * Math.PI);
 
-        boolean colliding = false;
-        for (Wall wall : walls) {
-            if (wall.collidesWith(this)) {
-                playerGo = new Rectangle(origin, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
-                colliding = true;
-                break;
-            }
-        }
-        if (!colliding) {
-            origin = pointGo;
-        }
+        checkCollision(walls);
     }
 
     public Rectangle getPlayerGo() {
