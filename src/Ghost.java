@@ -13,6 +13,8 @@ public abstract class Ghost {
     final static int UP = 2;
     final static int LEFT = 3;
 
+    private final static int FRENZY_SCORE = 30;
+    private boolean eaten = false;
 
     final Point ghostStartPoint;
     Point origin;
@@ -50,5 +52,16 @@ public abstract class Ghost {
      * coordinate of the ghost Rectangle
      */
     public abstract void draw(boolean frenzyMode);
+
+    public static int getScore() {
+        return FRENZY_SCORE;
+    }
+    public boolean isEaten() {
+        return eaten;
+    }
+    public void setEaten(boolean eaten) {
+        this.eaten = eaten;
+    }
+
 }
 

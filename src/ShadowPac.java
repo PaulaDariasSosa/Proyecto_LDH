@@ -298,10 +298,17 @@ public class ShadowPac extends AbstractGame  {
                 }
 
                 for (Ghost ghost : level1.ghosts) {
-                    ghost.move(level1.walls, frenzyMode);
-                    if (ghost.collidesWith(level1.player)) {
-                        level1.player.loseLife();
-                        ghost.resetPosition();
+                    if (!ghost.isEaten()) {
+                        ghost.move(level1.walls, frenzyMode);
+                        if (ghost.collidesWith(level1.player)) {
+                            if (frenzyMode) {
+                                level1.player.increaseScore(Ghost.getScore());
+                                ghost.setEaten(true);
+                            } else {
+                                level1.player.loseLife();
+                                ghost.resetPosition();
+                            }
+                        }
                     }
                 }
 
@@ -339,7 +346,9 @@ public class ShadowPac extends AbstractGame  {
                         pellet.draw();
                     }
                     for (Ghost ghost : level1.ghosts) {
-                        ghost.draw(frenzyMode);
+                        if (!ghost.isEaten()) {
+                            ghost.draw(frenzyMode);
+                        }
                     }
 
                     // draw remaining lives and score
@@ -352,6 +361,12 @@ public class ShadowPac extends AbstractGame  {
                     }
                     if (frenzyFrameCount == FRENZY_MODE_FRAMES) {
                         frenzyMode = false;
+                        for (Ghost ghost : level1.ghosts) {
+                            if (ghost.isEaten()) {
+                                ghost.resetPosition();
+                                ghost.setEaten(false);
+                            }
+                        }
                     }
                 }
             }
