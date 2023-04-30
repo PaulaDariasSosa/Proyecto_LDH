@@ -33,12 +33,12 @@ public class GhostPink extends Ghost {
             // down
             pointGo = new Point(origin.x, origin.y + curSpeed);
         }
-        ghostRectangle = new Rectangle(pointGo, GHOST_PINK_IMAGE.getWidth(), GHOST_PINK_IMAGE.getHeight());
+        this.setRectangle(new Rectangle(pointGo, GHOST_PINK_IMAGE.getWidth(), GHOST_PINK_IMAGE.getHeight()));
 
         boolean colliding = false;
         for (Wall wall : walls) {
             if (wall.collidesWith(this)) {
-                ghostRectangle = new Rectangle(origin, GHOST_PINK_IMAGE.getWidth(), GHOST_PINK_IMAGE.getHeight());
+                this.setRectangle(new Rectangle(origin, GHOST_PINK_IMAGE.getWidth(), GHOST_PINK_IMAGE.getHeight()));
                 this.changeDirection();
                 colliding = true;
                 break;
@@ -55,15 +55,15 @@ public class GhostPink extends Ghost {
 
     public void resetPosition() {
         origin = ghostStartPoint;
-        ghostRectangle = new Rectangle(origin, GHOST_PINK_IMAGE.getWidth(), GHOST_PINK_IMAGE.getHeight());
+        this.setRectangle(new Rectangle(origin, GHOST_PINK_IMAGE.getWidth(), GHOST_PINK_IMAGE.getHeight()));
         direction = rand.nextInt(4);
     }
 
     public void draw(boolean frenzyMode) {
         if (frenzyMode) {
-            GHOST_FRENZY_IMAGE.drawFromTopLeft(ghostRectangle.left(), ghostRectangle.top());
+            GHOST_FRENZY_IMAGE.drawFromTopLeft(this.getRectangle().left(), this.getRectangle().top());
         } else {
-            GHOST_PINK_IMAGE.drawFromTopLeft(ghostRectangle.left(), ghostRectangle.top());
+            GHOST_PINK_IMAGE.drawFromTopLeft(this.getRectangle().left(), this.getRectangle().top());
         }
     }
 }

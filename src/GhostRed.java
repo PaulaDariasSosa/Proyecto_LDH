@@ -28,12 +28,12 @@ public class GhostRed extends Ghost {
             pointGo = new Point(origin.x - curSpeed, origin.y);
         }
 
-        ghostRectangle = new Rectangle(pointGo, GHOST_RED_IMAGE.getWidth(), GHOST_RED_IMAGE.getHeight());
+        this.setRectangle(new Rectangle(pointGo, GHOST_RED_IMAGE.getWidth(), GHOST_RED_IMAGE.getHeight()));
 
         boolean colliding = false;
         for (Wall wall : walls) {
             if (wall.collidesWith(this)) {
-                ghostRectangle = new Rectangle(origin, GHOST_RED_IMAGE.getWidth(), GHOST_RED_IMAGE.getHeight());
+                this.setRectangle(new Rectangle(origin, GHOST_RED_IMAGE.getWidth(), GHOST_RED_IMAGE.getHeight()));
                 this.changeDirection();
                 colliding = true;
                 break;
@@ -58,9 +58,9 @@ public class GhostRed extends Ghost {
      */
     public void draw(boolean frenzyMode) {
         if (frenzyMode) {
-            GHOST_FRENZY_IMAGE.drawFromTopLeft(ghostRectangle.left(), ghostRectangle.top());
+            GHOST_FRENZY_IMAGE.drawFromTopLeft(this.getRectangle().left(), this.getRectangle().top());
         } else {
-            GHOST_RED_IMAGE.drawFromTopLeft(ghostRectangle.left(), ghostRectangle.top());
+            GHOST_RED_IMAGE.drawFromTopLeft(this.getRectangle().left(), this.getRectangle().top());
         }
     }
 }

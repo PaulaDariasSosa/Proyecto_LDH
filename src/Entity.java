@@ -1,13 +1,25 @@
 import bagel.Image;
 import bagel.util.Point;
 import bagel.util.Rectangle;
-public abstract class StationaryObject {
+public abstract class Entity {
     private final Image image;
-    private final Rectangle rectangle;
+    private Rectangle rectangle;
 
-    public StationaryObject(Image image, Point topLeft) {
+    public Entity(Image image, Point topLeft) {
         this.image = image;
         this.rectangle = new Rectangle(topLeft, image.getWidth(), image.getHeight());
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public Rectangle getRectangle() {
+        return rectangle;
+    }
+
+    public void setRectangle(Rectangle rectangle) {
+        this.rectangle = rectangle;
     }
 
     /**
@@ -16,14 +28,6 @@ public abstract class StationaryObject {
      */
     public boolean collidesWith(Player player) {
         return player.getPlayerGo().intersects(this.rectangle);
-    }
-
-    /**
-     * Checks if the ghost
-     * collides with the object
-     */
-    public boolean collidesWith(Ghost ghost) {
-        return ghost.getGhostRectangle().intersects(this.rectangle);
     }
 
     /**
