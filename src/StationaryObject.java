@@ -2,8 +2,8 @@ import bagel.Image;
 import bagel.util.Point;
 import bagel.util.Rectangle;
 public abstract class StationaryObject {
-    private Image image;
-    private Rectangle rectangle;
+    private final Image image;
+    private final Rectangle rectangle;
 
     public StationaryObject(Image image, Point topLeft) {
         this.image = image;
@@ -21,7 +21,6 @@ public abstract class StationaryObject {
     /**
      * Draw the image at the coordinate of the rectangle
      */
-
     public void draw() {
         image.drawFromTopLeft(rectangle.left(), rectangle.top());
     }
