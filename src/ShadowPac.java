@@ -10,16 +10,6 @@ public class ShadowPac extends AbstractGame  {
     private final static int WINDOW_WIDTH = 1024;
     private final static int WINDOW_HEIGHT = 768;
     private final static String GAME_TITLE = "SHADOW PAC";
-    private final static int DEFAULT_FONT_SIZE = 64;
-    private final Font defaultFont = new Font("res/FSO8BITR.ttf", DEFAULT_FONT_SIZE);
-
-    private final static String[] INSTRUCTION1_MESSAGE = {"PRESS SPACE TO START", "USE ARROW KEYS TO MOVE", "EAT THE PELLET TO ATTACK"};
-    private final Font instruction1Font = new Font("res/FSO8BITR.ttf", 40);
-    private final static double INSTRUCTION1_POINT_X = 200;
-    private final static double INSTRUCTION1_POINT_Y1 = 350;
-    private final static double INSTRUCTION1_POINT_Y2 = INSTRUCTION1_POINT_Y1 + 40;
-    private final static double INSTRUCTION1_POINT_Y3 = INSTRUCTION1_POINT_Y2 + 40;
-
 
     private final Image BACKGROUND_IMAGE = new Image("res/background0.png");
 
@@ -30,13 +20,6 @@ public class ShadowPac extends AbstractGame  {
     private final static int LEVEL_1 = 4;
     private int screenStatus = TITLE_SCREEN;
 
-    private final static String WIN_MESSAGE = "WELL DONE!";
-    private final static String LOSE_MESSAGE = "GAME OVER!";
-
-    private final Point WIN_MESSAGE_POINT = new Point((double)WINDOW_WIDTH/2 - defaultFont.getWidth(WIN_MESSAGE)/2,
-            (double)WINDOW_HEIGHT/2 + (double)DEFAULT_FONT_SIZE/2);
-    private final Point LOSE_MESSAGE_POINT = new Point((double)WINDOW_WIDTH/2 - defaultFont.getWidth(LOSE_MESSAGE)/2,
-            (double)WINDOW_HEIGHT/2 + (double)DEFAULT_FONT_SIZE/2);
 
     private final static Point FIRST_HEART_POINT = new Point(900, 10);
     private final Font scoreFont = new Font("res/FSO8BITR.ttf", 20);
@@ -183,20 +166,18 @@ public class ShadowPac extends AbstractGame  {
             }
 
             else if (screenStatus == INSTRUCTION_1_SCREEN) {
-                instruction1Font.drawString(INSTRUCTION1_MESSAGE[0], INSTRUCTION1_POINT_X, INSTRUCTION1_POINT_Y1);
-                instruction1Font.drawString(INSTRUCTION1_MESSAGE[1], INSTRUCTION1_POINT_X, INSTRUCTION1_POINT_Y2);
-                instruction1Font.drawString(INSTRUCTION1_MESSAGE[2], INSTRUCTION1_POINT_X, INSTRUCTION1_POINT_Y3);
+                Message.writeInstruction1();
             }
 
             else if (screenStatus == LEVEL_0 && level0.player.getPlayerScore() >= MAX_SCORE_LVL_0) {
                 screenStatus = LEVEL_COMPLETE_SCREEN;
             }
             else if (level0.player.hasLost()) {
-                defaultFont.drawString(LOSE_MESSAGE, LOSE_MESSAGE_POINT.x, LOSE_MESSAGE_POINT.y);
+                Message.writeLoseMessage();
             }
             else if (screenStatus == LEVEL_1 && level1.player.getPlayerScore() >= MAX_SCORE_LVL_1) {
                 // player has won
-                defaultFont.drawString(WIN_MESSAGE, WIN_MESSAGE_POINT.x, WIN_MESSAGE_POINT.y);
+                Message.writeWinMessage();
             }
 
             else if (screenStatus == LEVEL_0) {
