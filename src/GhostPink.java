@@ -36,8 +36,8 @@ public class GhostPink extends Ghost {
         boolean colliding = false;
         for (Wall wall : walls) {
             if (wall.collidesWith(this)) {
-                this.setRectangle(new Rectangle(origin, GHOST_PINK_IMAGE.getWidth(), GHOST_PINK_IMAGE.getHeight()));
-                this.changeDirection();
+                setRectangle(new Rectangle(origin, GHOST_PINK_IMAGE.getWidth(), GHOST_PINK_IMAGE.getHeight()));
+                changeDirection();
                 colliding = true;
                 break;
             }

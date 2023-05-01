@@ -7,11 +7,14 @@
     <list default="true" id="d1f5fc02-7c04-47c8-83ee-29bb3e155ea8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ghost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ghost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GhostGreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GhostGreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GhostPink.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GhostPink.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GhostRed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GhostRed.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MovingEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovingEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Ghost.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Ghost.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/GhostRed.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GhostRed.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/MovingEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/MovingEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Player.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +102,7 @@
       <workItem from="1682861456571" duration="2309000" />
       <workItem from="1682863793163" duration="3422000" />
       <workItem from="1682867237826" duration="2139000" />
-      <workItem from="1682911000640" duration="9161000" />
+      <workItem from="1682911000640" duration="11213000" />
     </task>
     <servers />
   </component>

@@ -63,7 +63,8 @@ public abstract class MovingEntity extends GameEntity {
         boolean colliding = false;
         for (Wall wall : walls) {
             if (wall.collidesWith(this)) {
-                this.setRectangle(new Rectangle(origin, getImage().getWidth(), getImage().getHeight()));
+                setRectangle(new Rectangle(origin, getImage().getWidth(), getImage().getHeight()));
+                changeDirection();
                 colliding = true;
                 break;
             }
@@ -72,4 +73,6 @@ public abstract class MovingEntity extends GameEntity {
             origin = pointGo;
         }
     }
+
+    public abstract void changeDirection();
 }

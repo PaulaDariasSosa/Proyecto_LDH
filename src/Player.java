@@ -84,7 +84,7 @@ public class Player extends MovingEntity {
      */
     public void draw(int frameCount, int switchFrame) {
         if (frameCount < switchFrame) {
-            PAC_IMAGE.drawFromTopLeft(origin.x, origin.y);
+            super.draw();
         } else {
             PAC_OPEN_IMAGE.drawFromTopLeft(origin.x, origin.y, rotation);
         }
@@ -99,4 +99,6 @@ public class Player extends MovingEntity {
             HEART_IMAGE.drawFromTopLeft(FIRST_HEART_POINT.x + HEART_GAP * i, FIRST_HEART_POINT.y);
         }
     }
+
+    public void changeDirection() {}
 }
