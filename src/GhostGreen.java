@@ -8,21 +8,20 @@ import java.util.Random;
 public class GhostGreen extends Ghost {
     private final static Image GHOST_GREEN_IMAGE = new Image("res/ghostGreen.png");
     private final static double SPEED = 4;
-    private final static double FRENZY_SPEED = SPEED - 0.5;
 
     private final Random rand = new Random();
     // randomly generation direction between DOWN and RIGHT
     private int direction = rand.nextInt(2);
     public GhostGreen(Point topLeft) {
-        super(GHOST_GREEN_IMAGE, topLeft);
+        super(GHOST_GREEN_IMAGE, topLeft, SPEED);
     }
 
     public void move(ArrayList<Wall> walls, boolean frenzyMode) {
         double curSpeed;
         if (frenzyMode) {
-            curSpeed = FRENZY_SPEED;
+            curSpeed = getFrenzySpeed();
         } else {
-            curSpeed = SPEED;
+            curSpeed = getSpeed();
         }
         if (direction == LEFT) {
             pointGo = new Point(origin.x - curSpeed, origin.y);

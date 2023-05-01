@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 public abstract class Ghost extends Entity {
     final static Image GHOST_FRENZY_IMAGE = new Image("res/ghostFrenzy.png");
+    private final double speed;
+    private final double frenzySpeed;
 
     final static int DOWN = 0;
     final static int RIGHT = 1;
@@ -20,8 +22,10 @@ public abstract class Ghost extends Entity {
     Point pointGo;
 
 
-    public Ghost(Image image, Point topLeft) {
+    public Ghost(Image image, Point topLeft, double speed) {
         super(image, topLeft);
+        this.speed = speed;
+        frenzySpeed = this.speed - 0.5;
         ghostStartPoint = topLeft;
         origin = topLeft;
 
@@ -50,5 +54,12 @@ public abstract class Ghost extends Entity {
         this.eaten = eaten;
     }
 
+    public double getSpeed() {
+        return speed;
+    }
+
+    public double getFrenzySpeed() {
+        return frenzySpeed;
+    }
 }
 

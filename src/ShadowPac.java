@@ -21,13 +21,9 @@ public class ShadowPac extends AbstractGame  {
     private int screenStatus = TITLE_SCREEN;
 
 
-    private final static Point FIRST_HEART_POINT = new Point(900, 10);
-    private final Font scoreFont = new Font("res/FSO8BITR.ttf", 20);
-    private final static Point SCORE_POINT = new Point(25, 25);
-
     // count the frame number to switch between open and closed images
+    private final static int SWITCH_FRAMES = 15;
     private int switchFrameCount = 0;
-    private final static int SWITCH_FRAME = 15;
 
     private final static int COMPLETE_MESSAGE_FRAMES = 300;
     private int levelCompleteFrameCount = 0;
@@ -35,13 +31,13 @@ public class ShadowPac extends AbstractGame  {
     private final static int MAX_SCORE_LVL_0 = 1210;
     private final static int MAX_SCORE_LVL_1 = 800;
 
-    private final Level level0 = new Level();
-    private final Level level1 = new Level();
-
     // Frenzy mode attributes
     private final static int FRENZY_MODE_FRAMES = 1000;
     private boolean frenzyMode = false;
     private int frenzyFrameCount;
+
+    private final Level level0 = new Level();
+    private final Level level1 = new Level();
 
     public ShadowPac(){
         super(WINDOW_WIDTH, WINDOW_HEIGHT, GAME_TITLE);
@@ -202,7 +198,7 @@ public class ShadowPac extends AbstractGame  {
                 if (!level0.player.hasLost()) {
                     // Player still has more than 0 life:
                     // draw player, switch between opening and closing mouth every 15 frames
-                    level0.player.draw(switchFrameCount, SWITCH_FRAME);
+                    level0.player.draw(switchFrameCount, SWITCH_FRAMES);
 
                     // draw stationary objects on screen
                     for (Wall wall : level0.walls) {
@@ -216,11 +212,11 @@ public class ShadowPac extends AbstractGame  {
                     }
 
                     // draw remaining lives and score
-                    level0.player.drawLives(FIRST_HEART_POINT);
-                    scoreFont.drawString("SCORE " + level0.player.getPlayerScore(), SCORE_POINT.x, SCORE_POINT.y);
+                    level0.player.drawLives();
+                    level0.player.drawScore();
 
                     switchFrameCount++;
-                    if (switchFrameCount == SWITCH_FRAME * 2) {
+                    if (switchFrameCount == SWITCH_FRAMES * 2) {
                         switchFrameCount = 0;
                     }
                 }
@@ -275,7 +271,7 @@ public class ShadowPac extends AbstractGame  {
                 if (!level1.player.hasLost()) {
                     // Player still has more than 0 life:
                     // draw player, switch between opening and closing mouth every 15 frames
-                    level1.player.draw(switchFrameCount, SWITCH_FRAME);
+                    level1.player.draw(switchFrameCount, SWITCH_FRAMES);
 
                     // draw stationary objects on screen
                     for (Wall wall : level1.walls) {
@@ -297,11 +293,11 @@ public class ShadowPac extends AbstractGame  {
                     }
 
                     // draw remaining lives and score
-                    level1.player.drawLives(FIRST_HEART_POINT);
-                    scoreFont.drawString("SCORE " + level1.player.getPlayerScore(), SCORE_POINT.x, SCORE_POINT.y);
+                    level1.player.drawLives();
+                    level1.player.drawScore();
 
                     switchFrameCount++;
-                    if (switchFrameCount == SWITCH_FRAME * 2) {
+                    if (switchFrameCount == SWITCH_FRAMES * 2) {
                         switchFrameCount = 0;
                     }
                     if (frenzyFrameCount == FRENZY_MODE_FRAMES) {

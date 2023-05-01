@@ -7,21 +7,19 @@ import java.util.Random;
 
 public class GhostPink extends Ghost {
     private final static Image GHOST_PINK_IMAGE = new Image("res/ghostPink.png");
-
     private final static double SPEED = 3;
-    private final static double FRENZY_SPEED = SPEED - 0.5;
     private final Random rand = new Random();
     private int direction = rand.nextInt(4);
 
     public GhostPink(Point topLeft) {
-        super(GHOST_PINK_IMAGE, topLeft);
+        super(GHOST_PINK_IMAGE, topLeft, SPEED);
     }
     public void move(ArrayList<Wall> walls, boolean frenzyMode) {
         double curSpeed;
         if (frenzyMode) {
-            curSpeed = FRENZY_SPEED;
+            curSpeed = getFrenzySpeed();
         } else {
-            curSpeed = SPEED;
+            curSpeed = getSpeed();
         }
         if (direction == LEFT) {
             pointGo = new Point(origin.x - curSpeed, origin.y);

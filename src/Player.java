@@ -10,6 +10,11 @@ public class Player {
     private final static Image HEART_IMAGE = new Image("res/heart.png");
     private final static int MAX_LIFE = 3;
     private final static int HEART_GAP = 30;
+    private final static Point FIRST_HEART_POINT = new Point(900, 10);
+    private final static Font SCORE_FONT = new Font("res/FSO8BITR.ttf", 20);
+    private final static Point SCORE_POINT = new Point(25, 25);
+
+
     private final static double SPEED = 3;
     private final static double FRENZY_SPEED = 4;
 
@@ -20,7 +25,7 @@ public class Player {
     // Rectangle object for potential Go positions
     private Point pointGo;
     private Rectangle playerGo;
-    boolean colliding = false;
+    private boolean colliding = false;
 
     private static int lifeCount;
     private int playerScore;
@@ -123,6 +128,10 @@ public class Player {
         playerScore += dotScore;
     }
 
+    public void drawScore() {
+        SCORE_FONT.drawString("SCORE " + playerScore, SCORE_POINT.x, SCORE_POINT.y);
+    }
+
     public boolean hasLost() {
         return lifeCount == 0;
     }
@@ -143,9 +152,9 @@ public class Player {
      * Draws the hearts, the number of which is
      * the number of lives the player has left.
      */
-    public void drawLives(Point point) {
+    public void drawLives() {
         for (int i = 0; i < lifeCount; i++) {
-            HEART_IMAGE.drawFromTopLeft(point.x + HEART_GAP * i, point.y);
+            HEART_IMAGE.drawFromTopLeft(FIRST_HEART_POINT.x + HEART_GAP * i, FIRST_HEART_POINT.y);
         }
     }
 }

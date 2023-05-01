@@ -7,20 +7,18 @@ import java.util.ArrayList;
 public class GhostRed extends Ghost {
     private final static Image GHOST_RED_IMAGE = new Image("res/ghostRed.png");
     private final static double SPEED = 1;
-    private final static double FRENZY_SPEED = SPEED - 0.5;
-
     private int direction = RIGHT;
 
     public GhostRed(Point topLeft) {
-        super(GHOST_RED_IMAGE, topLeft);
+        super(GHOST_RED_IMAGE, topLeft, SPEED);
     }
 
     public void move(ArrayList<Wall> walls, boolean frenzyMode) {
         double curSpeed;
         if (frenzyMode) {
-            curSpeed = FRENZY_SPEED;
+            curSpeed = getFrenzySpeed();
         } else {
-            curSpeed = SPEED;
+            curSpeed = getSpeed();
         }
         if (direction == RIGHT) {
             pointGo = new Point(origin.x + curSpeed, origin.y);
