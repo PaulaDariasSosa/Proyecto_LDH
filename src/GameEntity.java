@@ -1,12 +1,14 @@
 import bagel.Image;
 import bagel.util.Point;
 import bagel.util.Rectangle;
-public abstract class Entity {
+public abstract class GameEntity {
     private final Image image;
+    Point origin;
     private Rectangle rectangle;
 
-    public Entity(Image image, Point topLeft) {
+    public GameEntity(Image image, Point topLeft) {
         this.image = image;
+        origin = new Point(topLeft.x, topLeft.y);
         this.rectangle = new Rectangle(topLeft, image.getWidth(), image.getHeight());
     }
 
@@ -27,7 +29,7 @@ public abstract class Entity {
      * collides with the object
      */
     public boolean collidesWith(Player player) {
-        return player.getPlayerGo().intersects(this.rectangle);
+        return player.getRectangle() .intersects(this.rectangle);
     }
 
     /**

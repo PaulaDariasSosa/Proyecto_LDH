@@ -1,7 +1,7 @@
 import bagel.Image;
 import bagel.util.Point;
 
-public class Dot extends Entity {
+public class Dot extends GameEntity {
     private final static Image DOT_IMAGE = new Image("res/dot.png");
     private final static int SCORE = 10;
 

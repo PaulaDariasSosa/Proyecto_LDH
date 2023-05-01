@@ -4,7 +4,7 @@ import bagel.util.Rectangle;
 
 import java.util.ArrayList;
 
-public class Player {
+public class Player extends MovingEntity {
     private final static Image PAC_IMAGE = new Image("res/pac.png");
     private final static Image PAC_OPEN_IMAGE = new Image("res/pacOpen.png");
     private final static Image HEART_IMAGE = new Image("res/heart.png");
@@ -18,95 +18,37 @@ public class Player {
     private final static double SPEED = 3;
     private final static double FRENZY_SPEED = 4;
 
-    private final Point playerStartPoint;
-    private Point origin;
     private final DrawOptions rotation;
 
     // Rectangle object for potential Go positions
-    private Point pointGo;
-    private Rectangle playerGo;
-    private boolean colliding = false;
 
     private static int lifeCount;
     private int playerScore;
 
     public Player(Point topLeft) {
-        playerStartPoint = topLeft;
-        origin = playerStartPoint;
+        super(PAC_IMAGE, topLeft, SPEED, FRENZY_SPEED);
         rotation = new DrawOptions();
-
-        playerGo = new Rectangle(origin, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
 
         lifeCount = MAX_LIFE;
         playerScore = 0;
     }
 
-    private void checkCollision(ArrayList<Wall> walls) {
-        for (Wall wall : walls) {
-            if (wall.collidesWith(this)) {
-                playerGo = new Rectangle(origin, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
-                colliding = true;
-                break;
-            }
-        }
-        if (!colliding) {
-            origin = pointGo;
-        }
-        colliding = false;
-    }
-
-    /**
-     * go methods to set the Go attributes to move in the
-     * direction of keyboard inputs, with distance of STEP_SIZE
-     */
     public void goLeft(ArrayList<Wall> walls, boolean frenzyMode) {
-        if (frenzyMode) {
-            pointGo = new Point(origin.x - FRENZY_SPEED, origin.y);
-        } else {
-            pointGo = new Point(origin.x - SPEED, origin.y);
-        }
-        playerGo = new Rectangle(pointGo, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
+        super.goLeft(walls, frenzyMode);
         rotation.setRotation(Math.PI);
-
-        checkCollision(walls);
     }
 
     public void goRight(ArrayList<Wall> walls, boolean frenzyMode) {
-        if (frenzyMode) {
-            pointGo = new Point(origin.x + FRENZY_SPEED, origin.y);
-        } else {
-            pointGo = new Point(origin.x + SPEED, origin.y);
-        }
-        playerGo = new Rectangle(pointGo, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
+        super.goRight(walls, frenzyMode);
         rotation.setRotation(0);
-
-        checkCollision(walls);
     }
     public void goUp(ArrayList<Wall> walls, boolean frenzyMode) {
-        if (frenzyMode) {
-            pointGo = new Point(origin.x, origin.y - FRENZY_SPEED);
-        } else {
-            pointGo = new Point(origin.x, origin.y - SPEED);
-        }
-        playerGo = new Rectangle(pointGo, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
+        super.goUp(walls, frenzyMode);
         rotation.setRotation(1.5 * Math.PI);
-
-        checkCollision(walls);
     }
     public void goDown(ArrayList<Wall> walls, boolean frenzyMode) {
-        if (frenzyMode) {
-            pointGo = new Point(origin.x, origin.y + FRENZY_SPEED);
-        } else {
-            pointGo = new Point(origin.x, origin.y + SPEED);
-        }
-        playerGo = new Rectangle(pointGo, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
+        super.goDown(walls, frenzyMode);
         rotation.setRotation(0.5 * Math.PI);
-
-        checkCollision(walls);
-    }
-
-    public Rectangle getPlayerGo() {
-        return playerGo;
     }
 
     /**
@@ -116,8 +58,8 @@ public class Player {
      */
     public void loseLife() {
         lifeCount--;
-        origin = playerStartPoint;
-        playerGo = new Rectangle(origin, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight());
+        origin = startPoint;
+        this.setRectangle(new Rectangle(origin, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight()));
     }
 
     public int getPlayerScore() {

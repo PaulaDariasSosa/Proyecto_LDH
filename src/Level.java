@@ -8,5 +8,4 @@ public class Level {
     public final ArrayList<Cherry> cherries = new ArrayList<>();
     public final ArrayList<Pellet> pellets = new ArrayList<>();
 
-
 }

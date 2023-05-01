@@ -4,7 +4,7 @@ import bagel.util.Rectangle;
 
 import java.util.ArrayList;
 
-public abstract class Ghost extends Entity {
+public abstract class Ghost extends GameEntity {
     final static Image GHOST_FRENZY_IMAGE = new Image("res/ghostFrenzy.png");
     private final double speed;
     private final double frenzySpeed;
