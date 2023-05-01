@@ -62,7 +62,7 @@ public class GhostGreen extends Ghost {
     }
 
     public void resetPosition() {
-        origin = ghostStartPoint;
+        origin = startPoint;
         this.setRectangle(new Rectangle(origin, GHOST_GREEN_IMAGE.getWidth(), GHOST_GREEN_IMAGE.getHeight()));
         direction = rand.nextInt(2);
     }

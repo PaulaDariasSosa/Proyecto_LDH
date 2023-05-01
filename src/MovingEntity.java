@@ -4,8 +4,8 @@ import bagel.util.Rectangle;
 import java.util.ArrayList;
 
 public abstract class MovingEntity extends GameEntity {
-    private final double speed;
-    private final double frenzySpeed;
+    final double speed;
+    final double frenzySpeed;
     Point startPoint;
     Point pointGo;
     public MovingEntity(Image image, Point topLeft, double speed, double frenzySpeed) {

@@ -4,11 +4,8 @@ import bagel.util.Rectangle;
 
 import java.util.ArrayList;
 
-public abstract class Ghost extends GameEntity {
+public abstract class Ghost extends MovingEntity {
     final static Image GHOST_FRENZY_IMAGE = new Image("res/ghostFrenzy.png");
-    private final double speed;
-    private final double frenzySpeed;
-
     final static int DOWN = 0;
     final static int RIGHT = 1;
     final static int UP = 2;
@@ -17,16 +14,9 @@ public abstract class Ghost extends GameEntity {
     private final static int FRENZY_SCORE = 30;
     private boolean eaten = false;
 
-    final Point ghostStartPoint;
-    Point origin;
-    Point pointGo;
-
-
     public Ghost(Image image, Point topLeft, double speed) {
-        super(image, topLeft);
-        this.speed = speed;
-        frenzySpeed = this.speed - 0.5;
-        ghostStartPoint = topLeft;
+        super(image, topLeft, speed, speed - 0.5);
+        startPoint = topLeft;
         origin = topLeft;
 
     }
@@ -34,7 +24,7 @@ public abstract class Ghost extends GameEntity {
     public abstract void move(ArrayList<Wall> walls, boolean frenzyMode);
     public abstract void changeDirection();
     public void resetPosition() {
-        origin = ghostStartPoint;
+        origin = startPoint;
         this.setRectangle(new Rectangle(origin, this.getImage().getWidth(), this.getImage().getHeight()));
     }
 
