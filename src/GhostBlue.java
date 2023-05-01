@@ -47,12 +47,4 @@ public class GhostBlue extends Ghost {
             direction = DOWN;
         }
     }
-
-    public void draw(boolean frenzyMode) {
-        if (frenzyMode) {
-            GHOST_FRENZY_IMAGE.drawFromTopLeft(this.getRectangle().left(), this.getRectangle().top());
-        } else {
-            GHOST_BLUE_IMAGE.drawFromTopLeft(this.getRectangle().left(), this.getRectangle().top());
-        }
-    }
 }

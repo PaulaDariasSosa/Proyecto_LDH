@@ -28,15 +28,4 @@ public class GhostRed extends Ghost {
         }
     }
 
-    /**
-     * Draws the ghost image at the
-     * coordinate of the ghost Rectangle
-     */
-    public void draw(boolean frenzyMode) {
-        if (frenzyMode) {
-            GHOST_FRENZY_IMAGE.drawFromTopLeft(this.getRectangle().left(), this.getRectangle().top());
-        } else {
-            GHOST_RED_IMAGE.drawFromTopLeft(this.getRectangle().left(), this.getRectangle().top());
-        }
-    }
 }

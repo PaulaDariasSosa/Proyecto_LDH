@@ -66,12 +66,4 @@ public class GhostGreen extends Ghost {
         this.setRectangle(new Rectangle(origin, GHOST_GREEN_IMAGE.getWidth(), GHOST_GREEN_IMAGE.getHeight()));
         direction = rand.nextInt(2);
     }
-
-    public void draw(boolean frenzyMode) {
-        if (frenzyMode) {
-            GHOST_FRENZY_IMAGE.drawFromTopLeft(this.getRectangle().left(), this.getRectangle().top());
-        } else {
-            GHOST_GREEN_IMAGE.drawFromTopLeft(this.getRectangle().left(), this.getRectangle().top());
-        }
-    }
 }

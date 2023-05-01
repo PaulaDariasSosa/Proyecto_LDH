@@ -50,12 +50,4 @@ public class GhostPink extends Ghost {
     public void changeDirection() {
         direction = rand.nextInt(4);
     }
-
-    public void draw(boolean frenzyMode) {
-        if (frenzyMode) {
-            GHOST_FRENZY_IMAGE.drawFromTopLeft(this.getRectangle().left(), this.getRectangle().top());
-        } else {
-            GHOST_PINK_IMAGE.drawFromTopLeft(this.getRectangle().left(), this.getRectangle().top());
-        }
-    }
 }

@@ -34,7 +34,13 @@ public abstract class Ghost extends MovingEntity {
      * Draws the ghost image at the
      * coordinate of the ghost Rectangle
      */
-    public abstract void draw(boolean frenzyMode);
+    public void draw(boolean frenzyMode) {
+        if (frenzyMode) {
+            GHOST_FRENZY_IMAGE.drawFromTopLeft(getRectangle().left(), getRectangle().top());
+        } else {
+            draw();
+        }
+    }
 
     public static int getScore() {
         return FRENZY_SCORE;
