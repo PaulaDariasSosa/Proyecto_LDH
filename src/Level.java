@@ -4,7 +4,7 @@ import bagel.util.Point;
 public class Level {
     private Player player;
     private final ArrayList<Wall> walls = new ArrayList<>();
-    public final ArrayList<Ghost> ghosts = new ArrayList<>();
+    private final ArrayList<Ghost> ghosts = new ArrayList<>();
     public final ArrayList<Dot> dots = new ArrayList<>();
     public final ArrayList<Cherry> cherries = new ArrayList<>();
     public final ArrayList<Pellet> pellets = new ArrayList<>();
@@ -23,6 +23,10 @@ public class Level {
 
     public ArrayList<Wall> getWalls() {
         return walls;
+    }
+
+    public void addGhost(Ghost ghost) {
+        ghosts.add(ghost);
     }
 
     public ArrayList<Ghost> getGhosts() {

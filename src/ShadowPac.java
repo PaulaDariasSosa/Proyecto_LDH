@@ -62,7 +62,7 @@ public class ShadowPac extends AbstractGame  {
                         level0.addWall(new Wall(point));
                         break;
                     case "Ghost":
-                        level0.ghosts.add(new GhostRed(point));
+                        level0.addGhost(new GhostRed(point));
                         break;
                     default:
                         level0.dots.add(new Dot(point));
@@ -86,16 +86,16 @@ public class ShadowPac extends AbstractGame  {
                         level1.addWall(new Wall(point));
                         break;
                     case "GhostRed":
-                        level1.ghosts.add(new GhostRed(point));
+                        level1.addGhost(new GhostRed(point));
                         break;
                     case "GhostBlue":
-                        level1.ghosts.add(new GhostBlue(point));
+                        level1.addGhost(new GhostBlue(point));
                         break;
                     case "GhostGreen":
-                        level1.ghosts.add(new GhostGreen(point));
+                        level1.addGhost(new GhostGreen(point));
                         break;
                     case "GhostPink":
-                        level1.ghosts.add(new GhostPink(point));
+                        level1.addGhost(new GhostPink(point));
                         break;
                     case "Cherry":
                         level1.cherries.add(new Cherry(point));
@@ -180,7 +180,7 @@ public class ShadowPac extends AbstractGame  {
                 // Playing level 0
                 playerInput(input, level0);
 
-                for (Ghost ghost : level0.ghosts) {
+                for (Ghost ghost : level0.getGhosts()) {
                     if (ghost.collidesWith(level0.getPlayer())) {
                         level0.getPlayer().loseLife();
                         break;
@@ -204,7 +204,7 @@ public class ShadowPac extends AbstractGame  {
                     for (Wall wall : level0.getWalls()) {
                         wall.draw();
                     }
-                    for (Ghost ghost : level0.ghosts) {
+                    for (Ghost ghost : level0.getGhosts()) {
                         ghost.draw(frenzyMode);
                     }
                     for (Dot dot : level0.dots) {
@@ -238,7 +238,7 @@ public class ShadowPac extends AbstractGame  {
                     frenzyFrameCount++;
                 }
 
-                for (Ghost ghost : level1.ghosts) {
+                for (Ghost ghost : level1.getGhosts()) {
                     if (!ghost.isEaten()) {
                         ghost.move(level1.getWalls(), frenzyMode);
                         if (ghost.collidesWith(level1.getPlayer())) {
@@ -286,7 +286,7 @@ public class ShadowPac extends AbstractGame  {
                     for (Pellet pellet : level1.pellets) {
                         pellet.draw();
                     }
-                    for (Ghost ghost : level1.ghosts) {
+                    for (Ghost ghost : level1.getGhosts()) {
                         if (!ghost.isEaten()) {
                             ghost.draw(frenzyMode);
                         }
@@ -303,7 +303,7 @@ public class ShadowPac extends AbstractGame  {
                     if (frenzyFrameCount == FRENZY_MODE_FRAMES) {
                         frenzyMode = false;
                         frenzyFrameCount = 0;
-                        for (Ghost ghost : level1.ghosts) {
+                        for (Ghost ghost : level1.getGhosts()) {
                             if (ghost.isEaten()) {
                                 ghost.resetPosition();
                                 ghost.setEaten(false);
