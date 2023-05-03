@@ -11,9 +11,7 @@ public class Wall extends GameEntity {
      * Checks if the ghost
      * collides with the wall
      */
-    public boolean collidesWith(Ghost ghost) {
-        return ghost.getRectangle().intersects(this.getRectangle());
-    }
+
     public boolean collidesWith(MovingEntity entity) {
         return entity.getRectangle().intersects(this.getRectangle());
     }

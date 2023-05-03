@@ -58,8 +58,8 @@ public class Player extends MovingEntity {
      */
     public void loseLife() {
         lifeCount--;
-        origin = startPoint;
-        this.setRectangle(new Rectangle(origin, PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight()));
+        setPosition(startPoint);
+        setRectangle(new Rectangle(getPosition(), PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight()));
     }
 
     public int getPlayerScore() {
@@ -93,7 +93,7 @@ public class Player extends MovingEntity {
         if (frameCount < switchFrame) {
             super.draw();
         } else {
-            PAC_OPEN_IMAGE.drawFromTopLeft(origin.x, origin.y, rotation);
+            PAC_OPEN_IMAGE.drawFromTopLeft(getPosition().x, getPosition().y, rotation);
         }
     }
 

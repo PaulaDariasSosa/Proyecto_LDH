@@ -5,11 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d1f5fc02-7c04-47c8-83ee-29bb3e155ea8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Cherry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cherry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Level.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ghost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ghost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GhostBlue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GhostBlue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GhostGreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GhostGreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GhostPink.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GhostPink.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MovingEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovingEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ShadowPac.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShadowPac.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Wall.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +104,7 @@
       <workItem from="1682911000640" duration="12166000" />
       <workItem from="1683012283784" duration="15000" />
       <workItem from="1683082754985" duration="158000" />
-      <workItem from="1683083126204" duration="8501000" />
+      <workItem from="1683083126204" duration="9459000" />
     </task>
     <servers />
   </component>

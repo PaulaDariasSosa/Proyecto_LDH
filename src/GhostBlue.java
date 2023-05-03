@@ -20,23 +20,23 @@ public class GhostBlue extends Ghost {
             curSpeed = getSpeed();
         }
         if (direction == DOWN) {
-            pointGo = new Point(origin.x, origin.y + curSpeed);
+            pointGo = new Point(getPosition().x, getPosition().y + curSpeed);
         } else {
-            pointGo = new Point(origin.x, origin.y - curSpeed);
+            pointGo = new Point(getPosition().x, getPosition().y - curSpeed);
         }
         this.setRectangle(new Rectangle(pointGo, GHOST_BLUE_IMAGE.getWidth(), GHOST_BLUE_IMAGE.getHeight()));
 
         boolean colliding = false;
         for (Wall wall : walls) {
             if (wall.collidesWith(this)) {
-                this.setRectangle(new Rectangle(origin, GHOST_BLUE_IMAGE.getWidth(), GHOST_BLUE_IMAGE.getHeight()));
+                this.setRectangle(new Rectangle(getPosition(), GHOST_BLUE_IMAGE.getWidth(), GHOST_BLUE_IMAGE.getHeight()));
                 this.changeDirection();
                 colliding = true;
                 break;
             }
         }
         if (!colliding) {
-            origin = pointGo;
+            setPosition(pointGo);
         }
     }
 

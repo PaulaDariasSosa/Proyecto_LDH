@@ -17,9 +17,9 @@ public abstract class MovingEntity extends GameEntity {
     }
     public void goLeft(ArrayList<Wall> walls, boolean frenzyMode) {
         if (frenzyMode) {
-            pointGo = new Point(origin.x - frenzySpeed, origin.y);
+            pointGo = new Point(getPosition().x - frenzySpeed, getPosition().y);
         } else {
-            pointGo = new Point(origin.x - speed, origin.y);
+            pointGo = new Point(getPosition().x - speed, getPosition().y);
         }
         this.setRectangle(new Rectangle(pointGo, getImage().getWidth(), getImage().getHeight()));
 
@@ -28,9 +28,9 @@ public abstract class MovingEntity extends GameEntity {
 
     public void goRight(ArrayList<Wall> walls, boolean frenzyMode) {
         if (frenzyMode) {
-            pointGo = new Point(origin.x + frenzySpeed, origin.y);
+            pointGo = new Point(getPosition().x + frenzySpeed, getPosition().y);
         } else {
-            pointGo = new Point(origin.x + speed, origin.y);
+            pointGo = new Point(getPosition().x + speed, getPosition().y);
         }
         this.setRectangle(new Rectangle(pointGo, getImage().getWidth(), getImage().getHeight()));
 
@@ -39,9 +39,9 @@ public abstract class MovingEntity extends GameEntity {
 
     public void goUp(ArrayList<Wall> walls, boolean frenzyMode) {
         if (frenzyMode) {
-            pointGo = new Point(origin.x, origin.y - frenzySpeed);
+            pointGo = new Point(getPosition().x, getPosition().y - frenzySpeed);
         } else {
-            pointGo = new Point(origin.x, origin.y - speed);
+            pointGo = new Point(getPosition().x, getPosition().y - speed);
         }
         this.setRectangle(new Rectangle(pointGo, getImage().getWidth(), getImage().getHeight()));
 
@@ -50,9 +50,9 @@ public abstract class MovingEntity extends GameEntity {
 
     public void goDown(ArrayList<Wall> walls, boolean frenzyMode) {
         if (frenzyMode) {
-            pointGo = new Point(origin.x, origin.y + frenzySpeed);
+            pointGo = new Point(getPosition().x, getPosition().y + frenzySpeed);
         } else {
-            pointGo = new Point(origin.x, origin.y + speed);
+            pointGo = new Point(getPosition().x, getPosition().y + speed);
         }
         this.setRectangle(new Rectangle(pointGo, getImage().getWidth(), getImage().getHeight()));
 
@@ -63,14 +63,14 @@ public abstract class MovingEntity extends GameEntity {
         boolean colliding = false;
         for (Wall wall : walls) {
             if (wall.collidesWith(this)) {
-                setRectangle(new Rectangle(origin, getImage().getWidth(), getImage().getHeight()));
+                setRectangle(new Rectangle(getPosition(), getImage().getWidth(), getImage().getHeight()));
                 changeDirection();
                 colliding = true;
                 break;
             }
         }
         if (!colliding) {
-            origin = pointGo;
+            setPosition(pointGo);
         }
     }
 

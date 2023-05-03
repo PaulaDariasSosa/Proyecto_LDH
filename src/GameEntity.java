@@ -3,17 +3,25 @@ import bagel.util.Point;
 import bagel.util.Rectangle;
 public abstract class GameEntity {
     private final Image image;
-    Point origin;
+    private Point position;
     private Rectangle rectangle;
 
     public GameEntity(Image image, Point topLeft) {
         this.image = image;
-        origin = new Point(topLeft.x, topLeft.y);
+        position = new Point(topLeft.x, topLeft.y);
         this.rectangle = new Rectangle(topLeft, image.getWidth(), image.getHeight());
     }
 
     public Image getImage() {
         return image;
+    }
+
+    public Point getPosition() {
+        return position;
+    }
+
+    public void setPosition(Point position) {
+        this.position = position;
     }
 
     public Rectangle getRectangle() {

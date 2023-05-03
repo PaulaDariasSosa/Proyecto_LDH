@@ -24,28 +24,28 @@ public class GhostGreen extends Ghost {
             curSpeed = getSpeed();
         }
         if (direction == LEFT) {
-            pointGo = new Point(origin.x - curSpeed, origin.y);
+            pointGo = new Point(getPosition().x - curSpeed, getPosition().y);
         } else if (direction == RIGHT) {
-            pointGo = new Point(origin.x + curSpeed, origin.y);
+            pointGo = new Point(getPosition().x + curSpeed, getPosition().y);
         } else if (direction == UP) {
-            pointGo = new Point(origin.x, origin.y - curSpeed);
+            pointGo = new Point(getPosition().x, getPosition().y - curSpeed);
         } else {
             // down
-            pointGo = new Point(origin.x, origin.y + curSpeed);
+            pointGo = new Point(getPosition().x, getPosition().y + curSpeed);
         }
         this.setRectangle(new Rectangle(pointGo, GHOST_GREEN_IMAGE.getWidth(), GHOST_GREEN_IMAGE.getHeight()));
 
         boolean colliding = false;
         for (Wall wall : walls) {
             if (wall.collidesWith(this)) {
-                this.setRectangle(new Rectangle(origin, GHOST_GREEN_IMAGE.getWidth(), GHOST_GREEN_IMAGE.getHeight()));
+                this.setRectangle(new Rectangle(getPosition(), GHOST_GREEN_IMAGE.getWidth(), GHOST_GREEN_IMAGE.getHeight()));
                 this.changeDirection();
                 colliding = true;
                 break;
             }
         }
         if (!colliding) {
-            origin = pointGo;
+            setPosition(pointGo);
         }
     }
 
@@ -62,8 +62,8 @@ public class GhostGreen extends Ghost {
     }
 
     public void resetPosition() {
-        origin = startPoint;
-        this.setRectangle(new Rectangle(origin, GHOST_GREEN_IMAGE.getWidth(), GHOST_GREEN_IMAGE.getHeight()));
+        setPosition(startPoint);
+        this.setRectangle(new Rectangle(getPosition(), GHOST_GREEN_IMAGE.getWidth(), GHOST_GREEN_IMAGE.getHeight()));
         direction = rand.nextInt(2);
     }
 }

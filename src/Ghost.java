@@ -18,15 +18,15 @@ public abstract class Ghost extends MovingEntity {
     public Ghost(Image image, Point topLeft, double speed) {
         super(image, topLeft, speed, speed - FRENZY_SPEED_DECREASE);
         startPoint = topLeft;
-        origin = topLeft;
+        setPosition(topLeft);
 
     }
     public abstract void changeDirection();
 
     public abstract void move(ArrayList<Wall> walls, boolean frenzyMode);
     public void resetPosition() {
-        origin = startPoint;
-        this.setRectangle(new Rectangle(origin, this.getImage().getWidth(), this.getImage().getHeight()));
+        setPosition(startPoint);
+        setRectangle(new Rectangle(getPosition(), getImage().getWidth(), getImage().getHeight()));
     }
 
 
