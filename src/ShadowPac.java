@@ -31,7 +31,6 @@ public class ShadowPac extends AbstractGame  {
     private final static int COMPLETE_MESSAGE_FRAMES = 300;
     private int levelCompleteFrameCount = 0;
 
-    private final static int MAX_SCORE_LVL_0 = 1210;
     private final static int MAX_SCORE_LVL_1 = 800;
 
     // Frenzy mode attributes
@@ -40,6 +39,7 @@ public class ShadowPac extends AbstractGame  {
     private int frenzyFrameCount;
 
     private final Level level0 = new Level(LEVEL_0_FILE);
+    private final int numDotLevel0 = level0.getNumDots();
     private final Level level1 = new Level(LEVEL_1_FILE);
     public ShadowPac(){
         super(WINDOW_WIDTH, WINDOW_HEIGHT, GAME_TITLE);
@@ -95,7 +95,7 @@ public class ShadowPac extends AbstractGame  {
                 Message.instructionLevel1();
             }
 
-            else if (screenStatus == LEVEL_0 && level0.getPlayer().getPlayerScore() >= MAX_SCORE_LVL_0) {
+            else if (screenStatus == LEVEL_0 && level0.getPlayer().wonLevel0(numDotLevel0)) {
                 screenStatus = LEVEL_COMPLETE_SCREEN;
             }
             else if (level0.getPlayer().hasLost()) {
@@ -120,7 +120,7 @@ public class ShadowPac extends AbstractGame  {
                 for (Dot dot : level0.getDots()) {
                     if (dot.collidesWith(level0.getPlayer())) {
                         level0.getDots().remove(dot);
-                        level0.getPlayer().increaseScore(Dot.getScore());
+                        level0.getPlayer().increaseScore(Dot.POINTS);
                         break;
                     }
                 }
@@ -185,14 +185,14 @@ public class ShadowPac extends AbstractGame  {
 
                 for (Dot dot : level1.getDots()) {
                     if (dot.collidesWith(level1.getPlayer())) {
-                        level1.getPlayer().increaseScore(Dot.getScore());
+                        level1.getPlayer().increaseScore(Dot.POINTS);
                         level1.getDots().remove(dot);
                         break;
                     }
                 }
                 for (Cherry cherry : level1.getCherries()) {
                     if (cherry.collidesWith(level1.getPlayer())) {
-                        level1.getPlayer().increaseScore(Cherry.getScore());
+                        level1.getPlayer().increaseScore(Cherry.POINTS);
                         level1.getCherries().remove(cherry);
                         break;
                     }

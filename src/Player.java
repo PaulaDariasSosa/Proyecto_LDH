@@ -74,6 +74,13 @@ public class Player extends MovingEntity {
         SCORE_FONT.drawString("SCORE " + playerScore, SCORE_POINT.x, SCORE_POINT.y);
     }
 
+    /**
+     * Method that checks if the player has reached the target score
+     */
+    public boolean wonLevel0(int target){
+        return playerScore == target * Dot.POINTS;
+    }
+
     public boolean hasLost() {
         return lifeCount == 0;
     }

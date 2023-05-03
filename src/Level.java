@@ -78,6 +78,10 @@ public class Level {
         return dots;
     }
 
+    public int getNumDots() {
+        return dots.size();
+    }
+
     public ArrayList<Cherry> getCherries() {
         return cherries;
     }
