@@ -15,33 +15,14 @@ public class GhostPink extends Ghost {
         setImage(GHOST_PINK_IMAGE);
     }
     public void move(ArrayList<Wall> walls, boolean frenzyMode) {
-        double curSpeed;
-        if (frenzyMode) {
-            curSpeed = getFrenzySpeed();
-        } else {
-            curSpeed = getSpeed();
-        }
         if (direction == LEFT) {
-            pointGo = new Point(getPosition().x - curSpeed, getPosition().y);
+            goLeft(walls, frenzyMode);
         } else if (direction == RIGHT) {
-            pointGo = new Point(getPosition().x + curSpeed, getPosition().y);
+            goRight(walls, frenzyMode);
         } else if (direction == UP) {
-            pointGo = new Point(getPosition().x, getPosition().y - curSpeed);
+            goUp(walls, frenzyMode);
         } else {
-            // down
-            pointGo = new Point(getPosition().x, getPosition().y + curSpeed);
-        }
-
-        boolean colliding = false;
-        for (Wall wall : walls) {
-            if (wall.collidesWith(this)) {
-                changeDirection();
-                colliding = true;
-                break;
-            }
-        }
-        if (!colliding) {
-            setPosition(pointGo);
+            goDown(walls, frenzyMode);
         }
     }
 
