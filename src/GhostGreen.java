@@ -17,35 +17,14 @@ public class GhostGreen extends Ghost {
     }
 
     public void move(ArrayList<Wall> walls, boolean frenzyMode) {
-        double curSpeed;
-        if (frenzyMode) {
-            curSpeed = getFrenzySpeed();
-        } else {
-            curSpeed = getSpeed();
-        }
         if (direction == LEFT) {
-            pointGo = new Point(getPosition().x - curSpeed, getPosition().y);
+            goLeft(walls, frenzyMode);
         } else if (direction == RIGHT) {
-            pointGo = new Point(getPosition().x + curSpeed, getPosition().y);
+            goRight(walls, frenzyMode);
         } else if (direction == UP) {
-            pointGo = new Point(getPosition().x, getPosition().y - curSpeed);
+            goUp(walls, frenzyMode);
         } else {
-            // down
-            pointGo = new Point(getPosition().x, getPosition().y + curSpeed);
-        }
-//        this.setRectangle(new Rectangle(pointGo, GHOST_GREEN_IMAGE.getWidth(), GHOST_GREEN_IMAGE.getHeight()));
-
-        boolean colliding = false;
-        for (Wall wall : walls) {
-            if (wall.collidesWith(this)) {
-//                this.setRectangle(new Rectangle(getPosition(), GHOST_GREEN_IMAGE.getWidth(), GHOST_GREEN_IMAGE.getHeight()));
-                this.changeDirection();
-                colliding = true;
-                break;
-            }
-        }
-        if (!colliding) {
-            setPosition(pointGo);
+            goDown(walls, frenzyMode);
         }
     }
 

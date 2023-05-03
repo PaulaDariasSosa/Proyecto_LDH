@@ -72,7 +72,7 @@ public class Player extends MovingEntity {
      */
     public void loseLife() {
         lifeCount--;
-        setPosition(startPoint);
+        resetPosition();
     }
 
     public int getPlayerScore() {

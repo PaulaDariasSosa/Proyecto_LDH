@@ -81,4 +81,9 @@ public abstract class MovingEntity extends GameEntity {
     }
 
     public abstract boolean checkCollision(ArrayList<Wall> walls);
+
+    public void resetPosition() {
+        setPosition(startPoint);
+        pointGo = getPosition();
+    }
 }

@@ -34,9 +34,6 @@ public abstract class Ghost extends MovingEntity {
     public abstract void changeDirection();
 
     public abstract void move(ArrayList<Wall> walls, boolean frenzyMode);
-    public void resetPosition() {
-        setPosition(startPoint);
-    }
 
 
     /**
