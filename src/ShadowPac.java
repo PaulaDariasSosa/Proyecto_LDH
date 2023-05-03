@@ -56,10 +56,10 @@ public class ShadowPac extends AbstractGame  {
 
                 switch (cells[0]) {
                     case "Player":
-                        level0.player = new Player(point);
+                        level0.createPlayer(point);
                         break;
                     case "Wall":
-                        level0.walls.add(new Wall(point));
+                        level0.addWall(new Wall(point));
                         break;
                     case "Ghost":
                         level0.ghosts.add(new GhostRed(point));
@@ -80,10 +80,10 @@ public class ShadowPac extends AbstractGame  {
 
                 switch (cells[0]) {
                     case "Player":
-                        level1.player = new Player(point);
+                        level1.createPlayer(point);
                         break;
                     case "Wall":
-                        level1.walls.add(new Wall(point));
+                        level1.addWall(new Wall(point));
                         break;
                     case "GhostRed":
                         level1.ghosts.add(new GhostRed(point));
@@ -165,13 +165,13 @@ public class ShadowPac extends AbstractGame  {
                 Message.instructionLevel1();
             }
 
-            else if (screenStatus == LEVEL_0 && level0.player.getPlayerScore() >= MAX_SCORE_LVL_0) {
+            else if (screenStatus == LEVEL_0 && level0.getPlayer().getPlayerScore() >= MAX_SCORE_LVL_0) {
                 screenStatus = LEVEL_COMPLETE_SCREEN;
             }
-            else if (level0.player.hasLost()) {
+            else if (level0.getPlayer().hasLost()) {
                 Message.lose();
             }
-            else if (screenStatus == LEVEL_1 && level1.player.getPlayerScore() >= MAX_SCORE_LVL_1) {
+            else if (screenStatus == LEVEL_1 && level1.getPlayer().getPlayerScore() >= MAX_SCORE_LVL_1) {
                 // player has won
                 Message.win();
             }
@@ -181,27 +181,27 @@ public class ShadowPac extends AbstractGame  {
                 playerInput(input, level0);
 
                 for (Ghost ghost : level0.ghosts) {
-                    if (ghost.collidesWith(level0.player)) {
-                        level0.player.loseLife();
+                    if (ghost.collidesWith(level0.getPlayer())) {
+                        level0.getPlayer().loseLife();
                         break;
                     }
                 }
 
                 for (Dot dot : level0.dots) {
-                    if (dot.collidesWith(level0.player)) {
+                    if (dot.collidesWith(level0.getPlayer())) {
                         level0.dots.remove(dot);
-                        level0.player.increaseScore(Dot.getScore());
+                        level0.getPlayer().increaseScore(Dot.getScore());
                         break;
                     }
                 }
 
-                if (!level0.player.hasLost()) {
+                if (!level0.getPlayer().hasLost()) {
                     // Player still has more than 0 life:
                     // draw player, switch between opening and closing mouth every 15 frames
-                    level0.player.draw(switchFrameCount, SWITCH_FRAMES);
+                    level0.getPlayer().draw(switchFrameCount, SWITCH_FRAMES);
 
                     // draw stationary objects on screen
-                    for (Wall wall : level0.walls) {
+                    for (Wall wall : level0.getWalls()) {
                         wall.draw();
                     }
                     for (Ghost ghost : level0.ghosts) {
@@ -212,8 +212,8 @@ public class ShadowPac extends AbstractGame  {
                     }
 
                     // draw remaining lives and score
-                    level0.player.drawLives();
-                    level0.player.drawScore();
+                    level0.getPlayer().drawLives();
+                    level0.getPlayer().drawScore();
 
                     switchFrameCount++;
                     if (switchFrameCount == SWITCH_FRAMES * 2) {
@@ -227,7 +227,7 @@ public class ShadowPac extends AbstractGame  {
                 playerInput(input, level1);
 
                 for (Pellet pellet : level1.pellets) {
-                    if (pellet.collidesWith(level1.player)) {
+                    if (pellet.collidesWith(level1.getPlayer())) {
                         frenzyMode = true;
                         frenzyFrameCount = 0;
                         level1.pellets.remove(pellet);
@@ -240,13 +240,13 @@ public class ShadowPac extends AbstractGame  {
 
                 for (Ghost ghost : level1.ghosts) {
                     if (!ghost.isEaten()) {
-                        ghost.move(level1.walls, frenzyMode);
-                        if (ghost.collidesWith(level1.player)) {
+                        ghost.move(level1.getWalls(), frenzyMode);
+                        if (ghost.collidesWith(level1.getPlayer())) {
                             if (frenzyMode) {
-                                level1.player.increaseScore(Ghost.getScore());
+                                level1.getPlayer().increaseScore(Ghost.getScore());
                                 ghost.setEaten(true);
                             } else {
-                                level1.player.loseLife();
+                                level1.getPlayer().loseLife();
                                 ghost.resetPosition();
                             }
                         }
@@ -254,27 +254,27 @@ public class ShadowPac extends AbstractGame  {
                 }
 
                 for (Dot dot : level1.dots) {
-                    if (dot.collidesWith(level1.player)) {
-                        level1.player.increaseScore(Dot.getScore());
+                    if (dot.collidesWith(level1.getPlayer())) {
+                        level1.getPlayer().increaseScore(Dot.getScore());
                         level1.dots.remove(dot);
                         break;
                     }
                 }
                 for (Cherry cherry : level1.cherries) {
-                    if (cherry.collidesWith(level1.player)) {
-                        level1.player.increaseScore(Cherry.getScore());
+                    if (cherry.collidesWith(level1.getPlayer())) {
+                        level1.getPlayer().increaseScore(Cherry.getScore());
                         level1.cherries.remove(cherry);
                         break;
                     }
                 }
 
-                if (!level1.player.hasLost()) {
+                if (!level1.getPlayer().hasLost()) {
                     // Player still has more than 0 life:
                     // draw player, switch between opening and closing mouth every 15 frames
-                    level1.player.draw(switchFrameCount, SWITCH_FRAMES);
+                    level1.getPlayer().draw(switchFrameCount, SWITCH_FRAMES);
 
                     // draw stationary objects on screen
-                    for (Wall wall : level1.walls) {
+                    for (Wall wall : level1.getWalls()) {
                         wall.draw();
                     }
                     for (Dot dot : level1.dots) {
@@ -293,8 +293,8 @@ public class ShadowPac extends AbstractGame  {
                     }
 
                     // draw remaining lives and score
-                    level1.player.drawLives();
-                    level1.player.drawScore();
+                    level1.getPlayer().drawLives();
+                    level1.getPlayer().drawScore();
 
                     switchFrameCount++;
                     if (switchFrameCount == SWITCH_FRAMES * 2) {
@@ -318,16 +318,16 @@ public class ShadowPac extends AbstractGame  {
 
     private void playerInput(Input input, Level level) {
         if (input.isDown(Keys.LEFT)) {
-            level.player.goLeft(level.walls, frenzyMode);
+            level.getPlayer().goLeft(level.getWalls(), frenzyMode);
         }
         else if (input.isDown(Keys.RIGHT)) {
-            level.player.goRight(level.walls, frenzyMode);
+            level.getPlayer().goRight(level.getWalls(), frenzyMode);
         }
         else if (input.isDown(Keys.UP)) {
-            level.player.goUp(level.walls, frenzyMode);
+            level.getPlayer().goUp(level.getWalls(), frenzyMode);
         }
         else if (input.isDown(Keys.DOWN)) {
-            level.player.goDown(level.walls, frenzyMode);
+            level.getPlayer().goDown(level.getWalls(), frenzyMode);
         }
     }
 }
