@@ -11,17 +11,16 @@ public class Level {
     private final ArrayList<Cherry> cherries = new ArrayList<>();
     private final ArrayList<Pellet> pellets = new ArrayList<>();
 
-    public Level(String string) {
-        readCSV(string);
+    public Level(String worldFile) {
+        readCSV(worldFile);
     }
 
     /**
-     * Method used to read file and create objects (you can change
-     * this method as you wish).
+     * Method used to read file and create objects
      */
-    private void readCSV(String string) {
+    private void readCSV(String worldFile) {
         String text;
-        try (BufferedReader br = new BufferedReader(new FileReader(string))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(worldFile))) {
             while ((text = br.readLine()) != null) {
                 String[] cells = text.split(",");
                 Point point = new Point(Integer.parseInt(cells[1]), Integer.parseInt(cells[2]));

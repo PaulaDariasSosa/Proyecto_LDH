@@ -8,8 +8,13 @@ public class ShadowPac extends AbstractGame  {
     private final static int WINDOW_WIDTH = 1024;
     private final static int WINDOW_HEIGHT = 768;
     private final static String GAME_TITLE = "SHADOW PAC";
-
+    private final static String LEVEL_0_FILE = "res/level0.csv";
+    private final static String LEVEL_1_FILE = "res/level1.csv";
     private final Image BACKGROUND_IMAGE = new Image("res/background0.png");
+
+    private final static String LEVEL_COMPLETE = "LEVEL COMPLETE!";
+    private final static String WIN_MESSAGE = "WELL DONE!";
+    private final static String LOSE_MESSAGE = "GAME OVER!";
 
     private final static int TITLE_SCREEN = 0;
     private final static int LEVEL_0 = 1;
@@ -34,8 +39,8 @@ public class ShadowPac extends AbstractGame  {
     private boolean frenzyMode = false;
     private int frenzyFrameCount;
 
-    private final Level level0 = new Level("res/level0.csv");
-    private final Level level1 = new Level("res/level1.csv");
+    private final Level level0 = new Level(LEVEL_0_FILE);
+    private final Level level1 = new Level(LEVEL_1_FILE);
     public ShadowPac(){
         super(WINDOW_WIDTH, WINDOW_HEIGHT, GAME_TITLE);
     }
@@ -82,7 +87,7 @@ public class ShadowPac extends AbstractGame  {
             }
 
             else if (screenStatus == LEVEL_COMPLETE_SCREEN) {
-                Message.levelCompleteScreen();
+                Message.drawMessage(LEVEL_COMPLETE);
                 levelCompleteFrameCount++;
             }
 
@@ -94,11 +99,11 @@ public class ShadowPac extends AbstractGame  {
                 screenStatus = LEVEL_COMPLETE_SCREEN;
             }
             else if (level0.getPlayer().hasLost()) {
-                Message.lose();
+                Message.drawMessage(LOSE_MESSAGE);
             }
             else if (screenStatus == LEVEL_1 && level1.getPlayer().getPlayerScore() >= MAX_SCORE_LVL_1) {
                 // player has won
-                Message.win();
+                Message.drawMessage(WIN_MESSAGE);
             }
 
             else if (screenStatus == LEVEL_0) {
