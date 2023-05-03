@@ -9,14 +9,4 @@ public class Wall extends GameEntity {
         setImage(WALL_IMAGE);
     }
 
-    /**
-     * Checks if the ghost
-     * collides with the wall
-     */
-
-    public boolean collidesWith(MovingEntity entity) {
-        Rectangle rectangleGo = new Rectangle(entity.pointGo, entity.getImage().getWidth(), entity.getImage().getHeight());
-        return rectangleGo.intersects(this.getRectangle());
-    }
-
 }

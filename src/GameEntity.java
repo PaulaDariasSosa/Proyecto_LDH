@@ -1,6 +1,7 @@
 import bagel.Image;
 import bagel.util.Point;
 import bagel.util.Rectangle;
+
 public abstract class GameEntity {
     private Image image;
     private Point position;
@@ -34,8 +35,9 @@ public abstract class GameEntity {
      * Checks if the player
      * collides with the object
      */
-    public boolean collidesWith(Player player) {
-        return player.getRectangle() .intersects(this.getRectangle());
+    public boolean collidesWith(MovingEntity entity) {
+        Rectangle rectangleGo = new Rectangle(entity.pointGo, entity.getImage().getWidth(), entity.getImage().getHeight());
+        return rectangleGo.intersects(this.getRectangle());
     }
 
     /**

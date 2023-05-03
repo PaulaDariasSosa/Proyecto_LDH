@@ -1,6 +1,5 @@
 import bagel.Image;
 import bagel.util.Point;
-import bagel.util.Rectangle;
 
 import java.util.ArrayList;
 
@@ -19,8 +18,20 @@ public abstract class Ghost extends MovingEntity {
         super(topLeft, speed, speed - FRENZY_SPEED_DECREASE);
         startPoint = topLeft;
         setPosition(topLeft);
-
     }
+
+    public boolean checkCollision(ArrayList<Wall> walls) {
+        boolean colliding = false;
+        for (Wall wall : walls) {
+            if (wall.collidesWith(this)) {
+                colliding = true;
+                changeDirection();
+                break;
+            }
+        }
+        return colliding;
+    }
+
     public abstract void changeDirection();
 
     public abstract void move(ArrayList<Wall> walls, boolean frenzyMode);

@@ -1,6 +1,5 @@
 import bagel.*;
 import bagel.util.Point;
-import bagel.util.Rectangle;
 
 import java.util.ArrayList;
 
@@ -21,7 +20,6 @@ public class Player extends MovingEntity {
 
     private final DrawOptions rotation;
 
-    // Rectangle object for potential Go positions
 
     private static int lifeCount;
     private int switchFrameCount;
@@ -54,6 +52,17 @@ public class Player extends MovingEntity {
     public void goDown(ArrayList<Wall> walls, boolean frenzyMode) {
         super.goDown(walls, frenzyMode);
         rotation.setRotation(0.5 * Math.PI);
+    }
+
+    public boolean checkCollision(ArrayList<Wall> walls) {
+        boolean colliding = false;
+        for (Wall wall : walls) {
+            if (wall.collidesWith(this)) {
+                colliding = true;
+                break;
+            }
+        }
+        return colliding;
     }
 
     /**
@@ -118,6 +127,4 @@ public class Player extends MovingEntity {
             HEART_IMAGE.drawFromTopLeft(FIRST_HEART_POINT.x + HEART_GAP * i, FIRST_HEART_POINT.y);
         }
     }
-
-    public void changeDirection() {}
 }

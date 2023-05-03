@@ -1,6 +1,5 @@
 import bagel.Image;
 import bagel.util.Point;
-import bagel.util.Rectangle;
 
 import java.util.ArrayList;
 import java.util.Random;

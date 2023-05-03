@@ -1,5 +1,4 @@
 import bagel.util.Point;
-import bagel.util.Rectangle;
 import java.util.ArrayList;
 
 public abstract class MovingEntity extends GameEntity {
@@ -7,6 +6,7 @@ public abstract class MovingEntity extends GameEntity {
     private final double frenzySpeed;
     Point startPoint;
     Point pointGo;
+
     public MovingEntity(Point topLeft, double speed, double frenzySpeed) {
         super(topLeft);
         this.startPoint = topLeft;
@@ -33,6 +33,9 @@ public abstract class MovingEntity extends GameEntity {
         if (!checkCollision(walls)) {
             setPosition(pointGo);
         }
+        else {
+            pointGo = getPosition();
+        }
     }
 
     public void goRight(ArrayList<Wall> walls, boolean frenzyMode) {
@@ -43,6 +46,9 @@ public abstract class MovingEntity extends GameEntity {
         }
         if (!checkCollision(walls)) {
             setPosition(pointGo);
+        }
+        else {
+            pointGo = getPosition();
         }
     }
 
@@ -55,6 +61,9 @@ public abstract class MovingEntity extends GameEntity {
         if (!checkCollision(walls)) {
             setPosition(pointGo);
         }
+        else {
+            pointGo = getPosition();
+        }
     }
 
     public void goDown(ArrayList<Wall> walls, boolean frenzyMode) {
@@ -66,18 +75,10 @@ public abstract class MovingEntity extends GameEntity {
         if (!checkCollision(walls)) {
             setPosition(pointGo);
         }
-    }
-
-    private boolean checkCollision(ArrayList<Wall> walls) {
-        boolean colliding = false;
-        for (Wall wall : walls) {
-            if (wall.collidesWith(this)) {
-                colliding = true;
-                break;
-            }
+        else {
+            pointGo = getPosition();
         }
-        return colliding;
     }
 
-    public abstract void changeDirection();
+    public abstract boolean checkCollision(ArrayList<Wall> walls);
 }
