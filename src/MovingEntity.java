@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public abstract class MovingEntity extends GameEntity {
     private final double speed;
     private final double frenzySpeed;
-    Point startPoint;
+    private final Point startPoint;
     Point pointGo;
 
     public MovingEntity(Point topLeft, double speed, double frenzySpeed) {
@@ -15,21 +15,12 @@ public abstract class MovingEntity extends GameEntity {
         this.frenzySpeed = frenzySpeed;
     }
 
-    public double getSpeed() {
-        return speed;
-    }
-
-    public double getFrenzySpeed() {
-        return frenzySpeed;
-    }
-
     public void goLeft(ArrayList<Wall> walls, boolean frenzyMode) {
         if (frenzyMode) {
             pointGo = new Point(getPosition().x - frenzySpeed, getPosition().y);
         } else {
             pointGo = new Point(getPosition().x - speed, getPosition().y);
         }
-
         if (!checkCollision(walls)) {
             setPosition(pointGo);
         }

@@ -16,7 +16,6 @@ public abstract class Ghost extends MovingEntity {
 
     public Ghost(Point topLeft, double speed) {
         super(topLeft, speed, speed - FRENZY_SPEED_DECREASE);
-        startPoint = topLeft;
         setPosition(topLeft);
     }
 
@@ -43,11 +42,11 @@ public abstract class Ghost extends MovingEntity {
     public abstract void changeDirection();
 
     public void move(ArrayList<Wall> walls, boolean frenzyMode) {
-        if (getDirection() == LEFT) {
+        if (direction == LEFT) {
             goLeft(walls, frenzyMode);
-        } else if (getDirection() == RIGHT) {
+        } else if (direction == RIGHT) {
             goRight(walls, frenzyMode);
-        } else if (getDirection() == UP) {
+        } else if (direction == UP) {
             goUp(walls, frenzyMode);
         } else {
             goDown(walls, frenzyMode);
