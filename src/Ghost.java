@@ -6,10 +6,10 @@ import java.util.ArrayList;
 
 public abstract class Ghost extends MovingEntity {
     final static Image GHOST_FRENZY_IMAGE = new Image("res/ghostFrenzy.png");
-    final static int DOWN = 0;
-    final static int RIGHT = 1;
-    final static int UP = 2;
-    final static int LEFT = 3;
+    public final static int DOWN = 0;
+    public final static int RIGHT = 1;
+    public final static int UP = 2;
+    public final static int LEFT = 3;
 
     private final static double FRENZY_SPEED_DECREASE = 0.5;
     private final static int FRENZY_SCORE = 30;

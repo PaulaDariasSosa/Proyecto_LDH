@@ -5,7 +5,7 @@ public class Level {
     private Player player;
     private final ArrayList<Wall> walls = new ArrayList<>();
     private final ArrayList<Ghost> ghosts = new ArrayList<>();
-    public final ArrayList<Dot> dots = new ArrayList<>();
+    private final ArrayList<Dot> dots = new ArrayList<>();
     public final ArrayList<Cherry> cherries = new ArrayList<>();
     public final ArrayList<Pellet> pellets = new ArrayList<>();
 
@@ -31,6 +31,10 @@ public class Level {
 
     public ArrayList<Ghost> getGhosts() {
         return ghosts;
+    }
+
+    public void addDot(Dot dot) {
+        dots.add(dot);
     }
 
     public ArrayList<Dot> getDots() {

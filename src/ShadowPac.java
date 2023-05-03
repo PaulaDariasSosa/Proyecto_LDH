@@ -65,7 +65,7 @@ public class ShadowPac extends AbstractGame  {
                         level0.addGhost(new GhostRed(point));
                         break;
                     default:
-                        level0.dots.add(new Dot(point));
+                        level0.addDot(new Dot(point));
                         break;
                 }
             }
@@ -104,7 +104,7 @@ public class ShadowPac extends AbstractGame  {
                         level1.pellets.add(new Pellet(point));
                         break;
                     default:
-                        level1.dots.add(new Dot(point));
+                        level1.addDot(new Dot(point));
                         break;
                 }
             }
@@ -187,9 +187,9 @@ public class ShadowPac extends AbstractGame  {
                     }
                 }
 
-                for (Dot dot : level0.dots) {
+                for (Dot dot : level0.getDots()) {
                     if (dot.collidesWith(level0.getPlayer())) {
-                        level0.dots.remove(dot);
+                        level0.getDots().remove(dot);
                         level0.getPlayer().increaseScore(Dot.getScore());
                         break;
                     }
@@ -207,7 +207,7 @@ public class ShadowPac extends AbstractGame  {
                     for (Ghost ghost : level0.getGhosts()) {
                         ghost.draw(frenzyMode);
                     }
-                    for (Dot dot : level0.dots) {
+                    for (Dot dot : level0.getDots()) {
                         dot.draw();
                     }
 
@@ -253,10 +253,10 @@ public class ShadowPac extends AbstractGame  {
                     }
                 }
 
-                for (Dot dot : level1.dots) {
+                for (Dot dot : level1.getDots()) {
                     if (dot.collidesWith(level1.getPlayer())) {
                         level1.getPlayer().increaseScore(Dot.getScore());
-                        level1.dots.remove(dot);
+                        level1.getDots().remove(dot);
                         break;
                     }
                 }
@@ -277,7 +277,7 @@ public class ShadowPac extends AbstractGame  {
                     for (Wall wall : level1.getWalls()) {
                         wall.draw();
                     }
-                    for (Dot dot : level1.dots) {
+                    for (Dot dot : level1.getDots()) {
                         dot.draw();
                     }
                     for (Cherry cherry : level1.cherries) {
