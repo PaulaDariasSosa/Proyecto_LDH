@@ -98,10 +98,10 @@ public class ShadowPac extends AbstractGame  {
                         level1.addGhost(new GhostPink(point));
                         break;
                     case "Cherry":
-                        level1.cherries.add(new Cherry(point));
+                        level1.addCherry(new Cherry(point));
                         break;
                     case "Pellet":
-                        level1.pellets.add(new Pellet(point));
+                        level1.addPellet(new Pellet(point));
                         break;
                     default:
                         level1.addDot(new Dot(point));
@@ -226,11 +226,11 @@ public class ShadowPac extends AbstractGame  {
                 // Playing level 1
                 playerInput(input, level1);
 
-                for (Pellet pellet : level1.pellets) {
+                for (Pellet pellet : level1.getPellets()) {
                     if (pellet.collidesWith(level1.getPlayer())) {
                         frenzyMode = true;
                         frenzyFrameCount = 0;
-                        level1.pellets.remove(pellet);
+                        level1.getPellets().remove(pellet);
                         break;
                     }
                 }
@@ -260,10 +260,10 @@ public class ShadowPac extends AbstractGame  {
                         break;
                     }
                 }
-                for (Cherry cherry : level1.cherries) {
+                for (Cherry cherry : level1.getCherries()) {
                     if (cherry.collidesWith(level1.getPlayer())) {
                         level1.getPlayer().increaseScore(Cherry.getScore());
-                        level1.cherries.remove(cherry);
+                        level1.getCherries().remove(cherry);
                         break;
                     }
                 }
@@ -280,10 +280,10 @@ public class ShadowPac extends AbstractGame  {
                     for (Dot dot : level1.getDots()) {
                         dot.draw();
                     }
-                    for (Cherry cherry : level1.cherries) {
+                    for (Cherry cherry : level1.getCherries()) {
                         cherry.draw();
                     }
-                    for (Pellet pellet : level1.pellets) {
+                    for (Pellet pellet : level1.getPellets()) {
                         pellet.draw();
                     }
                     for (Ghost ghost : level1.getGhosts()) {
