@@ -42,8 +42,17 @@ public abstract class Ghost extends MovingEntity {
 
     public abstract void changeDirection();
 
-    public abstract void move(ArrayList<Wall> walls, boolean frenzyMode);
-
+    public void move(ArrayList<Wall> walls, boolean frenzyMode) {
+        if (getDirection() == LEFT) {
+            goLeft(walls, frenzyMode);
+        } else if (getDirection() == RIGHT) {
+            goRight(walls, frenzyMode);
+        } else if (getDirection() == UP) {
+            goUp(walls, frenzyMode);
+        } else {
+            goDown(walls, frenzyMode);
+        }
+    }
 
     /**
      * Draws the ghost image at the

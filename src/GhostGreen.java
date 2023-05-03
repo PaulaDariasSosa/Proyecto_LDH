@@ -16,18 +16,6 @@ public class GhostGreen extends Ghost {
         setDirection(rand.nextInt(2));
     }
 
-    public void move(ArrayList<Wall> walls, boolean frenzyMode) {
-        if (getDirection() == LEFT) {
-            goLeft(walls, frenzyMode);
-        } else if (getDirection() == RIGHT) {
-            goRight(walls, frenzyMode);
-        } else if (getDirection() == UP) {
-            goUp(walls, frenzyMode);
-        } else {
-            goDown(walls, frenzyMode);
-        }
-    }
-
     public void changeDirection() {
         if (getDirection() == RIGHT) {
             setDirection(LEFT);

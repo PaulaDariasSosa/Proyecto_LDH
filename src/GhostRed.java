@@ -13,14 +13,6 @@ public class GhostRed extends Ghost {
         setDirection(RIGHT);
     }
 
-    public void move(ArrayList<Wall> walls, boolean frenzyMode) {
-        if (getDirection() == RIGHT) {
-            goRight(walls, frenzyMode);
-        } else {
-            goLeft(walls, frenzyMode);
-        }
-    }
-
     public void changeDirection() {
         if (getDirection() == RIGHT) {
             setDirection(LEFT);
