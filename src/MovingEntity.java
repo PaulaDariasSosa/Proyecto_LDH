@@ -4,8 +4,8 @@ import bagel.util.Rectangle;
 import java.util.ArrayList;
 
 public abstract class MovingEntity extends GameEntity {
-    final double speed;
-    final double frenzySpeed;
+    private final double speed;
+    private final double frenzySpeed;
     Point startPoint;
     Point pointGo;
     public MovingEntity(Image image, Point topLeft, double speed, double frenzySpeed) {
@@ -15,6 +15,15 @@ public abstract class MovingEntity extends GameEntity {
         this.speed = speed;
         this.frenzySpeed = frenzySpeed;
     }
+
+    public double getSpeed() {
+        return speed;
+    }
+
+    public double getFrenzySpeed() {
+        return frenzySpeed;
+    }
+
     public void goLeft(ArrayList<Wall> walls, boolean frenzyMode) {
         if (frenzyMode) {
             pointGo = new Point(getPosition().x - frenzySpeed, getPosition().y);

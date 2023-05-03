@@ -51,13 +51,5 @@ public abstract class Ghost extends MovingEntity {
     public void setEaten(boolean eaten) {
         this.eaten = eaten;
     }
-
-    public double getSpeed() {
-        return speed;
-    }
-
-    public double getFrenzySpeed() {
-        return frenzySpeed;
-    }
 }
 
