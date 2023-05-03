@@ -36,7 +36,7 @@ public abstract class GameEntity {
      * collides with the object
      */
     public boolean collidesWith(MovingEntity entity) {
-        Rectangle rectangleGo = new Rectangle(entity.pointGo, entity.getImage().getWidth(), entity.getImage().getHeight());
+        Rectangle rectangleGo = new Rectangle(entity.getPointGo(), entity.getImage().getWidth(), entity.getImage().getHeight());
         return rectangleGo.intersects(this.getRectangle());
     }
 

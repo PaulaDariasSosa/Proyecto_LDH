@@ -5,7 +5,7 @@ public abstract class MovingEntity extends GameEntity {
     private final double speed;
     private final double frenzySpeed;
     private final Point startPoint;
-    Point pointGo;
+    private Point pointGo;
 
     public MovingEntity(Point topLeft, double speed, double frenzySpeed) {
         super(topLeft);
@@ -13,6 +13,10 @@ public abstract class MovingEntity extends GameEntity {
         pointGo = new Point(topLeft.x, topLeft.y);
         this.speed = speed;
         this.frenzySpeed = frenzySpeed;
+    }
+
+    public Point getPointGo() {
+        return pointGo;
     }
 
     public void goLeft(ArrayList<Wall> walls, boolean frenzyMode) {
