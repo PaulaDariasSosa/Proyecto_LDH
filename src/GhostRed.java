@@ -6,15 +6,15 @@ import java.util.ArrayList;
 public class GhostRed extends Ghost {
     private final static Image GHOST_RED_IMAGE = new Image("res/ghostRed.png");
     private final static double SPEED = 1;
-    private int direction = RIGHT;
 
     public GhostRed(Point topLeft) {
         super(topLeft, SPEED);
         setImage(GHOST_RED_IMAGE);
+        setDirection(RIGHT);
     }
 
     public void move(ArrayList<Wall> walls, boolean frenzyMode) {
-        if (direction == RIGHT) {
+        if (getDirection() == RIGHT) {
             goRight(walls, frenzyMode);
         } else {
             goLeft(walls, frenzyMode);
@@ -22,10 +22,10 @@ public class GhostRed extends Ghost {
     }
 
     public void changeDirection() {
-        if (direction == RIGHT) {
-            direction = LEFT;
+        if (getDirection() == RIGHT) {
+            setDirection(LEFT);
         } else {
-            direction = RIGHT;
+            setDirection(RIGHT);
         }
     }
 

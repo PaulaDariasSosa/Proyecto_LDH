@@ -8,18 +8,19 @@ public class GhostPink extends Ghost {
     private final static Image GHOST_PINK_IMAGE = new Image("res/ghostPink.png");
     private final static double SPEED = 3;
     private final Random rand = new Random();
-    private int direction = rand.nextInt(4);
 
     public GhostPink(Point topLeft) {
         super(topLeft, SPEED);
         setImage(GHOST_PINK_IMAGE);
+        // randomly generation direction between 4 directions
+        setDirection(rand.nextInt(4));
     }
     public void move(ArrayList<Wall> walls, boolean frenzyMode) {
-        if (direction == LEFT) {
+        if (getDirection() == LEFT) {
             goLeft(walls, frenzyMode);
-        } else if (direction == RIGHT) {
+        } else if (getDirection() == RIGHT) {
             goRight(walls, frenzyMode);
-        } else if (direction == UP) {
+        } else if (getDirection() == UP) {
             goUp(walls, frenzyMode);
         } else {
             goDown(walls, frenzyMode);
@@ -27,6 +28,6 @@ public class GhostPink extends Ghost {
     }
 
     public void changeDirection() {
-        direction = rand.nextInt(4);
+        setDirection(rand.nextInt(4));
     }
 }

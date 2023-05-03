@@ -8,6 +8,7 @@ public abstract class Ghost extends MovingEntity {
     public final static int RIGHT = 1;
     public final static int UP = 2;
     public final static int LEFT = 3;
+    private int direction;
 
     private final static double FRENZY_SPEED_DECREASE = 0.5;
     private final static int FRENZY_SCORE = 30;
@@ -17,6 +18,14 @@ public abstract class Ghost extends MovingEntity {
         super(topLeft, speed, speed - FRENZY_SPEED_DECREASE);
         startPoint = topLeft;
         setPosition(topLeft);
+    }
+
+    public int getDirection() {
+        return direction;
+    }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
     }
 
     public boolean checkCollision(ArrayList<Wall> walls) {
