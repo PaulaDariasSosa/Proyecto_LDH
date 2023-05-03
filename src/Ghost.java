@@ -1,6 +1,5 @@
 import bagel.Image;
 import bagel.util.Point;
-
 import java.util.ArrayList;
 
 public abstract class Ghost extends MovingEntity {
