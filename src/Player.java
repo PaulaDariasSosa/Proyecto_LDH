@@ -25,17 +25,16 @@ public class Player extends MovingEntity {
 
     private static int lifeCount;
     private int switchFrameCount;
-    private Image currentImage;
     private boolean isOpen = false;
     private int playerScore;
 
     public Player(Point topLeft) {
-        super(PAC_IMAGE, topLeft, SPEED, FRENZY_SPEED);
+        super(topLeft, SPEED, FRENZY_SPEED);
+        setImage(PAC_IMAGE);
         rotation = new DrawOptions();
 
         lifeCount = MAX_LIFE;
         switchFrameCount = SWITCH_FRAMES;
-        currentImage = PAC_IMAGE;
         playerScore = 0;
     }
 
@@ -65,7 +64,6 @@ public class Player extends MovingEntity {
     public void loseLife() {
         lifeCount--;
         setPosition(startPoint);
-        setRectangle(new Rectangle(getPosition(), PAC_IMAGE.getWidth(), PAC_IMAGE.getHeight()));
     }
 
     public int getPlayerScore() {
@@ -100,15 +98,15 @@ public class Player extends MovingEntity {
         if (switchFrameCount == 0) {
             // switching the image being rendered
             if (isOpen) {
-                currentImage = PAC_IMAGE;
+                setImage(PAC_IMAGE);
                 isOpen = false;
             } else {
-                currentImage = PAC_OPEN_IMAGE;
+                setImage(PAC_OPEN_IMAGE);
                 isOpen = true;
             }
             switchFrameCount = SWITCH_FRAMES;
         }
-        currentImage.drawFromTopLeft(getPosition().x, getPosition().y, rotation);
+        getImage().drawFromTopLeft(getPosition().x, getPosition().y, rotation);
     }
 
     /**

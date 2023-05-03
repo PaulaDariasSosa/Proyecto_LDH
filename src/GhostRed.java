@@ -9,7 +9,8 @@ public class GhostRed extends Ghost {
     private int direction = RIGHT;
 
     public GhostRed(Point topLeft) {
-        super(GHOST_RED_IMAGE, topLeft, SPEED);
+        super(topLeft, SPEED);
+        setImage(GHOST_RED_IMAGE);
     }
 
     public void move(ArrayList<Wall> walls, boolean frenzyMode) {

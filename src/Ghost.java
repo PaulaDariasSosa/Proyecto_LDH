@@ -15,8 +15,8 @@ public abstract class Ghost extends MovingEntity {
     private final static int FRENZY_SCORE = 30;
     private boolean eaten = false;
 
-    public Ghost(Image image, Point topLeft, double speed) {
-        super(image, topLeft, speed, speed - FRENZY_SPEED_DECREASE);
+    public Ghost(Point topLeft, double speed) {
+        super(topLeft, speed, speed - FRENZY_SPEED_DECREASE);
         startPoint = topLeft;
         setPosition(topLeft);
 
@@ -26,7 +26,6 @@ public abstract class Ghost extends MovingEntity {
     public abstract void move(ArrayList<Wall> walls, boolean frenzyMode);
     public void resetPosition() {
         setPosition(startPoint);
-        setRectangle(new Rectangle(getPosition(), getImage().getWidth(), getImage().getHeight()));
     }
 
 

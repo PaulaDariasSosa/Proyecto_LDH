@@ -13,7 +13,8 @@ public class GhostGreen extends Ghost {
     // randomly generation direction between DOWN and RIGHT
     private int direction = rand.nextInt(2);
     public GhostGreen(Point topLeft) {
-        super(GHOST_GREEN_IMAGE, topLeft, SPEED);
+        super(topLeft, SPEED);
+        setImage(GHOST_GREEN_IMAGE);
     }
 
     public void move(ArrayList<Wall> walls, boolean frenzyMode) {
@@ -33,12 +34,12 @@ public class GhostGreen extends Ghost {
             // down
             pointGo = new Point(getPosition().x, getPosition().y + curSpeed);
         }
-        this.setRectangle(new Rectangle(pointGo, GHOST_GREEN_IMAGE.getWidth(), GHOST_GREEN_IMAGE.getHeight()));
+//        this.setRectangle(new Rectangle(pointGo, GHOST_GREEN_IMAGE.getWidth(), GHOST_GREEN_IMAGE.getHeight()));
 
         boolean colliding = false;
         for (Wall wall : walls) {
             if (wall.collidesWith(this)) {
-                this.setRectangle(new Rectangle(getPosition(), GHOST_GREEN_IMAGE.getWidth(), GHOST_GREEN_IMAGE.getHeight()));
+//                this.setRectangle(new Rectangle(getPosition(), GHOST_GREEN_IMAGE.getWidth(), GHOST_GREEN_IMAGE.getHeight()));
                 this.changeDirection();
                 colliding = true;
                 break;

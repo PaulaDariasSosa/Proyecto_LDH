@@ -12,7 +12,8 @@ public class GhostPink extends Ghost {
     private int direction = rand.nextInt(4);
 
     public GhostPink(Point topLeft) {
-        super(GHOST_PINK_IMAGE, topLeft, SPEED);
+        super(topLeft, SPEED);
+        setImage(GHOST_PINK_IMAGE);
     }
     public void move(ArrayList<Wall> walls, boolean frenzyMode) {
         double curSpeed;
@@ -31,12 +32,10 @@ public class GhostPink extends Ghost {
             // down
             pointGo = new Point(getPosition().x, getPosition().y + curSpeed);
         }
-        this.setRectangle(new Rectangle(pointGo, GHOST_PINK_IMAGE.getWidth(), GHOST_PINK_IMAGE.getHeight()));
 
         boolean colliding = false;
         for (Wall wall : walls) {
             if (wall.collidesWith(this)) {
-                setRectangle(new Rectangle(getPosition(), GHOST_PINK_IMAGE.getWidth(), GHOST_PINK_IMAGE.getHeight()));
                 changeDirection();
                 colliding = true;
                 break;

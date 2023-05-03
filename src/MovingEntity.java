@@ -1,4 +1,3 @@
-import bagel.Image;
 import bagel.util.Point;
 import bagel.util.Rectangle;
 import java.util.ArrayList;
@@ -8,8 +7,8 @@ public abstract class MovingEntity extends GameEntity {
     private final double frenzySpeed;
     Point startPoint;
     Point pointGo;
-    public MovingEntity(Image image, Point topLeft, double speed, double frenzySpeed) {
-        super(image, topLeft);
+    public MovingEntity(Point topLeft, double speed, double frenzySpeed) {
+        super(topLeft);
         this.startPoint = topLeft;
         pointGo = new Point(topLeft.x, topLeft.y);
         this.speed = speed;
@@ -30,9 +29,10 @@ public abstract class MovingEntity extends GameEntity {
         } else {
             pointGo = new Point(getPosition().x - speed, getPosition().y);
         }
-        this.setRectangle(new Rectangle(pointGo, getImage().getWidth(), getImage().getHeight()));
 
-        checkCollision(walls);
+        if (!checkCollision(walls)) {
+            setPosition(pointGo);
+        }
     }
 
     public void goRight(ArrayList<Wall> walls, boolean frenzyMode) {
@@ -41,9 +41,9 @@ public abstract class MovingEntity extends GameEntity {
         } else {
             pointGo = new Point(getPosition().x + speed, getPosition().y);
         }
-        this.setRectangle(new Rectangle(pointGo, getImage().getWidth(), getImage().getHeight()));
-
-        checkCollision(walls);
+        if (!checkCollision(walls)) {
+            setPosition(pointGo);
+        }
     }
 
     public void goUp(ArrayList<Wall> walls, boolean frenzyMode) {
@@ -52,9 +52,9 @@ public abstract class MovingEntity extends GameEntity {
         } else {
             pointGo = new Point(getPosition().x, getPosition().y - speed);
         }
-        this.setRectangle(new Rectangle(pointGo, getImage().getWidth(), getImage().getHeight()));
-
-        checkCollision(walls);
+        if (!checkCollision(walls)) {
+            setPosition(pointGo);
+        }
     }
 
     public void goDown(ArrayList<Wall> walls, boolean frenzyMode) {
@@ -63,24 +63,20 @@ public abstract class MovingEntity extends GameEntity {
         } else {
             pointGo = new Point(getPosition().x, getPosition().y + speed);
         }
-        this.setRectangle(new Rectangle(pointGo, getImage().getWidth(), getImage().getHeight()));
-
-        checkCollision(walls);
+        if (!checkCollision(walls)) {
+            setPosition(pointGo);
+        }
     }
 
-    private void checkCollision(ArrayList<Wall> walls) {
+    private boolean checkCollision(ArrayList<Wall> walls) {
         boolean colliding = false;
         for (Wall wall : walls) {
             if (wall.collidesWith(this)) {
-                setRectangle(new Rectangle(getPosition(), getImage().getWidth(), getImage().getHeight()));
-                changeDirection();
                 colliding = true;
                 break;
             }
         }
-        if (!colliding) {
-            setPosition(pointGo);
-        }
+        return colliding;
     }
 
     public abstract void changeDirection();

@@ -6,6 +6,7 @@ public class Dot extends GameEntity {
     public final static int POINTS = 10;
 
     public Dot(Point topLeft) {
-        super(DOT_IMAGE, topLeft);
+        super(topLeft);
+        setImage(DOT_IMAGE);
     }
 }
