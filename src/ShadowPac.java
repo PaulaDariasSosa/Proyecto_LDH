@@ -23,11 +23,6 @@ public class ShadowPac extends AbstractGame  {
     private final static int LEVEL_1 = 4;
     private int screenStatus = TITLE_SCREEN;
 
-
-    // count the frame number to switch between open and closed images
-    private final static int SWITCH_FRAMES = 15;
-    private int switchFrameCount = 0;
-
     private final static int COMPLETE_MESSAGE_FRAMES = 300;
     private int levelCompleteFrameCount = 0;
 
@@ -128,7 +123,7 @@ public class ShadowPac extends AbstractGame  {
                 if (!level0.getPlayer().hasLost()) {
                     // Player still has more than 0 life:
                     // draw player, switch between opening and closing mouth every 15 frames
-                    level0.getPlayer().draw(switchFrameCount, SWITCH_FRAMES);
+                    level0.getPlayer().draw();
 
                     // draw stationary objects on screen
                     for (Wall wall : level0.getWalls()) {
@@ -144,11 +139,6 @@ public class ShadowPac extends AbstractGame  {
                     // draw remaining lives and score
                     level0.getPlayer().drawLives();
                     level0.getPlayer().drawScore();
-
-                    switchFrameCount++;
-                    if (switchFrameCount == SWITCH_FRAMES * 2) {
-                        switchFrameCount = 0;
-                    }
                 }
             }
 
@@ -201,7 +191,7 @@ public class ShadowPac extends AbstractGame  {
                 if (!level1.getPlayer().hasLost()) {
                     // Player still has more than 0 life:
                     // draw player, switch between opening and closing mouth every 15 frames
-                    level1.getPlayer().draw(switchFrameCount, SWITCH_FRAMES);
+                    level1.getPlayer().draw();
 
                     // draw stationary objects on screen
                     for (Wall wall : level1.getWalls()) {
@@ -226,10 +216,6 @@ public class ShadowPac extends AbstractGame  {
                     level1.getPlayer().drawLives();
                     level1.getPlayer().drawScore();
 
-                    switchFrameCount++;
-                    if (switchFrameCount == SWITCH_FRAMES * 2) {
-                        switchFrameCount = 0;
-                    }
                     if (frenzyFrameCount == FRENZY_MODE_FRAMES) {
                         frenzyMode = false;
                         frenzyFrameCount = 0;

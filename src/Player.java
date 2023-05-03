@@ -9,6 +9,7 @@ public class Player extends MovingEntity {
     private final static Image PAC_OPEN_IMAGE = new Image("res/pacOpen.png");
     private final static Image HEART_IMAGE = new Image("res/heart.png");
     private final static int MAX_LIFE = 3;
+    private final static int SWITCH_FRAMES = 15;
     private final static int HEART_GAP = 30;
     private final static Point FIRST_HEART_POINT = new Point(900, 10);
     private final static Font SCORE_FONT = new Font("res/FSO8BITR.ttf", 20);
@@ -23,6 +24,9 @@ public class Player extends MovingEntity {
     // Rectangle object for potential Go positions
 
     private static int lifeCount;
+    private int switchFrameCount;
+    private Image currentImage;
+    private boolean isOpen = false;
     private int playerScore;
 
     public Player(Point topLeft) {
@@ -30,6 +34,8 @@ public class Player extends MovingEntity {
         rotation = new DrawOptions();
 
         lifeCount = MAX_LIFE;
+        switchFrameCount = SWITCH_FRAMES;
+        currentImage = PAC_IMAGE;
         playerScore = 0;
     }
 
@@ -89,12 +95,20 @@ public class Player extends MovingEntity {
      * Draws the player, switching between
      * opening and closing mouths.
      */
-    public void draw(int frameCount, int switchFrame) {
-        if (frameCount < switchFrame) {
-            super.draw();
-        } else {
-            PAC_OPEN_IMAGE.drawFromTopLeft(getPosition().x, getPosition().y, rotation);
+    public void draw() {
+        switchFrameCount--;
+        if (switchFrameCount == 0) {
+            // switching the image being rendered
+            if (isOpen) {
+                currentImage = PAC_IMAGE;
+                isOpen = false;
+            } else {
+                currentImage = PAC_OPEN_IMAGE;
+                isOpen = true;
+            }
+            switchFrameCount = SWITCH_FRAMES;
         }
+        currentImage.drawFromTopLeft(getPosition().x, getPosition().y, rotation);
     }
 
     /**

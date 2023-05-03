@@ -9,7 +9,7 @@ public abstract class GameEntity {
     public GameEntity(Image image, Point topLeft) {
         this.image = image;
         position = new Point(topLeft.x, topLeft.y);
-        this.rectangle = new Rectangle(topLeft, image.getWidth(), image.getHeight());
+        rectangle = new Rectangle(topLeft, image.getWidth(), image.getHeight());
     }
 
     public Image getImage() {
