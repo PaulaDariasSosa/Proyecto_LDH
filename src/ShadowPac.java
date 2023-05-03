@@ -1,6 +1,4 @@
-import java.io.*;
 import bagel.*;
-import bagel.util.Point;
 
 /**
  * SWEN20003 Project 2B, Semester 1, 2023
@@ -36,82 +34,10 @@ public class ShadowPac extends AbstractGame  {
     private boolean frenzyMode = false;
     private int frenzyFrameCount;
 
-    private final Level level0 = new Level();
-    private final Level level1 = new Level();
-
+    private final Level level0 = new Level("res/level0.csv");
+    private final Level level1 = new Level("res/level1.csv");
     public ShadowPac(){
         super(WINDOW_WIDTH, WINDOW_HEIGHT, GAME_TITLE);
-    }
-
-    /**
-     * Method used to read file and create objects (you can change
-     * this method as you wish).
-     */
-    private void readCSV() {
-        String text;
-        try (BufferedReader br = new BufferedReader(new FileReader("res/level0.csv"))) {
-            while ((text = br.readLine()) != null) {
-                String[] cells = text.split(",");
-                Point point = new Point(Integer.parseInt(cells[1]), Integer.parseInt(cells[2]));
-
-                switch (cells[0]) {
-                    case "Player":
-                        level0.createPlayer(point);
-                        break;
-                    case "Wall":
-                        level0.addWall(new Wall(point));
-                        break;
-                    case "Ghost":
-                        level0.addGhost(new GhostRed(point));
-                        break;
-                    default:
-                        level0.addDot(new Dot(point));
-                        break;
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        try (BufferedReader br = new BufferedReader(new FileReader("res/level1.csv"))) {
-            while ((text = br.readLine()) != null) {
-                String[] cells = text.split(",");
-                Point point = new Point(Integer.parseInt(cells[1]), Integer.parseInt(cells[2]));
-
-                switch (cells[0]) {
-                    case "Player":
-                        level1.createPlayer(point);
-                        break;
-                    case "Wall":
-                        level1.addWall(new Wall(point));
-                        break;
-                    case "GhostRed":
-                        level1.addGhost(new GhostRed(point));
-                        break;
-                    case "GhostBlue":
-                        level1.addGhost(new GhostBlue(point));
-                        break;
-                    case "GhostGreen":
-                        level1.addGhost(new GhostGreen(point));
-                        break;
-                    case "GhostPink":
-                        level1.addGhost(new GhostPink(point));
-                        break;
-                    case "Cherry":
-                        level1.addCherry(new Cherry(point));
-                        break;
-                    case "Pellet":
-                        level1.addPellet(new Pellet(point));
-                        break;
-                    default:
-                        level1.addDot(new Dot(point));
-                        break;
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
     }
 
     /**
@@ -119,7 +45,6 @@ public class ShadowPac extends AbstractGame  {
      */
     public static void main(String[] args) {
         ShadowPac game = new ShadowPac();
-        game.readCSV();
         game.run();
     }
 
