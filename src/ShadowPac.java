@@ -163,7 +163,7 @@ public class ShadowPac extends AbstractGame  {
                         ghost.move(level1.getWalls(), frenzyMode);
                         if (ghost.collidesWith(level1.getPlayer())) {
                             if (frenzyMode) {
-                                level1.getPlayer().increaseScore(Ghost.getScore());
+                                level1.getPlayer().increaseScore(Ghost.FRENZY_SCORE);
                                 ghost.setEaten(true);
                             } else {
                                 level1.getPlayer().loseLife();

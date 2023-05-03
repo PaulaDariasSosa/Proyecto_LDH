@@ -17,6 +17,7 @@
       <change beforePath="$PROJECT_DIR$/src/MovingEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovingEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pellet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pellet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ShadowPac.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShadowPac.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Wall.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -109,7 +110,7 @@
       <workItem from="1683012283784" duration="15000" />
       <workItem from="1683082754985" duration="158000" />
       <workItem from="1683083126204" duration="12188000" />
-      <workItem from="1683107862676" duration="5390000" />
+      <workItem from="1683107862676" duration="5834000" />
     </task>
     <servers />
   </component>

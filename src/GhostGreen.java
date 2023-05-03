@@ -1,7 +1,5 @@
 import bagel.Image;
 import bagel.util.Point;
-
-import java.util.ArrayList;
 import java.util.Random;
 
 public class GhostGreen extends Ghost {

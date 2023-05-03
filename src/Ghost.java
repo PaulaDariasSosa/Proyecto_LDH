@@ -4,14 +4,15 @@ import java.util.ArrayList;
 
 public abstract class Ghost extends MovingEntity {
     final static Image GHOST_FRENZY_IMAGE = new Image("res/ghostFrenzy.png");
+    public final static int FRENZY_SCORE = 30;
     public final static int DOWN = 0;
     public final static int RIGHT = 1;
     public final static int UP = 2;
     public final static int LEFT = 3;
+
     private int direction;
 
     private final static double FRENZY_SPEED_DECREASE = 0.5;
-    private final static int FRENZY_SCORE = 30;
     private boolean eaten = false;
 
     public Ghost(Point topLeft, double speed) {
@@ -59,15 +60,12 @@ public abstract class Ghost extends MovingEntity {
      */
     public void draw(boolean frenzyMode) {
         if (frenzyMode) {
-            GHOST_FRENZY_IMAGE.drawFromTopLeft(getRectangle().left(), getRectangle().top());
+            GHOST_FRENZY_IMAGE.drawFromTopLeft(getPosition().x, getPosition().y);
         } else {
             draw();
         }
     }
 
-    public static int getScore() {
-        return FRENZY_SCORE;
-    }
     public boolean isEaten() {
         return eaten;
     }

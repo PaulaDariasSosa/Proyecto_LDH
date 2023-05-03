@@ -79,6 +79,6 @@ public abstract class MovingEntity extends GameEntity {
 
     public void resetPosition() {
         setPosition(startPoint);
-        pointGo = getPosition();
+        pointGo = startPoint;
     }
 }
