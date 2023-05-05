@@ -23,6 +23,7 @@ public class ShadowPac extends AbstractGame {
     private final static int LEVEL_1 = 4;
     private int screenStatus;
     private boolean gameOver;
+    private boolean playerWin;
 
     private final static int COMPLETE_MESSAGE_FRAMES = 300;
     private int levelCompleteFrameCount = 0;
@@ -42,6 +43,7 @@ public class ShadowPac extends AbstractGame {
         super(WINDOW_WIDTH, WINDOW_HEIGHT, GAME_TITLE);
         screenStatus = TITLE_SCREEN;
         gameOver = false;
+        playerWin = false;
     }
 
     /**
@@ -87,13 +89,15 @@ public class ShadowPac extends AbstractGame {
                 screenStatus = LEVEL_COMPLETE_SCREEN;
             } else if (gameOver) {
                 Message.drawMessage(LOSE_MESSAGE);
-            } else if (screenStatus == LEVEL_1 && level1.getPlayer().getPlayerScore() >= MAX_SCORE_LVL_1) {
-                // player has won
+            } else if (playerWin) {
                 Message.drawMessage(WIN_MESSAGE);
             } else if (screenStatus == LEVEL_0) {
                 playLevel(input, level0, false);
             } else {
                 playLevel(input, level1, true);
+                if (level1.getPlayer().getPlayerScore() == MAX_SCORE_LVL_1) {
+                    playerWin = true;
+                }
             }
         }
     }
