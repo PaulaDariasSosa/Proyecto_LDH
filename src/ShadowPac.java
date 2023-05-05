@@ -4,7 +4,7 @@ import bagel.*;
  * SWEN20003 Project 2B, Semester 1, 2023
  * Tung Khanh Ho
  */
-public class ShadowPac extends AbstractGame  {
+public class ShadowPac extends AbstractGame {
     private final static int WINDOW_WIDTH = 1024;
     private final static int WINDOW_HEIGHT = 768;
     private final static String GAME_TITLE = "SHADOW PAC";
@@ -36,7 +36,8 @@ public class ShadowPac extends AbstractGame  {
     private final Level level0 = new Level(LEVEL_0_FILE);
     private final int numDotLevel0 = level0.getNumDots();
     private final Level level1 = new Level(LEVEL_1_FILE);
-    public ShadowPac(){
+
+    public ShadowPac() {
         super(WINDOW_WIDTH, WINDOW_HEIGHT, GAME_TITLE);
     }
 
@@ -54,10 +55,9 @@ public class ShadowPac extends AbstractGame  {
      */
     @Override
     protected void update(Input input) {
-        if (input.wasPressed(Keys.ESCAPE)){
+        if (input.wasPressed(Keys.ESCAPE)) {
             Window.close();
-        }
-        else {
+        } else {
             BACKGROUND_IMAGE.draw(Window.getWidth() / 2.0, Window.getHeight() / 2.0);
 
             if (screenStatus == TITLE_SCREEN) {
@@ -67,43 +67,29 @@ public class ShadowPac extends AbstractGame  {
                 if (input.wasPressed(Keys.W)) {
                     screenStatus = LEVEL_1;
                 }
-            }
-
-            else if (screenStatus == INSTRUCTION_1_SCREEN && input.wasPressed(Keys.SPACE)) {
+            } else if (screenStatus == INSTRUCTION_1_SCREEN && input.wasPressed(Keys.SPACE)) {
                 screenStatus = LEVEL_1;
-            }
-
-            else if (screenStatus == LEVEL_COMPLETE_SCREEN && levelCompleteFrameCount == COMPLETE_MESSAGE_FRAMES) {
+            } else if (screenStatus == LEVEL_COMPLETE_SCREEN && levelCompleteFrameCount == COMPLETE_MESSAGE_FRAMES) {
                 screenStatus = INSTRUCTION_1_SCREEN;
             }
 
             if (screenStatus == TITLE_SCREEN) {
                 Message.titleScreen(GAME_TITLE);
-            }
-
-            else if (screenStatus == LEVEL_COMPLETE_SCREEN) {
+            } else if (screenStatus == LEVEL_COMPLETE_SCREEN) {
                 Message.drawMessage(LEVEL_COMPLETE);
                 levelCompleteFrameCount++;
-            }
-
-            else if (screenStatus == INSTRUCTION_1_SCREEN) {
+            } else if (screenStatus == INSTRUCTION_1_SCREEN) {
                 Message.instructionLevel1();
-            }
-
-            else if (screenStatus == LEVEL_0 && level0.getPlayer().wonLevel0(numDotLevel0)) {
+            } else if (screenStatus == LEVEL_0 && level0.getPlayer().wonLevel0(numDotLevel0)) {
                 screenStatus = LEVEL_COMPLETE_SCREEN;
-            }
-            else if (level0.getPlayer().hasLost()) {
+            } else if (level0.getPlayer().hasLost()) {
                 Message.drawMessage(LOSE_MESSAGE);
-            }
-            else if (screenStatus == LEVEL_1 && level1.getPlayer().getPlayerScore() >= MAX_SCORE_LVL_1) {
+            } else if (screenStatus == LEVEL_1 && level1.getPlayer().getPlayerScore() >= MAX_SCORE_LVL_1) {
                 // player has won
                 Message.drawMessage(WIN_MESSAGE);
-            }
-
-            else if (screenStatus == LEVEL_0) {
+            } else if (screenStatus == LEVEL_0) {
                 // Playing level 0
-                playerInput(input, level0);
+                level0.getPlayer().playerInput(input, level0, frenzyMode);
 
                 for (Ghost ghost : level0.getGhosts()) {
                     if (ghost.collidesWith(level0.getPlayer())) {
@@ -140,11 +126,9 @@ public class ShadowPac extends AbstractGame  {
                     level0.getPlayer().drawLives();
                     level0.getPlayer().drawScore();
                 }
-            }
-
-            else {
+            } else {
                 // Playing level 1
-                playerInput(input, level1);
+                level1.getPlayer().playerInput(input, level1, frenzyMode);
 
                 for (Pellet pellet : level1.getPellets()) {
                     if (pellet.collidesWith(level1.getPlayer())) {
@@ -232,18 +216,4 @@ public class ShadowPac extends AbstractGame  {
         }
     }
 
-    private void playerInput(Input input, Level level) {
-        if (input.isDown(Keys.LEFT)) {
-            level.getPlayer().goLeft(level.getWalls(), frenzyMode);
-        }
-        else if (input.isDown(Keys.RIGHT)) {
-            level.getPlayer().goRight(level.getWalls(), frenzyMode);
-        }
-        else if (input.isDown(Keys.UP)) {
-            level.getPlayer().goUp(level.getWalls(), frenzyMode);
-        }
-        else if (input.isDown(Keys.DOWN)) {
-            level.getPlayer().goDown(level.getWalls(), frenzyMode);
-        }
-    }
 }

@@ -36,6 +36,18 @@ public class Player extends MovingEntity {
         playerScore = 0;
     }
 
+    public void playerInput(Input input, Level level, boolean frenzyMode) {
+        if (input.isDown(Keys.LEFT)) {
+            level.getPlayer().goLeft(level.getWalls(), frenzyMode);
+        } else if (input.isDown(Keys.RIGHT)) {
+            level.getPlayer().goRight(level.getWalls(), frenzyMode);
+        } else if (input.isDown(Keys.UP)) {
+            level.getPlayer().goUp(level.getWalls(), frenzyMode);
+        } else if (input.isDown(Keys.DOWN)) {
+            level.getPlayer().goDown(level.getWalls(), frenzyMode);
+        }
+    }
+
     public void goLeft(ArrayList<Wall> walls, boolean frenzyMode) {
         super.goLeft(walls, frenzyMode);
         rotation.setRotation(Math.PI);
@@ -45,10 +57,12 @@ public class Player extends MovingEntity {
         super.goRight(walls, frenzyMode);
         rotation.setRotation(0);
     }
+
     public void goUp(ArrayList<Wall> walls, boolean frenzyMode) {
         super.goUp(walls, frenzyMode);
         rotation.setRotation(1.5 * Math.PI);
     }
+
     public void goDown(ArrayList<Wall> walls, boolean frenzyMode) {
         super.goDown(walls, frenzyMode);
         rotation.setRotation(0.5 * Math.PI);
@@ -90,7 +104,7 @@ public class Player extends MovingEntity {
     /**
      * Method that checks if the player has reached the target score
      */
-    public boolean wonLevel0(int target){
+    public boolean wonLevel0(int target) {
         return playerScore == target * Dot.POINTS;
     }
 
