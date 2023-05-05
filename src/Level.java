@@ -62,7 +62,6 @@ public class Level {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     public void playerInput(Input input, boolean frenzyMode) {

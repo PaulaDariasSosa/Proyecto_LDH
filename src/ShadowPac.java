@@ -89,130 +89,108 @@ public class ShadowPac extends AbstractGame {
                 Message.drawMessage(WIN_MESSAGE);
             } else if (screenStatus == LEVEL_0) {
                 // Playing level 0
-                level0.playerInput(input, frenzyMode);
+                playLevel(input, level0, false);
 
-                for (Ghost ghost : level0.getGhosts()) {
-                    if (ghost.collidesWith(level0.getPlayer())) {
-                        level0.getPlayer().loseLife();
-                        break;
-                    }
-                }
-
-                for (Dot dot : level0.getDots()) {
-                    if (dot.collidesWith(level0.getPlayer())) {
-                        level0.getDots().remove(dot);
-                        level0.getPlayer().increaseScore(Dot.POINTS);
-                        break;
-                    }
-                }
-
-                if (!level0.getPlayer().hasLost()) {
-                    // Player still has more than 0 life:
-                    // draw player, switch between opening and closing mouth every 15 frames
-                    level0.getPlayer().draw();
-
-                    // draw stationary objects on screen
-                    for (Wall wall : level0.getWalls()) {
-                        wall.draw();
-                    }
-                    for (Ghost ghost : level0.getGhosts()) {
-                        ghost.draw(frenzyMode);
-                    }
-                    for (Dot dot : level0.getDots()) {
-                        dot.draw();
-                    }
-
-                    // draw remaining lives and score
-                    level0.getPlayer().drawLives();
-                    level0.getPlayer().drawScore();
-                }
             } else {
                 // Playing level 1
-                level1.playerInput(input, frenzyMode);
+                playLevel(input, level1, true);
+            }
 
-                for (Pellet pellet : level1.getPellets()) {
-                    if (pellet.collidesWith(level1.getPlayer())) {
-                        frenzyMode = true;
-                        frenzyFrameCount = 0;
-                        level1.getPellets().remove(pellet);
-                        break;
-                    }
-                }
-                if (frenzyMode) {
-                    frenzyFrameCount++;
-                }
+        }
+    }
 
-                for (Ghost ghost : level1.getGhosts()) {
-                    if (!ghost.isEaten()) {
-                        ghost.move(level1.getWalls(), frenzyMode);
-                        if (ghost.collidesWith(level1.getPlayer())) {
-                            if (frenzyMode) {
-                                level1.getPlayer().increaseScore(Ghost.FRENZY_SCORE);
-                                ghost.setEaten(true);
-                            } else {
-                                level1.getPlayer().loseLife();
-                                ghost.resetPosition();
-                            }
-                        }
-                    }
-                }
+    private void playLevel(Input input, Level level, boolean ghostsMove) {
+        level.playerInput(input, frenzyMode);
 
-                for (Dot dot : level1.getDots()) {
-                    if (dot.collidesWith(level1.getPlayer())) {
-                        level1.getPlayer().increaseScore(Dot.POINTS);
-                        level1.getDots().remove(dot);
-                        break;
-                    }
-                }
-                for (Cherry cherry : level1.getCherries()) {
-                    if (cherry.collidesWith(level1.getPlayer())) {
-                        level1.getPlayer().increaseScore(Cherry.POINTS);
-                        level1.getCherries().remove(cherry);
-                        break;
-                    }
-                }
+        for (Pellet pellet : level.getPellets()) {
+            if (pellet.collidesWith(level.getPlayer())) {
+                frenzyMode = true;
+                frenzyFrameCount = 0;
+                level.getPellets().remove(pellet);
+                break;
+            }
+        }
+        if (frenzyMode) {
+            frenzyFrameCount++;
+        }
 
-                if (!level1.getPlayer().hasLost()) {
-                    // Player still has more than 0 life:
-                    // draw player, switch between opening and closing mouth every 15 frames
-                    level1.getPlayer().draw();
-
-                    // draw stationary objects on screen
-                    for (Wall wall : level1.getWalls()) {
-                        wall.draw();
-                    }
-                    for (Dot dot : level1.getDots()) {
-                        dot.draw();
-                    }
-                    for (Cherry cherry : level1.getCherries()) {
-                        cherry.draw();
-                    }
-                    for (Pellet pellet : level1.getPellets()) {
-                        pellet.draw();
-                    }
-                    for (Ghost ghost : level1.getGhosts()) {
-                        if (!ghost.isEaten()) {
-                            ghost.draw(frenzyMode);
-                        }
-                    }
-
-                    // draw remaining lives and score
-                    level1.getPlayer().drawLives();
-                    level1.getPlayer().drawScore();
-
-                    if (frenzyFrameCount == FRENZY_MODE_FRAMES) {
-                        frenzyMode = false;
-                        frenzyFrameCount = 0;
-                        for (Ghost ghost : level1.getGhosts()) {
-                            if (ghost.isEaten()) {
-                                ghost.resetPosition();
-                                ghost.setEaten(false);
-                            }
+        if (ghostsMove) {
+            for (Ghost ghost : level1.getGhosts()) {
+                if (!ghost.isEaten()) {
+                    ghost.move(level1.getWalls(), frenzyMode);
+                    if (ghost.collidesWith(level1.getPlayer())) {
+                        if (frenzyMode) {
+                            level1.getPlayer().increaseScore(Ghost.FRENZY_SCORE);
+                            ghost.setEaten(true);
+                        } else {
+                            level1.getPlayer().loseLife();
+                            ghost.resetPosition();
                         }
                     }
                 }
             }
+        } else {
+            for (Ghost ghost : level.getGhosts()) {
+                if (ghost.collidesWith(level.getPlayer())) {
+                    level.getPlayer().loseLife();
+                    break;
+                }
+            }
+        }
 
+        for (Dot dot : level.getDots()) {
+            if (dot.collidesWith(level.getPlayer())) {
+                level.getPlayer().increaseScore(Dot.POINTS);
+                level.getDots().remove(dot);
+                break;
+            }
+        }
+        for (Cherry cherry : level.getCherries()) {
+            if (cherry.collidesWith(level.getPlayer())) {
+                level.getPlayer().increaseScore(Cherry.POINTS);
+                level.getCherries().remove(cherry);
+                break;
+            }
+        }
+
+        if (!level.getPlayer().hasLost()) {
+            // Player still has more than 0 life:
+            // draw player, switch between opening and closing mouth every 15 frames
+            level.getPlayer().draw();
+
+            // draw stationary objects on screen
+            for (Wall wall : level.getWalls()) {
+                wall.draw();
+            }
+            for (Dot dot : level.getDots()) {
+                dot.draw();
+            }
+            for (Cherry cherry : level.getCherries()) {
+                cherry.draw();
+            }
+            for (Pellet pellet : level.getPellets()) {
+                pellet.draw();
+            }
+            for (Ghost ghost : level.getGhosts()) {
+                if (!ghost.isEaten()) {
+                    ghost.draw(frenzyMode);
+                }
+            }
+
+            // draw remaining lives and score
+            level.getPlayer().drawLives();
+            level.getPlayer().drawScore();
+
+            if (frenzyFrameCount == FRENZY_MODE_FRAMES) {
+                frenzyMode = false;
+                frenzyFrameCount = 0;
+                for (Ghost ghost : level.getGhosts()) {
+                    if (ghost.isEaten()) {
+                        ghost.resetPosition();
+                        ghost.setEaten(false);
+                    }
+                }
+            }
         }
     }
 
