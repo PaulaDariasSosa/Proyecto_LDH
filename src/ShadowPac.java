@@ -21,7 +21,8 @@ public class ShadowPac extends AbstractGame {
     private final static int LEVEL_COMPLETE_SCREEN = 2;
     private final static int INSTRUCTION_1_SCREEN = 3;
     private final static int LEVEL_1 = 4;
-    private int screenStatus = TITLE_SCREEN;
+    private int screenStatus;
+    private boolean gameOver;
 
     private final static int COMPLETE_MESSAGE_FRAMES = 300;
     private int levelCompleteFrameCount = 0;
@@ -39,6 +40,8 @@ public class ShadowPac extends AbstractGame {
 
     public ShadowPac() {
         super(WINDOW_WIDTH, WINDOW_HEIGHT, GAME_TITLE);
+        screenStatus = TITLE_SCREEN;
+        gameOver = false;
     }
 
     /**
@@ -82,20 +85,16 @@ public class ShadowPac extends AbstractGame {
                 Message.instructionLevel1();
             } else if (screenStatus == LEVEL_0 && level0.getPlayer().wonLevel0(numDotLevel0)) {
                 screenStatus = LEVEL_COMPLETE_SCREEN;
-            } else if (level0.getPlayer().hasLost()) {
+            } else if (gameOver) {
                 Message.drawMessage(LOSE_MESSAGE);
             } else if (screenStatus == LEVEL_1 && level1.getPlayer().getPlayerScore() >= MAX_SCORE_LVL_1) {
                 // player has won
                 Message.drawMessage(WIN_MESSAGE);
             } else if (screenStatus == LEVEL_0) {
-                // Playing level 0
                 playLevel(input, level0, false);
-
             } else {
-                // Playing level 1
                 playLevel(input, level1, true);
             }
-
         }
     }
 
@@ -115,15 +114,15 @@ public class ShadowPac extends AbstractGame {
         }
 
         if (ghostsMove) {
-            for (Ghost ghost : level1.getGhosts()) {
+            for (Ghost ghost : level.getGhosts()) {
                 if (!ghost.isEaten()) {
-                    ghost.move(level1.getWalls(), frenzyMode);
-                    if (ghost.collidesWith(level1.getPlayer())) {
+                    ghost.move(level.getWalls(), frenzyMode);
+                    if (ghost.collidesWith(level.getPlayer())) {
                         if (frenzyMode) {
-                            level1.getPlayer().increaseScore(Ghost.FRENZY_SCORE);
+                            level.getPlayer().increaseScore(Ghost.FRENZY_SCORE);
                             ghost.setEaten(true);
                         } else {
-                            level1.getPlayer().loseLife();
+                            level.getPlayer().loseLife();
                             ghost.resetPosition();
                         }
                     }
@@ -153,7 +152,9 @@ public class ShadowPac extends AbstractGame {
             }
         }
 
-        if (!level.getPlayer().hasLost()) {
+        if (level.getPlayer().hasLost()){
+            gameOver = true;
+        } else {
             // Player still has more than 0 life:
             // draw player, switch between opening and closing mouth every 15 frames
             level.getPlayer().draw();
@@ -191,7 +192,7 @@ public class ShadowPac extends AbstractGame {
                     }
                 }
             }
+
         }
     }
-
 }
