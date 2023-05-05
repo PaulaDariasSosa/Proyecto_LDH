@@ -89,7 +89,7 @@ public class ShadowPac extends AbstractGame {
                 Message.drawMessage(WIN_MESSAGE);
             } else if (screenStatus == LEVEL_0) {
                 // Playing level 0
-                level0.getPlayer().playerInput(input, level0, frenzyMode);
+                level0.playerInput(input, frenzyMode);
 
                 for (Ghost ghost : level0.getGhosts()) {
                     if (ghost.collidesWith(level0.getPlayer())) {
@@ -128,7 +128,7 @@ public class ShadowPac extends AbstractGame {
                 }
             } else {
                 // Playing level 1
-                level1.getPlayer().playerInput(input, level1, frenzyMode);
+                level1.playerInput(input, frenzyMode);
 
                 for (Pellet pellet : level1.getPellets()) {
                     if (pellet.collidesWith(level1.getPlayer())) {

@@ -36,18 +36,6 @@ public class Player extends MovingEntity {
         playerScore = 0;
     }
 
-    public void playerInput(Input input, Level level, boolean frenzyMode) {
-        if (input.isDown(Keys.LEFT)) {
-            level.getPlayer().goLeft(level.getWalls(), frenzyMode);
-        } else if (input.isDown(Keys.RIGHT)) {
-            level.getPlayer().goRight(level.getWalls(), frenzyMode);
-        } else if (input.isDown(Keys.UP)) {
-            level.getPlayer().goUp(level.getWalls(), frenzyMode);
-        } else if (input.isDown(Keys.DOWN)) {
-            level.getPlayer().goDown(level.getWalls(), frenzyMode);
-        }
-    }
-
     public void goLeft(ArrayList<Wall> walls, boolean frenzyMode) {
         super.goLeft(walls, frenzyMode);
         rotation.setRotation(Math.PI);

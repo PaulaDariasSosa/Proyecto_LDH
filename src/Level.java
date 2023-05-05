@@ -1,6 +1,9 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+
+import bagel.Input;
+import bagel.Keys;
 import bagel.util.Point;
 
 public class Level {
@@ -60,6 +63,18 @@ public class Level {
             e.printStackTrace();
         }
 
+    }
+
+    public void playerInput(Input input, boolean frenzyMode) {
+        if (input.isDown(Keys.LEFT)) {
+            player.goLeft(walls, frenzyMode);
+        } else if (input.isDown(Keys.RIGHT)) {
+            player.goRight(walls, frenzyMode);
+        } else if (input.isDown(Keys.UP)) {
+            player.goUp(walls, frenzyMode);
+        } else if (input.isDown(Keys.DOWN)) {
+            player.goDown(walls, frenzyMode);
+        }
     }
 
     public Player getPlayer() {
