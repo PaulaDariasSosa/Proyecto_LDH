@@ -13,11 +13,12 @@ public abstract class Ghost extends MovingEntity {
     private int direction;
 
     private final static double FRENZY_SPEED_DECREASE = 0.5;
-    private boolean eaten = false;
+    private boolean eaten;
 
     public Ghost(Point topLeft, double speed) {
         super(topLeft, speed, speed - FRENZY_SPEED_DECREASE);
         setPosition(topLeft);
+        eaten = false;
     }
 
     public int getDirection() {
