@@ -14,12 +14,10 @@ public class Player extends MovingEntity {
     private final static Font SCORE_FONT = new Font("res/FSO8BITR.ttf", 20);
     private final static Point SCORE_POINT = new Point(25, 25);
 
-
     private final static double SPEED = 3;
     private final static double FRENZY_SPEED = 4;
 
     private final DrawOptions rotation;
-
 
     private static int lifeCount;
     private int switchFrameCount;
@@ -56,36 +54,40 @@ public class Player extends MovingEntity {
         getImage().drawFromTopLeft(getPosition().x, getPosition().y, rotation);
     }
 
+    @Override
     public void goLeft(ArrayList<Wall> walls, boolean frenzyMode) {
         super.goLeft(walls, frenzyMode);
         rotation.setRotation(Math.PI);
     }
 
+    @Override
     public void goRight(ArrayList<Wall> walls, boolean frenzyMode) {
         super.goRight(walls, frenzyMode);
         rotation.setRotation(0);
     }
 
+    @Override
     public void goUp(ArrayList<Wall> walls, boolean frenzyMode) {
         super.goUp(walls, frenzyMode);
         rotation.setRotation(1.5 * Math.PI);
     }
 
+    @Override
     public void goDown(ArrayList<Wall> walls, boolean frenzyMode) {
         super.goDown(walls, frenzyMode);
         rotation.setRotation(0.5 * Math.PI);
     }
 
     @Override
-    public boolean checkCollision(ArrayList<Wall> walls) {
-        boolean colliding = false;
+    public boolean canMove(ArrayList<Wall> walls) {
+        boolean canMove = true;
         for (Wall wall : walls) {
             if (wall.collidesWith(this)) {
-                colliding = true;
+                canMove = false;
                 break;
             }
         }
-        return colliding;
+        return canMove;
     }
 
     /**

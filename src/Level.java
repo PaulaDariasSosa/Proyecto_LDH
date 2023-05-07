@@ -64,6 +64,9 @@ public class Level {
         }
     }
 
+    /**
+     * Method that moves the player given the input and frenzy mode
+     */
     public void playerInput(Input input, boolean frenzyMode) {
         if (input.isDown(Keys.LEFT)) {
             player.goLeft(walls, frenzyMode);

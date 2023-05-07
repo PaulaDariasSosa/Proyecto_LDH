@@ -48,16 +48,16 @@ public abstract class Ghost extends MovingEntity {
     }
 
     @Override
-    public boolean checkCollision(ArrayList<Wall> walls) {
-        boolean colliding = false;
+    public boolean canMove(ArrayList<Wall> walls) {
+        boolean canMove = true;
         for (Wall wall : walls) {
             if (wall.collidesWith(this)) {
-                colliding = true;
+                canMove = false;
                 changeDirection();
                 break;
             }
         }
-        return colliding;
+        return canMove;
     }
 
     public abstract void changeDirection();

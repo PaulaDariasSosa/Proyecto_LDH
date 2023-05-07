@@ -25,7 +25,7 @@ public abstract class MovingEntity extends GameEntity {
         } else {
             pointGo = new Point(getPosition().x - speed, getPosition().y);
         }
-        if (!checkCollision(walls)) {
+        if (canMove(walls)) {
             setPosition(pointGo);
         }
         else {
@@ -39,7 +39,7 @@ public abstract class MovingEntity extends GameEntity {
         } else {
             pointGo = new Point(getPosition().x + speed, getPosition().y);
         }
-        if (!checkCollision(walls)) {
+        if (canMove(walls)) {
             setPosition(pointGo);
         }
         else {
@@ -53,7 +53,7 @@ public abstract class MovingEntity extends GameEntity {
         } else {
             pointGo = new Point(getPosition().x, getPosition().y - speed);
         }
-        if (!checkCollision(walls)) {
+        if (canMove(walls)) {
             setPosition(pointGo);
         }
         else {
@@ -67,7 +67,7 @@ public abstract class MovingEntity extends GameEntity {
         } else {
             pointGo = new Point(getPosition().x, getPosition().y + speed);
         }
-        if (!checkCollision(walls)) {
+        if (canMove(walls)) {
             setPosition(pointGo);
         }
         else {
@@ -75,7 +75,7 @@ public abstract class MovingEntity extends GameEntity {
         }
     }
 
-    public abstract boolean checkCollision(ArrayList<Wall> walls);
+    public abstract boolean canMove(ArrayList<Wall> walls);
 
     public void resetPosition() {
         setPosition(startPoint);
