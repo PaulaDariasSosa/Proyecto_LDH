@@ -11,6 +11,7 @@ public class GhostBlue extends Ghost {
         setDirection(DOWN);
     }
 
+    @Override
     public void changeDirection() {
         if (getDirection() == DOWN) {
             setDirection(UP);

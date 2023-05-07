@@ -76,6 +76,7 @@ public class Player extends MovingEntity {
         rotation.setRotation(0.5 * Math.PI);
     }
 
+    @Override
     public boolean checkCollision(ArrayList<Wall> walls) {
         boolean colliding = false;
         for (Wall wall : walls) {

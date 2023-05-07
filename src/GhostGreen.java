@@ -14,6 +14,7 @@ public class GhostGreen extends Ghost {
         setDirection(rand.nextInt(2));
     }
 
+    @Override
     public void changeDirection() {
         if (getDirection() == RIGHT) {
             setDirection(LEFT);

@@ -14,6 +14,7 @@ public class GhostPink extends Ghost {
         setDirection(rand.nextInt(4));
     }
 
+    @Override
     public void changeDirection() {
         setDirection(rand.nextInt(4));
     }

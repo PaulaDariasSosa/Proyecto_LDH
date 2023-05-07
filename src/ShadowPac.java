@@ -104,6 +104,10 @@ public class ShadowPac extends AbstractGame {
         }
     }
 
+    /**
+     * Method that plays a game level
+     * given the input, the level, and if the ghosts move.
+     */
     private void playLevel(Input input, Level level, boolean ghostsMove) {
         level.playerInput(input, frenzyMode);
 

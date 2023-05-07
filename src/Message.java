@@ -22,13 +22,24 @@ public class Message {
     private final static double INSTRUCTION_1_X = 200;
     private final static double INSTRUCTION_1_Y = 350;
 
+    /**
+     * Method used to draw the start screen title and instructions
+     */
     public static void titleScreen(String gameTitle) {
         DEFAULT_FONT.drawString(gameTitle, TITLE_X, TITLE_Y);
         INSTRUCTION_0_FONT.drawString(INSTRUCTION_0_MESSAGE, INSTRUCTION_0_X, INSTRUCTION_0_Y);
     }
+
+    /**
+     * Method used to draw the instructions before Level 1
+     */
     public static void instructionLevel1() {
         INSTRUCTION_1_FONT.drawString(INSTRUCTION_1_MESSAGE, INSTRUCTION_1_X, INSTRUCTION_1_Y);
     }
+
+    /**
+     * Method used to draw messages at the centre of the screen
+     */
     public static void drawMessage(String message) {
         DEFAULT_FONT.drawString(message, WINDOW_WIDTH/2.0 - DEFAULT_FONT.getWidth(message)/2,
                 WINDOW_HEIGHT/2.0 + DEFAULT_FONT_SIZE/2.0);

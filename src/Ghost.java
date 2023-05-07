@@ -47,6 +47,7 @@ public abstract class Ghost extends MovingEntity {
         }
     }
 
+    @Override
     public boolean checkCollision(ArrayList<Wall> walls) {
         boolean colliding = false;
         for (Wall wall : walls) {
