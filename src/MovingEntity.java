@@ -9,8 +9,8 @@ public abstract class MovingEntity extends GameEntity {
 
     public MovingEntity(Point topLeft, double speed, double frenzySpeed) {
         super(topLeft);
-        this.startPoint = topLeft;
-        pointGo = new Point(topLeft.x, topLeft.y);
+        startPoint = topLeft;
+        pointGo = topLeft;
         this.speed = speed;
         this.frenzySpeed = frenzySpeed;
     }

@@ -10,7 +10,7 @@ public class GhostPink extends Ghost {
     public GhostPink(Point topLeft) {
         super(topLeft, SPEED);
         setImage(GHOST_PINK_IMAGE);
-        // randomly generation direction between 4 directions
+        // randomly generate direction between 4 directions
         setDirection(rand.nextInt(4));
     }
 

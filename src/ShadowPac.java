@@ -163,30 +163,30 @@ public class ShadowPac extends AbstractGame {
         } else {
             // Player still has more than 0 life:
             // draw player, switch between opening and closing mouth every 15 frames
-            level.getPlayer().draw();
+            level.getPlayer().update();
 
-            // draw stationary objects on screen
+            // draw other entities
             for (Wall wall : level.getWalls()) {
-                wall.draw();
+                wall.update();
             }
             for (Dot dot : level.getDots()) {
-                dot.draw();
+                dot.update();
             }
             for (Cherry cherry : level.getCherries()) {
-                cherry.draw();
+                cherry.update();
             }
             for (Pellet pellet : level.getPellets()) {
-                pellet.draw();
+                pellet.update();
             }
             for (Ghost ghost : level.getGhosts()) {
                 if (!ghost.isEaten()) {
-                    ghost.draw(frenzyMode);
+                    ghost.update(frenzyMode);
                 }
             }
 
             // draw remaining lives and score
-            level.getPlayer().drawLives();
-            level.getPlayer().drawScore();
+            level.getPlayer().renderLives();
+            level.getPlayer().renderScore();
 
             if (frenzyFrameCount == FRENZY_MODE_FRAMES) {
                 frenzyMode = false;

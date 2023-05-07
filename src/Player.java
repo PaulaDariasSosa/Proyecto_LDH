@@ -36,6 +36,26 @@ public class Player extends MovingEntity {
         playerScore = 0;
     }
 
+    /**
+     * Method that performs state update
+     */
+    @Override
+    public void update() {
+        switchFrameCount--;
+        if (switchFrameCount == 0) {
+            // switching the image being rendered
+            if (isOpen) {
+                setImage(PAC_IMAGE);
+                isOpen = false;
+            } else {
+                setImage(PAC_OPEN_IMAGE);
+                isOpen = true;
+            }
+            switchFrameCount = SWITCH_FRAMES;
+        }
+        getImage().drawFromTopLeft(getPosition().x, getPosition().y, rotation);
+    }
+
     public void goLeft(ArrayList<Wall> walls, boolean frenzyMode) {
         super.goLeft(walls, frenzyMode);
         rotation.setRotation(Math.PI);
@@ -68,6 +88,22 @@ public class Player extends MovingEntity {
     }
 
     /**
+     * Method that renders the player's score
+     */
+    public void renderScore() {
+        SCORE_FONT.drawString("SCORE " + playerScore, SCORE_POINT.x, SCORE_POINT.y);
+    }
+
+    /**
+     * Method that renders the player's lives
+     */
+    public void renderLives() {
+        for (int i = 0; i < lifeCount; i++) {
+            HEART_IMAGE.drawFromTopLeft(FIRST_HEART_POINT.x + HEART_GAP * i, FIRST_HEART_POINT.y);
+        }
+    }
+
+    /**
      * The player collides with a ghost.
      * Loses 1 life and resets to starting position.
      * Rotation is not reset.
@@ -75,6 +111,20 @@ public class Player extends MovingEntity {
     public void loseLife() {
         lifeCount--;
         resetPosition();
+    }
+
+    /**
+     * Method that checks if the player has reached Level 0 target score
+     */
+    public boolean wonLevel0(int target) {
+        return playerScore == target * Dot.POINTS;
+    }
+
+    /**
+     * Method that checks if the player has 0 lives
+     */
+    public boolean hasLost() {
+        return lifeCount == 0;
     }
 
     public int getPlayerScore() {
@@ -85,48 +135,5 @@ public class Player extends MovingEntity {
         playerScore += dotScore;
     }
 
-    public void drawScore() {
-        SCORE_FONT.drawString("SCORE " + playerScore, SCORE_POINT.x, SCORE_POINT.y);
-    }
 
-    /**
-     * Method that checks if the player has reached the target score
-     */
-    public boolean wonLevel0(int target) {
-        return playerScore == target * Dot.POINTS;
-    }
-
-    public boolean hasLost() {
-        return lifeCount == 0;
-    }
-
-    /**
-     * Draws the player, switching between
-     * opening and closing mouths.
-     */
-    public void draw() {
-        switchFrameCount--;
-        if (switchFrameCount == 0) {
-            // switching the image being rendered
-            if (isOpen) {
-                setImage(PAC_IMAGE);
-                isOpen = false;
-            } else {
-                setImage(PAC_OPEN_IMAGE);
-                isOpen = true;
-            }
-            switchFrameCount = SWITCH_FRAMES;
-        }
-        getImage().drawFromTopLeft(getPosition().x, getPosition().y, rotation);
-    }
-
-    /**
-     * Draws the hearts, the number of which is
-     * the number of lives the player has left.
-     */
-    public void drawLives() {
-        for (int i = 0; i < lifeCount; i++) {
-            HEART_IMAGE.drawFromTopLeft(FIRST_HEART_POINT.x + HEART_GAP * i, FIRST_HEART_POINT.y);
-        }
-    }
 }

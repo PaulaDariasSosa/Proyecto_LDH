@@ -32,8 +32,8 @@ public abstract class GameEntity {
 
 
     /**
-     * Checks if the player
-     * collides with the object
+     * Checks if the object
+     * collides with the Moving entity
      */
     public boolean collidesWith(MovingEntity entity) {
         Rectangle rectangleGo = new Rectangle(entity.getPointGo(), entity.getImage().getWidth(), entity.getImage().getHeight());
@@ -41,9 +41,9 @@ public abstract class GameEntity {
     }
 
     /**
-     * Draw the image at the coordinate of the rectangle
+     * Method that performs state update
      */
-    public void draw() {
+    public void update() {
         image.drawFromTopLeft(position.x, position.y);
     }
 

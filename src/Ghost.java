@@ -21,12 +21,30 @@ public abstract class Ghost extends MovingEntity {
         eaten = false;
     }
 
-    public int getDirection() {
-        return direction;
+    /**
+     * Method that performs state update
+     */
+    public void update(boolean frenzyMode) {
+        if (frenzyMode) {
+            GHOST_FRENZY_IMAGE.drawFromTopLeft(getPosition().x, getPosition().y);
+        } else {
+            update();
+        }
     }
 
-    public void setDirection(int direction) {
-        this.direction = direction;
+    /**
+     * Method that moves the ghost given the list of walls and frenzy mode
+     */
+    public void move(ArrayList<Wall> walls, boolean frenzyMode) {
+        if (direction == LEFT) {
+            goLeft(walls, frenzyMode);
+        } else if (direction == RIGHT) {
+            goRight(walls, frenzyMode);
+        } else if (direction == UP) {
+            goUp(walls, frenzyMode);
+        } else {
+            goDown(walls, frenzyMode);
+        }
     }
 
     public boolean checkCollision(ArrayList<Wall> walls) {
@@ -43,28 +61,12 @@ public abstract class Ghost extends MovingEntity {
 
     public abstract void changeDirection();
 
-    public void move(ArrayList<Wall> walls, boolean frenzyMode) {
-        if (direction == LEFT) {
-            goLeft(walls, frenzyMode);
-        } else if (direction == RIGHT) {
-            goRight(walls, frenzyMode);
-        } else if (direction == UP) {
-            goUp(walls, frenzyMode);
-        } else {
-            goDown(walls, frenzyMode);
-        }
+    public int getDirection() {
+        return direction;
     }
 
-    /**
-     * Draws the ghost image at the
-     * coordinate of the ghost Rectangle
-     */
-    public void draw(boolean frenzyMode) {
-        if (frenzyMode) {
-            GHOST_FRENZY_IMAGE.drawFromTopLeft(getPosition().x, getPosition().y);
-        } else {
-            draw();
-        }
+    public void setDirection(int direction) {
+        this.direction = direction;
     }
 
     public boolean isEaten() {
