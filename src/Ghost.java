@@ -47,6 +47,7 @@ public abstract class Ghost extends MovingEntity {
         }
     }
 
+
     @Override
     public boolean canMove(ArrayList<Wall> walls) {
         boolean canMove = true;
