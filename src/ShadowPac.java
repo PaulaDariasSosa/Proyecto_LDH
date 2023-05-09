@@ -125,12 +125,12 @@ public class ShadowPac extends AbstractGame {
 
         if (ghostsMove) {
             for (Ghost ghost : level.getGhosts()) {
-                if (!ghost.isEaten()) {
+                if (ghost.isActive()) {
                     ghost.move(level.getWalls(), frenzyMode);
                     if (ghost.collidesWith(level.getPlayer())) {
                         if (frenzyMode) {
                             level.getPlayer().increaseScore(Ghost.FRENZY_SCORE);
-                            ghost.setEaten(true);
+                            ghost.setActive(false);
                         } else {
                             level.getPlayer().loseLife();
                             ghost.resetPosition();
@@ -183,7 +183,7 @@ public class ShadowPac extends AbstractGame {
                 pellet.update();
             }
             for (Ghost ghost : level.getGhosts()) {
-                if (!ghost.isEaten()) {
+                if (ghost.isActive()) {
                     ghost.update(frenzyMode);
                 }
             }
@@ -196,9 +196,9 @@ public class ShadowPac extends AbstractGame {
                 frenzyMode = false;
                 frenzyFrameCount = 0;
                 for (Ghost ghost : level.getGhosts()) {
-                    if (ghost.isEaten()) {
+                    if (!ghost.isActive()) {
                         ghost.resetPosition();
-                        ghost.setEaten(false);
+                        ghost.setActive(true);
                     }
                 }
             }

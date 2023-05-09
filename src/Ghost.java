@@ -13,12 +13,12 @@ public abstract class Ghost extends MovingEntity {
     private int direction;
 
     private final static double FRENZY_SPEED_DECREASE = 0.5;
-    private boolean eaten;
+    private boolean isActive;
 
     public Ghost(Point topLeft, double speed) {
         super(topLeft, speed, speed - FRENZY_SPEED_DECREASE);
         setPosition(topLeft);
-        eaten = false;
+        isActive = true;
     }
 
     /**
@@ -70,11 +70,11 @@ public abstract class Ghost extends MovingEntity {
         this.direction = direction;
     }
 
-    public boolean isEaten() {
-        return eaten;
+    public boolean isActive() {
+        return isActive;
     }
-    public void setEaten(boolean eaten) {
-        this.eaten = eaten;
+    public void setActive(boolean active) {
+        this.isActive = active;
     }
 }
 
