@@ -193,10 +193,8 @@ public class ShadowPac extends AbstractGame {
                 frenzyMode = false;
                 frenzyFrameCount = 0;
                 for (Ghost ghost : level.getGhosts()) {
-                    if (!ghost.isActive()) {
-                        ghost.resetPosition();
-                        ghost.setActive(true);
-                    }
+                    ghost.resetPosition();
+                    ghost.setActive(true);
                 }
             }
 
