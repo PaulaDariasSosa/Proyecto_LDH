@@ -34,9 +34,6 @@ public class Player extends MovingEntity {
         playerScore = 0;
     }
 
-    /**
-     * Method that performs state update
-     */
     @Override
     public void update() {
         switchFrameCount--;
@@ -52,6 +49,8 @@ public class Player extends MovingEntity {
             switchFrameCount = SWITCH_FRAMES;
         }
         getImage().drawFromTopLeft(getPosition().x, getPosition().y, rotation);
+        renderLives();
+        renderScore();
     }
 
     @Override
@@ -134,8 +133,8 @@ public class Player extends MovingEntity {
         return playerScore;
     }
 
-    public void increaseScore(int dotScore) {
-        playerScore += dotScore;
+    public void increaseScore(int score) {
+        playerScore += score;
     }
 
 

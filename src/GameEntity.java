@@ -47,5 +47,4 @@ public abstract class GameEntity {
         return new Rectangle(position, image.getWidth(), image.getHeight());
     }
 
-
 }

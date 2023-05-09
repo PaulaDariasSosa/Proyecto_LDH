@@ -1,5 +1,6 @@
 import bagel.Image;
 import bagel.util.Point;
+
 import java.util.ArrayList;
 
 public abstract class Ghost extends MovingEntity {
@@ -9,7 +10,6 @@ public abstract class Ghost extends MovingEntity {
     public final static int RIGHT = 1;
     public final static int UP = 2;
     public final static int LEFT = 3;
-
     private int direction;
 
     private final static double FRENZY_SPEED_DECREASE = 0.5;
@@ -47,7 +47,6 @@ public abstract class Ghost extends MovingEntity {
         }
     }
 
-
     @Override
     public boolean canMove(ArrayList<Wall> walls) {
         boolean canMove = true;
@@ -61,6 +60,9 @@ public abstract class Ghost extends MovingEntity {
         return canMove;
     }
 
+    /**
+     * Method that changes the direction of the ghost after colliding with a wall
+     */
     public abstract void changeDirection();
 
     public int getDirection() {
@@ -74,8 +76,10 @@ public abstract class Ghost extends MovingEntity {
     public boolean isActive() {
         return isActive;
     }
+
     public void setActive(boolean active) {
         this.isActive = active;
     }
+
 }
 
