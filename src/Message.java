@@ -86,7 +86,11 @@ public class Message {
      * Method used to draw messages at the centre of the screen
      */
     public static void finalScore(int finalScore) {
-        FINAL_SCORE_FONT.drawString("FINAL SCORE - " + finalScore, FINAL_SCORE_POINT.x, FINAL_SCORE_POINT.y);
+        if (finalScore == ShadowPac.MAX_SCORE) {
+            FINAL_SCORE_FONT.drawString("congrats lol", FINAL_SCORE_POINT.x, FINAL_SCORE_POINT.y);
+        } else {
+            FINAL_SCORE_FONT.drawString("FINAL SCORE - " + finalScore, FINAL_SCORE_POINT.x, FINAL_SCORE_POINT.y);
+        }
     }
 
 }
