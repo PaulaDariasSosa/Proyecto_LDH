@@ -15,6 +15,9 @@ public class Message {
     private final static Font HIGH_SCORE_FONT = new Font("res/FSO8BITR.ttf", 35);
     private final static Point HIGH_SCORE_POINT = new Point(DEFAULT_X + 60, 450);
 
+    private final static Font COMPLETE_FONT = new Font("res/FSO8BITR.ttf", 60);
+    private final static Point COMPLETE_POINT = new Point(140, 350);
+
     private final static String INSTRUCTION_0_MESSAGE = "PRESS SPACE TO START\nUSE ARROW KEYS TO MOVE";
     private final static Font INSTRUCTION_0_FONT = new Font("res/FSO8BITR.ttf", INSTRUCTION_0_FONT_SIZE);
     private final static double INSTRUCTION_0_X = DEFAULT_X + 60;
@@ -53,6 +56,13 @@ public class Message {
         } else {
             HIGH_SCORE_FONT.drawString("HIGH SCORE - " + highScore, HIGH_SCORE_POINT.x, HIGH_SCORE_POINT.y);
         }
+    }
+
+    /**
+     * Method used to draw the level complete messages
+     */
+    public static void levelComplete(int levelNum) {
+        COMPLETE_FONT.drawString("LEVEL " + levelNum + " COMPLETED!", COMPLETE_POINT.x, COMPLETE_POINT.y);
     }
 
     /**

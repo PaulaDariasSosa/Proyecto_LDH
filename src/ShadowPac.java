@@ -13,7 +13,6 @@ public class ShadowPac extends AbstractGame {
     private final static String LEVEL_2_FILE = "res/level1.csv";
     private final Image BACKGROUND_IMAGE = new Image("res/background0.png");
 
-    private final static String LVL_COMPLETE_MESSAGE = "LEVEL COMPLETE!";
     private final static String WIN_MESSAGE = "WELL DONE!";
     private final static String LOSE_MESSAGE = "GAME OVER!";
 
@@ -32,9 +31,9 @@ public class ShadowPac extends AbstractGame {
     private final static int COMPLETE_MESSAGE_FRAMES = 150;
     private int levelCompleteFrameCount;
 
-    private final static int TARGET_SCORE_LVL_0 = 1200;
-    private final static int TARGET_SCORE_LVL_1 = 1210;
-    private final static int TARGET_SCORE_LVL_2 = 1210;
+    private final static int TARGET_SCORE_LVL_0 = 50;
+    private final static int TARGET_SCORE_LVL_1 = 50;
+    private final static int TARGET_SCORE_LVL_2 = 50;
     public final static int MAX_SCORE = TARGET_SCORE_LVL_0 + TARGET_SCORE_LVL_1 + TARGET_SCORE_LVL_2;
 
     // Frenzy mode attributes
@@ -108,20 +107,20 @@ public class ShadowPac extends AbstractGame {
             if (screenStatus == TITLE_SCREEN) {
                 Message.titleScreen(GAME_TITLE, highScore);
             } else if (screenStatus == LVL_0_COMPLETE_SCREEN) {
-                Message.drawMessage(LVL_COMPLETE_MESSAGE);
+                Message.levelComplete(0);
                 levelCompleteFrameCount++;
             } else if (screenStatus == LVL_1_COMPLETE_SCREEN) {
-                Message.drawMessage(LVL_COMPLETE_MESSAGE);
+                Message.levelComplete(1);
                 levelCompleteFrameCount++;
             } else if (screenStatus == INSTRUCTION_1_SCREEN) {
                 Message.instructionLevel1();
             } else if (screenStatus == INSTRUCTION_2_SCREEN) {
                 Message.instructionLevel2();
-            } else if (screenStatus == LEVEL_0 && level0.getPlayer().getPlayerScore() == TARGET_SCORE_LVL_0) {
+            } else if (screenStatus == LEVEL_0 && level0.getPlayer().getPlayerScore() >= TARGET_SCORE_LVL_0) {
                 Player.setTotalScore(Player.getTotalScore() + level0.getPlayer().getPlayerScore());
                 screenStatus = LVL_0_COMPLETE_SCREEN;
                 levelCompleteFrameCount = 0;
-            } else if (screenStatus == LEVEL_1 && level1.getPlayer().getPlayerScore() == TARGET_SCORE_LVL_1) {
+            } else if (screenStatus == LEVEL_1 && level1.getPlayer().getPlayerScore() >= TARGET_SCORE_LVL_1) {
                 Player.setTotalScore(Player.getTotalScore() + level1.getPlayer().getPlayerScore());
                 screenStatus = LVL_1_COMPLETE_SCREEN;
                 levelCompleteFrameCount = 0;
