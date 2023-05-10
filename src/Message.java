@@ -25,6 +25,8 @@ public class Message {
     private final static double INSTRUCTION_1_X = 200;
     private final static double INSTRUCTION_1_Y = 350;
 
+    private final static String INSTRUCTION_2_MESSAGE = "PRESS SPACE TO TROLL\nUSE ARROW KEYS TO MOVE\nEAT THE PELLET TO ATTACK";
+
     private final static Font TARGET_FONT = new Font("res/FSO8BITR.ttf", 20);
     private final static Point TARGET_POINT = new Point(220, 25);
 
@@ -58,6 +60,13 @@ public class Message {
      */
     public static void instructionLevel1() {
         INSTRUCTION_1_FONT.drawString(INSTRUCTION_1_MESSAGE, INSTRUCTION_1_X, INSTRUCTION_1_Y);
+    }
+
+    /**
+     * Method used to draw the instructions before Level 2
+     */
+    public static void instructionLevel2() {
+        INSTRUCTION_1_FONT.drawString(INSTRUCTION_2_MESSAGE, INSTRUCTION_1_X, INSTRUCTION_1_Y);
     }
 
     /**
