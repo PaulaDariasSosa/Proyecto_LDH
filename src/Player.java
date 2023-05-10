@@ -14,7 +14,7 @@ public class Player extends MovingEntity {
     private final static Font SCORE_FONT = new Font("res/FSO8BITR.ttf", 20);
     private final static Point SCORE_POINT = new Point(25, 25);
 
-    private final static double SPEED = 9;
+    private final static double SPEED = 3;
     private final static double FRENZY_SPEED = 4;
 
     private final DrawOptions rotation;
