@@ -22,7 +22,7 @@ public class Player extends MovingEntity {
     private static int lifeCount;
     private int switchFrameCount;
     private boolean isOpen = false;
-    private int playerScore;
+    private static int playerScore;
 
     public Player(Point topLeft) {
         super(topLeft, SPEED, FRENZY_SPEED);

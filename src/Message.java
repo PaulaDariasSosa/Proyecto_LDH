@@ -22,6 +22,12 @@ public class Message {
     private final static double INSTRUCTION_1_X = 200;
     private final static double INSTRUCTION_1_Y = 350;
 
+    private final static String RETRY_MESSAGE = "PRESS SPACE TO\nRETURN TO TITLE SCREEN";
+    private final static int RETRY_FONT_SIZE = 30;
+    private final static Font RETRY_FONT = new Font("res/FSO8BITR.ttf", RETRY_FONT_SIZE);
+    private final static double RETURN_X = 300;
+    private final static double RETURN_Y = 500;
+
     /**
      * Method used to draw the start screen title and instructions
      */
@@ -35,6 +41,13 @@ public class Message {
      */
     public static void instructionLevel1() {
         INSTRUCTION_1_FONT.drawString(INSTRUCTION_1_MESSAGE, INSTRUCTION_1_X, INSTRUCTION_1_Y);
+    }
+
+    /**
+     * Method used to draw the instructions before Level 1
+     */
+    public static void returnToTitle() {
+        RETRY_FONT.drawString(RETRY_MESSAGE, RETURN_X, RETURN_Y);
     }
 
     /**

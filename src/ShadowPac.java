@@ -28,16 +28,16 @@ public class ShadowPac extends AbstractGame {
     private final static int COMPLETE_MESSAGE_FRAMES = 300;
     private int levelCompleteFrameCount;
 
-    private final static int MAX_SCORE_LVL_0 = 1210;
-    private final static int MAX_SCORE_LVL_1 = 800;
+    private final static int TARGET_SCORE_LVL_0 = 1210;
+    private final static int TARGET_SCORE_LVL_1 = 2000;
 
     // Frenzy mode attributes
     private final static int FRENZY_MODE_FRAMES = 1000;
     private boolean frenzyMode;
     private int frenzyFrameCount;
 
-    private final Level level0 = new Level(LEVEL_0_FILE);
-    private final Level level1 = new Level(LEVEL_1_FILE);
+    private Level level0 = new Level(LEVEL_0_FILE);
+    private Level level1 = new Level(LEVEL_1_FILE);
 
     public ShadowPac() {
         super(WINDOW_WIDTH, WINDOW_HEIGHT, GAME_TITLE);
@@ -86,23 +86,33 @@ public class ShadowPac extends AbstractGame {
                 levelCompleteFrameCount++;
             } else if (screenStatus == INSTRUCTION_1_SCREEN) {
                 Message.instructionLevel1();
-            } else if (screenStatus == LEVEL_0 && level0.getPlayer().getPlayerScore() == MAX_SCORE_LVL_0) {
+            } else if (screenStatus == LEVEL_0 && level0.getPlayer().getPlayerScore() == TARGET_SCORE_LVL_0) {
                 screenStatus = LVL_COMPLETE_SCREEN;
                 levelCompleteFrameCount = 0;
             } else if (gameOver) {
                 Message.drawMessage(LOSE_MESSAGE);
+                Message.returnToTitle();
                 if (input.wasPressed(Keys.SPACE)) {
-
-                    screenStatus = LEVEL_0;
+                    level0 = new Level(LEVEL_0_FILE);
+                    level1 = new Level(LEVEL_1_FILE);
+                    gameOver = false;
+                    screenStatus = TITLE_SCREEN;
                 }
 
             } else if (playerWin) {
                 Message.drawMessage(WIN_MESSAGE);
+                Message.returnToTitle();
+                if (input.wasPressed(Keys.SPACE)) {
+                    level0 = new Level(LEVEL_0_FILE);
+                    level1 = new Level(LEVEL_1_FILE);
+                    playerWin = false;
+                    screenStatus = TITLE_SCREEN;
+                }
             } else if (screenStatus == LEVEL_0) {
                 playLevel(input, level0);
             } else {
                 playLevel(input, level1);
-                if (level1.getPlayer().getPlayerScore() == MAX_SCORE_LVL_1) {
+                if (level1.getPlayer().getPlayerScore() == TARGET_SCORE_LVL_1) {
                     playerWin = true;
                 }
             }
