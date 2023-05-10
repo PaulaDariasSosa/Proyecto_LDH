@@ -28,8 +28,8 @@ public class ShadowPac extends AbstractGame {
     private final static int COMPLETE_MESSAGE_FRAMES = 150;
     private int levelCompleteFrameCount;
 
-    private final static int TARGET_SCORE_LVL_0 = 1210;
-    private final static int TARGET_SCORE_LVL_1 = 1000;
+    private final static int TARGET_SCORE_LVL_0 = 1200;
+    private final static int TARGET_SCORE_LVL_1 = 1210;
     public final static int MAX_SCORE = TARGET_SCORE_LVL_0 + TARGET_SCORE_LVL_1;
 
     // Frenzy mode attributes
