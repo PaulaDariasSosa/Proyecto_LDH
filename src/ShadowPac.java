@@ -192,7 +192,7 @@ public class ShadowPac extends AbstractGame {
             gameOver = true;
         } else {
             Message.renderLevel(levelNum, targetScore);
-            level.getPlayer().update();
+            level.getPlayer().update(input);
 
             for (Wall wall : level.getWalls()) {
                 wall.update();
@@ -220,7 +220,9 @@ public class ShadowPac extends AbstractGame {
                 frenzyMode = false;
                 frenzyFrameCount = 0;
                 for (Ghost ghost : level.getGhosts()) {
-                    ghost.resetPosition();
+                    if (!ghost.isActive()) {
+                        ghost.resetPosition();
+                    }
                     ghost.setActive(true);
                 }
             }

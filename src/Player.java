@@ -9,7 +9,7 @@ public class Player extends MovingEntity {
     private final static Image HEART_IMAGE = new Image("res/heart.png");
     private final static int STARTING_LIVES = 3;
     private static final int MAX_LIVES = 5;
-    private final static int SWITCH_FRAMES = 15;
+    private final static int SWITCH_FRAMES = 8;
     private final static int HEART_GAP = 30;
     private final static Point FIRST_HEART_POINT = new Point(850, 10);
     private final static Font SCORE_FONT = new Font("res/FSO8BITR.ttf", 20);
@@ -36,17 +36,18 @@ public class Player extends MovingEntity {
         playerScore = 0;
     }
 
-    @Override
-    public void update() {
+    public void update(Input input) {
         switchFrameCount--;
         if (switchFrameCount == 0) {
-            // switching the image being rendered
-            if (isOpen) {
-                setImage(PAC_IMAGE);
-                isOpen = false;
-            } else {
-                setImage(PAC_OPEN_IMAGE);
-                isOpen = true;
+            if (input.isDown(Keys.RIGHT) || input.isDown(Keys.DOWN) || input.isDown(Keys.UP) || input.isDown(Keys.LEFT)) {
+                // switching the image being rendered
+                if (isOpen) {
+                    setImage(PAC_IMAGE);
+                    isOpen = false;
+                } else {
+                    setImage(PAC_OPEN_IMAGE);
+                    isOpen = true;
+                }
             }
             switchFrameCount = SWITCH_FRAMES;
         }
