@@ -10,7 +10,7 @@ public class Message {
     private final static int INSTRUCTION_1_FONT_SIZE = 40;
     private final static Font DEFAULT_FONT = new Font("res/FSO8BITR.ttf", DEFAULT_FONT_SIZE);
     private final static double TITLE_X = 260;
-    private final static double TITLE_Y = 250;
+    private final static double TITLE_Y = 350;
 
     private final static String INSTRUCTION_0_MESSAGE = "PRESS SPACE TO START\nUSE ARROW KEYS TO MOVE";
     private final static Font INSTRUCTION_0_FONT = new Font("res/FSO8BITR.ttf", INSTRUCTION_0_FONT_SIZE);

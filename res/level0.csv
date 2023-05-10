@@ -1,8 +1,8 @@
 Player,474,662
 Ghost,474,462
-Ghost,542,377
-Ghost,270,110
-Ghost,922,562
+Ghost,542,360
+GhostPink,270,110
+GhostBlue,922,562
 Wall,12,50
 Wall,12,100
 Wall,12,150

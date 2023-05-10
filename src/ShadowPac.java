@@ -94,9 +94,9 @@ public class ShadowPac extends AbstractGame {
             } else if (playerWin) {
                 Message.drawMessage(WIN_MESSAGE);
             } else if (screenStatus == LEVEL_0) {
-                playLevel(input, level0, false);
+                playLevel(input, level0);
             } else {
-                playLevel(input, level1, true);
+                playLevel(input, level1);
                 if (level1.getPlayer().getPlayerScore() == MAX_SCORE_LVL_1) {
                     playerWin = true;
                 }
@@ -108,7 +108,7 @@ public class ShadowPac extends AbstractGame {
      * Method that plays a game level
      * given the input, the level, and if the ghosts move.
      */
-    private void playLevel(Input input, Level level, boolean ghostsMove) {
+    private void playLevel(Input input, Level level) {
         level.playerInput(input, frenzyMode);
 
         for (Pellet pellet : level.getPellets()) {
@@ -123,26 +123,17 @@ public class ShadowPac extends AbstractGame {
             frenzyFrameCount++;
         }
 
-        if (ghostsMove) {
-            for (Ghost ghost : level.getGhosts()) {
-                if (ghost.isActive()) {
-                    ghost.move(level.getWalls(), frenzyMode);
-                    if (ghost.collidesWith(level.getPlayer())) {
-                        if (frenzyMode) {
-                            level.getPlayer().increaseScore(Ghost.FRENZY_SCORE);
-                            ghost.setActive(false);
-                        } else {
-                            level.getPlayer().loseLife();
-                            ghost.resetPosition();
-                        }
-                    }
-                }
-            }
-        } else {
-            for (Ghost ghost : level.getGhosts()) {
+        for (Ghost ghost : level.getGhosts()) {
+            if (ghost.isActive()) {
+                ghost.move(level.getWalls(), frenzyMode);
                 if (ghost.collidesWith(level.getPlayer())) {
-                    level.getPlayer().loseLife();
-                    break;
+                    if (frenzyMode) {
+                        level.getPlayer().increaseScore(Ghost.FRENZY_SCORE);
+                        ghost.setActive(false);
+                    } else {
+                        level.getPlayer().loseLife();
+                        ghost.resetPosition();
+                    }
                 }
             }
         }
