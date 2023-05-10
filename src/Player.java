@@ -56,25 +56,25 @@ public class Player extends MovingEntity {
     @Override
     public void goLeft(ArrayList<Wall> walls, boolean frenzyMode) {
         super.goLeft(walls, frenzyMode);
-        rotation.setRotation(Math.PI);
+        rotation.setRotation(0.5 * Math.PI);
     }
 
     @Override
     public void goRight(ArrayList<Wall> walls, boolean frenzyMode) {
         super.goRight(walls, frenzyMode);
-        rotation.setRotation(0);
+        rotation.setRotation(1.5 * Math.PI);
     }
 
     @Override
     public void goUp(ArrayList<Wall> walls, boolean frenzyMode) {
         super.goUp(walls, frenzyMode);
-        rotation.setRotation(1.5 * Math.PI);
+        rotation.setRotation(Math.PI);
     }
 
     @Override
     public void goDown(ArrayList<Wall> walls, boolean frenzyMode) {
         super.goDown(walls, frenzyMode);
-        rotation.setRotation(0.5 * Math.PI);
+        rotation.setRotation(0);
     }
 
     @Override

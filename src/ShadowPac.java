@@ -7,7 +7,7 @@ import bagel.*;
 public class ShadowPac extends AbstractGame {
     private final static int WINDOW_WIDTH = 1024;
     private final static int WINDOW_HEIGHT = 768;
-    private final static String GAME_TITLE = "SHADOW PAC";
+    private final static String GAME_TITLE = "SHADOW TUKA";
     private final static String LEVEL_0_FILE = "res/level0.csv";
     private final static String LEVEL_1_FILE = "res/level1.csv";
     private final Image BACKGROUND_IMAGE = new Image("res/background0.png");
