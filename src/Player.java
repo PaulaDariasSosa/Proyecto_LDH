@@ -116,13 +116,6 @@ public class Player extends MovingEntity {
     }
 
     /**
-     * Method that checks if the player has reached Level 0 target score
-     */
-    public boolean wonLevel0(int target) {
-        return playerScore == target * Dot.POINTS;
-    }
-
-    /**
      * Method that checks if the player has 0 lives
      */
     public boolean hasLost() {
@@ -136,6 +129,5 @@ public class Player extends MovingEntity {
     public void increaseScore(int score) {
         playerScore += score;
     }
-
 
 }

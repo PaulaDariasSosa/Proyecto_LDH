@@ -28,6 +28,7 @@ public class ShadowPac extends AbstractGame {
     private final static int COMPLETE_MESSAGE_FRAMES = 300;
     private int levelCompleteFrameCount;
 
+    private final static int MAX_SCORE_LVL_0 = 1210;
     private final static int MAX_SCORE_LVL_1 = 800;
 
     // Frenzy mode attributes
@@ -36,7 +37,6 @@ public class ShadowPac extends AbstractGame {
     private int frenzyFrameCount;
 
     private final Level level0 = new Level(LEVEL_0_FILE);
-    private final int numDotLevel0 = level0.getNumDots();
     private final Level level1 = new Level(LEVEL_1_FILE);
 
     public ShadowPac() {
@@ -86,11 +86,16 @@ public class ShadowPac extends AbstractGame {
                 levelCompleteFrameCount++;
             } else if (screenStatus == INSTRUCTION_1_SCREEN) {
                 Message.instructionLevel1();
-            } else if (screenStatus == LEVEL_0 && level0.getPlayer().wonLevel0(numDotLevel0)) {
+            } else if (screenStatus == LEVEL_0 && level0.getPlayer().getPlayerScore() == MAX_SCORE_LVL_0) {
                 screenStatus = LVL_COMPLETE_SCREEN;
                 levelCompleteFrameCount = 0;
             } else if (gameOver) {
                 Message.drawMessage(LOSE_MESSAGE);
+                if (input.wasPressed(Keys.SPACE)) {
+
+                    screenStatus = LEVEL_0;
+                }
+
             } else if (playerWin) {
                 Message.drawMessage(WIN_MESSAGE);
             } else if (screenStatus == LEVEL_0) {
