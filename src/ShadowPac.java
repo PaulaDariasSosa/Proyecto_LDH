@@ -166,6 +166,7 @@ public class ShadowPac extends AbstractGame {
         for (Cherry cherry : level.getCherries()) {
             if (cherry.collidesWith(level.getPlayer())) {
                 Player.increaseScore(Cherry.POINTS);
+                Player.extraLife();
                 level.getCherries().remove(cherry);
                 break;
             }

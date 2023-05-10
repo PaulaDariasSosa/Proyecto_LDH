@@ -10,7 +10,7 @@ public class Player extends MovingEntity {
     private final static int MAX_LIFE = 3;
     private final static int SWITCH_FRAMES = 15;
     private final static int HEART_GAP = 30;
-    private final static Point FIRST_HEART_POINT = new Point(900, 10);
+    private final static Point FIRST_HEART_POINT = new Point(850, 10);
     private final static Font SCORE_FONT = new Font("res/FSO8BITR.ttf", 20);
     private final static Point SCORE_POINT = new Point(25, 25);
 
@@ -103,6 +103,14 @@ public class Player extends MovingEntity {
         for (int i = 0; i < lifeCount; i++) {
             HEART_IMAGE.drawFromTopLeft(FIRST_HEART_POINT.x + HEART_GAP * i, FIRST_HEART_POINT.y);
         }
+    }
+
+    /**
+     * The player eats a cherry.
+     * Gains 1 extra life
+     */
+    public static void extraLife() {
+        lifeCount++;
     }
 
     /**
