@@ -25,7 +25,7 @@ public class ShadowPac extends AbstractGame {
     private boolean gameOver;
     private boolean playerWin;
 
-    private final static int COMPLETE_MESSAGE_FRAMES = 300;
+    private final static int COMPLETE_MESSAGE_FRAMES = 150;
     private int levelCompleteFrameCount;
 
     private final static int TARGET_SCORE_LVL_0 = 1210;

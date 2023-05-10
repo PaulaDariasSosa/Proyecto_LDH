@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class GhostPink extends Ghost {
     private final static Image GHOST_PINK_IMAGE = new Image("res/ghostPink.png");
-    private final static double SPEED = 3;
+    private final static double SPEED = 6;
     private final Random rand = new Random();
 
     public GhostPink(Point topLeft) {

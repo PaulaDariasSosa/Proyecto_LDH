@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class GhostGreen extends Ghost {
     private final static Image GHOST_GREEN_IMAGE = new Image("res/ghostGreen.png");
-    private final static double SPEED = 4;
+    private final static double SPEED = 8;
 
     public GhostGreen(Point topLeft) {
         super(topLeft, SPEED);
