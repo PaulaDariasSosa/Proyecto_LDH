@@ -18,6 +18,9 @@ public class Message {
     private final static double INSTRUCTION_0_X = TITLE_X + 60;
     private final static double INSTRUCTION_0_Y = TITLE_Y + 190;
 
+    private final static Font HIGH_SCORE_FONT = new Font("res/FSO8BITR.ttf", 30);
+    private final static Point HIGH_SCORE_POINT = new Point(370, 450);
+
     private final static String INSTRUCTION_1_MESSAGE = "PRESS SPACE TO START\nUSE ARROW KEYS TO MOVE\nEAT THE PELLET TO ATTACK";
     private final static Font INSTRUCTION_1_FONT = new Font("res/FSO8BITR.ttf", INSTRUCTION_1_FONT_SIZE);
     private final static double INSTRUCTION_1_X = 200;
@@ -29,6 +32,9 @@ public class Message {
     private final static double RETURN_X = 300;
     private final static double RETURN_Y = 500;
 
+    private final static Font TARGET_FONT = new Font("res/FSO8BITR.ttf", 20);
+    private final static Point TARGET_POINT = new Point(220, 25);
+
     private final static Font LEVEL_FONT = new Font("res/FSO8BITR.ttf", 30);
     private final static Point LEVEL_POINT = new Point(WINDOW_WIDTH/2.0, 30);
 
@@ -36,9 +42,10 @@ public class Message {
     /**
      * Method used to draw the start screen title and instructions
      */
-    public static void titleScreen(String gameTitle) {
+    public static void titleScreen(String gameTitle, int highScore) {
         DEFAULT_FONT.drawString(gameTitle, TITLE_X, TITLE_Y);
         INSTRUCTION_0_FONT.drawString(INSTRUCTION_0_MESSAGE, INSTRUCTION_0_X, INSTRUCTION_0_Y);
+        HIGH_SCORE_FONT.drawString("HIGH SCORE - " + highScore, HIGH_SCORE_POINT.x, HIGH_SCORE_POINT.y);
     }
 
     /**
@@ -66,7 +73,8 @@ public class Message {
     /**
      * Method used to draw messages at the centre of the screen
      */
-    public static void renderLevel(int levelNum) {
+    public static void renderLevel(int levelNum, int targetScore) {
+        TARGET_FONT.drawString("TARGET " + targetScore, TARGET_POINT.x, TARGET_POINT.y);
         LEVEL_FONT.drawString("LEVEL " + levelNum, LEVEL_POINT.x, LEVEL_POINT.y);
     }
 

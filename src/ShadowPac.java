@@ -36,6 +36,8 @@ public class ShadowPac extends AbstractGame {
     private boolean frenzyMode;
     private int frenzyFrameCount;
 
+    private int highScore;
+
     private Level level0 = new Level(LEVEL_0_FILE);
     private Level level1 = new Level(LEVEL_1_FILE);
 
@@ -45,6 +47,7 @@ public class ShadowPac extends AbstractGame {
         gameOver = false;
         playerWin = false;
         frenzyMode = false;
+        highScore = 0;
     }
 
     /**
@@ -80,13 +83,13 @@ public class ShadowPac extends AbstractGame {
             }
 
             if (screenStatus == TITLE_SCREEN) {
-                Message.titleScreen(GAME_TITLE);
+                Message.titleScreen(GAME_TITLE, highScore);
             } else if (screenStatus == LVL_COMPLETE_SCREEN) {
                 Message.drawMessage(LVL_COMPLETE_MESSAGE);
                 levelCompleteFrameCount++;
             } else if (screenStatus == INSTRUCTION_1_SCREEN) {
                 Message.instructionLevel1();
-            } else if (screenStatus == LEVEL_0 && level0.getPlayer().getPlayerScore() == TARGET_SCORE_LVL_0) {
+            } else if (screenStatus == LEVEL_0 && Player.getPlayerScore() == TARGET_SCORE_LVL_0) {
                 screenStatus = LVL_COMPLETE_SCREEN;
                 levelCompleteFrameCount = 0;
             } else if (gameOver) {
@@ -109,10 +112,10 @@ public class ShadowPac extends AbstractGame {
                     screenStatus = TITLE_SCREEN;
                 }
             } else if (screenStatus == LEVEL_0) {
-                playLevel(input, level0, 0);
+                playLevel(input, level0, 0, TARGET_SCORE_LVL_0);
             } else {
-                playLevel(input, level1, 1);
-                if (level1.getPlayer().getPlayerScore() == TARGET_SCORE_LVL_1) {
+                playLevel(input, level1, 1, TARGET_SCORE_LVL_1);
+                if (Player.getPlayerScore() == TARGET_SCORE_LVL_1) {
                     playerWin = true;
                 }
             }
@@ -123,7 +126,7 @@ public class ShadowPac extends AbstractGame {
      * Method that plays a game level
      * given the input, the level, and if the ghosts move.
      */
-    private void playLevel(Input input, Level level, int levelNum) {
+    private void playLevel(Input input, Level level, int levelNum, int targetScore) {
         level.playerInput(input, frenzyMode);
 
         for (Pellet pellet : level.getPellets()) {
@@ -143,7 +146,7 @@ public class ShadowPac extends AbstractGame {
                 ghost.move(level.getWalls(), frenzyMode);
                 if (ghost.collidesWith(level.getPlayer())) {
                     if (frenzyMode) {
-                        level.getPlayer().increaseScore(Ghost.FRENZY_SCORE);
+                        Player.increaseScore(Ghost.FRENZY_SCORE);
                         ghost.setActive(false);
                     } else {
                         level.getPlayer().loseLife();
@@ -155,23 +158,26 @@ public class ShadowPac extends AbstractGame {
 
         for (Dot dot : level.getDots()) {
             if (dot.collidesWith(level.getPlayer())) {
-                level.getPlayer().increaseScore(Dot.POINTS);
+                Player.increaseScore(Dot.POINTS);
                 level.getDots().remove(dot);
                 break;
             }
         }
         for (Cherry cherry : level.getCherries()) {
             if (cherry.collidesWith(level.getPlayer())) {
-                level.getPlayer().increaseScore(Cherry.POINTS);
+                Player.increaseScore(Cherry.POINTS);
                 level.getCherries().remove(cherry);
                 break;
             }
         }
 
-        if (level.getPlayer().hasLost()) {
+        if (Player.hasLost()) {
+            if (highScore < Player.getPlayerScore()) {
+                highScore = Player.getPlayerScore();
+            }
             gameOver = true;
         } else {
-            Message.renderLevel(levelNum);
+            Message.renderLevel(levelNum, targetScore);
             level.getPlayer().update();
 
             for (Wall wall : level.getWalls()) {

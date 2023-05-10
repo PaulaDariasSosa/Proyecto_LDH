@@ -92,14 +92,14 @@ public class Player extends MovingEntity {
     /**
      * Method that renders the player's score
      */
-    public void renderScore() {
+    public static void renderScore() {
         SCORE_FONT.drawString("SCORE " + playerScore, SCORE_POINT.x, SCORE_POINT.y);
     }
 
     /**
      * Method that renders the player's lives
      */
-    public void renderLives() {
+    public static void renderLives() {
         for (int i = 0; i < lifeCount; i++) {
             HEART_IMAGE.drawFromTopLeft(FIRST_HEART_POINT.x + HEART_GAP * i, FIRST_HEART_POINT.y);
         }
@@ -118,15 +118,15 @@ public class Player extends MovingEntity {
     /**
      * Method that checks if the player has 0 lives
      */
-    public boolean hasLost() {
+    public static boolean hasLost() {
         return lifeCount == 0;
     }
 
-    public int getPlayerScore() {
+    public static int getPlayerScore() {
         return playerScore;
     }
 
-    public void increaseScore(int score) {
+    public static void increaseScore(int score) {
         playerScore += score;
     }
 
