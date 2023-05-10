@@ -109,9 +109,9 @@ public class ShadowPac extends AbstractGame {
                     screenStatus = TITLE_SCREEN;
                 }
             } else if (screenStatus == LEVEL_0) {
-                playLevel(input, level0);
+                playLevel(input, level0, 0);
             } else {
-                playLevel(input, level1);
+                playLevel(input, level1, 1);
                 if (level1.getPlayer().getPlayerScore() == TARGET_SCORE_LVL_1) {
                     playerWin = true;
                 }
@@ -123,7 +123,7 @@ public class ShadowPac extends AbstractGame {
      * Method that plays a game level
      * given the input, the level, and if the ghosts move.
      */
-    private void playLevel(Input input, Level level) {
+    private void playLevel(Input input, Level level, int levelNum) {
         level.playerInput(input, frenzyMode);
 
         for (Pellet pellet : level.getPellets()) {
@@ -171,6 +171,7 @@ public class ShadowPac extends AbstractGame {
         if (level.getPlayer().hasLost()) {
             gameOver = true;
         } else {
+            Message.renderLevel(levelNum);
             level.getPlayer().update();
 
             for (Wall wall : level.getWalls()) {

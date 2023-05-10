@@ -1,5 +1,6 @@
 import bagel.Font;
 import bagel.Window;
+import bagel.util.Point;
 
 public class Message {
     private final static int WINDOW_WIDTH = Window.getWidth();
@@ -28,6 +29,10 @@ public class Message {
     private final static double RETURN_X = 300;
     private final static double RETURN_Y = 500;
 
+    private final static Font LEVEL_FONT = new Font("res/FSO8BITR.ttf", 30);
+    private final static Point LEVEL_POINT = new Point(WINDOW_WIDTH/2.0, 30);
+
+
     /**
      * Method used to draw the start screen title and instructions
      */
@@ -44,7 +49,7 @@ public class Message {
     }
 
     /**
-     * Method used to draw the instructions before Level 1
+     * Method used to draw the return to title screen instruction
      */
     public static void returnToTitle() {
         RETRY_FONT.drawString(RETRY_MESSAGE, RETURN_X, RETURN_Y);
@@ -56,6 +61,13 @@ public class Message {
     public static void drawMessage(String message) {
         DEFAULT_FONT.drawString(message, WINDOW_WIDTH/2.0 - DEFAULT_FONT.getWidth(message)/2,
                 WINDOW_HEIGHT/2.0 + DEFAULT_FONT_SIZE/2.0);
+    }
+
+    /**
+     * Method used to draw messages at the centre of the screen
+     */
+    public static void renderLevel(int levelNum) {
+        LEVEL_FONT.drawString("LEVEL " + levelNum, LEVEL_POINT.x, LEVEL_POINT.y);
     }
 
 }
