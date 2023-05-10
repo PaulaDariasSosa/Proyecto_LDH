@@ -19,7 +19,7 @@ public class Message {
     private final static double INSTRUCTION_0_Y = TITLE_Y + 190;
 
     private final static Font HIGH_SCORE_FONT = new Font("res/FSO8BITR.ttf", 30);
-    private final static Point HIGH_SCORE_POINT = new Point(370, 450);
+    private final static Point HIGH_SCORE_POINT = new Point(340, 450);
 
     private final static String INSTRUCTION_1_MESSAGE = "PRESS SPACE TO START\nUSE ARROW KEYS TO MOVE\nEAT THE PELLET TO ATTACK";
     private final static Font INSTRUCTION_1_FONT = new Font("res/FSO8BITR.ttf", INSTRUCTION_1_FONT_SIZE);
@@ -45,7 +45,11 @@ public class Message {
     public static void titleScreen(String gameTitle, int highScore) {
         DEFAULT_FONT.drawString(gameTitle, TITLE_X, TITLE_Y);
         INSTRUCTION_0_FONT.drawString(INSTRUCTION_0_MESSAGE, INSTRUCTION_0_X, INSTRUCTION_0_Y);
-        HIGH_SCORE_FONT.drawString("HIGH SCORE - " + highScore, HIGH_SCORE_POINT.x, HIGH_SCORE_POINT.y);
+        if (highScore == ShadowPac.MAX_SCORE) {
+            HIGH_SCORE_FONT.drawString("HIGH SCORE - congrats", HIGH_SCORE_POINT.x, HIGH_SCORE_POINT.y);
+        } else {
+            HIGH_SCORE_FONT.drawString("HIGH SCORE - " + highScore, HIGH_SCORE_POINT.x, HIGH_SCORE_POINT.y);
+        }
     }
 
     /**

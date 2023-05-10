@@ -29,7 +29,8 @@ public class ShadowPac extends AbstractGame {
     private int levelCompleteFrameCount;
 
     private final static int TARGET_SCORE_LVL_0 = 1210;
-    private final static int TARGET_SCORE_LVL_1 = 2000;
+    private final static int TARGET_SCORE_LVL_1 = 1000;
+    public final static int MAX_SCORE = TARGET_SCORE_LVL_0 + TARGET_SCORE_LVL_1;
 
     // Frenzy mode attributes
     private final static int FRENZY_MODE_FRAMES = 1000;
@@ -71,9 +72,19 @@ public class ShadowPac extends AbstractGame {
 
             if (screenStatus == TITLE_SCREEN) {
                 if (input.wasPressed(Keys.SPACE)) {
+                    level0 = new Level(LEVEL_0_FILE);
+                    level1 = new Level(LEVEL_1_FILE);
+                    gameOver = false;
+                    playerWin = false;
+                    Player.setTotalScore(0);
                     screenStatus = LEVEL_0;
                 }
                 if (input.wasPressed(Keys.W)) {
+                    level0 = new Level(LEVEL_0_FILE);
+                    level1 = new Level(LEVEL_1_FILE);
+                    gameOver = false;
+                    playerWin = false;
+                    Player.setTotalScore(0);
                     screenStatus = LEVEL_1;
                 }
             } else if (screenStatus == INSTRUCTION_1_SCREEN && input.wasPressed(Keys.SPACE)) {
@@ -89,16 +100,14 @@ public class ShadowPac extends AbstractGame {
                 levelCompleteFrameCount++;
             } else if (screenStatus == INSTRUCTION_1_SCREEN) {
                 Message.instructionLevel1();
-            } else if (screenStatus == LEVEL_0 && Player.getPlayerScore() == TARGET_SCORE_LVL_0) {
+            } else if (screenStatus == LEVEL_0 && level0.getPlayer().getPlayerScore() == TARGET_SCORE_LVL_0) {
+                Player.setTotalScore(Player.getTotalScore() + level0.getPlayer().getPlayerScore());
                 screenStatus = LVL_COMPLETE_SCREEN;
                 levelCompleteFrameCount = 0;
             } else if (gameOver) {
                 Message.drawMessage(LOSE_MESSAGE);
                 Message.returnToTitle();
                 if (input.wasPressed(Keys.SPACE)) {
-                    level0 = new Level(LEVEL_0_FILE);
-                    level1 = new Level(LEVEL_1_FILE);
-                    gameOver = false;
                     screenStatus = TITLE_SCREEN;
                 }
 
@@ -106,16 +115,17 @@ public class ShadowPac extends AbstractGame {
                 Message.drawMessage(WIN_MESSAGE);
                 Message.returnToTitle();
                 if (input.wasPressed(Keys.SPACE)) {
-                    level0 = new Level(LEVEL_0_FILE);
-                    level1 = new Level(LEVEL_1_FILE);
-                    playerWin = false;
                     screenStatus = TITLE_SCREEN;
                 }
             } else if (screenStatus == LEVEL_0) {
                 playLevel(input, level0, 0, TARGET_SCORE_LVL_0);
             } else {
                 playLevel(input, level1, 1, TARGET_SCORE_LVL_1);
-                if (Player.getPlayerScore() == TARGET_SCORE_LVL_1) {
+                if (level1.getPlayer().getPlayerScore() == TARGET_SCORE_LVL_1) {
+                    Player.setTotalScore(Player.getTotalScore() + level1.getPlayer().getPlayerScore());
+                    if (highScore < Player.getTotalScore()) {
+                        highScore = Player.getTotalScore();
+                    }
                     playerWin = true;
                 }
             }
@@ -146,7 +156,7 @@ public class ShadowPac extends AbstractGame {
                 ghost.move(level.getWalls(), frenzyMode);
                 if (ghost.collidesWith(level.getPlayer())) {
                     if (frenzyMode) {
-                        Player.increaseScore(Ghost.FRENZY_SCORE);
+                        level.getPlayer().increaseScore(Ghost.FRENZY_SCORE);
                         ghost.setActive(false);
                     } else {
                         level.getPlayer().loseLife();
@@ -158,14 +168,14 @@ public class ShadowPac extends AbstractGame {
 
         for (Dot dot : level.getDots()) {
             if (dot.collidesWith(level.getPlayer())) {
-                Player.increaseScore(Dot.POINTS);
+                level.getPlayer().increaseScore(Dot.POINTS);
                 level.getDots().remove(dot);
                 break;
             }
         }
         for (Cherry cherry : level.getCherries()) {
             if (cherry.collidesWith(level.getPlayer())) {
-                Player.increaseScore(Cherry.POINTS);
+                level.getPlayer().increaseScore(Cherry.POINTS);
                 Player.extraLife();
                 level.getCherries().remove(cherry);
                 break;
@@ -173,8 +183,9 @@ public class ShadowPac extends AbstractGame {
         }
 
         if (Player.hasLost()) {
-            if (highScore < Player.getPlayerScore()) {
-                highScore = Player.getPlayerScore();
+            Player.setTotalScore(Player.getTotalScore() + level.getPlayer().getPlayerScore());
+            if (highScore < Player.getTotalScore()) {
+                highScore = Player.getTotalScore();
             }
             gameOver = true;
         } else {

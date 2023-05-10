@@ -22,7 +22,8 @@ public class Player extends MovingEntity {
     private static int lifeCount;
     private int switchFrameCount;
     private boolean isOpen = false;
-    private static int playerScore;
+    private int playerScore;
+    private static int totalScore;
 
     public Player(Point topLeft) {
         super(topLeft, SPEED, FRENZY_SPEED);
@@ -92,7 +93,7 @@ public class Player extends MovingEntity {
     /**
      * Method that renders the player's score
      */
-    public static void renderScore() {
+    public void renderScore() {
         SCORE_FONT.drawString("SCORE " + playerScore, SCORE_POINT.x, SCORE_POINT.y);
     }
 
@@ -130,12 +131,19 @@ public class Player extends MovingEntity {
         return lifeCount == 0;
     }
 
-    public static int getPlayerScore() {
+    public int getPlayerScore() {
         return playerScore;
     }
 
-    public static void increaseScore(int score) {
+    public void increaseScore(int score) {
         playerScore += score;
     }
 
+    public static int getTotalScore() {
+        return totalScore;
+    }
+
+    public static void setTotalScore(int totalScore) {
+        Player.totalScore = totalScore;
+    }
 }
