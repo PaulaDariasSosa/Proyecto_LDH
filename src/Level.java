@@ -35,7 +35,6 @@ public class Level {
                     case "Wall":
                         walls.add(new Wall(point));
                         break;
-                    case "Ghost":
                     case "GhostRed":
                         ghosts.add(new GhostRed(point));
                         break;
@@ -93,10 +92,6 @@ public class Level {
 
     public ArrayList<Dot> getDots() {
         return dots;
-    }
-
-    public int getNumDots() {
-        return dots.size();
     }
 
     public ArrayList<Cherry> getCherries() {

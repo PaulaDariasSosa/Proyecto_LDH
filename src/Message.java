@@ -1,28 +1,26 @@
 import bagel.Font;
-import bagel.Window;
 import bagel.util.Point;
 
 public class Message {
-    private final static int WINDOW_WIDTH = Window.getWidth();
 
-    private final static int DEFAULT_FONT_SIZE = 70;
-    private final static int INSTRUCTION_0_FONT_SIZE = 24;
-    private final static int INSTRUCTION_1_FONT_SIZE = 40;
+    private final static int DEFAULT_FONT_SIZE = 80;
     private final static Font DEFAULT_FONT = new Font("res/FSO8BITR.ttf", DEFAULT_FONT_SIZE);
-    private final static double DEFAULT_X = 240;
+    private final static double DEFAULT_X = 190;
     private final static double DEFAULT_Y = 350;
 
     private final static Font HIGH_SCORE_FONT = new Font("res/FSO8BITR.ttf", 35);
-    private final static Point HIGH_SCORE_POINT = new Point(DEFAULT_X + 60, 450);
+    private final static Point HIGH_SCORE_POINT = new Point(DEFAULT_X + 80, 450);
 
     private final static Font COMPLETE_FONT = new Font("res/FSO8BITR.ttf", 60);
     private final static Point COMPLETE_POINT = new Point(140, 350);
 
+    private final static int INSTRUCTION_0_FONT_SIZE = 24;
     private final static String INSTRUCTION_0_MESSAGE = "PRESS SPACE TO START\nUSE ARROW KEYS TO MOVE";
     private final static Font INSTRUCTION_0_FONT = new Font("res/FSO8BITR.ttf", INSTRUCTION_0_FONT_SIZE);
-    private final static double INSTRUCTION_0_X = DEFAULT_X + 60;
+    private final static double INSTRUCTION_0_X = DEFAULT_X + 80;
     private final static double INSTRUCTION_0_Y = DEFAULT_Y + 190;
 
+    private final static int INSTRUCTION_1_FONT_SIZE = 40;
     private final static String INSTRUCTION_1_MESSAGE = "PRESS SPACE TO START\nUSE ARROW KEYS TO MOVE\nEAT THE PELLET TO ATTACK";
     private final static Font INSTRUCTION_1_FONT = new Font("res/FSO8BITR.ttf", INSTRUCTION_1_FONT_SIZE);
     private final static double INSTRUCTION_1_X = 200;
@@ -33,8 +31,8 @@ public class Message {
     private final static Font TARGET_FONT = new Font("res/FSO8BITR.ttf", 20);
     private final static Point TARGET_POINT = new Point(220, 25);
 
-    private final static Font LEVEL_FONT = new Font("res/FSO8BITR.ttf", 30);
-    private final static Point LEVEL_POINT = new Point(WINDOW_WIDTH/2.0, 30);
+    private final static Font LEVEL_FONT = new Font("res/FSO8BITR.ttf", 40);
+    private final static Point LEVEL_POINT = new Point(450, 40);
 
     private final static Font FINAL_SCORE_FONT = new Font("res/FSO8BITR.ttf", 40);
     private final static Point FINAL_SCORE_POINT = new Point(300, 450);
@@ -90,7 +88,7 @@ public class Message {
      * Method used to draw messages at the centre of the screen
      */
     public static void drawMessage(String message) {
-        DEFAULT_FONT.drawString(message, WINDOW_WIDTH/2.0 - DEFAULT_FONT.getWidth(message)/2, DEFAULT_Y);
+        DEFAULT_FONT.drawString(message, DEFAULT_X, DEFAULT_Y);
     }
 
     /**

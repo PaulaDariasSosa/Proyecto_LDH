@@ -11,7 +11,11 @@ public class ShadowPac extends AbstractGame {
     private final static String LEVEL_0_FILE = "res/level0.csv";
     private final static String LEVEL_1_FILE = "res/level1.csv";
     private final static String LEVEL_2_FILE = "res/level1.csv";
-    private final Image BACKGROUND_IMAGE = new Image("res/background0.png");
+
+    private final Image BACKGROUND_IMAGE_0 = new Image("res/background0.png");
+    private final Image BACKGROUND_IMAGE_1 = new Image("res/zawarudo.png");
+    private final Image BACKGROUND_IMAGE_2 = new Image("res/explosion.png");
+    private Image background;
 
     private final static String WIN_MESSAGE = "WELL DONE!";
     private final static String LOSE_MESSAGE = "GAME OVER!";
@@ -49,6 +53,7 @@ public class ShadowPac extends AbstractGame {
 
     public ShadowPac() {
         super(WINDOW_WIDTH, WINDOW_HEIGHT, GAME_TITLE);
+        background = BACKGROUND_IMAGE_0;
         screenStatus = TITLE_SCREEN;
         gameOver = false;
         playerWin = false;
@@ -73,7 +78,6 @@ public class ShadowPac extends AbstractGame {
         if (input.wasPressed(Keys.ESCAPE)) {
             Window.close();
         } else {
-            BACKGROUND_IMAGE.draw(Window.getWidth() / 2.0, Window.getHeight() / 2.0);
 
             if (screenStatus == TITLE_SCREEN) {
                 if (input.wasPressed(Keys.SPACE)) {
@@ -98,11 +102,15 @@ public class ShadowPac extends AbstractGame {
                 screenStatus = LEVEL_1;
             } else if (screenStatus == LVL_0_COMPLETE_SCREEN && levelCompleteFrameCount == COMPLETE_MESSAGE_FRAMES) {
                 screenStatus = INSTRUCTION_1_SCREEN;
+                background = BACKGROUND_IMAGE_1;
             } else if (screenStatus == INSTRUCTION_2_SCREEN && input.wasPressed(Keys.SPACE)) {
                 screenStatus = LEVEL_2;
             } else if (screenStatus == LVL_1_COMPLETE_SCREEN && levelCompleteFrameCount == COMPLETE_MESSAGE_FRAMES) {
                 screenStatus = INSTRUCTION_2_SCREEN;
+                background = BACKGROUND_IMAGE_2;
             }
+
+            background.draw(Window.getWidth() / 2.0, Window.getHeight() / 2.0);
 
             if (screenStatus == TITLE_SCREEN) {
                 Message.titleScreen(GAME_TITLE, highScore);
@@ -129,6 +137,7 @@ public class ShadowPac extends AbstractGame {
                 Message.finalScore(Player.getTotalScore());
                 Message.returnToTitle();
                 if (input.wasPressed(Keys.SPACE)) {
+                    background = BACKGROUND_IMAGE_0;
                     screenStatus = TITLE_SCREEN;
                 }
 
@@ -137,6 +146,7 @@ public class ShadowPac extends AbstractGame {
                 Message.finalScore(Player.getTotalScore());
                 Message.returnToTitle();
                 if (input.wasPressed(Keys.SPACE)) {
+                    background = BACKGROUND_IMAGE_0;
                     screenStatus = TITLE_SCREEN;
                 }
             } else if (screenStatus == LEVEL_0) {
