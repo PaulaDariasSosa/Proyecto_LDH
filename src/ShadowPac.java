@@ -106,6 +106,7 @@ public class ShadowPac extends AbstractGame {
                 levelCompleteFrameCount = 0;
             } else if (gameOver) {
                 Message.drawMessage(LOSE_MESSAGE);
+                Message.finalScore(Player.getTotalScore());
                 Message.returnToTitle();
                 if (input.wasPressed(Keys.SPACE)) {
                     screenStatus = TITLE_SCREEN;
@@ -113,6 +114,7 @@ public class ShadowPac extends AbstractGame {
 
             } else if (playerWin) {
                 Message.drawMessage(WIN_MESSAGE);
+                Message.finalScore(Player.getTotalScore());
                 Message.returnToTitle();
                 if (input.wasPressed(Keys.SPACE)) {
                     screenStatus = TITLE_SCREEN;
