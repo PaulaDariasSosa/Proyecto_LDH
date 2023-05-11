@@ -21,13 +21,14 @@ public class ShadowPac extends AbstractGame {
     private final static String LOSE_MESSAGE = "GAME OVER!";
 
     private final static int TITLE_SCREEN = 0;
-    private final static int LEVEL_0 = 1;
-    private final static int LVL_0_COMPLETE_SCREEN = 2;
-    private final static int INSTRUCTION_1_SCREEN = 3;
-    private final static int LEVEL_1 = 4;
-    private final static int LVL_1_COMPLETE_SCREEN = 5;
-    private final static int INSTRUCTION_2_SCREEN = 6;
-    private final static int LEVEL_2 = 7;
+    private final static int INSTRUCTION_0_SCREEN = 1;
+    private final static int LEVEL_0 = 2;
+    private final static int LVL_0_COMPLETE_SCREEN = 3;
+    private final static int INSTRUCTION_1_SCREEN = 4;
+    private final static int LEVEL_1 = 5;
+    private final static int LVL_1_COMPLETE_SCREEN = 6;
+    private final static int INSTRUCTION_2_SCREEN = 7;
+    private final static int LEVEL_2 = 8;
     private int screenStatus;
     private boolean gameOver;
     private boolean playerWin;
@@ -35,9 +36,9 @@ public class ShadowPac extends AbstractGame {
     private final static int COMPLETE_MESSAGE_FRAMES = 150;
     private int levelCompleteFrameCount;
 
-    private final static int TARGET_SCORE_LVL_0 = 50;
-    private final static int TARGET_SCORE_LVL_1 = 50;
-    private final static int TARGET_SCORE_LVL_2 = 50;
+    private final static int TARGET_SCORE_LVL_0 = 1200;
+    private final static int TARGET_SCORE_LVL_1 = 1200;
+    private final static int TARGET_SCORE_LVL_2 = 1200;
     public final static int MAX_SCORE = TARGET_SCORE_LVL_0 + TARGET_SCORE_LVL_1 + TARGET_SCORE_LVL_2;
 
     // Frenzy mode attributes
@@ -47,9 +48,9 @@ public class ShadowPac extends AbstractGame {
 
     private int highScore;
 
-    private Level level0 = new Level(LEVEL_0_FILE);
-    private Level level1 = new Level(LEVEL_1_FILE);
-    private Level level2 = new Level(LEVEL_2_FILE);
+    private Level level0;
+    private Level level1;
+    private Level level2;
 
     public ShadowPac() {
         super(WINDOW_WIDTH, WINDOW_HEIGHT, GAME_TITLE);
@@ -81,23 +82,20 @@ public class ShadowPac extends AbstractGame {
 
             if (screenStatus == TITLE_SCREEN) {
                 if (input.wasPressed(Keys.SPACE)) {
-                    level0 = new Level(LEVEL_0_FILE);
-                    level1 = new Level(LEVEL_1_FILE);
-                    level2 = new Level(LEVEL_2_FILE);
-                    gameOver = false;
-                    playerWin = false;
-                    Player.setTotalScore(0);
-                    screenStatus = LEVEL_0;
+                    resetGame();
+                    screenStatus = INSTRUCTION_0_SCREEN;
                 }
-                if (input.wasPressed(Keys.W)) {
-                    level0 = new Level(LEVEL_0_FILE);
-                    level1 = new Level(LEVEL_1_FILE);
-                    level2 = new Level(LEVEL_2_FILE);
-                    gameOver = false;
-                    playerWin = false;
-                    Player.setTotalScore(0);
-                    screenStatus = LEVEL_1;
+                else if (input.isDown(Keys.O) && input.isDown(Keys.N) && input.isDown(Keys.E)) {
+                    resetGame();
+                    screenStatus = INSTRUCTION_1_SCREEN;
                 }
+                else if (input.isDown(Keys.T) && input.isDown(Keys.W) && input.isDown(Keys.O)) {
+                    resetGame();
+                    screenStatus = INSTRUCTION_2_SCREEN;
+                }
+
+            } else if (screenStatus == INSTRUCTION_0_SCREEN && input.wasPressed(Keys.SPACE)) {
+                screenStatus = LEVEL_0;
             } else if (screenStatus == INSTRUCTION_1_SCREEN && input.wasPressed(Keys.SPACE)) {
                 screenStatus = LEVEL_1;
             } else if (screenStatus == LVL_0_COMPLETE_SCREEN && levelCompleteFrameCount == COMPLETE_MESSAGE_FRAMES) {
@@ -120,6 +118,8 @@ public class ShadowPac extends AbstractGame {
             } else if (screenStatus == LVL_1_COMPLETE_SCREEN) {
                 Message.levelComplete(1);
                 levelCompleteFrameCount++;
+            } else if (screenStatus == INSTRUCTION_0_SCREEN) {
+                Message.instructionLevel0();
             } else if (screenStatus == INSTRUCTION_1_SCREEN) {
                 Message.instructionLevel1();
             } else if (screenStatus == INSTRUCTION_2_SCREEN) {
@@ -260,5 +260,18 @@ public class ShadowPac extends AbstractGame {
             }
 
         }
+    }
+
+    /**
+     * Method that resets the game
+     * after winning/losing
+     */
+    private void resetGame() {
+        level0 = new Level(LEVEL_0_FILE);
+        level1 = new Level(LEVEL_1_FILE);
+        level2 = new Level(LEVEL_2_FILE);
+        gameOver = false;
+        playerWin = false;
+        Player.setTotalScore(0);
     }
 }
