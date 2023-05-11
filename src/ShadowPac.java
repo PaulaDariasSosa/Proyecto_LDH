@@ -10,7 +10,7 @@ public class ShadowPac extends AbstractGame {
     private final static String GAME_TITLE = "SHADOW TUKA";
     private final static String LEVEL_0_FILE = "res/level0.csv";
     private final static String LEVEL_1_FILE = "res/level1.csv";
-    private final static String LEVEL_2_FILE = "res/level1.csv";
+    private final static String LEVEL_2_FILE = "res/level2.csv";
 
     private final Image BACKGROUND_IMAGE_0 = new Image("res/background0.png");
     private final Image BACKGROUND_IMAGE_1 = new Image("res/zawarudo.png");
@@ -83,14 +83,17 @@ public class ShadowPac extends AbstractGame {
             if (screenStatus == TITLE_SCREEN) {
                 if (input.wasPressed(Keys.SPACE)) {
                     resetGame();
+                    background = BACKGROUND_IMAGE_0;
                     screenStatus = INSTRUCTION_0_SCREEN;
                 }
                 else if (input.isDown(Keys.O) && input.isDown(Keys.N) && input.isDown(Keys.E)) {
                     resetGame();
+                    background = BACKGROUND_IMAGE_1;
                     screenStatus = INSTRUCTION_1_SCREEN;
                 }
                 else if (input.isDown(Keys.T) && input.isDown(Keys.W) && input.isDown(Keys.O)) {
                     resetGame();
+                    background = BACKGROUND_IMAGE_2;
                     screenStatus = INSTRUCTION_2_SCREEN;
                 }
 
@@ -100,12 +103,10 @@ public class ShadowPac extends AbstractGame {
                 screenStatus = LEVEL_1;
             } else if (screenStatus == LVL_0_COMPLETE_SCREEN && levelCompleteFrameCount == COMPLETE_MESSAGE_FRAMES) {
                 screenStatus = INSTRUCTION_1_SCREEN;
-                background = BACKGROUND_IMAGE_1;
             } else if (screenStatus == INSTRUCTION_2_SCREEN && input.wasPressed(Keys.SPACE)) {
                 screenStatus = LEVEL_2;
             } else if (screenStatus == LVL_1_COMPLETE_SCREEN && levelCompleteFrameCount == COMPLETE_MESSAGE_FRAMES) {
                 screenStatus = INSTRUCTION_2_SCREEN;
-                background = BACKGROUND_IMAGE_2;
             }
 
             background.draw(Window.getWidth() / 2.0, Window.getHeight() / 2.0);
