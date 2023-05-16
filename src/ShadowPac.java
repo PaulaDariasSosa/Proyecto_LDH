@@ -12,9 +12,10 @@ public class ShadowPac extends AbstractGame {
     private final static String LEVEL_1_FILE = "res/level1.csv";
     private final static String LEVEL_2_FILE = "res/level2.csv";
 
-    private final Image BACKGROUND_IMAGE_0 = new Image("res/background0.png");
-    private final Image BACKGROUND_IMAGE_1 = new Image("res/zawarudo.png");
-    private final Image BACKGROUND_IMAGE_2 = new Image("res/explosion.png");
+    private final Image TITLE_IMAGE = new Image("res/title.png");
+    private final Image LEVEL0_IMAGE = new Image("res/level0.png");
+    private final Image LEVEL1_IMAGE = new Image("res/level1.png");
+    private final Image LEVEL2_IMAGE = new Image("res/level2.png");
     private Image background;
 
     private final static String WIN_MESSAGE = "WELL DONE!";
@@ -54,7 +55,7 @@ public class ShadowPac extends AbstractGame {
 
     public ShadowPac() {
         super(WINDOW_WIDTH, WINDOW_HEIGHT, GAME_TITLE);
-        background = BACKGROUND_IMAGE_0;
+        background = TITLE_IMAGE;
         screenStatus = TITLE_SCREEN;
         gameOver = false;
         playerWin = false;
@@ -83,17 +84,17 @@ public class ShadowPac extends AbstractGame {
             if (screenStatus == TITLE_SCREEN) {
                 if (input.wasPressed(Keys.SPACE)) {
                     resetGame();
-                    background = BACKGROUND_IMAGE_0;
+                    background = LEVEL0_IMAGE;
                     screenStatus = INSTRUCTION_0_SCREEN;
                 }
                 else if (input.isDown(Keys.O) && input.isDown(Keys.N) && input.isDown(Keys.E)) {
                     resetGame();
-                    background = BACKGROUND_IMAGE_1;
+                    background = LEVEL1_IMAGE;
                     screenStatus = INSTRUCTION_1_SCREEN;
                 }
                 else if (input.isDown(Keys.T) && input.isDown(Keys.W) && input.isDown(Keys.O)) {
                     resetGame();
-                    background = BACKGROUND_IMAGE_2;
+                    background = LEVEL2_IMAGE;
                     screenStatus = INSTRUCTION_2_SCREEN;
                 }
 
@@ -138,7 +139,7 @@ public class ShadowPac extends AbstractGame {
                 Message.finalScore(Player.getTotalScore());
                 Message.returnToTitle();
                 if (input.wasPressed(Keys.SPACE)) {
-                    background = BACKGROUND_IMAGE_0;
+                    background = TITLE_IMAGE;
                     screenStatus = TITLE_SCREEN;
                 }
 
@@ -147,7 +148,7 @@ public class ShadowPac extends AbstractGame {
                 Message.finalScore(Player.getTotalScore());
                 Message.returnToTitle();
                 if (input.wasPressed(Keys.SPACE)) {
-                    background = BACKGROUND_IMAGE_0;
+                    background = TITLE_IMAGE;
                     screenStatus = TITLE_SCREEN;
                 }
             } else if (screenStatus == LEVEL_0) {
