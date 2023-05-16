@@ -188,13 +188,13 @@ public class ShadowPac extends AbstractGame {
         for (Ghost ghost : level.getGhosts()) {
             if (ghost.isActive()) {
                 ghost.move(level.getWalls(), frenzyMode);
-                if (ghost.collidesWith(level.getPlayer())) {
+                if (level1.getPlayer().isActive() && ghost.collidesWith(level.getPlayer())) {
                     if (frenzyMode) {
                         level.getPlayer().increaseScore(Ghost.FRENZY_SCORE);
                         ghost.setActive(false);
                     } else {
                         level.getPlayer().loseLife();
-                        ghost.resetPosition();
+                        ghost.startRespawn();
                     }
                 }
             }
@@ -244,9 +244,7 @@ public class ShadowPac extends AbstractGame {
             }
 
             for (Ghost ghost : level.getGhosts()) {
-                if (ghost.isActive()) {
-                    ghost.update(frenzyMode);
-                }
+                ghost.update(frenzyMode);
             }
 
             if (frenzyFrameCount == FRENZY_MODE_FRAMES) {
@@ -254,9 +252,9 @@ public class ShadowPac extends AbstractGame {
                 frenzyFrameCount = 0;
                 for (Ghost ghost : level.getGhosts()) {
                     if (!ghost.isActive()) {
+                        ghost.setActive(true);
                         ghost.resetPosition();
                     }
-                    ghost.setActive(true);
                 }
             }
 

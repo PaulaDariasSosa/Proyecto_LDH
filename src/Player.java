@@ -37,21 +37,29 @@ public class Player extends MovingEntity {
     }
 
     public void update(Input input) {
-        switchFrameCount--;
-        if (switchFrameCount == 0) {
-            if (input.isDown(Keys.RIGHT) || input.isDown(Keys.DOWN) || input.isDown(Keys.UP) || input.isDown(Keys.LEFT)) {
-                // switching the image being rendered
-                if (isOpen) {
-                    setImage(PAC_OPEN_IMAGE);
-                    isOpen = false;
-                } else {
-                    setImage(PAC_IMAGE);
-                    isOpen = true;
-                }
-            }
-            switchFrameCount = SWITCH_FRAMES;
+        if (isRespawning()) {
+            respawn();
         }
-        getImage().drawFromTopLeft(getPosition().x, getPosition().y, rotation);
+        else {
+            if (isActive()) {
+                switchFrameCount--;
+                if (switchFrameCount == 0) {
+                    if (input.isDown(Keys.RIGHT) || input.isDown(Keys.DOWN) ||
+                            input.isDown(Keys.UP) || input.isDown(Keys.LEFT)) {
+                        // switching the image being rendered
+                        if (isOpen) {
+                            setImage(PAC_OPEN_IMAGE);
+                            isOpen = false;
+                        } else {
+                            setImage(PAC_IMAGE);
+                            isOpen = true;
+                        }
+                    }
+                    switchFrameCount = SWITCH_FRAMES;
+                }
+                getImage().drawFromTopLeft(getPosition().x, getPosition().y, rotation);
+            }
+        }
         renderLives();
         renderScore();
     }
@@ -125,7 +133,7 @@ public class Player extends MovingEntity {
      */
     public void loseLife() {
         lifeCount--;
-        resetPosition();
+        startRespawn();
     }
 
     /**

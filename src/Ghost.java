@@ -23,10 +23,17 @@ public abstract class Ghost extends MovingEntity {
      * Method that performs state update
      */
     public void update(boolean frenzyMode) {
-        if (frenzyMode) {
-            GHOST_FRENZY_IMAGE.drawFromTopLeft(getPosition().x, getPosition().y);
-        } else {
-            update();
+        if (isRespawning()) {
+            respawn();
+        }
+        else {
+            if (isActive()) {
+                if (frenzyMode) {
+                    GHOST_FRENZY_IMAGE.drawFromTopLeft(getPosition().x, getPosition().y);
+                } else {
+                    update();
+                }
+            }
         }
     }
 

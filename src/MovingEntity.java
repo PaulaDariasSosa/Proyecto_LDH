@@ -2,12 +2,16 @@ import bagel.util.Point;
 import java.util.ArrayList;
 
 public abstract class MovingEntity extends GameEntity {
+    private final static int RESPAWN_FRAMES = 100;
+    private int respawnFrameCount;
+    private boolean respawning;
+
     private final double speed;
     private final double frenzySpeed;
     private final Point startingPosition;
     private Point pointGo;
-    private boolean isActive;
-    private boolean respawning;
+    private boolean active;
+
 
     public MovingEntity(Point topLeft, double speed, double frenzySpeed) {
         super(topLeft);
@@ -15,22 +19,25 @@ public abstract class MovingEntity extends GameEntity {
         pointGo = topLeft;
         this.speed = speed;
         this.frenzySpeed = frenzySpeed;
-        isActive = true;
+        active = true;
+        respawning = false;
     }
 
     /**
      * Method that moves the entity to the left given the walls and frenzy mode
      */
     public void goLeft(ArrayList<Wall> walls, boolean frenzyMode) {
-        if (frenzyMode) {
-            pointGo = new Point(getPosition().x - frenzySpeed, getPosition().y);
-        } else {
-            pointGo = new Point(getPosition().x - speed, getPosition().y);
-        }
-        if (canMove(walls)) {
-            setPosition(pointGo);
-        } else {
-            pointGo = getPosition();
+        if (!respawning) {
+            if (frenzyMode) {
+                pointGo = new Point(getPosition().x - frenzySpeed, getPosition().y);
+            } else {
+                pointGo = new Point(getPosition().x - speed, getPosition().y);
+            }
+            if (canMove(walls)) {
+                setPosition(pointGo);
+            } else {
+                pointGo = getPosition();
+            }
         }
     }
 
@@ -38,15 +45,17 @@ public abstract class MovingEntity extends GameEntity {
      * Method that moves the entity to the right given the walls and frenzy mode
      */
     public void goRight(ArrayList<Wall> walls, boolean frenzyMode) {
-        if (frenzyMode) {
-            pointGo = new Point(getPosition().x + frenzySpeed, getPosition().y);
-        } else {
-            pointGo = new Point(getPosition().x + speed, getPosition().y);
-        }
-        if (canMove(walls)) {
-            setPosition(pointGo);
-        } else {
-            pointGo = getPosition();
+        if (!respawning) {
+            if (frenzyMode) {
+                pointGo = new Point(getPosition().x + frenzySpeed, getPosition().y);
+            } else {
+                pointGo = new Point(getPosition().x + speed, getPosition().y);
+            }
+            if (canMove(walls)) {
+                setPosition(pointGo);
+            } else {
+                pointGo = getPosition();
+            }
         }
     }
 
@@ -54,15 +63,17 @@ public abstract class MovingEntity extends GameEntity {
      * Method that moves the entity up given the walls and frenzy mode
      */
     public void goUp(ArrayList<Wall> walls, boolean frenzyMode) {
-        if (frenzyMode) {
-            pointGo = new Point(getPosition().x, getPosition().y - frenzySpeed);
-        } else {
-            pointGo = new Point(getPosition().x, getPosition().y - speed);
-        }
-        if (canMove(walls)) {
-            setPosition(pointGo);
-        } else {
-            pointGo = getPosition();
+        if (!respawning) {
+            if (frenzyMode) {
+                pointGo = new Point(getPosition().x, getPosition().y - frenzySpeed);
+            } else {
+                pointGo = new Point(getPosition().x, getPosition().y - speed);
+            }
+            if (canMove(walls)) {
+                setPosition(pointGo);
+            } else {
+                pointGo = getPosition();
+            }
         }
     }
 
@@ -70,15 +81,17 @@ public abstract class MovingEntity extends GameEntity {
      * Method that moves the entity down given the walls and frenzy mode
      */
     public void goDown(ArrayList<Wall> walls, boolean frenzyMode) {
-        if (frenzyMode) {
-            pointGo = new Point(getPosition().x, getPosition().y + frenzySpeed);
-        } else {
-            pointGo = new Point(getPosition().x, getPosition().y + speed);
-        }
-        if (canMove(walls)) {
-            setPosition(pointGo);
-        } else {
-            pointGo = getPosition();
+        if (!respawning) {
+            if (frenzyMode) {
+                pointGo = new Point(getPosition().x, getPosition().y + frenzySpeed);
+            } else {
+                pointGo = new Point(getPosition().x, getPosition().y + speed);
+            }
+            if (canMove(walls)) {
+                setPosition(pointGo);
+            } else {
+                pointGo = getPosition();
+            }
         }
     }
 
@@ -90,9 +103,10 @@ public abstract class MovingEntity extends GameEntity {
     /**
      * Method that resets the entity's position to the starting location
      */
-    public void resetPosition() {
-        setPosition(startingPosition);
-        pointGo = startingPosition;
+    public void startRespawn() {
+        active = false;
+        respawning = true;
+        respawnFrameCount = RESPAWN_FRAMES;
     }
 
     public Point getPointGo() {
@@ -100,10 +114,28 @@ public abstract class MovingEntity extends GameEntity {
     }
 
     public boolean isActive() {
-        return isActive;
+        return active;
     }
 
     public void setActive(boolean active) {
-        this.isActive = active;
+        this.active = active;
+    }
+
+    public void respawn() {
+        respawnFrameCount--;
+        if (respawnFrameCount == 0) {
+            respawning = false;
+            active = true;
+            resetPosition();
+        }
+    }
+
+    public void resetPosition() {
+        setPosition(startingPosition);
+        pointGo = startingPosition;
+    }
+
+    public boolean isRespawning() {
+        return respawning;
     }
 }
