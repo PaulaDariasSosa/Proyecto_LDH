@@ -6,6 +6,8 @@ public abstract class MovingEntity extends GameEntity {
     private final double frenzySpeed;
     private final Point startingPosition;
     private Point pointGo;
+    private boolean isActive;
+    private boolean respawning;
 
     public MovingEntity(Point topLeft, double speed, double frenzySpeed) {
         super(topLeft);
@@ -13,6 +15,7 @@ public abstract class MovingEntity extends GameEntity {
         pointGo = topLeft;
         this.speed = speed;
         this.frenzySpeed = frenzySpeed;
+        isActive = true;
     }
 
     /**
@@ -94,5 +97,13 @@ public abstract class MovingEntity extends GameEntity {
 
     public Point getPointGo() {
         return pointGo;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        this.isActive = active;
     }
 }

@@ -37,7 +37,7 @@ public class ShadowPac extends AbstractGame {
     private int levelCompleteFrameCount;
 
     private final static int TARGET_SCORE_LVL_0 = 1200;
-    private final static int TARGET_SCORE_LVL_1 = 1200;
+    private final static int TARGET_SCORE_LVL_1 = 1250;
     private final static int TARGET_SCORE_LVL_2 = 10;
     public final static int MAX_SCORE = TARGET_SCORE_LVL_0 + TARGET_SCORE_LVL_1 + TARGET_SCORE_LVL_2;
 
