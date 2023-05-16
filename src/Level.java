@@ -32,8 +32,14 @@ public class Level {
                     case "Player":
                         player = new Player(point);
                         break;
-                    case "Wall":
-                        walls.add(new Wall(point));
+                    case "Bus":
+                        walls.add(new Bus(point));
+                        break;
+                    case "Tram":
+                        walls.add(new Tram(point));
+                        break;
+                    case "Train":
+                        walls.add(new Train(point));
                         break;
                     case "GhostRed":
                         ghosts.add(new GhostRed(point));
