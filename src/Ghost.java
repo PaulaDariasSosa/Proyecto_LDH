@@ -4,7 +4,7 @@ import bagel.util.Point;
 import java.util.ArrayList;
 
 public abstract class Ghost extends MovingEntity {
-    final static Image GHOST_FRENZY_IMAGE = new Image("res/ghostFrenzy.png");
+    private final static Image GHOST_FRENZY_IMAGE = new Image("res/ghostFrenzy.png");
     public final static int FRENZY_SCORE = 30;
     public final static int DOWN = 0;
     public final static int RIGHT = 1;

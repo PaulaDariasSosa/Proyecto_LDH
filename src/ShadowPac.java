@@ -208,11 +208,11 @@ public class ShadowPac extends AbstractGame {
                 break;
             }
         }
-        for (Cherry cherry : level.getCherries()) {
-            if (cherry.collidesWith(level.getPlayer())) {
-                level.getPlayer().increaseScore(Cherry.POINTS);
+        for (Pizza pizza : level.getPizzas()) {
+            if (pizza.collidesWith(level.getPlayer())) {
+                level.getPlayer().increaseScore(Pizza.POINTS);
                 Player.extraLife();
-                level.getCherries().remove(cherry);
+                level.getPizzas().remove(pizza);
                 break;
             }
         }
@@ -235,8 +235,8 @@ public class ShadowPac extends AbstractGame {
                 dot.update();
             }
 
-            for (Cherry cherry : level.getCherries()) {
-                cherry.update();
+            for (Pizza pizza : level.getPizzas()) {
+                pizza.update();
             }
 
             for (Pellet pellet : level.getPellets()) {

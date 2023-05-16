@@ -11,7 +11,7 @@ public class Level {
     private final ArrayList<Wall> walls = new ArrayList<>();
     private final ArrayList<Ghost> ghosts = new ArrayList<>();
     private final ArrayList<Dot> dots = new ArrayList<>();
-    private final ArrayList<Cherry> cherries = new ArrayList<>();
+    private final ArrayList<Pizza> pizzas = new ArrayList<>();
     private final ArrayList<Pellet> pellets = new ArrayList<>();
 
     public Level(String worldFile) {
@@ -47,8 +47,8 @@ public class Level {
                     case "GhostPink":
                         ghosts.add(new GhostPink(point));
                         break;
-                    case "Cherry":
-                        cherries.add(new Cherry(point));
+                    case "Pizza":
+                        pizzas.add(new Pizza(point));
                         break;
                     case "Pellet":
                         pellets.add(new Pellet(point));
@@ -94,8 +94,8 @@ public class Level {
         return dots;
     }
 
-    public ArrayList<Cherry> getCherries() {
-        return cherries;
+    public ArrayList<Pizza> getPizzas() {
+        return pizzas;
     }
 
     public ArrayList<Pellet> getPellets() {
