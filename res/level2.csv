@@ -1,5 +1,5 @@
 Player,469,655
-GhostRed,474,462
+GhostPink,474,462
 GhostPink,542,360
 GhostPink,270,110
 GhostPink,922,562
@@ -165,7 +165,7 @@ Dot,174,112
 Dot,224,112
 Dot,324,112
 Dot,374,112
-Dot,424,112
+Star,424,112
 Dot,424,162
 Dot,424,212
 Dot,424,262

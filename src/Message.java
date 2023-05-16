@@ -23,12 +23,15 @@ public class Message {
     private final static Point LEVEL_INS_POINT = new Point(340, 240);
     private final static int INSTRUCTION_FONT_SIZE = 40;
     private final static Font INSTRUCTION_FONT = new Font("res/FSO8BITR.ttf", INSTRUCTION_FONT_SIZE);
-    private final static double INSTRUCTION_X = 200;
+    private final static double INSTRUCTION_X = 100;
     private final static double INSTRUCTION_Y = 350;
 
-    private final static String INSTRUCTION_0_MESSAGE = "USE ARROW KEYS TO MOVE\n\nPRESS SPACE TO START";
-    private final static String INSTRUCTION_1_MESSAGE = "USE ARROW KEYS TO MOVE\nEAT THE PELLET TO ATTACK\n\nPRESS SPACE TO START";
-    private final static String INSTRUCTION_2_MESSAGE = "USE ARROW KEYS TO MOVE\nEAT THE PELLET TO ATTACK\n\nPRESS SPACE TO START";
+    private final static String INSTRUCTION_0_MESSAGE = "USE ARROW KEYS TO MOVE\nREACH TARGET SCORE TO WIN\n" +
+            "EAT PIZZA TO GET EXTRA LIFE\nCOMPLETE BEFORE TIME RUNS OUT\n\nPRESS SPACE TO START";
+    private final static String INSTRUCTION_1_MESSAGE = "USE ARROW KEYS TO MOVE\nREACH TARGET SCORE TO WIN\n" +
+            "GET SUPER STAR TO ATTACK\nCOMPLETE BEFORE TIME RUNS OUT\n\nPRESS SPACE TO START";
+    private final static String INSTRUCTION_2_MESSAGE = "USE ARROW KEYS TO MOVE\nREACH TARGET SCORE TO WIN\n" +
+            "GET SUPER STAR TO ATTACK\nCOMPLETE BEFORE TIME RUNS OUT\n\nPRESS SPACE TO START";
 
     private final static Font TARGET_FONT = new Font("res/FSO8BITR.ttf", 20);
     private final static Point TARGET_POINT = new Point(220, 25);

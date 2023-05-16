@@ -40,7 +40,7 @@ public class ShadowPac extends AbstractGame {
 
     private final static int TARGET_SCORE_LVL_0 = 1200;
     private final static int TARGET_SCORE_LVL_1 = 1230;
-    private final static int TARGET_SCORE_LVL_2 = 10;
+    private final static int TARGET_SCORE_LVL_2 = 1300;
     public final static int MAX_SCORE = TARGET_SCORE_LVL_0 + TARGET_SCORE_LVL_1 + TARGET_SCORE_LVL_2;
 
     // Frenzy mode attributes
@@ -241,6 +241,7 @@ public class ShadowPac extends AbstractGame {
         }
         else {
             Message.renderLevel(levelNum, targetScore);
+
             level.getPlayer().update(input);
 
             level.getTimer().update();
