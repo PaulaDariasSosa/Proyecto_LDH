@@ -18,6 +18,7 @@ public class ShadowPac extends AbstractGame {
     private final Image LEVEL2_IMAGE = new Image("res/level2.png");
     private final Image WIN_IMAGE = new Image("res/win.png");
     private final Image LOSE_IMAGE = new Image("res/lose.png");
+    private final Image TIMESUP_IMAGE = new Image("res/timesUp.png");
     private Image background;
 
     private final static int TITLE_SCREEN = 0;
@@ -32,12 +33,13 @@ public class ShadowPac extends AbstractGame {
     private int screenStatus;
     private boolean gameOver;
     private boolean playerWin;
+    private boolean timesUp;
 
     private final static int COMPLETE_MESSAGE_FRAMES = 150;
     private int levelCompleteFrameCount;
 
     private final static int TARGET_SCORE_LVL_0 = 1200;
-    private final static int TARGET_SCORE_LVL_1 = 1250;
+    private final static int TARGET_SCORE_LVL_1 = 1230;
     private final static int TARGET_SCORE_LVL_2 = 10;
     public final static int MAX_SCORE = TARGET_SCORE_LVL_0 + TARGET_SCORE_LVL_1 + TARGET_SCORE_LVL_2;
 
@@ -58,6 +60,7 @@ public class ShadowPac extends AbstractGame {
         screenStatus = TITLE_SCREEN;
         gameOver = false;
         playerWin = false;
+        timesUp = false;
         frenzyMode = false;
         highScore = 0;
     }
@@ -135,13 +138,18 @@ public class ShadowPac extends AbstractGame {
                 Player.setTotalScore(Player.getTotalScore() + level1.getPlayer().getPlayerScore());
                 screenStatus = LVL_1_COMPLETE_SCREEN;
                 levelCompleteFrameCount = 0;
+            } else if (timesUp) {
+                Message.timesUp();
+                if (input.wasPressed(Keys.SPACE)) {
+                    background = TITLE_IMAGE;
+                    screenStatus = TITLE_SCREEN;
+                }
             } else if (gameOver) {
                 Message.loseScreen();
                 if (input.wasPressed(Keys.SPACE)) {
                     background = TITLE_IMAGE;
                     screenStatus = TITLE_SCREEN;
                 }
-
             } else if (playerWin) {
                 Message.winScreen();
                 if (input.wasPressed(Keys.SPACE)) {
@@ -223,9 +231,19 @@ public class ShadowPac extends AbstractGame {
             }
             gameOver = true;
             background = LOSE_IMAGE;
-        } else {
+        } else if (level.getTimer().timesUp()) {
+            Player.setTotalScore(Player.getTotalScore() + level.getPlayer().getPlayerScore());
+            if (highScore < Player.getTotalScore()) {
+                highScore = Player.getTotalScore();
+            }
+            timesUp = true;
+            background = TIMESUP_IMAGE;
+        }
+        else {
             Message.renderLevel(levelNum, targetScore);
             level.getPlayer().update(input);
+
+            level.getTimer().update();
 
             for (Wall wall : level.getWalls()) {
                 wall.update();
@@ -271,6 +289,7 @@ public class ShadowPac extends AbstractGame {
         level2 = new Level(LEVEL_2_FILE);
         gameOver = false;
         playerWin = false;
+        timesUp = false;
         Player.setTotalScore(0);
     }
 }

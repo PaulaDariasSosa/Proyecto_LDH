@@ -7,6 +7,7 @@ import bagel.Keys;
 import bagel.util.Point;
 
 public class Level {
+    private Timer timer = new Timer();
     private Player player;
     private final ArrayList<Wall> walls = new ArrayList<>();
     private final ArrayList<Ghost> ghosts = new ArrayList<>();
@@ -106,5 +107,13 @@ public class Level {
 
     public ArrayList<Star> getPellets() {
         return stars;
+    }
+
+    public Timer getTimer() {
+        return timer;
+    }
+
+    public void setTimer(Timer timer) {
+        this.timer = timer;
     }
 }

@@ -44,6 +44,8 @@ public class Message {
     private final static Point WIN_POINT = new Point(190, 350);
     private final static String LOSE_MESSAGE = "YOU ARE BROKE!";
     private final static Point LOSE_POINT = new Point(100, 350);
+    private final static String TIMES_UP_MESSAGE = "TIME'S UP!";
+    private final static Point TIME_POINT = new Point(200, 350);
 
 
     private final static String RETRY_MESSAGE = "PRESS SPACE TO\nRETURN TO TITLE SCREEN";
@@ -111,6 +113,12 @@ public class Message {
 
     public static void loseScreen() {
         DEFAULT_FONT.drawString(LOSE_MESSAGE, LOSE_POINT.x, LOSE_POINT.y);
+        finalScore(Player.getTotalScore());
+        returnToTitle();
+    }
+
+    public static void timesUp() {
+        DEFAULT_FONT.drawString(TIMES_UP_MESSAGE, TIME_POINT.x, TIME_POINT.y);
         finalScore(Player.getTotalScore());
         returnToTitle();
     }
