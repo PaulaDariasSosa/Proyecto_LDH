@@ -3,10 +3,10 @@ GhostPink,374,362
 GhostBlue,225,110
 GhostGreen,922,412
 GhostPink,272,412
-Pizza,374,512
+Dot,374,512
 Pizza,75,260
-Pizza,922,110
-Pellet,174,662
+Star,922,110
+Dot,174,662
 Tram,12,50
 Tram,12,100
 Tram,12,150
@@ -264,3 +264,7 @@ Dot,374,412
 Dot,424,362
 Dot,474,362
 Dot,524,362
+Dot,924,262
+Dot,924,312
+Dot,924,362
+Dot,924,412

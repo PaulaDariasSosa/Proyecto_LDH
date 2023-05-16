@@ -12,7 +12,7 @@ public class Level {
     private final ArrayList<Ghost> ghosts = new ArrayList<>();
     private final ArrayList<Dot> dots = new ArrayList<>();
     private final ArrayList<Pizza> pizzas = new ArrayList<>();
-    private final ArrayList<Pellet> pellets = new ArrayList<>();
+    private final ArrayList<Star> stars = new ArrayList<>();
 
     public Level(String worldFile) {
         readCSV(worldFile);
@@ -56,8 +56,8 @@ public class Level {
                     case "Pizza":
                         pizzas.add(new Pizza(point));
                         break;
-                    case "Pellet":
-                        pellets.add(new Pellet(point));
+                    case "Star":
+                        stars.add(new Star(point));
                         break;
                     default:
                         dots.add(new Dot(point));
@@ -104,7 +104,7 @@ public class Level {
         return pizzas;
     }
 
-    public ArrayList<Pellet> getPellets() {
-        return pellets;
+    public ArrayList<Star> getPellets() {
+        return stars;
     }
 }

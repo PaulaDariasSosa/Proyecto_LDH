@@ -39,6 +39,13 @@ public class Message {
     private final static Font FINAL_SCORE_FONT = new Font("res/FSO8BITR.ttf", 40);
     private final static Point FINAL_SCORE_POINT = new Point(250, 450);
 
+
+    private final static String WIN_MESSAGE = "WELL DONE!";
+    private final static Point WIN_POINT = new Point(190, 350);
+    private final static String LOSE_MESSAGE = "YOU ARE BROKE!";
+    private final static Point LOSE_POINT = new Point(100, 350);
+
+
     private final static String RETRY_MESSAGE = "PRESS SPACE TO\nRETURN TO TITLE SCREEN";
     private final static int RETRY_FONT_SIZE = 30;
     private final static Font RETRY_FONT = new Font("res/FSO8BITR.ttf", RETRY_FONT_SIZE);
@@ -96,11 +103,16 @@ public class Message {
         RETRY_FONT.drawString(RETRY_MESSAGE, RETURN_X, RETURN_Y);
     }
 
-    /**
-     * Method used to draw messages at the centre of the screen
-     */
-    public static void drawMessage(String message) {
-        DEFAULT_FONT.drawString(message, DEFAULT_POINT.x, DEFAULT_POINT.y);
+    public static void winScreen() {
+        DEFAULT_FONT.drawString(WIN_MESSAGE, WIN_POINT.x, WIN_POINT.y);
+        finalScore(Player.getTotalScore());
+        returnToTitle();
+    }
+
+    public static void loseScreen() {
+        DEFAULT_FONT.drawString(LOSE_MESSAGE, LOSE_POINT.x, LOSE_POINT.y);
+        finalScore(Player.getTotalScore());
+        returnToTitle();
     }
 
     /**

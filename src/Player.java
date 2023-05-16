@@ -42,10 +42,10 @@ public class Player extends MovingEntity {
             if (input.isDown(Keys.RIGHT) || input.isDown(Keys.DOWN) || input.isDown(Keys.UP) || input.isDown(Keys.LEFT)) {
                 // switching the image being rendered
                 if (isOpen) {
-                    setImage(PAC_IMAGE);
+                    setImage(PAC_OPEN_IMAGE);
                     isOpen = false;
                 } else {
-                    setImage(PAC_OPEN_IMAGE);
+                    setImage(PAC_IMAGE);
                     isOpen = true;
                 }
             }
