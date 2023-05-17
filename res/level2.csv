@@ -1,8 +1,8 @@
 Player,469,655
-GhostPink,474,462
-GhostPink,542,360
-GhostPink,270,110
-GhostPink,922,562
+GhostTuka,474,462
+GhostTuka,542,360
+GhostTuka,270,110
+GhostTuka,922,562
 Train,12,50
 Train,12,100
 Train,12,150
@@ -165,7 +165,7 @@ Dot,174,112
 Dot,224,112
 Dot,324,112
 Dot,374,112
-Star,424,112
+Dot,424,112
 Dot,424,162
 Dot,424,212
 Dot,424,262
@@ -198,7 +198,7 @@ Dot,374,262
 Dot,224,212
 Dot,224,162
 Dot,224,312
-Dot,574,112
+Pizza,574,112
 Dot,624,112
 Dot,674,112
 Dot,724,112
@@ -270,3 +270,4 @@ Dot,424,562
 Dot,374,562
 Dot,374,612
 Dot,624,612
+Dot,474,462

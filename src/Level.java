@@ -7,7 +7,7 @@ import bagel.Keys;
 import bagel.util.Point;
 
 public class Level {
-    private Timer timer = new Timer();
+    private final Timer timer = new Timer();
     private Player player;
     private final ArrayList<Wall> walls = new ArrayList<>();
     private final ArrayList<Ghost> ghosts = new ArrayList<>();
@@ -20,9 +20,6 @@ public class Level {
         readCSV(worldFile);
     }
 
-    /**
-     * Method used to read file and create objects
-     */
     private void readCSV(String worldFile) {
         String text;
         try (BufferedReader br = new BufferedReader(new FileReader(worldFile))) {
@@ -54,6 +51,9 @@ public class Level {
                         break;
                     case "GhostPink":
                         ghosts.add(new GhostPink(point));
+                        break;
+                    case "GhostTuka":
+                        ghosts.add(new GhostTuka(point));
                         break;
                     case "Shield":
                         shields.add(new Shield(point));

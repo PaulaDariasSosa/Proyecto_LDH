@@ -38,9 +38,9 @@ public class ShadowPac extends AbstractGame {
     private final static int COMPLETE_MESSAGE_FRAMES = 150;
     private int levelCompleteFrameCount;
 
-    private final static int TARGET_SCORE_LVL_0 = 10;
-    private final static int TARGET_SCORE_LVL_1 = 10;
-    private final static int TARGET_SCORE_LVL_2 = 10;
+    private final static int TARGET_SCORE_LVL_0 = 1200;
+    private final static int TARGET_SCORE_LVL_1 = 1230;
+    private final static int TARGET_SCORE_LVL_2 = 1250;
     public final static int MAX_SCORE = TARGET_SCORE_LVL_0 + TARGET_SCORE_LVL_1 + TARGET_SCORE_LVL_2;
 
     // Frenzy mode attributes
@@ -193,10 +193,18 @@ public class ShadowPac extends AbstractGame {
             frenzyFrameCount++;
         }
 
+        for (Shield shield : level.getShields()) {
+            if (shield.collidesWith(level.getPlayer())) {
+                level.getShields().remove(shield);
+                level.getPlayer().shieldOn();
+                break;
+            }
+        }
+
         for (Ghost ghost : level.getGhosts()) {
             if (ghost.isActive()) {
                 ghost.move(level.getWalls(), frenzyMode);
-                if (level1.getPlayer().isActive() && ghost.collidesWith(level.getPlayer())) {
+                if (level.getPlayer().isActive() && ghost.collidesWith(level.getPlayer())) {
                     if (frenzyMode) {
                         level.getPlayer().increaseScore(Ghost.FRENZY_SCORE);
                         ghost.setActive(false);
@@ -212,14 +220,6 @@ public class ShadowPac extends AbstractGame {
             if (dot.collidesWith(level.getPlayer())) {
                 level.getPlayer().increaseScore(Dot.POINTS);
                 level.getDots().remove(dot);
-                break;
-            }
-        }
-
-        for (Shield shield : level.getShields()) {
-            if (shield.collidesWith(level.getPlayer())) {
-                level.getShields().remove(shield);
-                level.getPlayer().shieldOn();
                 break;
             }
         }
