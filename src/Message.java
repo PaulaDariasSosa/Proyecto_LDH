@@ -1,4 +1,5 @@
 import bagel.Font;
+import bagel.Image;
 import bagel.util.Point;
 
 public class Message {
@@ -9,6 +10,9 @@ public class Message {
 
     private final static Font HIGH_SCORE_FONT = new Font("res/FSO8BITR.ttf", 35);
     private final static Point HIGH_SCORE_POINT = new Point(DEFAULT_POINT.x + 130, DEFAULT_POINT.y + 100);
+
+    private final static Image CROWN_IMAGE = new Image("res/crown.png");
+    private final static Point CROWN_POINT = new Point(512, 430);
 
     private final static int TITLE_MESSAGE_SIZE = 24;
     private final static String TITLE_MESSAGE = "PRESS SPACE TO START THE GAME";
@@ -64,7 +68,7 @@ public class Message {
         DEFAULT_FONT.drawString(gameTitle, DEFAULT_POINT.x, DEFAULT_POINT.y);
         TITLE_MESSAGE_FONT.drawString(TITLE_MESSAGE, TITLE_MESSAGE_POINT.x, TITLE_MESSAGE_POINT.y);
         if (highScore == ShadowPac.MAX_SCORE) {
-            HIGH_SCORE_FONT.drawString("HIGH SCORE - congrats", HIGH_SCORE_POINT.x, HIGH_SCORE_POINT.y);
+            CROWN_IMAGE.draw(CROWN_POINT.x, CROWN_POINT.y);
         } else {
             HIGH_SCORE_FONT.drawString("HIGH SCORE - " + highScore, HIGH_SCORE_POINT.x, HIGH_SCORE_POINT.y);
         }
@@ -139,7 +143,7 @@ public class Message {
      */
     public static void finalScore(int finalScore) {
         if (finalScore == ShadowPac.MAX_SCORE) {
-            FINAL_SCORE_FONT.drawString("congrats lol", FINAL_SCORE_POINT.x, FINAL_SCORE_POINT.y);
+            CROWN_IMAGE.draw(CROWN_POINT.x, CROWN_POINT.y);
         } else {
             FINAL_SCORE_FONT.drawString("FINAL SCORE - " + finalScore, FINAL_SCORE_POINT.x, FINAL_SCORE_POINT.y);
         }
