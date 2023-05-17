@@ -21,6 +21,7 @@ public class Message {
 
     private final static Font COMPLETE_FONT = new Font("res/FSO8BITR.ttf", 60);
     private final static Point COMPLETE_POINT = new Point(140, 350);
+    private final static int PASSWORD_OFFSET = 150;
 
     private final static int LEVEL_INS_FONT_SIZE = 60;
     private final static Font LEVEL_INS_FONT = new Font("res/FSO8BITR.ttf", LEVEL_INS_FONT_SIZE);
@@ -77,8 +78,10 @@ public class Message {
     /**
      * Method used to draw the level complete messages
      */
-    public static void levelComplete(int levelNum) {
+    public static void levelComplete(int levelNum, String password) {
         COMPLETE_FONT.drawString("LEVEL " + levelNum + " COMPLETED!", COMPLETE_POINT.x, COMPLETE_POINT.y);
+        COMPLETE_FONT.drawString("PASSWORD - " + password, COMPLETE_POINT.x,
+                COMPLETE_POINT.y + PASSWORD_OFFSET);
     }
 
     /**
