@@ -27,7 +27,7 @@ public class Player extends MovingEntity {
     private boolean isOpen = false;
     private int playerScore;
     private static int totalScore;
-    private boolean shieldOn;
+    private static boolean shieldOn;
 
     public Player(Point topLeft) {
         super(topLeft, SPEED, FRENZY_SPEED);
@@ -37,7 +37,7 @@ public class Player extends MovingEntity {
         lifeCount = STARTING_LIVES;
         switchFrameCount = SWITCH_FRAMES;
         playerScore = 0;
-        shieldOn = true;
+        shieldOn = false;
     }
 
     public void update(Input input) {
@@ -137,9 +137,13 @@ public class Player extends MovingEntity {
      * Loses 1 life and resets to starting position.
      * Rotation is not reset.
      */
-    public void loseLife() {
-        lifeCount--;
-        startRespawn();
+    public void collidesGhost() {
+        if (shieldOn) {
+            shieldOn = false;
+        } else {
+            lifeCount--;
+            startRespawn();
+        }
     }
 
     /**
@@ -163,5 +167,9 @@ public class Player extends MovingEntity {
 
     public static void setTotalScore(int totalScore) {
         Player.totalScore = totalScore;
+    }
+
+    public void shieldOn() {
+        shieldOn = true;
     }
 }

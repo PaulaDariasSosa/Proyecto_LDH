@@ -12,6 +12,7 @@ public class Level {
     private final ArrayList<Wall> walls = new ArrayList<>();
     private final ArrayList<Ghost> ghosts = new ArrayList<>();
     private final ArrayList<Dot> dots = new ArrayList<>();
+    private final ArrayList<Shield> shields = new ArrayList<>();
     private final ArrayList<Pizza> pizzas = new ArrayList<>();
     private final ArrayList<Star> stars = new ArrayList<>();
 
@@ -53,6 +54,9 @@ public class Level {
                         break;
                     case "GhostPink":
                         ghosts.add(new GhostPink(point));
+                        break;
+                    case "Shield":
+                        shields.add(new Shield(point));
                         break;
                     case "Pizza":
                         pizzas.add(new Pizza(point));
@@ -97,6 +101,10 @@ public class Level {
         return ghosts;
     }
 
+    public ArrayList<Shield> getShields() {
+        return shields;
+    }
+
     public ArrayList<Dot> getDots() {
         return dots;
     }
@@ -113,7 +121,4 @@ public class Level {
         return timer;
     }
 
-    public void setTimer(Timer timer) {
-        this.timer = timer;
-    }
 }

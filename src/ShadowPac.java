@@ -201,7 +201,7 @@ public class ShadowPac extends AbstractGame {
                         level.getPlayer().increaseScore(Ghost.FRENZY_SCORE);
                         ghost.setActive(false);
                     } else {
-                        level.getPlayer().loseLife();
+                        level.getPlayer().collidesGhost();
                         ghost.startRespawn();
                     }
                 }
@@ -215,6 +215,15 @@ public class ShadowPac extends AbstractGame {
                 break;
             }
         }
+
+        for (Shield shield : level.getShields()) {
+            if (shield.collidesWith(level.getPlayer())) {
+                level.getShields().remove(shield);
+                level.getPlayer().shieldOn();
+                break;
+            }
+        }
+
         for (Pizza pizza : level.getPizzas()) {
             if (pizza.collidesWith(level.getPlayer())) {
                 level.getPlayer().increaseScore(Pizza.POINTS);
@@ -252,6 +261,10 @@ public class ShadowPac extends AbstractGame {
 
             for (Dot dot : level.getDots()) {
                 dot.update();
+            }
+
+            for (Shield shield : level.getShields()) {
+                shield.update();
             }
 
             for (Pizza pizza : level.getPizzas()) {
