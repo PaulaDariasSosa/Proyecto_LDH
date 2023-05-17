@@ -19,6 +19,7 @@ public class ShadowPac extends AbstractGame {
     private final Image WIN_IMAGE = new Image("res/win.png");
     private final Image LOSE_IMAGE = new Image("res/lose.png");
     private final Image TIMESUP_IMAGE = new Image("res/timesUp.png");
+    private final Image TIME_FREEZE_IMAGE = new Image("res/zawarudo.png");
     private Image background;
 
     private final static int TITLE_SCREEN = 0;
@@ -45,8 +46,12 @@ public class ShadowPac extends AbstractGame {
 
     // Frenzy mode attributes
     private final static int FRENZY_MODE_FRAMES = 500;
-    private boolean frenzyMode;
     private int frenzyFrameCount;
+    private boolean frenzyMode;
+
+    private final static int TIME_FROZEN_FRAMES = 300;
+    private boolean timeFrozen;
+    private int timeFrozenFrameCount;
 
     private int highScore;
 
@@ -62,6 +67,7 @@ public class ShadowPac extends AbstractGame {
         playerWin = false;
         timesUp = false;
         frenzyMode = false;
+        timeFrozen = false;
         highScore = 0;
     }
 
@@ -192,6 +198,10 @@ public class ShadowPac extends AbstractGame {
         if (frenzyMode) {
             frenzyFrameCount++;
         }
+        if (timeFrozen) {
+            TIME_FREEZE_IMAGE.draw(Window.getWidth() / 2.0, Window.getHeight() / 2.0);
+            timeFrozenFrameCount++;
+        }
 
         for (Shield shield : level.getShields()) {
             if (shield.collidesWith(level.getPlayer())) {
@@ -203,7 +213,9 @@ public class ShadowPac extends AbstractGame {
 
         for (Ghost ghost : level.getGhosts()) {
             if (ghost.isActive()) {
-                ghost.move(level.getWalls(), frenzyMode);
+                if (!timeFrozen) {
+                    ghost.move(level.getWalls(), frenzyMode);
+                }
                 if (level.getPlayer().isActive() && ghost.collidesWith(level.getPlayer())) {
                     if (frenzyMode) {
                         level.getPlayer().increaseScore(Ghost.FRENZY_SCORE);
@@ -233,6 +245,14 @@ public class ShadowPac extends AbstractGame {
             }
         }
 
+        for (TimeFreeze timeFreeze : level.getTimeFreezes()) {
+            if (timeFreeze.collidesWith(level.getPlayer())) {
+                timeFrozen = true;
+                level.getTimeFreezes().remove(timeFreeze);
+                break;
+            }
+        }
+
         if (Player.hasLost()) {
             Player.setTotalScore(Player.getTotalScore() + level.getPlayer().getPlayerScore());
             if (highScore < Player.getTotalScore()) {
@@ -253,7 +273,7 @@ public class ShadowPac extends AbstractGame {
 
             level.getPlayer().update(input);
 
-            level.getTimer().update();
+            level.getTimer().update(timeFrozen);
 
             for (Wall wall : level.getWalls()) {
                 wall.update();
@@ -275,8 +295,16 @@ public class ShadowPac extends AbstractGame {
                 star.update();
             }
 
+            for (TimeFreeze timeFreezes : level.getTimeFreezes()) {
+                timeFreezes.update();
+            }
+
             for (Ghost ghost : level.getGhosts()) {
-                ghost.update(frenzyMode);
+                if (ghost instanceof GhostTuka) {
+                    ghost.update(frenzyMode, timeFrozen);
+                } else {
+                    ghost.update(frenzyMode);
+                }
             }
 
             if (frenzyFrameCount == FRENZY_MODE_FRAMES) {
@@ -288,6 +316,11 @@ public class ShadowPac extends AbstractGame {
                         ghost.resetPosition();
                     }
                 }
+            }
+
+            if (timeFrozenFrameCount == TIME_FROZEN_FRAMES) {
+                timeFrozen = false;
+                timeFrozenFrameCount = 0;
             }
 
         }

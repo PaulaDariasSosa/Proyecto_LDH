@@ -50,6 +50,19 @@ public abstract class Ghost extends MovingEntity {
         }
     }
 
+    public void update(boolean frenzyMode, boolean timeFrozen) {
+        if (isRespawning()) {
+            respawn();
+        }
+        else {
+            if (isActive()) {
+                if (frenzyMode) {
+                    GHOST_FRENZY_IMAGE.drawFromTopLeft(getPosition().x, getPosition().y);
+                }
+            }
+        }
+    }
+
     /**
      * Method that moves the ghost given the list of walls and frenzy mode
      */

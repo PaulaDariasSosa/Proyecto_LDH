@@ -24,7 +24,7 @@ public class GhostTuka extends Ghost {
         setDirection(rand.nextInt(4));
     }
 
-    public void update(boolean frenzyMode) {
+    public void update(boolean frenzyMode, boolean timeFrozen) {
         if (isRespawning()) {
             respawn();
         } else {
@@ -33,7 +33,9 @@ public class GhostTuka extends Ghost {
                     super.update(true);
                 } else {
                     // switching the image being rendered
-                    switchFrameCount--;
+                    if (!timeFrozen) {
+                        switchFrameCount--;
+                    }
                     if (switchFrameCount == 0) {
                         if (isOpen) {
                             setImage(GHOST_TUKA_OPEN_IMAGE);

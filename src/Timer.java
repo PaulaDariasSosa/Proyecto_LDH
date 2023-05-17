@@ -17,11 +17,13 @@ public class Timer {
         time = TOTAL_TIME;
         frameInSecond = FRAME_RATE;
     }
-    public void update() {
+    public void update(boolean timeFrozen) {
         CLOCk_IMAGE.draw(CLOCK_POINT.x, CLOCK_POINT.y);
         TIMER_FONT.drawString(String.valueOf(time), TIMER_POINT.x, TIMER_POINT.y);
 
-        frameInSecond--;
+        if (!timeFrozen) {
+            frameInSecond--;
+        }
         if (frameInSecond == 0) {
             time--;
             frameInSecond = FRAME_RATE;

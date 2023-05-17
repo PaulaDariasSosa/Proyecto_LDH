@@ -15,6 +15,7 @@ public class Level {
     private final ArrayList<Shield> shields = new ArrayList<>();
     private final ArrayList<Pizza> pizzas = new ArrayList<>();
     private final ArrayList<Star> stars = new ArrayList<>();
+    private final ArrayList<TimeFreeze> timeFreezes = new ArrayList<>();
 
     public Level(String worldFile) {
         readCSV(worldFile);
@@ -64,6 +65,9 @@ public class Level {
                     case "Star":
                         stars.add(new Star(point));
                         break;
+                    case "TimeFreeze":
+                        timeFreezes.add(new TimeFreeze(point));
+                        break;
                     default:
                         dots.add(new Dot(point));
                         break;
@@ -89,6 +93,9 @@ public class Level {
         }
     }
 
+    public Timer getTimer() {
+        return timer;
+    }
     public Player getPlayer() {
         return player;
     }
@@ -117,8 +124,8 @@ public class Level {
         return stars;
     }
 
-    public Timer getTimer() {
-        return timer;
+    public ArrayList<TimeFreeze> getTimeFreezes() {
+        return timeFreezes;
     }
 
 }

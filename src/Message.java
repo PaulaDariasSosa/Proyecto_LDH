@@ -35,7 +35,7 @@ public class Message {
     private final static String INSTRUCTION_1_MESSAGE = "USE ARROW KEYS TO MOVE\nREACH TARGET SCORE TO WIN\n" +
             "GET SUPER STAR TO ATTACK\nCOMPLETE BEFORE TIME RUNS OUT\n\nPRESS SPACE TO START";
     private final static String INSTRUCTION_2_MESSAGE = "USE ARROW KEYS TO MOVE\nREACH TARGET SCORE TO WIN\n" +
-            "GET SUPER STAR TO ATTACK\nCOMPLETE BEFORE TIME RUNS OUT\n\nPRESS SPACE TO START";
+            "USE 'THE WORLD' TO FREEZE TIME\nCOMPLETE BEFORE TIME RUNS OUT\n\nPRESS SPACE TO START";
 
     private final static Font TARGET_FONT = new Font("res/FSO8BITR.ttf", 20);
     private final static Point TARGET_POINT = new Point(220, 25);
