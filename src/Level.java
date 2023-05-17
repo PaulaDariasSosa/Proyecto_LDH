@@ -15,6 +15,7 @@ public class Level {
     private final ArrayList<Shield> shields = new ArrayList<>();
     private final ArrayList<Pizza> pizzas = new ArrayList<>();
     private final ArrayList<Star> stars = new ArrayList<>();
+    private final ArrayList<Bomb> bombs = new ArrayList<>();
     private final ArrayList<TimeFreeze> timeFreezes = new ArrayList<>();
 
     public Level(String worldFile) {
@@ -64,6 +65,9 @@ public class Level {
                         break;
                     case "Star":
                         stars.add(new Star(point));
+                        break;
+                    case "Bomb":
+                        bombs.add(new Bomb(point));
                         break;
                     case "TimeFreeze":
                         timeFreezes.add(new TimeFreeze(point));
@@ -122,6 +126,10 @@ public class Level {
 
     public ArrayList<Star> getPellets() {
         return stars;
+    }
+
+    public ArrayList<Bomb> getBombs() {
+        return bombs;
     }
 
     public ArrayList<TimeFreeze> getTimeFreezes() {

@@ -19,6 +19,7 @@ public class ShadowPac extends AbstractGame {
     private final Image WIN_IMAGE = new Image("res/win.png");
     private final Image LOSE_IMAGE = new Image("res/lose.png");
     private final Image TIMESUP_IMAGE = new Image("res/timesUp.png");
+    private final Image EXPLOSION_IMAGE = new Image("res/explosion.png");
     private final Image TIME_FREEZE_IMAGE = new Image("res/zawarudo.png");
     private Image background;
 
@@ -44,14 +45,18 @@ public class ShadowPac extends AbstractGame {
     private final static int TARGET_SCORE_LVL_2 = 1250;
     public final static int MAX_SCORE = TARGET_SCORE_LVL_0 + TARGET_SCORE_LVL_1 + TARGET_SCORE_LVL_2;
 
-    // Frenzy mode attributes
+    private final static int EXPLOSION_FRAMES = 100;
+    private int explosionFrameCount;
+    private boolean exploding;
+
+
     private final static int FRENZY_MODE_FRAMES = 500;
     private int frenzyFrameCount;
     private boolean frenzyMode;
 
     private final static int TIME_FROZEN_FRAMES = 300;
-    private boolean timeFrozen;
     private int timeFrozenFrameCount;
+    private boolean timeFrozen;
 
     private int highScore;
 
@@ -66,6 +71,7 @@ public class ShadowPac extends AbstractGame {
         gameOver = false;
         playerWin = false;
         timesUp = false;
+        exploding = false;
         frenzyMode = false;
         timeFrozen = false;
         highScore = 0;
@@ -109,11 +115,17 @@ public class ShadowPac extends AbstractGame {
             } else if (screenStatus == INSTRUCTION_0_SCREEN && input.wasPressed(Keys.SPACE)) {
                 screenStatus = LEVEL_0;
             } else if (screenStatus == LVL_0_COMPLETE_SCREEN && levelCompleteFrameCount == COMPLETE_MESSAGE_FRAMES) {
+                exploding = false;
+                frenzyMode = false;
+                timeFrozen = false;
                 background = LEVEL1_IMAGE;
                 screenStatus = INSTRUCTION_1_SCREEN;
             } else if (screenStatus == INSTRUCTION_1_SCREEN && input.wasPressed(Keys.SPACE)) {
                 screenStatus = LEVEL_1;
             } else if (screenStatus == LVL_1_COMPLETE_SCREEN && levelCompleteFrameCount == COMPLETE_MESSAGE_FRAMES) {
+                exploding = false;
+                frenzyMode = false;
+                timeFrozen = false;
                 background = LEVEL2_IMAGE;
                 screenStatus = INSTRUCTION_2_SCREEN;
             } else if (screenStatus == INSTRUCTION_2_SCREEN && input.wasPressed(Keys.SPACE)) {
@@ -187,6 +199,21 @@ public class ShadowPac extends AbstractGame {
     private void playLevel(Input input, Level level, int levelNum, int targetScore) {
         level.playerInput(input, frenzyMode);
 
+        for (Bomb bomb : level.getBombs()) {
+            if (bomb.collidesWith(level.getPlayer())) {
+                level.getBombs().remove(bomb);
+                exploding = true;
+                explosionFrameCount = 0;
+                for (Ghost ghost : level.getGhosts()) {
+                    ghost.setActive(false);
+                }
+                break;
+            }
+        }
+        if (exploding) {
+            explosionFrameCount++;
+        }
+
         for (Star star : level.getPellets()) {
             if (star.collidesWith(level.getPlayer())) {
                 frenzyMode = true;
@@ -197,6 +224,15 @@ public class ShadowPac extends AbstractGame {
         }
         if (frenzyMode) {
             frenzyFrameCount++;
+        }
+
+        for (TimeFreeze timeFreeze : level.getTimeFreezes()) {
+            if (timeFreeze.collidesWith(level.getPlayer())) {
+                timeFrozen = true;
+                timeFrozenFrameCount = 0;
+                level.getTimeFreezes().remove(timeFreeze);
+                break;
+            }
         }
         if (timeFrozen) {
             TIME_FREEZE_IMAGE.draw(Window.getWidth() / 2.0, Window.getHeight() / 2.0);
@@ -247,14 +283,6 @@ public class ShadowPac extends AbstractGame {
             }
         }
 
-        for (TimeFreeze timeFreeze : level.getTimeFreezes()) {
-            if (timeFreeze.collidesWith(level.getPlayer())) {
-                timeFrozen = true;
-                level.getTimeFreezes().remove(timeFreeze);
-                break;
-            }
-        }
-
         if (Player.hasLost()) {
             Player.setTotalScore(Player.getTotalScore() + level.getPlayer().getPlayerScore());
             if (highScore < Player.getTotalScore()) {
@@ -297,6 +325,10 @@ public class ShadowPac extends AbstractGame {
                 star.update();
             }
 
+            for (Bomb bomb : level.getBombs()) {
+                bomb.update();
+            }
+
             for (TimeFreeze timeFreezes : level.getTimeFreezes()) {
                 timeFreezes.update();
             }
@@ -306,6 +338,17 @@ public class ShadowPac extends AbstractGame {
                     ghost.update(frenzyMode, timeFrozen);
                 } else {
                     ghost.update(frenzyMode);
+                }
+            }
+
+            if (exploding) {
+                EXPLOSION_IMAGE.draw(WINDOW_WIDTH / 2.0, WINDOW_HEIGHT / 2.0);
+            }
+            if (explosionFrameCount == EXPLOSION_FRAMES) {
+                exploding = false;
+                explosionFrameCount = 0;
+                for (Ghost ghost : level.getGhosts()) {
+                    ghost.startRespawn();
                 }
             }
 
