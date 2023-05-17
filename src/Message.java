@@ -4,12 +4,12 @@ import bagel.util.Point;
 
 public class Message {
 
-    private final static int DEFAULT_FONT_SIZE = 80;
-    private final static Font DEFAULT_FONT = new Font("res/FSO8BITR.ttf", DEFAULT_FONT_SIZE);
-    private final static Point DEFAULT_POINT = new Point(170, 350);
+    private final static int DEFAULT_FONT_SIZE = 140;
+    private final static Font DEFAULT_FONT = new Font("res/SourceSansPro-Bold.ttf", DEFAULT_FONT_SIZE);
+    private final static Point DEFAULT_POINT = new Point(140, 350);
 
     private final static Font HIGH_SCORE_FONT = new Font("res/FSO8BITR.ttf", 35);
-    private final static Point HIGH_SCORE_POINT = new Point(DEFAULT_POINT.x + 130, DEFAULT_POINT.y + 100);
+    private final static Point HIGH_SCORE_POINT = new Point(300, 450);
 
     private final static Image CROWN_IMAGE = new Image("res/crown.png");
     private final static Point CROWN_POINT = new Point(512, 430);
@@ -17,7 +17,7 @@ public class Message {
     private final static int TITLE_MESSAGE_SIZE = 24;
     private final static String TITLE_MESSAGE = "PRESS SPACE TO START THE GAME";
     private final static Font TITLE_MESSAGE_FONT = new Font("res/FSO8BITR.ttf", TITLE_MESSAGE_SIZE);
-    private final static Point TITLE_MESSAGE_POINT = new Point(DEFAULT_POINT.x + 80, DEFAULT_POINT.y + 190);
+    private final static Point TITLE_MESSAGE_POINT = new Point(250, 530);
 
     private final static Font COMPLETE_FONT = new Font("res/FSO8BITR.ttf", 60);
     private final static Point COMPLETE_POINT = new Point(140, 350);
@@ -53,7 +53,7 @@ public class Message {
     private final static String LOSE_MESSAGE = "YOU ARE BROKE!";
     private final static Point LOSE_POINT = new Point(100, 350);
     private final static String TIMES_UP_MESSAGE = "TIME'S UP!";
-    private final static Point TIME_POINT = new Point(200, 350);
+    private final static Point TIME_POINT = new Point(220, 350);
 
 
     private final static String RETRY_MESSAGE = "PRESS SPACE TO\nRETURN TO TITLE SCREEN";
