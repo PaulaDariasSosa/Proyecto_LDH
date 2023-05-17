@@ -51,7 +51,6 @@ public class ShadowPac extends AbstractGame {
     private int explosionFrameCount;
     private boolean exploding;
 
-
     private final static int FRENZY_MODE_FRAMES = 500;
     private int frenzyFrameCount;
     private boolean frenzyMode;
@@ -102,13 +101,11 @@ public class ShadowPac extends AbstractGame {
                     resetGame();
                     background = LEVEL0_IMAGE;
                     screenStatus = INSTRUCTION_0_SCREEN;
-                }
-                else if (input.isDown(Keys.T) && input.isDown(Keys.U) && input.isDown(Keys.K) && input.isDown(Keys.A)) {
+                } else if (input.isDown(Keys.T) && input.isDown(Keys.U) && input.isDown(Keys.K) && input.isDown(Keys.A)) {
                     resetGame();
                     background = LEVEL1_IMAGE;
                     screenStatus = INSTRUCTION_1_SCREEN;
-                }
-                else if (input.isDown(Keys.M) && input.isDown(Keys.A) && input.isDown(Keys.N) && input.isDown(Keys.K)) {
+                } else if (input.isDown(Keys.M) && input.isDown(Keys.A) && input.isDown(Keys.N) && input.isDown(Keys.K)) {
                     resetGame();
                     background = LEVEL2_IMAGE;
                     screenStatus = INSTRUCTION_2_SCREEN;
@@ -299,8 +296,7 @@ public class ShadowPac extends AbstractGame {
             }
             timesUp = true;
             background = TIMESUP_IMAGE;
-        }
-        else {
+        } else {
             Message.renderLevel(levelNum, targetScore);
 
             level.getPlayer().update(input);
@@ -375,7 +371,7 @@ public class ShadowPac extends AbstractGame {
 
     /**
      * Method that resets the game
-     * after winning/losing
+     * after finishing a game
      */
     private void resetGame() {
         level0 = new Level(LEVEL_0_FILE);

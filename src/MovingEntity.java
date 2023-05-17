@@ -1,4 +1,5 @@
 import bagel.util.Point;
+
 import java.util.ArrayList;
 
 public abstract class MovingEntity extends GameEntity {
