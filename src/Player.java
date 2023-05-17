@@ -7,6 +7,7 @@ public class Player extends MovingEntity {
     private final static Image PAC_IMAGE = new Image("res/pac.png");
     private final static Image PAC_OPEN_IMAGE = new Image("res/pacOpen.png");
     private final static Image HEART_IMAGE = new Image("res/heart.png");
+    private final static Image SHIELD_ON_IMAGE = new Image("res/shieldOn.png");
     private final static int STARTING_LIVES = 3;
     private static final int MAX_LIVES = 5;
     private final static int SWITCH_FRAMES = 8;
@@ -14,6 +15,7 @@ public class Player extends MovingEntity {
     private final static Point FIRST_HEART_POINT = new Point(850, 10);
     private final static Font SCORE_FONT = new Font("res/FSO8BITR.ttf", 20);
     private final static Point SCORE_POINT = new Point(25, 25);
+    private final static int SHIELD_OFFSET = 7;
 
     private final static double SPEED = 6;
     private final static double FRENZY_SPEED = 10;
@@ -25,6 +27,7 @@ public class Player extends MovingEntity {
     private boolean isOpen = false;
     private int playerScore;
     private static int totalScore;
+    private boolean shieldOn;
 
     public Player(Point topLeft) {
         super(topLeft, SPEED, FRENZY_SPEED);
@@ -34,6 +37,7 @@ public class Player extends MovingEntity {
         lifeCount = STARTING_LIVES;
         switchFrameCount = SWITCH_FRAMES;
         playerScore = 0;
+        shieldOn = true;
     }
 
     public void update(Input input) {
@@ -57,6 +61,9 @@ public class Player extends MovingEntity {
                     }
                 }
                 getImage().drawFromTopLeft(getPosition().x, getPosition().y, rotation);
+                if (shieldOn) {
+                    SHIELD_ON_IMAGE.drawFromTopLeft(getPosition().x - SHIELD_OFFSET, getPosition().y - SHIELD_OFFSET);
+                }
             }
         }
         renderLives();
