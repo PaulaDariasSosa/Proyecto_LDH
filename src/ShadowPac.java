@@ -222,7 +222,9 @@ public class ShadowPac extends AbstractGame {
                         ghost.setActive(false);
                     } else {
                         level.getPlayer().collidesGhost();
-                        ghost.startRespawn();
+                        if (!timeFrozen) {
+                            ghost.startRespawn();
+                        }
                     }
                 }
             }
