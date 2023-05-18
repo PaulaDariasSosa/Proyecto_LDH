@@ -179,7 +179,7 @@ public class ShadowPac extends AbstractGame {
                 playLevel(input, level1, 1, TARGET_SCORE_LVL_1);
             } else {
                 playLevel(input, level2, 2, TARGET_SCORE_LVL_2);
-                if (level2.getPlayer().getPlayerScore() == TARGET_SCORE_LVL_2) {
+                if (level2.getPlayer().getPlayerScore() >= TARGET_SCORE_LVL_2) {
                     Player.setTotalScore(Player.getTotalScore() + level2.getPlayer().getPlayerScore());
                     if (highScore < Player.getTotalScore()) {
                         highScore = Player.getTotalScore();
