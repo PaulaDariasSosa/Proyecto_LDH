@@ -15,7 +15,8 @@ public class Message {
     private final static Point CROWN_POINT = new Point(512, 430);
 
     private final static int TITLE_MESSAGE_SIZE = 24;
-    private final static String TITLE_MESSAGE = "PRESS SPACE TO START THE GAME";
+    private final static String TITLE_MESSAGE = "USE ARROW KEYS TO MOVE\nPRESS SPACE TO START THE GAME\n" +
+            "COMPLETE BEFORE TIME RUNS OUT";
     private final static Font TITLE_MESSAGE_FONT = new Font("res/FSO8BITR.ttf", TITLE_MESSAGE_SIZE);
     private final static Point TITLE_MESSAGE_POINT = new Point(250, 530);
 
@@ -31,12 +32,11 @@ public class Message {
     private final static double INSTRUCTION_X = 100;
     private final static double INSTRUCTION_Y = 350;
 
-    private final static String INSTRUCTION_0_MESSAGE = "USE ARROW KEYS TO MOVE\nREACH TARGET SCORE TO WIN\n" +
-            "USE BOMB TO KILL ALL GHOSTS\nCOMPLETE BEFORE TIME RUNS OUT\n\n\nPRESS SPACE TO START";
-    private final static String INSTRUCTION_1_MESSAGE = "USE ARROW KEYS TO MOVE\nEAT PIZZA TO GET EXTRA LIFE\n" +
-            "GET SHIELD FOR PROTECTION\nGET SUPER STAR TO ATTACK\n\n\nPRESS SPACE TO START";
-    private final static String INSTRUCTION_2_MESSAGE = "USE ARROW KEYS TO MOVE\n" +
-            "USE 'THE WORLD' TO FREEZE TIME\n\n\n\nPRESS SPACE TO START";
+    private final static String INSTRUCTION_0_MESSAGE = "REACH TARGET SCORE TO WIN\nGET SHIELD FOR PROTECTION\n" +
+            "USE BOMB TO KILL ALL GHOSTS\n\n\nPRESS SPACE TO START";
+    private final static String INSTRUCTION_1_MESSAGE = "EAT PIZZA TO GET EXTRA LIFE\n" +
+            "GET SUPER STAR TO ATTACK\n\n\nPRESS SPACE TO START";
+    private final static String INSTRUCTION_2_MESSAGE = "USE 'THE WORLD' TO FREEZE TIME\n\n\n\nPRESS SPACE TO START";
 
     private final static Font TARGET_FONT = new Font("res/FSO8BITR.ttf", 20);
     private final static Point TARGET_POINT = new Point(220, 25);

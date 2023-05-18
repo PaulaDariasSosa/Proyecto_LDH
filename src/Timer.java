@@ -9,7 +9,7 @@ public class Timer {
     private final static Font TIMER_FONT = new Font("res/FSO8BITR.ttf", FONT_SIZE);
     private final static Point TIMER_POINT = new Point(770, 30);
 
-    private final static int TOTAL_TIME = 50;
+    private final static int TOTAL_TIME = 60;
     private final static int FRAME_RATE = 60;
     private int time;
     private int frameInSecond;

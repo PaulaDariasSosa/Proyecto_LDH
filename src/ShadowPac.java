@@ -47,7 +47,7 @@ public class ShadowPac extends AbstractGame {
     private final static int TARGET_SCORE_LVL_2 = 1250;
     public final static int MAX_SCORE = TARGET_SCORE_LVL_0 + TARGET_SCORE_LVL_1 + TARGET_SCORE_LVL_2;
 
-    private final static int EXPLOSION_FRAMES = 100;
+    private final static int EXPLOSION_FRAMES = 200;
     private int explosionFrameCount;
     private boolean exploding;
 
@@ -101,11 +101,13 @@ public class ShadowPac extends AbstractGame {
                     resetGame();
                     background = LEVEL0_IMAGE;
                     screenStatus = INSTRUCTION_0_SCREEN;
-                } else if (input.isDown(Keys.T) && input.isDown(Keys.U) && input.isDown(Keys.K) && input.isDown(Keys.A)) {
+                } else if (input.isDown(Keys.T) && input.isDown(Keys.U) &&
+                        input.isDown(Keys.K) && input.isDown(Keys.A)) {
                     resetGame();
                     background = LEVEL1_IMAGE;
                     screenStatus = INSTRUCTION_1_SCREEN;
-                } else if (input.isDown(Keys.M) && input.isDown(Keys.A) && input.isDown(Keys.N) && input.isDown(Keys.K)) {
+                } else if (input.isDown(Keys.M) && input.isDown(Keys.A) &&
+                        input.isDown(Keys.N) && input.isDown(Keys.K)) {
                     resetGame();
                     background = LEVEL2_IMAGE;
                     screenStatus = INSTRUCTION_2_SCREEN;
@@ -113,15 +115,18 @@ public class ShadowPac extends AbstractGame {
 
             } else if (screenStatus == INSTRUCTION_0_SCREEN && input.wasPressed(Keys.SPACE)) {
                 screenStatus = LEVEL_0;
-            } else if (screenStatus == LVL_0_COMPLETE_SCREEN && levelCompleteFrameCount == COMPLETE_MESSAGE_FRAMES) {
+            } else if (screenStatus == LVL_0_COMPLETE_SCREEN &&
+                    levelCompleteFrameCount == COMPLETE_MESSAGE_FRAMES) {
                 exploding = false;
                 frenzyMode = false;
                 timeFrozen = false;
                 background = LEVEL1_IMAGE;
                 screenStatus = INSTRUCTION_1_SCREEN;
-            } else if (screenStatus == INSTRUCTION_1_SCREEN && input.wasPressed(Keys.SPACE)) {
+            } else if (screenStatus == INSTRUCTION_1_SCREEN &&
+                    input.wasPressed(Keys.SPACE)) {
                 screenStatus = LEVEL_1;
-            } else if (screenStatus == LVL_1_COMPLETE_SCREEN && levelCompleteFrameCount == COMPLETE_MESSAGE_FRAMES) {
+            } else if (screenStatus == LVL_1_COMPLETE_SCREEN &&
+                    levelCompleteFrameCount == COMPLETE_MESSAGE_FRAMES) {
                 exploding = false;
                 frenzyMode = false;
                 timeFrozen = false;
@@ -147,11 +152,13 @@ public class ShadowPac extends AbstractGame {
                 Message.instructionLevel1();
             } else if (screenStatus == INSTRUCTION_2_SCREEN) {
                 Message.instructionLevel2();
-            } else if (screenStatus == LEVEL_0 && level0.getPlayer().getPlayerScore() >= TARGET_SCORE_LVL_0) {
+            } else if (screenStatus == LEVEL_0 &&
+                    level0.getPlayer().getPlayerScore() >= TARGET_SCORE_LVL_0) {
                 Player.setTotalScore(Player.getTotalScore() + level0.getPlayer().getPlayerScore());
                 screenStatus = LVL_0_COMPLETE_SCREEN;
                 levelCompleteFrameCount = 0;
-            } else if (screenStatus == LEVEL_1 && level1.getPlayer().getPlayerScore() >= TARGET_SCORE_LVL_1) {
+            } else if (screenStatus == LEVEL_1 &&
+                    level1.getPlayer().getPlayerScore() >= TARGET_SCORE_LVL_1) {
                 Player.setTotalScore(Player.getTotalScore() + level1.getPlayer().getPlayerScore());
                 screenStatus = LVL_1_COMPLETE_SCREEN;
                 levelCompleteFrameCount = 0;
@@ -202,6 +209,7 @@ public class ShadowPac extends AbstractGame {
             if (bomb.collidesWith(level.getPlayer())) {
                 level.getBombs().remove(bomb);
                 exploding = true;
+                frenzyMode = false;
                 explosionFrameCount = 0;
                 for (Ghost ghost : level.getGhosts()) {
                     ghost.setActive(false);

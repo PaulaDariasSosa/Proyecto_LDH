@@ -9,7 +9,7 @@ public abstract class Ghost extends MovingEntity {
     private final static Image EYES_RIGHT_IMAGE = new Image("res/eyesRight.png");
     private final static Image EYES_UP_IMAGE = new Image("res/eyesUp.png");
     private final static Image EYES_DOWN_IMAGE = new Image("res/eyesDown.png");
-    public final static int FRENZY_SCORE = 30;
+    public final static int FRENZY_SCORE = 40;
     public final static int DOWN = 0;
     public final static int RIGHT = 1;
     public final static int UP = 2;
