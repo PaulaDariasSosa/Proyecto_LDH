@@ -42,7 +42,7 @@ public class ShadowPac extends AbstractGame {
     private final static String LVL_1_PASSWORD = "TUKA";
     private final static String LVL_2_PASSWORD = "MANK";
 
-    private final static int TARGET_SCORE_LVL_0 = 1200;
+    private final static int TARGET_SCORE_LVL_0 = 1210;
     private final static int TARGET_SCORE_LVL_1 = 1230;
     private final static int TARGET_SCORE_LVL_2 = 1250;
     public final static int MAX_SCORE = TARGET_SCORE_LVL_0 + TARGET_SCORE_LVL_1 + TARGET_SCORE_LVL_2;
