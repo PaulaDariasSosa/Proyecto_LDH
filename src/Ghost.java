@@ -3,6 +3,9 @@ import bagel.util.Point;
 
 import java.util.ArrayList;
 
+/**
+ * @brief Abstract class that represents a ghost
+ */
 public abstract class Ghost extends MovingEntity {
     private final static Image GHOST_FRENZY_IMAGE = new Image("res/ghostFrenzy.png");
     private final static Image EYES_LEFT_IMAGE = new Image("res/eyesLeft.png");
@@ -16,15 +19,24 @@ public abstract class Ghost extends MovingEntity {
     public final static int LEFT = 3;
     private int direction;
 
+    /**
+     * @brief The speed decrease when the ghost is in frenzy mode
+     */
     private final static double FRENZY_SPEED_DECREASE = 0.5;
 
+    /**
+     * @brief Constructor for the Ghost class
+     * @param topLeft The top left corner of the ghost
+     * @param speed The speed of the ghost
+     */
     public Ghost(Point topLeft, double speed) {
         super(topLeft, speed, speed - FRENZY_SPEED_DECREASE);
         setPosition(topLeft);
     }
 
     /**
-     * Method that performs state update
+     * @brief Method that performs state update
+     * @param frenzyMode
      */
     public void update(boolean frenzyMode) {
         if (isRespawning()) {
@@ -50,6 +62,11 @@ public abstract class Ghost extends MovingEntity {
         }
     }
 
+    /**
+     * @brief Method that moves the ghost given the list of walls and frenzy mode
+     * @param frenzyMode
+     * @param timeFrozen
+     */
     public void update(boolean frenzyMode, boolean timeFrozen) {
         if (isRespawning()) {
             respawn();
@@ -64,7 +81,9 @@ public abstract class Ghost extends MovingEntity {
     }
 
     /**
-     * Method that moves the ghost given the list of walls and frenzy mode
+     * @brief Method that moves the ghost given the list of walls and frenzy mode
+     * @param walls
+     * @param frenzyMode
      */
     public void move(ArrayList<Wall> walls, boolean frenzyMode) {
         if (direction == LEFT) {
@@ -78,6 +97,11 @@ public abstract class Ghost extends MovingEntity {
         }
     }
 
+    /**
+     * @brief Method that returns true if the ghost can move, false otherwise
+     * @param walls
+     * @return True if the ghost can move, false otherwise
+     */
     @Override
     public boolean canMove(ArrayList<Wall> walls) {
         boolean canMove = true;
@@ -92,14 +116,22 @@ public abstract class Ghost extends MovingEntity {
     }
 
     /**
-     * Method that changes the direction of the ghost after colliding with a wall
+     * @brief Method that changes the direction of the ghost after colliding with a wall
      */
     public abstract void changeDirection();
 
+    /**
+     * @brief Method that gets the direction of the ghost
+     * @return
+     */
     public int getDirection() {
         return direction;
     }
 
+    /**
+     * @brief Method that sets the direction of the ghost
+     * @param direction
+     */
     public void setDirection(int direction) {
         this.direction = direction;
     }

@@ -1,8 +1,7 @@
 import bagel.*;
 
 /**
- * SWEN20003 Project 2B, Semester 1, 2023
- * Tung Khanh Ho
+ * @brief The ShadowPac class is the main class of the game.
  */
 public class ShadowPac extends AbstractGame {
     private final static int WINDOW_WIDTH = 1024;
@@ -79,7 +78,8 @@ public class ShadowPac extends AbstractGame {
     }
 
     /**
-     * The entry point for the program.
+     * @brief The entry point for the program.
+     * @param args The command-line arguments
      */
     public static void main(String[] args) {
         ShadowPac game = new ShadowPac();
@@ -87,8 +87,8 @@ public class ShadowPac extends AbstractGame {
     }
 
     /**
-     * Performs a state update.
-     * Allows the game to exit when the escape key is pressed.
+     * @brief Performs a state update. Allows the game to exit when the escape key is pressed.
+     * @param input The input object
      */
     @Override
     protected void update(Input input) {
@@ -199,8 +199,11 @@ public class ShadowPac extends AbstractGame {
     }
 
     /**
-     * Method that plays a game level
-     * given the input, the level, and if the ghosts move.
+     * @brief Method that plays a game level given the input, the level, and if the ghosts move.
+     * @param input The input object
+     * @param level The level object
+     * @param levelNum The level number
+     * @param targetScore The target score for the level
      */
     private void playLevel(Input input, Level level, int levelNum, int targetScore) {
         level.playerInput(input, frenzyMode);
@@ -378,8 +381,7 @@ public class ShadowPac extends AbstractGame {
     }
 
     /**
-     * Method that resets the game
-     * after finishing a game
+     * @brief Method that resets the game after finishing a game
      */
     private void resetGame() {
         level0 = new Level(LEVEL_0_FILE);

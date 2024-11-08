@@ -1,0 +1,7 @@
+<map id="Ghost" name="Ghost">
+<area shape="rect" id="Node000001" title="Abstract class that represents a ghost." alt="" coords="26,155,82,181"/>
+<area shape="rect" id="Node000002" href="$class_moving_entity.html" title="Abstract class that represents a moving entity." alt="" coords="5,80,103,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="57,122,57,154,51,154,51,122"/>
+<area shape="rect" id="Node000003" href="$class_game_entity.html" title="Abstract class that represents a game entity." alt="" coords="9,5,99,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="57,48,57,80,51,80,51,48"/>
+</map>

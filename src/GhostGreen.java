@@ -2,10 +2,17 @@ import bagel.Image;
 import bagel.util.Point;
 import java.util.Random;
 
+/**
+ * @brief GhostGreen class, a subclass
+ */
 public class GhostGreen extends Ghost {
     private final static Image GHOST_GREEN_IMAGE = new Image("res/ghostGreen.png");
     private final static double SPEED = 8;
 
+    /**
+     * Constructor for GhostGreen
+     * @param topLeft
+     */
     public GhostGreen(Point topLeft) {
         super(topLeft, SPEED);
         setImage(GHOST_GREEN_IMAGE);
@@ -14,6 +21,9 @@ public class GhostGreen extends Ghost {
         setDirection(rand.nextInt(2));
     }
 
+    /**
+     * @brief Change direction of the ghost
+     */
     @Override
     public void changeDirection() {
         if (getDirection() == RIGHT) {

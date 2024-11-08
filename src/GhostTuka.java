@@ -3,6 +3,9 @@ import bagel.Image;
 import bagel.util.Point;
 import java.util.Random;
 
+/**
+ * @brief GhostTuka class, a subclass
+ */
 public class GhostTuka extends Ghost {
     private final static Image GHOST_TUKA_IMAGE = new Image("res/ghostTuka.png");
     private final static Image GHOST_TUKA_OPEN_IMAGE = new Image("res/ghostTukaOpen.png");
@@ -15,6 +18,10 @@ public class GhostTuka extends Ghost {
     private final static double SPEED = 7;
     private final Random rand = new Random();
 
+    /**
+     * @brief Constructor for GhostTuka
+     * @param topLeft
+     */
     public GhostTuka(Point topLeft) {
         super(topLeft, SPEED);
         setImage(GHOST_TUKA_IMAGE);
@@ -24,6 +31,11 @@ public class GhostTuka extends Ghost {
         setDirection(rand.nextInt(4));
     }
 
+    /**
+     * @brief Update the ghost
+     * @param frenzyMode
+     * @param timeFrozen
+     */
     public void update(boolean frenzyMode, boolean timeFrozen) {
         if (isRespawning()) {
             respawn();
@@ -61,6 +73,9 @@ public class GhostTuka extends Ghost {
         }
     }
 
+    /**
+     * @brief Change the direction of the ghost
+     */
     @Override
     public void changeDirection() {
         setDirection(rand.nextInt(4));

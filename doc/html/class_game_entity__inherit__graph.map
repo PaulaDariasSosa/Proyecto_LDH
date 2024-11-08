@@ -1,0 +1,39 @@
+<map id="GameEntity" name="GameEntity">
+<area shape="rect" id="Node000001" title="Abstract class that represents a game entity." alt="" coords="404,5,494,32"/>
+<area shape="rect" id="Node000002" href="$class_bomb.html" title="The bomb class." alt="" coords="115,80,170,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="389,35,183,83,171,86,170,81,182,77,388,30"/>
+<area shape="rect" id="Node000003" href="$class_dot.html" title="A class representing a dot in the game." alt="" coords="195,80,237,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="390,39,249,83,238,86,237,81,247,77,388,34"/>
+<area shape="rect" id="Node000004" href="$class_moving_entity.html" title="Abstract class that represents a moving entity." alt="" coords="260,80,358,107"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="412,42,335,82,333,77,410,37"/>
+<area shape="rect" id="Node000012" href="$class_pizza.html" title="Pizza class." alt="" coords="382,80,436,107"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="437,47,418,81,414,78,432,45"/>
+<area shape="rect" id="Node000013" href="$class_shield.html" title="Shield class." alt="" coords="460,80,518,107"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="466,45,485,78,480,81,461,47"/>
+<area shape="rect" id="Node000014" href="$class_star.html" title="Star class." alt="" coords="542,80,588,107"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="484,38,546,77,543,82,481,43"/>
+<area shape="rect" id="Node000015" href="$class_time_freeze.html" title="TimeFreeze class that represents a TimeFreeze powerup." alt="" coords="612,80,702,107"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="500,35,622,77,620,82,499,40"/>
+<area shape="rect" id="Node000016" href="$class_wall.html" title="Abstract class for Wall." alt="" coords="726,80,772,107"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="510,29,607,50,715,77,726,81,725,86,714,83,606,55,509,34"/>
+<area shape="rect" id="Node000005" href="$class_ghost.html" title="Abstract class that represents a ghost." alt="" coords="240,155,296,181"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="297,122,277,156,273,153,292,119"/>
+<area shape="rect" id="Node000011" href="$class_player.html" title="Class for the player." alt="" coords="320,155,378,181"/>
+<area shape="poly" id="edge10_Node000004_Node000011" title=" " alt="" coords="326,119,345,153,340,156,321,122"/>
+<area shape="rect" id="Node000006" href="$class_ghost_blue.html" title="Class for the GhostBlue object." alt="" coords="5,229,88,256"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="226,186,86,231,84,226,224,181"/>
+<area shape="rect" id="Node000007" href="$class_ghost_green.html" title="GhostGreen class, a subclass." alt="" coords="112,229,203,256"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="238,192,178,231,175,226,235,188"/>
+<area shape="rect" id="Node000008" href="$class_ghost_pink.html" title="GhostPink class, a subclass of Ghost." alt="" coords="227,229,309,256"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="270,197,270,229,265,229,265,197"/>
+<area shape="rect" id="Node000009" href="$class_ghost_red.html" title="GhostRed class." alt="" coords="333,229,413,256"/>
+<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="300,188,356,226,353,231,297,193"/>
+<area shape="rect" id="Node000010" href="$class_ghost_tuka.html" title="GhostTuka class, a subclass." alt="" coords="437,229,522,256"/>
+<area shape="poly" id="edge9_Node000005_Node000010" title=" " alt="" coords="312,181,444,226,442,231,310,186"/>
+<area shape="rect" id="Node000017" href="$class_bus.html" title="A class representing a bus in the game." alt="" coords="655,155,699,181"/>
+<area shape="poly" id="edge16_Node000016_Node000017" title=" " alt="" coords="728,120,691,156,688,152,724,116"/>
+<area shape="rect" id="Node000018" href="$class_train.html" title="Train class." alt="" coords="724,155,774,181"/>
+<area shape="poly" id="edge17_Node000016_Node000018" title=" " alt="" coords="752,122,752,154,746,154,746,122"/>
+<area shape="rect" id="Node000019" href="$class_tram.html" title="Tram class." alt="" coords="798,155,850,181"/>
+<area shape="poly" id="edge18_Node000016_Node000019" title=" " alt="" coords="775,116,813,152,809,156,771,119"/>
+</map>

@@ -2,6 +2,9 @@ import bagel.Font;
 import bagel.Image;
 import bagel.util.Point;
 
+/**
+ * @brief Timer class
+ */
 public class Timer {
     private final static Image CLOCK_IMAGE = new Image("res/timer.png");
     private final static Point CLOCK_POINT = new Point(750, 24);
@@ -14,11 +17,18 @@ public class Timer {
     private int time;
     private int frameInSecond;
 
+    /**
+     * @brief Constructor for Timer
+     */
     public Timer() {
         time = TOTAL_TIME;
         frameInSecond = FRAME_RATE;
     }
 
+    /**
+     * @brief Update the timer
+     * @param timeFrozen
+     */
     public void update(boolean timeFrozen) {
         CLOCK_IMAGE.draw(CLOCK_POINT.x, CLOCK_POINT.y);
         TIMER_FONT.drawString(String.valueOf(time), TIMER_POINT.x, TIMER_POINT.y);
@@ -32,6 +42,10 @@ public class Timer {
         }
     }
 
+    /**
+     * @brief Check if the time is up
+     * @return true if time is up, false otherwise
+     */
     public boolean timesUp() {
         return time == 0;
     }

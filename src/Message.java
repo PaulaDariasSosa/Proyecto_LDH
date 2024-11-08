@@ -2,6 +2,9 @@ import bagel.Font;
 import bagel.Image;
 import bagel.util.Point;
 
+/**
+ * @brief Class used to render messages on the screen
+ */
 public class Message {
 
     private final static int DEFAULT_FONT_SIZE = 140;
@@ -63,7 +66,9 @@ public class Message {
     private final static double RETURN_Y = 550;
 
     /**
-     * Method used to draw the start screen title and instructions
+     * @brief Method used to draw the start screen title and instructions
+     * @param gameTitle the title of the game
+     * @param highScore the high score of the game
      */
     public static void titleScreen(String gameTitle, int highScore) {
         DEFAULT_FONT.drawString(gameTitle, DEFAULT_POINT.x, DEFAULT_POINT.y);
@@ -76,7 +81,9 @@ public class Message {
     }
 
     /**
-     * Method used to draw the level complete messages
+     * @brief Method used to draw the level complete messages
+     * @param levelNum the level number
+     * @param password the password for the next level
      */
     public static void levelComplete(int levelNum, String password) {
         COMPLETE_FONT.drawString("LEVEL " + levelNum + " COMPLETED!", COMPLETE_POINT.x, COMPLETE_POINT.y);
@@ -85,7 +92,7 @@ public class Message {
     }
 
     /**
-     * Method used to draw the instructions before Level 1
+     * @brief Method used to draw the instructions before Level 1
      */
     public static void instructionLevel0() {
         LEVEL_INS_FONT.drawString("LEVEL 0", LEVEL_INS_POINT.x, LEVEL_INS_POINT.y);
@@ -93,7 +100,7 @@ public class Message {
     }
 
     /**
-     * Method used to draw the instructions before Level 1
+     * @brief Method used to draw the instructions before Level 1
      */
     public static void instructionLevel1() {
         LEVEL_INS_FONT.drawString("LEVEL 1", LEVEL_INS_POINT.x, LEVEL_INS_POINT.y);
@@ -101,7 +108,7 @@ public class Message {
     }
 
     /**
-     * Method used to draw the instructions before Level 2
+     * @brief Method used to draw the instructions before Level 2
      */
     public static void instructionLevel2() {
         LEVEL_INS_FONT.drawString("LEVEL 2", LEVEL_INS_POINT.x, LEVEL_INS_POINT.y);
@@ -109,24 +116,33 @@ public class Message {
     }
 
     /**
-     * Method used to draw the return to title screen instruction
+     * @brief Method used to draw the return to title screen instruction
      */
     public static void returnToTitle() {
         RETRY_FONT.drawString(RETRY_MESSAGE, RETURN_X, RETURN_Y);
     }
 
+    /**
+     * @brief Method used to draw the win screen message
+     */
     public static void winScreen() {
         DEFAULT_FONT.drawString(WIN_MESSAGE, WIN_POINT.x, WIN_POINT.y);
         finalScore(Player.getTotalScore());
         returnToTitle();
     }
 
+    /**
+     * @brief Method used to draw the lose screen message
+     */
     public static void loseScreen() {
         DEFAULT_FONT.drawString(LOSE_MESSAGE, LOSE_POINT.x, LOSE_POINT.y);
         finalScore(Player.getTotalScore());
         returnToTitle();
     }
 
+    /**
+     * @brief Method used to draw the times up screen message
+     */
     public static void timesUp() {
         DEFAULT_FONT.drawString(TIMES_UP_MESSAGE, TIME_POINT.x, TIME_POINT.y);
         finalScore(Player.getTotalScore());
@@ -134,7 +150,9 @@ public class Message {
     }
 
     /**
-     * Method used to draw messages at the centre of the screen
+     * @brief  Method used to draw messages at the centre of the screen
+     * @param levelNum the level number
+     * @param targetScore the target score for the level
      */
     public static void renderLevel(int levelNum, int targetScore) {
         TARGET_FONT.drawString("TARGET " + targetScore, TARGET_POINT.x, TARGET_POINT.y);
@@ -142,7 +160,8 @@ public class Message {
     }
 
     /**
-     * Method used to draw messages at the centre of the screen
+     * @brief Method used to draw messages at the centre of the screen
+     * @param finalScore the final score of the player
      */
     public static void finalScore(int finalScore) {
         if (finalScore == ShadowPac.MAX_SCORE) {

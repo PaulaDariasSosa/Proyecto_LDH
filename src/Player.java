@@ -3,6 +3,9 @@ import bagel.util.Point;
 
 import java.util.ArrayList;
 
+/**
+ * @brief Class for the player
+ */
 public class Player extends MovingEntity {
     private final static Image PAC_IMAGE = new Image("res/pac.png");
     private final static Image PAC_OPEN_IMAGE = new Image("res/pacOpen.png");
@@ -29,6 +32,10 @@ public class Player extends MovingEntity {
     private static int totalScore;
     private static boolean shieldOn;
 
+    /**
+     * @brief Constructor for Player
+     * @param topLeft
+     */
     public Player(Point topLeft) {
         super(topLeft, SPEED, FRENZY_SPEED);
         setImage(PAC_IMAGE);
@@ -40,6 +47,10 @@ public class Player extends MovingEntity {
         shieldOn = false;
     }
 
+    /**
+     * @brief Update the player
+     * @param input
+     */
     public void update(Input input) {
         if (isRespawning()) {
             respawn();
@@ -70,30 +81,55 @@ public class Player extends MovingEntity {
         renderScore();
     }
 
+    /**
+     * @brief Method that moves the player left
+     * @param walls
+     * @param frenzyMode
+     */
     @Override
     public void goLeft(ArrayList<Wall> walls, boolean frenzyMode) {
         super.goLeft(walls, frenzyMode);
         rotation.setRotation(0.5 * Math.PI);
     }
 
+    /**
+     * @brief Method that moves the player right
+     * @param walls
+     * @param frenzyMode
+     */
     @Override
     public void goRight(ArrayList<Wall> walls, boolean frenzyMode) {
         super.goRight(walls, frenzyMode);
         rotation.setRotation(1.5 * Math.PI);
     }
 
+    /**
+     * @brief Method that moves the player up
+     * @param walls
+     * @param frenzyMode
+     */
     @Override
     public void goUp(ArrayList<Wall> walls, boolean frenzyMode) {
         super.goUp(walls, frenzyMode);
         rotation.setRotation(Math.PI);
     }
 
+    /**
+     * @brief Method that moves the player down
+     * @param walls
+     * @param frenzyMode
+     */
     @Override
     public void goDown(ArrayList<Wall> walls, boolean frenzyMode) {
         super.goDown(walls, frenzyMode);
         rotation.setRotation(0);
     }
 
+    /**
+     * @brief Method that checks if the player can move
+     * @param walls
+     * @return boolean if the player can move or not
+     */
     @Override
     public boolean canMove(ArrayList<Wall> walls) {
         boolean canMove = true;
@@ -107,14 +143,14 @@ public class Player extends MovingEntity {
     }
 
     /**
-     * Method that renders the player's score
+     * @brief Method that renders the player's score
      */
     public void renderScore() {
         SCORE_FONT.drawString("SCORE " + playerScore, SCORE_POINT.x, SCORE_POINT.y);
     }
 
     /**
-     * Method that renders the player's lives
+     * @brief Method that renders the player's lives
      */
     public static void renderLives() {
         for (int i = 0; i < lifeCount; i++) {
@@ -123,52 +159,72 @@ public class Player extends MovingEntity {
     }
 
     /**
-     * The player eats a cherry.
-     * Gains 1 extra life
+     * @brief Method that gives the player an extra life
      */
     public static void extraLife() {
+        /// The player eats a cherry and gains an extra life
         if (lifeCount < MAX_LIVES) {
             lifeCount++;
         }
     }
 
     /**
-     * The player collides with a ghost.
-     * Loses 1 life and resets to starting position.
-     * Rotation is not reset.
+     * @brief Method that checks if the player has collided with a ghost
      */
     public void collidesGhost() {
-        if (shieldOn) {
-            shieldOn = false;
-        } else {
-            lifeCount--;
+        /// The player collides with a ghost
+        if (shieldOn) { /// If the player has a shield
+            shieldOn = false;/// The shield is removed
+        } else { /// If the player does not have a shield
+            lifeCount--; /// The player loses a life
             startRespawn();
         }
+        /// Rotation is not reset
     }
 
     /**
-     * Method that checks if the player has 0 lives
+     * @brief Method that checks if the player has 0 lives
+     * @return boolean if the player has lost or not
      */
     public static boolean hasLost() {
         return lifeCount == 0;
     }
 
+    /**
+     * @brief Method that gets the player's score
+     * @return
+     */
     public int getPlayerScore() {
         return playerScore;
     }
 
+    /**
+     * @brief Method that increases the player's score
+     * @param score
+     */
     public void increaseScore(int score) {
         playerScore += score;
     }
 
+    /**
+     * @brief Method that gets the total score
+     * @return
+     */
     public static int getTotalScore() {
         return totalScore;
     }
 
+    /**
+     * @brief Method that sets the total score
+     * @param totalScore
+     */
     public static void setTotalScore(int totalScore) {
         Player.totalScore = totalScore;
     }
 
+    /**
+     * @brief Method that turns the shield on
+     */
     public void shieldOn() {
         shieldOn = true;
     }
