@@ -59,7 +59,6 @@
         <maven.compiler.target>11</maven.compiler.target>
         <lwjgl.version>3.3.1</lwjgl.version>
         <!-- Configuración de SonarCloud -->
-        <sonar.sources>src/</sonar.sources>
         <sonar.organization>ldhequipopacman</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
