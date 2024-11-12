@@ -69,6 +69,53 @@
         <profile><id>lwjgl-natives-macos-x86_64</id><activation><os><family>mac</family><arch>x86_64</arch></os></activation><properties><lwjgl.natives>natives-macos</lwjgl.natives></properties></profile>
         <profile><id>lwjgl-natives-macos-aarch64</id><activation><os><family>mac</family><arch>aarch64</arch></os></activation><properties><lwjgl.natives>natives-macos-arm64</lwjgl.natives></properties></profile>
         <profile><id>lwjgl-natives-windows-amd64</id><activation><os><family>windows</family><arch>amd64</arch></os></activation><properties><lwjgl.natives>natives-windows</lwjgl.natives></properties></profile>
+        <profile>
+            <id>sonar-coverage</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.jacoco</groupId>
+                            <artifactId>jacoco-maven-plugin</artifactId>
+                            <version>0.7.8</version>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <configuration>
+                            <append>true</append>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>agent-for-ut</id>
+                                <goals>
+                                    <goal>prepare-agent</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>agent-for-it</id>
+                                <goals>
+                                    <goal>prepare-agent-integration</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>jacoco-site</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>report</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
 
     <reporting>
