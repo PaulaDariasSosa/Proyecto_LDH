@@ -24,10 +24,6 @@
                 <version>3.4.0</version>
             </plugin>
             <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.13.0</version>
-            </plugin>
-            <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.3.0</version>
             </plugin><plugin>
@@ -63,6 +59,7 @@
         <maven.compiler.target>11</maven.compiler.target>
         <lwjgl.version>3.3.1</lwjgl.version>
         <!-- Configuración de SonarCloud -->
+        <sonar.sources>src</sonar.sources>
         <sonar.organization>ldhequipopacman</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
