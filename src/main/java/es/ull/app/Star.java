@@ -1,8 +1,10 @@
+package es.ull.app;
+
 import bagel.Image;
 import bagel.util.Point;
 
 /**
- * @brief Star class
+ * @brief es.ull.app.Star class
  */
 public class Star extends GameEntity {
     private final static Image STAR_IMAGE = new Image("res/star.png");
@@ -13,7 +15,7 @@ public class Star extends GameEntity {
     private boolean isBright = false;
 
     /**
-     * @brief Constructor for Star
+     * @brief Constructor for es.ull.app.Star
      * @param topLeft
      */
     public Star(Point topLeft) {

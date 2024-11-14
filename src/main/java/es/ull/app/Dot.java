@@ -1,3 +1,5 @@
+package es.ull.app;
+
 import bagel.Image;
 import bagel.util.Point;
 
@@ -22,7 +24,7 @@ public class Dot extends GameEntity {
     public final static int POINTS = 10;
 
     /**
-     * @brief Constructor for the Dot class
+     * @brief Constructor for the es.ull.app.Dot class
      * @param topLeft The top left corner of the dot
      */
     public Dot(Point topLeft) {

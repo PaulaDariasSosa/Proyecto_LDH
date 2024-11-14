@@ -1,14 +1,16 @@
+package es.ull.app;
+
 import bagel.Image;
 import bagel.util.Point;
 
 /**
- * @brief TimeFreeze class that represents a TimeFreeze powerup
+ * @brief es.ull.app.TimeFreeze class that represents a es.ull.app.TimeFreeze powerup
  */
 public class TimeFreeze extends GameEntity {
     private final static Image TIME_FREEZE_IMAGE = new Image("res/timeFreeze.png");
 
     /**
-     * @brief Constructor for TimeFreeze
+     * @brief Constructor for es.ull.app.TimeFreeze
      * @param topLeft
      */
     public TimeFreeze(Point topLeft) {

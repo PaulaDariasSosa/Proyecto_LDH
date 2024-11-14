@@ -1,3 +1,5 @@
+package es.ull.app;
+
 import bagel.Image;
 import bagel.util.Point;
 

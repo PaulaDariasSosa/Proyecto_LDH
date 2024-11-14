@@ -1,3 +1,5 @@
+package es.ull.app;
+
 import bagel.Image;
 import bagel.util.Point;
 import bagel.util.Rectangle;
@@ -10,7 +12,7 @@ public abstract class GameEntity {
     private Point position;
 
     /**
-     * @brief Constructor for the GameEntity class
+     * @brief Constructor for the es.ull.app.GameEntity class
      * @param topLeft
      */
     public GameEntity(Point topLeft) {
@@ -51,7 +53,7 @@ public abstract class GameEntity {
 
     /**
      * @brief Getter for the position field
-     * @return The position of the GameEntity
+     * @return The position of the es.ull.app.GameEntity
      */
     public Point getPosition() {
         return position;
@@ -66,8 +68,8 @@ public abstract class GameEntity {
     }
 
     /**
-     * @brief Getter for the rectangle of the GameEntity
-     * @return The rectangle of the GameEntity
+     * @brief Getter for the rectangle of the es.ull.app.GameEntity
+     * @return The rectangle of the es.ull.app.GameEntity
      */
     public Rectangle getRectangle() {
         return new Rectangle(position, image.getWidth(), image.getHeight());

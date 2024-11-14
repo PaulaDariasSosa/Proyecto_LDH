@@ -1,5 +1,5 @@
-<map id="ShadowPac" name="ShadowPac">
-<area shape="rect" id="Node000001" title="The ShadowPac class is the main class of the game." alt="" coords="12,80,104,107"/>
+<map id="es.ull.app.ShadowPac" name="es.ull.app.ShadowPac">
+<area shape="rect" id="Node000001" title="The es.ull.app.ShadowPac class is the main class of the game." alt="" coords="12,80,104,107"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,5,111,32"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="61,48,61,80,55,80,55,48"/>
 </map>

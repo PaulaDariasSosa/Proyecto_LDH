@@ -1,14 +1,16 @@
+package es.ull.app;
+
 import bagel.Image;
 import bagel.util.Point;
 
 /**
- * @brief Shield class
+ * @brief es.ull.app.Shield class
  */
 public class Shield extends GameEntity{
     private final static Image SHIELD_IMAGE = new Image("res/shield.png");
 
     /**
-     * Constructor for Shield
+     * Constructor for es.ull.app.Shield
      * @param topLeft
      */
     public Shield(Point topLeft) {

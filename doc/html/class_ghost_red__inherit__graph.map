@@ -1,5 +1,5 @@
-<map id="GhostRed" name="GhostRed">
-<area shape="rect" id="Node000001" title="GhostRed class." alt="" coords="14,229,94,256"/>
+<map id="es.ull.app.GhostRed" name="es.ull.app.GhostRed">
+<area shape="rect" id="Node000001" title="es.ull.app.GhostRed class." alt="" coords="14,229,94,256"/>
 <area shape="rect" id="Node000002" href="$class_ghost.html" title="Abstract class that represents a ghost." alt="" coords="26,155,82,181"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="57,197,57,229,51,229,51,197"/>
 <area shape="rect" id="Node000003" href="$class_moving_entity.html" title="Abstract class that represents a moving entity." alt="" coords="5,80,103,107"/>

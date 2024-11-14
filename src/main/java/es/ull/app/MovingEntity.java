@@ -1,3 +1,5 @@
+package es.ull.app;
+
 import bagel.util.Point;
 
 import java.util.ArrayList;
@@ -18,7 +20,7 @@ public abstract class MovingEntity extends GameEntity {
 
 
     /**
-     * @brief Constructor for the MovingEntity class
+     * @brief Constructor for the es.ull.app.MovingEntity class
      * @param topLeft
      * @param speed
      * @param frenzySpeed

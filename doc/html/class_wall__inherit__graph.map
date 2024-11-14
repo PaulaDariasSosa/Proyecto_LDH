@@ -1,10 +1,10 @@
-<map id="Wall" name="Wall">
-<area shape="rect" id="Node000001" title="Abstract class for Wall." alt="" coords="76,80,123,107"/>
+<map id="es.ull.app.Wall" name="es.ull.app.Wall">
+<area shape="rect" id="Node000001" title="Abstract class for es.ull.app.Wall." alt="" coords="76,80,123,107"/>
 <area shape="rect" id="Node000003" href="$class_bus.html" title="A class representing a bus in the game." alt="" coords="5,155,50,181"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="78,120,42,156,38,152,74,116"/>
-<area shape="rect" id="Node000004" href="$class_train.html" title="Train class." alt="" coords="74,155,125,181"/>
+<area shape="rect" id="Node000004" href="$class_train.html" title="es.ull.app.Train class." alt="" coords="74,155,125,181"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="102,122,102,154,97,154,97,122"/>
-<area shape="rect" id="Node000005" href="$class_tram.html" title="Tram class." alt="" coords="148,155,200,181"/>
+<area shape="rect" id="Node000005" href="$class_tram.html" title="es.ull.app.Tram class." alt="" coords="148,155,200,181"/>
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="125,116,163,152,159,156,121,119"/>
 <area shape="rect" id="Node000002" href="$class_game_entity.html" title="Abstract class that represents a game entity." alt="" coords="54,5,145,32"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="102,48,102,80,97,80,97,48"/>

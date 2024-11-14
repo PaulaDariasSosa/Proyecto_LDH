@@ -1,10 +1,12 @@
+package es.ull.app;
+
 import bagel.DrawOptions;
 import bagel.Image;
 import bagel.util.Point;
 import java.util.Random;
 
 /**
- * @brief GhostTuka class, a subclass
+ * @brief es.ull.app.GhostTuka class, a subclass
  */
 public class GhostTuka extends Ghost {
     private final static Image GHOST_TUKA_IMAGE = new Image("res/ghostTuka.png");
@@ -19,7 +21,7 @@ public class GhostTuka extends Ghost {
     private final Random rand = new Random();
 
     /**
-     * @brief Constructor for GhostTuka
+     * @brief Constructor for es.ull.app.GhostTuka
      * @param topLeft
      */
     public GhostTuka(Point topLeft) {

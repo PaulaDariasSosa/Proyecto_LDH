@@ -1,4 +1,4 @@
-<map id="Player" name="Player">
+<map id="es.ull.app.Player" name="es.ull.app.Player">
 <area shape="rect" id="Node000001" title="Class for the player." alt="" coords="25,155,83,181"/>
 <area shape="rect" id="Node000002" href="$class_moving_entity.html" title="Abstract class that represents a moving entity." alt="" coords="5,80,103,107"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="57,122,57,154,51,154,51,122"/>

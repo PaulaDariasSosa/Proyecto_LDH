@@ -1,3 +1,5 @@
+package es.ull.app;
+
 import bagel.*;
 import bagel.util.Point;
 
@@ -33,7 +35,7 @@ public class Player extends MovingEntity {
     private static boolean shieldOn;
 
     /**
-     * @brief Constructor for Player
+     * @brief Constructor for es.ull.app.Player
      * @param topLeft
      */
     public Player(Point topLeft) {

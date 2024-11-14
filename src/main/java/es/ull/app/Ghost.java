@@ -1,3 +1,5 @@
+package es.ull.app;
+
 import bagel.Image;
 import bagel.util.Point;
 
@@ -25,7 +27,7 @@ public abstract class Ghost extends MovingEntity {
     private final static double FRENZY_SPEED_DECREASE = 0.5;
 
     /**
-     * @brief Constructor for the Ghost class
+     * @brief Constructor for the es.ull.app.Ghost class
      * @param topLeft The top left corner of the ghost
      * @param speed The speed of the ghost
      */

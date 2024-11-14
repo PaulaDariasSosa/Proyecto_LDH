@@ -1,9 +1,11 @@
+package es.ull.app;
+
 import bagel.Image;
 import bagel.util.Point;
 import java.util.Random;
 
 /**
- * @brief GhostPink class, a subclass of Ghost
+ * @brief es.ull.app.GhostPink class, a subclass of es.ull.app.Ghost
  */
 public class GhostPink extends Ghost {
     private final static Image GHOST_PINK_IMAGE = new Image("res/ghostPink.png");
@@ -11,7 +13,7 @@ public class GhostPink extends Ghost {
     private final Random rand = new Random();
 
     /**
-     * Constructor for GhostPink
+     * Constructor for es.ull.app.GhostPink
      * @param topLeft the top left point of the ghost
      */
     public GhostPink(Point topLeft) {

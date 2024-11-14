@@ -1,15 +1,17 @@
+package es.ull.app;
+
 import bagel.Image;
 import bagel.util.Point;
 
 /**
- * @brief Class for the GhostBlue object
+ * @brief Class for the es.ull.app.GhostBlue object
  */
 public class GhostBlue extends Ghost {
     private final static Image GHOST_BLUE_IMAGE = new Image("res/ghostBlue.png");
     private final static double SPEED = 4;
 
     /**
-     * @brief Constructor for the GhostBlue class
+     * @brief Constructor for the es.ull.app.GhostBlue class
      * @param topLeft The top left corner of the ghost
      */
     public GhostBlue(Point topLeft) {

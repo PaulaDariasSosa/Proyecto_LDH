@@ -1,14 +1,14 @@
-<map id="Ghost" name="Ghost">
+<map id="es.ull.app.Ghost" name="es.ull.app.Ghost">
 <area shape="rect" id="Node000001" title="Abstract class that represents a ghost." alt="" coords="240,155,296,181"/>
-<area shape="rect" id="Node000004" href="$class_ghost_blue.html" title="Class for the GhostBlue object." alt="" coords="5,229,88,256"/>
+<area shape="rect" id="Node000004" href="$class_ghost_blue.html" title="Class for the es.ull.app.GhostBlue object." alt="" coords="5,229,88,256"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="226,186,86,231,84,226,224,181"/>
-<area shape="rect" id="Node000005" href="$class_ghost_green.html" title="GhostGreen class, a subclass." alt="" coords="112,229,203,256"/>
+<area shape="rect" id="Node000005" href="$class_ghost_green.html" title="es.ull.app.GhostGreen class, a subclass." alt="" coords="112,229,203,256"/>
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="238,192,178,231,175,226,235,188"/>
-<area shape="rect" id="Node000006" href="$class_ghost_pink.html" title="GhostPink class, a subclass of Ghost." alt="" coords="227,229,309,256"/>
+<area shape="rect" id="Node000006" href="$class_ghost_pink.html" title="es.ull.app.GhostPink class, a subclass of es.ull.app.Ghost." alt="" coords="227,229,309,256"/>
 <area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="270,197,270,229,265,229,265,197"/>
-<area shape="rect" id="Node000007" href="$class_ghost_red.html" title="GhostRed class." alt="" coords="333,229,413,256"/>
+<area shape="rect" id="Node000007" href="$class_ghost_red.html" title="es.ull.app.GhostRed class." alt="" coords="333,229,413,256"/>
 <area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="300,188,356,226,353,231,297,193"/>
-<area shape="rect" id="Node000008" href="$class_ghost_tuka.html" title="GhostTuka class, a subclass." alt="" coords="437,229,522,256"/>
+<area shape="rect" id="Node000008" href="$class_ghost_tuka.html" title="es.ull.app.GhostTuka class, a subclass." alt="" coords="437,229,522,256"/>
 <area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="312,181,444,226,442,231,310,186"/>
 <area shape="rect" id="Node000002" href="$class_moving_entity.html" title="Abstract class that represents a moving entity." alt="" coords="219,80,316,107"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="270,122,270,154,265,154,265,122"/>

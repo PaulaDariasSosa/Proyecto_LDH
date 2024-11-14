@@ -1,9 +1,11 @@
+package es.ull.app;
+
 import bagel.Font;
 import bagel.Image;
 import bagel.util.Point;
 
 /**
- * @brief Timer class
+ * @brief es.ull.app.Timer class
  */
 public class Timer {
     private final static Image CLOCK_IMAGE = new Image("res/timer.png");
@@ -18,7 +20,7 @@ public class Timer {
     private int frameInSecond;
 
     /**
-     * @brief Constructor for Timer
+     * @brief Constructor for es.ull.app.Timer
      */
     public Timer() {
         time = TOTAL_TIME;

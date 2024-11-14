@@ -1,3 +1,5 @@
+package es.ull.app;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -37,46 +39,46 @@ public class Level {
                 Point point = new Point(Integer.parseInt(cells[1]), Integer.parseInt(cells[2]));
 
                 switch (cells[0]) {
-                    case "Player":
+                    case "es.ull.app.Player":
                         player = new Player(point);
                         break;
-                    case "Bus":
+                    case "es.ull.app.Bus":
                         walls.add(new Bus(point));
                         break;
-                    case "Tram":
+                    case "es.ull.app.Tram":
                         walls.add(new Tram(point));
                         break;
-                    case "Train":
+                    case "es.ull.app.Train":
                         walls.add(new Train(point));
                         break;
-                    case "GhostRed":
+                    case "es.ull.app.GhostRed":
                         ghosts.add(new GhostRed(point));
                         break;
-                    case "GhostBlue":
+                    case "es.ull.app.GhostBlue":
                         ghosts.add(new GhostBlue(point));
                         break;
-                    case "GhostGreen":
+                    case "es.ull.app.GhostGreen":
                         ghosts.add(new GhostGreen(point));
                         break;
-                    case "GhostPink":
+                    case "es.ull.app.GhostPink":
                         ghosts.add(new GhostPink(point));
                         break;
-                    case "GhostTuka":
+                    case "es.ull.app.GhostTuka":
                         ghosts.add(new GhostTuka(point));
                         break;
-                    case "Shield":
+                    case "es.ull.app.Shield":
                         shields.add(new Shield(point));
                         break;
-                    case "Pizza":
+                    case "es.ull.app.Pizza":
                         pizzas.add(new Pizza(point));
                         break;
-                    case "Star":
+                    case "es.ull.app.Star":
                         stars.add(new Star(point));
                         break;
-                    case "Bomb":
+                    case "es.ull.app.Bomb":
                         bombs.add(new Bomb(point));
                         break;
-                    case "TimeFreeze":
+                    case "es.ull.app.TimeFreeze":
                         timeFreezes.add(new TimeFreeze(point));
                         break;
                     default:
@@ -108,7 +110,7 @@ public class Level {
 
     /**
      * @brief Method that get the timer
-     * @return Timer
+     * @return es.ull.app.Timer
      */
     public Timer getTimer() {
         return timer;
@@ -116,7 +118,7 @@ public class Level {
 
     /**
      * @brief Method that get the player
-     * @return Player
+     * @return es.ull.app.Player
      */
     public Player getPlayer() {
         return player;
@@ -124,7 +126,7 @@ public class Level {
 
     /**
      * @brief Method that get the walls
-     * @return ArrayList<Wall>
+     * @return ArrayList<es.ull.app.Wall>
      */
     public ArrayList<Wall> getWalls() {
         return walls;
@@ -132,7 +134,7 @@ public class Level {
 
     /**
      * @brief Method that get the ghosts
-     * @return ArrayList<Ghost>
+     * @return ArrayList<es.ull.app.Ghost>
      */
     public ArrayList<Ghost> getGhosts() {
         return ghosts;
@@ -140,7 +142,7 @@ public class Level {
 
     /**
      * @brief Method that get the shields
-     * @return ArrayList<Shield>
+     * @return ArrayList<es.ull.app.Shield>
      */
     public ArrayList<Shield> getShields() {
         return shields;
@@ -148,7 +150,7 @@ public class Level {
 
     /**
      * @brief Method that get the dots
-     * @return ArrayList<Dot>
+     * @return ArrayList<es.ull.app.Dot>
      */
     public ArrayList<Dot> getDots() {
         return dots;
@@ -156,7 +158,7 @@ public class Level {
 
     /**
      * @brief Method that get the pizzas
-     * @return ArrayList<Pizza>
+     * @return ArrayList<es.ull.app.Pizza>
      */
     public ArrayList<Pizza> getPizzas() {
         return pizzas;
@@ -164,7 +166,7 @@ public class Level {
 
     /**
      * @brief Method that get the pellets
-     * @return ArrayList<Star>
+     * @return ArrayList<es.ull.app.Star>
      */
     public ArrayList<Star> getPellets() {
         return stars;
@@ -172,7 +174,7 @@ public class Level {
 
     /**
      * @brief Method that get the bombs
-     * @return ArrayList<Bomb>
+     * @return ArrayList<es.ull.app.Bomb>
      */
     public ArrayList<Bomb> getBombs() {
         return bombs;
@@ -180,7 +182,7 @@ public class Level {
 
     /**
      * @brief Method that get the time freezes
-     * @return ArrayList<TimeFreeze>
+     * @return ArrayList<es.ull.app.TimeFreeze>
      */
     public ArrayList<TimeFreeze> getTimeFreezes() {
         return timeFreezes;

@@ -1,7 +1,9 @@
+package es.ull.app;
+
 import bagel.*;
 
 /**
- * @brief The ShadowPac class is the main class of the game.
+ * @brief The es.ull.app.ShadowPac class is the main class of the game.
  */
 public class ShadowPac extends AbstractGame {
     private final static int WINDOW_WIDTH = 1024;

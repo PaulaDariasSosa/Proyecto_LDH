@@ -1,3 +1,5 @@
+package es.ull.app;
+
 import bagel.Image;
 import bagel.util.Point;
 
@@ -11,7 +13,7 @@ public class Bus extends Wall {
     private final static Image BUS_IMAGE = new Image("res/bus.png");
 
     /**
-     * @brief Constructor for the Bus class
+     * @brief Constructor for the es.ull.app.Bus class
      * @param topLeft
      */
     public Bus(Point topLeft) {

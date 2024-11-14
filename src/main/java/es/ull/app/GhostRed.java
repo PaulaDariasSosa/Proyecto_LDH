@@ -1,15 +1,17 @@
+package es.ull.app;
+
 import bagel.Image;
 import bagel.util.Point;
 
 /**
- * @brief GhostRed class
+ * @brief es.ull.app.GhostRed class
  */
 public class GhostRed extends Ghost {
     private final static Image GHOST_RED_IMAGE = new Image("res/ghostRed.png");
     private final static double SPEED = 2;
 
     /**
-     * @brief Constructor for GhostRed
+     * @brief Constructor for es.ull.app.GhostRed
      * @param topLeft
      */
     public GhostRed(Point topLeft) {
@@ -19,7 +21,7 @@ public class GhostRed extends Ghost {
     }
 
     /**
-     * @brief Change direction of GhostRed
+     * @brief Change direction of es.ull.app.GhostRed
      */
     @Override
     public void changeDirection() {

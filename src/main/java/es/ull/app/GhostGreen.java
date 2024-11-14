@@ -1,16 +1,18 @@
+package es.ull.app;
+
 import bagel.Image;
 import bagel.util.Point;
 import java.util.Random;
 
 /**
- * @brief GhostGreen class, a subclass
+ * @brief es.ull.app.GhostGreen class, a subclass
  */
 public class GhostGreen extends Ghost {
     private final static Image GHOST_GREEN_IMAGE = new Image("res/ghostGreen.png");
     private final static double SPEED = 8;
 
     /**
-     * Constructor for GhostGreen
+     * Constructor for es.ull.app.GhostGreen
      * @param topLeft
      */
     public GhostGreen(Point topLeft) {
