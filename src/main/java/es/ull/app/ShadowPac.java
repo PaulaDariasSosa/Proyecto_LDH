@@ -81,16 +81,7 @@ public class ShadowPac extends AbstractGame {
         highScore = 0;
     }
     public ShadowPac(User nombre) {
-        super(WINDOW_WIDTH, WINDOW_HEIGHT, GAME_TITLE);
-        background = TITLE_IMAGE;
-        screenStatus = TITLE_SCREEN;
-        gameOver = false;
-        playerWin = false;
-        timesUp = false;
-        exploding = false;
-        frenzyMode = false;
-        timeFrozen = false;
-        highScore = 0;
+        this();
         nombreUsuario = nombre;
     }
 
