@@ -8,14 +8,14 @@ import bagel.util.Point;
  * @brief es.ull.app.Timer class
  */
 public class Timer {
-    private final static Image CLOCK_IMAGE = new Image("res/timer.png");
-    private final static Point CLOCK_POINT = new Point(750, 24);
-    private final static int FONT_SIZE = 20;
-    private final static Font TIMER_FONT = new Font("res/FSO8BITR.ttf", FONT_SIZE);
-    private final static Point TIMER_POINT = new Point(770, 30);
+    private static final Image CLOCK_IMAGE = new Image("res/timer.png");
+    private static final Point CLOCK_POINT = new Point(750, 24);
+    private static final int FONT_SIZE = 20;
+    private static final Font TIMER_FONT = new Font("res/FSO8BITR.ttf", FONT_SIZE);
+    private static final Point TIMER_POINT = new Point(770, 30);
 
-    private final static int TOTAL_TIME = 60;
-    private final static int FRAME_RATE = 60;
+    private static final int TOTAL_TIME = 60;
+    private static final int FRAME_RATE = 60;
     private int time;
     private int frameInSecond;
 

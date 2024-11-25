@@ -11,7 +11,7 @@ public class Bomb extends GameEntity {
      * @brief The bomb's image
      * The image of the bomb
      */
-    private final static Image BOMB_IMAGE = new Image("res/bomb.png");
+    private static final Image BOMB_IMAGE = new Image("res/bomb.png");
 
     /**
      * @brief Constructor

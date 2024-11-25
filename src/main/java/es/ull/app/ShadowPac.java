@@ -7,12 +7,12 @@ import utilities.FileUtils;
  * @brief The es.ull.app.ShadowPac class is the main class of the game.
  */
 public class ShadowPac extends AbstractGame {
-    private final static int WINDOW_WIDTH = 1024;
-    private final static int WINDOW_HEIGHT = 768;
-    private final static String GAME_TITLE = "SHADOW TUKA";
-    private final static String LEVEL_0_FILE = "res/level0.csv";
-    private final static String LEVEL_1_FILE = "res/level1.csv";
-    private final static String LEVEL_2_FILE = "res/level2.csv";
+    private static final int WINDOW_WIDTH = 1024;
+    private static final int WINDOW_HEIGHT = 768;
+    private static final String GAME_TITLE = "SHADOW TUKA";
+    private static final String LEVEL_0_FILE = "res/level0.csv";
+    private static final String LEVEL_1_FILE = "res/level1.csv";
+    private static final String LEVEL_2_FILE = "res/level2.csv";
 
     private final Image TITLE_IMAGE = new Image("res/title.png");
     private final Image LEVEL0_IMAGE = new Image("res/level0.png");
@@ -25,39 +25,39 @@ public class ShadowPac extends AbstractGame {
     private final Image TIME_FREEZE_IMAGE = new Image("res/zawarudo.png");
     private Image background;
 
-    private final static int TITLE_SCREEN = 0;
-    private final static int INSTRUCTION_0_SCREEN = 1;
-    private final static int LEVEL_0 = 2;
-    private final static int LVL_0_COMPLETE_SCREEN = 3;
-    private final static int INSTRUCTION_1_SCREEN = 4;
-    private final static int LEVEL_1 = 5;
-    private final static int LVL_1_COMPLETE_SCREEN = 6;
-    private final static int INSTRUCTION_2_SCREEN = 7;
-    private final static int LEVEL_2 = 8;
+    private static final int TITLE_SCREEN = 0;
+    private static final int INSTRUCTION_0_SCREEN = 1;
+    private static final int LEVEL_0 = 2;
+    private static final int LVL_0_COMPLETE_SCREEN = 3;
+    private static final int INSTRUCTION_1_SCREEN = 4;
+    private static final int LEVEL_1 = 5;
+    private static final int LVL_1_COMPLETE_SCREEN = 6;
+    private static final int INSTRUCTION_2_SCREEN = 7;
+    private static final int LEVEL_2 = 8;
     private int screenStatus;
     private boolean gameOver;
     private boolean playerWin;
     private boolean timesUp;
 
-    private final static int COMPLETE_MESSAGE_FRAMES = 150;
+    private static final int COMPLETE_MESSAGE_FRAMES = 150;
     private int levelCompleteFrameCount;
-    private final static String LVL_1_CODE = "TUKA";
-    private final static String LVL_2_CODE = "MANK";
+    private static final String LVL_1_CODE = "TUKA";
+    private static final String LVL_2_CODE = "MANK";
 
-    private final static int TARGET_SCORE_LVL_0 = 1210;
-    private final static int TARGET_SCORE_LVL_1 = 1230;
-    private final static int TARGET_SCORE_LVL_2 = 1250;
-    public final static int MAX_SCORE = TARGET_SCORE_LVL_0 + TARGET_SCORE_LVL_1 + TARGET_SCORE_LVL_2;
+    private static final int TARGET_SCORE_LVL_0 = 1210;
+    private static final int TARGET_SCORE_LVL_1 = 1230;
+    private static final int TARGET_SCORE_LVL_2 = 1250;
+    public static final int MAX_SCORE = TARGET_SCORE_LVL_0 + TARGET_SCORE_LVL_1 + TARGET_SCORE_LVL_2;
 
-    private final static int EXPLOSION_FRAMES = 200;
+    private static final int EXPLOSION_FRAMES = 200;
     private int explosionFrameCount;
     private boolean exploding;
 
-    private final static int FRENZY_MODE_FRAMES = 500;
+    private static final int FRENZY_MODE_FRAMES = 500;
     private int frenzyFrameCount;
     private boolean frenzyMode;
 
-    private final static int TIME_FROZEN_FRAMES = 300;
+    private static final int TIME_FROZEN_FRAMES = 300;
     private int timeFrozenFrameCount;
     private boolean timeFrozen;
 

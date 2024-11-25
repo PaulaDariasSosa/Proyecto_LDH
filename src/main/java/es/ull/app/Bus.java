@@ -10,7 +10,7 @@ public class Bus extends Wall {
     /**
      * @brief The image of the bus
      */
-    private final static Image BUS_IMAGE = new Image("res/bus.png");
+    private static final Image BUS_IMAGE = new Image("res/bus.png");
 
     /**
      * @brief Constructor for the es.ull.app.Bus class

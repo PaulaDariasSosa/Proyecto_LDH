@@ -11,15 +11,15 @@ import java.util.Random;
  * @brief es.ull.app.GhostTuka class, a subclass
  */
 public class GhostTuka extends Ghost {
-    private final static Image GHOST_TUKA_IMAGE = new Image("res/ghostTuka.png");
-    private final static Image GHOST_TUKA_OPEN_IMAGE = new Image("res/ghostTukaOpen.png");
+    private static final Image GHOST_TUKA_IMAGE = new Image("res/ghostTuka.png");
+    private static final Image GHOST_TUKA_OPEN_IMAGE = new Image("res/ghostTukaOpen.png");
 
-    private final static int SWITCH_FRAMES = 7;
+    private static final int SWITCH_FRAMES = 7;
     private final DrawOptions rotation;
     private int switchFrameCount;
     private boolean isOpen = false;
 
-    private final static double SPEED = 7;
+    private static final double SPEED = 7;
     private final SecureRandom rand = new SecureRandom();
 
     /**

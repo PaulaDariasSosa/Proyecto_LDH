@@ -9,63 +9,63 @@ import bagel.util.Point;
  */
 public class Message {
 
-    private final static int DEFAULT_FONT_SIZE = 140;
-    private final static Font DEFAULT_FONT = new Font("res/SourceSansPro-Bold.ttf", DEFAULT_FONT_SIZE);
-    private final static Point DEFAULT_POINT = new Point(140, 350);
+    private static final int DEFAULT_FONT_SIZE = 140;
+    private static final Font DEFAULT_FONT = new Font("res/SourceSansPro-Bold.ttf", DEFAULT_FONT_SIZE);
+    private static final Point DEFAULT_POINT = new Point(140, 350);
 
-    private final static Font HIGH_SCORE_FONT = new Font("res/FSO8BITR.ttf", 35);
-    private final static Point HIGH_SCORE_POINT = new Point(300, 450);
+    private static final Font HIGH_SCORE_FONT = new Font("res/FSO8BITR.ttf", 35);
+    private static final Point HIGH_SCORE_POINT = new Point(300, 450);
 
-    private final static Image CROWN_IMAGE = new Image("res/crown.png");
-    private final static Point CROWN_POINT = new Point(512, 430);
+    private static final Image CROWN_IMAGE = new Image("res/crown.png");
+    private static final Point CROWN_POINT = new Point(512, 430);
 
-    private final static int TITLE_MESSAGE_SIZE = 24;
-    private final static String TITLE_MESSAGE = "USE ARROW KEYS TO MOVE\nPRESS SPACE TO START THE GAME\n" +
+    private static final int TITLE_MESSAGE_SIZE = 24;
+    private static final String TITLE_MESSAGE = "USE ARROW KEYS TO MOVE\nPRESS SPACE TO START THE GAME\n" +
             "COMPLETE BEFORE TIME RUNS OUT";
-    private final static Font TITLE_MESSAGE_FONT = new Font("res/FSO8BITR.ttf", TITLE_MESSAGE_SIZE);
-    private final static Point TITLE_MESSAGE_POINT = new Point(250, 530);
+    private static final Font TITLE_MESSAGE_FONT = new Font("res/FSO8BITR.ttf", TITLE_MESSAGE_SIZE);
+    private static final Point TITLE_MESSAGE_POINT = new Point(250, 530);
 
-    private final static Font COMPLETE_FONT = new Font("res/FSO8BITR.ttf", 60);
-    private final static Point COMPLETE_POINT = new Point(140, 350);
-    private final static int PASSWORD_OFFSET = 150;
+    private static final Font COMPLETE_FONT = new Font("res/FSO8BITR.ttf", 60);
+    private static final Point COMPLETE_POINT = new Point(140, 350);
+    private static final int PASSWORD_OFFSET = 150;
 
-    private final static int LEVEL_INS_FONT_SIZE = 60;
-    private final static Font LEVEL_INS_FONT = new Font("res/FSO8BITR.ttf", LEVEL_INS_FONT_SIZE);
-    private final static Point LEVEL_INS_POINT = new Point(340, 240);
-    private final static int INSTRUCTION_FONT_SIZE = 40;
-    private final static Font INSTRUCTION_FONT = new Font("res/FSO8BITR.ttf", INSTRUCTION_FONT_SIZE);
-    private final static double INSTRUCTION_X = 100;
-    private final static double INSTRUCTION_Y = 350;
+    private static final int LEVEL_INS_FONT_SIZE = 60;
+    private static final Font LEVEL_INS_FONT = new Font("res/FSO8BITR.ttf", LEVEL_INS_FONT_SIZE);
+    private static final Point LEVEL_INS_POINT = new Point(340, 240);
+    private static final int INSTRUCTION_FONT_SIZE = 40;
+    private static final Font INSTRUCTION_FONT = new Font("res/FSO8BITR.ttf", INSTRUCTION_FONT_SIZE);
+    private static final double INSTRUCTION_X = 100;
+    private static final double INSTRUCTION_Y = 350;
 
-    private final static String INSTRUCTION_0_MESSAGE = "REACH TARGET SCORE TO WIN\nGET SHIELD FOR PROTECTION\n" +
+    private static final String INSTRUCTION_0_MESSAGE = "REACH TARGET SCORE TO WIN\nGET SHIELD FOR PROTECTION\n" +
             "USE BOMB TO KILL ALL GHOSTS\n\n\nPRESS SPACE TO START";
-    private final static String INSTRUCTION_1_MESSAGE = "EAT PIZZA TO GET EXTRA LIFE\n" +
+    private static final String INSTRUCTION_1_MESSAGE = "EAT PIZZA TO GET EXTRA LIFE\n" +
             "GET SUPER STAR TO ATTACK\n\n\nPRESS SPACE TO START";
-    private final static String INSTRUCTION_2_MESSAGE = "USE 'THE WORLD' TO FREEZE TIME\n\n\n\nPRESS SPACE TO START";
+    private static final String INSTRUCTION_2_MESSAGE = "USE 'THE WORLD' TO FREEZE TIME\n\n\n\nPRESS SPACE TO START";
 
-    private final static Font TARGET_FONT = new Font("res/FSO8BITR.ttf", 20);
-    private final static Point TARGET_POINT = new Point(220, 25);
+    private static final Font TARGET_FONT = new Font("res/FSO8BITR.ttf", 20);
+    private static final Point TARGET_POINT = new Point(220, 25);
 
-    private final static Font LEVEL_INGAME_FONT = new Font("res/FSO8BITR.ttf", 40);
-    private final static Point LEVEL_INGAME_POINT = new Point(450, 40);
+    private static final Font LEVEL_INGAME_FONT = new Font("res/FSO8BITR.ttf", 40);
+    private static final Point LEVEL_INGAME_POINT = new Point(450, 40);
 
-    private final static Font FINAL_SCORE_FONT = new Font("res/FSO8BITR.ttf", 40);
-    private final static Point FINAL_SCORE_POINT = new Point(250, 450);
-
-
-    private final static String WIN_MESSAGE = "WELL DONE!";
-    private final static Point WIN_POINT = new Point(190, 350);
-    private final static String LOSE_MESSAGE = "YOU ARE BROKE!";
-    private final static Point LOSE_POINT = new Point(100, 350);
-    private final static String TIMES_UP_MESSAGE = "TIME'S UP!";
-    private final static Point TIME_POINT = new Point(220, 350);
+    private static final Font FINAL_SCORE_FONT = new Font("res/FSO8BITR.ttf", 40);
+    private static final Point FINAL_SCORE_POINT = new Point(250, 450);
 
 
-    private final static String RETRY_MESSAGE = "PRESS SPACE TO\nRETURN TO TITLE SCREEN";
-    private final static int RETRY_FONT_SIZE = 30;
-    private final static Font RETRY_FONT = new Font("res/FSO8BITR.ttf", RETRY_FONT_SIZE);
-    private final static double RETURN_X = 250;
-    private final static double RETURN_Y = 550;
+    private static final String WIN_MESSAGE = "WELL DONE!";
+    private static final Point WIN_POINT = new Point(190, 350);
+    private static final String LOSE_MESSAGE = "YOU ARE BROKE!";
+    private static final Point LOSE_POINT = new Point(100, 350);
+    private static final String TIMES_UP_MESSAGE = "TIME'S UP!";
+    private static final Point TIME_POINT = new Point(220, 350);
+
+
+    private static final String RETRY_MESSAGE = "PRESS SPACE TO\nRETURN TO TITLE SCREEN";
+    private static final int RETRY_FONT_SIZE = 30;
+    private static final Font RETRY_FONT = new Font("res/FSO8BITR.ttf", RETRY_FONT_SIZE);
+    private static final double RETURN_X = 250;
+    private static final double RETURN_Y = 550;
 
     /**
      * @brief Method used to draw the start screen title and instructions
