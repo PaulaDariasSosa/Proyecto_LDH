@@ -22,7 +22,7 @@ public class Dot extends GameEntity {
     /**
      * @brief The number of points the player gets when they collect a dot
      */
-    public final static int POINTS = 10;
+    public final static int POINTS = 100;
 
     /**
      * @brief Constructor for the es.ull.app.Dot class
