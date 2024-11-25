@@ -7,7 +7,7 @@ import bagel.util.Point;
  * @brief es.ull.app.Tram class
  */
 public class Tram extends Wall {
-    private final static Image TRAM_IMAGE = new Image("res/tram.png");
+    private static final Image TRAM_IMAGE = new Image("res/tram.png");
 
     /**
      * @brief Constructor for es.ull.app.Tram

@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @brief Abstract class that represents a moving entity
  */
 public abstract class MovingEntity extends GameEntity {
-    private final static int RESPAWN_FRAMES = 100;
+    private static final int RESPAWN_FRAMES = 100;
     private int respawnFrameCount;
     private boolean respawning;
 

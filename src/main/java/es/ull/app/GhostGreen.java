@@ -10,8 +10,8 @@ import java.util.Random;
  * @brief es.ull.app.GhostGreen class, a subclass
  */
 public class GhostGreen extends Ghost {
-    private final static Image GHOST_GREEN_IMAGE = new Image("res/ghostGreen.png");
-    private final static double SPEED = 8;
+    private static final Image GHOST_GREEN_IMAGE = new Image("res/ghostGreen.png");
+    private static final double SPEED = 8;
 
     /**
      * Constructor for es.ull.app.GhostGreen

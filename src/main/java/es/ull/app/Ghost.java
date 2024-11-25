@@ -9,22 +9,22 @@ import java.util.ArrayList;
  * @brief Abstract class that represents a ghost
  */
 public abstract class Ghost extends MovingEntity {
-    private final static Image GHOST_FRENZY_IMAGE = new Image("res/ghostFrenzy.png");
-    private final static Image EYES_LEFT_IMAGE = new Image("res/eyesLeft.png");
-    private final static Image EYES_RIGHT_IMAGE = new Image("res/eyesRight.png");
-    private final static Image EYES_UP_IMAGE = new Image("res/eyesUp.png");
-    private final static Image EYES_DOWN_IMAGE = new Image("res/eyesDown.png");
-    public final static int FRENZY_SCORE = 40;
-    public final static int DOWN = 0;
-    public final static int RIGHT = 1;
-    public final static int UP = 2;
-    public final static int LEFT = 3;
+    private static final Image GHOST_FRENZY_IMAGE = new Image("res/ghostFrenzy.png");
+    private static final Image EYES_LEFT_IMAGE = new Image("res/eyesLeft.png");
+    private static final Image EYES_RIGHT_IMAGE = new Image("res/eyesRight.png");
+    private static final Image EYES_UP_IMAGE = new Image("res/eyesUp.png");
+    private static final Image EYES_DOWN_IMAGE = new Image("res/eyesDown.png");
+    public static final int FRENZY_SCORE = 40;
+    public static final int DOWN = 0;
+    public static final int RIGHT = 1;
+    public static final int UP = 2;
+    public static final int LEFT = 3;
     private int direction;
 
     /**
      * @brief The speed decrease when the ghost is in frenzy mode
      */
-    private final static double FRENZY_SPEED_DECREASE = 0.5;
+    private static final double FRENZY_SPEED_DECREASE = 0.5;
 
     /**
      * @brief Constructor for the es.ull.app.Ghost class

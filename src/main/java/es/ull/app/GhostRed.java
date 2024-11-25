@@ -7,8 +7,8 @@ import bagel.util.Point;
  * @brief es.ull.app.GhostRed class
  */
 public class GhostRed extends Ghost {
-    private final static Image GHOST_RED_IMAGE = new Image("res/ghostRed.png");
-    private final static double SPEED = 2;
+    private static final Image GHOST_RED_IMAGE = new Image("res/ghostRed.png");
+    private static final double SPEED = 2;
 
     /**
      * @brief Constructor for es.ull.app.GhostRed

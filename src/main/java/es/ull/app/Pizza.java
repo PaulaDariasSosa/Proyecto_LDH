@@ -7,8 +7,8 @@ import bagel.util.Point;
  * @brief es.ull.app.Pizza class
  */
 public class Pizza extends GameEntity {
-    private final static Image PIZZA_IMAGE = new Image("res/pizza.png");
-    public final static int POINTS = 30; /// Points for collecting pizza
+    private static final Image PIZZA_IMAGE = new Image("res/pizza.png");
+    public static final int POINTS = 30; /// Points for collecting pizza
 
     /**
      * @brief Constructor for es.ull.app.Pizza

@@ -7,9 +7,9 @@ import bagel.util.Point;
  * @brief es.ull.app.Star class
  */
 public class Star extends GameEntity {
-    private final static Image STAR_IMAGE = new Image("res/star.png");
-    private final static Image STAR_BRIGHT_IMAGE = new Image("res/starBright.png");
-    private final static int SWITCH_FRAMES = 6;
+    private static final Image STAR_IMAGE = new Image("res/star.png");
+    private static final Image STAR_BRIGHT_IMAGE = new Image("res/starBright.png");
+    private static final int SWITCH_FRAMES = 6;
 
     private int switchFrameCount;
     private boolean isBright = false;

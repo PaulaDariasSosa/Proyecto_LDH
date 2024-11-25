@@ -10,8 +10,8 @@ import java.util.Random;
  * @brief es.ull.app.GhostPink class, a subclass of es.ull.app.Ghost
  */
 public class GhostPink extends Ghost {
-    private final static Image GHOST_PINK_IMAGE = new Image("res/ghostPink.png");
-    private final static double SPEED = 5;
+    private static final Image GHOST_PINK_IMAGE = new Image("res/ghostPink.png");
+    private static final double SPEED = 5;
     private final SecureRandom rand = new SecureRandom();
 
     /**

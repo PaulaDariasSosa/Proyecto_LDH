@@ -9,21 +9,21 @@ import java.util.ArrayList;
  * @brief Class for the player
  */
 public class Player extends MovingEntity {
-    private final static Image PAC_IMAGE = new Image("res/pac.png");
-    private final static Image PAC_OPEN_IMAGE = new Image("res/pacOpen.png");
-    private final static Image HEART_IMAGE = new Image("res/heart.png");
-    private final static Image SHIELD_ON_IMAGE = new Image("res/shieldOn.png");
-    private final static int STARTING_LIVES = 3;
+    private static final Image PAC_IMAGE = new Image("res/pac.png");
+    private static final Image PAC_OPEN_IMAGE = new Image("res/pacOpen.png");
+    private static final Image HEART_IMAGE = new Image("res/heart.png");
+    private static final Image SHIELD_ON_IMAGE = new Image("res/shieldOn.png");
+    private static final int STARTING_LIVES = 3;
     private static final int MAX_LIVES = 5;
-    private final static int SWITCH_FRAMES = 8;
-    private final static int HEART_GAP = 30;
-    private final static Point FIRST_HEART_POINT = new Point(850, 10);
-    private final static Font SCORE_FONT = new Font("res/FSO8BITR.ttf", 20);
-    private final static Point SCORE_POINT = new Point(25, 25);
-    private final static int SHIELD_OFFSET = 7;
+    private static final int SWITCH_FRAMES = 8;
+    private static final int HEART_GAP = 30;
+    private static final Point FIRST_HEART_POINT = new Point(850, 10);
+    private static final Font SCORE_FONT = new Font("res/FSO8BITR.ttf", 20);
+    private static final Point SCORE_POINT = new Point(25, 25);
+    private static final int SHIELD_OFFSET = 7;
 
-    private final static double SPEED = 6;
-    private final static double FRENZY_SPEED = 10;
+    private static final double SPEED = 6;
+    private static final double FRENZY_SPEED = 10;
 
     private final DrawOptions rotation;
 
