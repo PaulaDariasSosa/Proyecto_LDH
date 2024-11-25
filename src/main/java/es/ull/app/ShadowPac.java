@@ -62,6 +62,7 @@ public class ShadowPac extends AbstractGame {
     private boolean timeFrozen;
 
     private int highScore;
+    private User nombreUsuario;
 
     private Level level0;
     private Level level1;
@@ -79,13 +80,28 @@ public class ShadowPac extends AbstractGame {
         timeFrozen = false;
         highScore = 0;
     }
+    public ShadowPac(User nombre) {
+        super(WINDOW_WIDTH, WINDOW_HEIGHT, GAME_TITLE);
+        background = TITLE_IMAGE;
+        screenStatus = TITLE_SCREEN;
+        gameOver = false;
+        playerWin = false;
+        timesUp = false;
+        exploding = false;
+        frenzyMode = false;
+        timeFrozen = false;
+        highScore = 0;
+        nombreUsuario = nombre;
+    }
 
     /**
      * @brief The entry point for the program.
      * @param args The command-line arguments
      */
     public static void main(String[] args) {
-        ShadowPac game = new ShadowPac();
+        User usuario = new User();
+        usuario.askForName();
+        ShadowPac game = new ShadowPac(usuario);
         game.run();
     }
 
@@ -193,7 +209,7 @@ public class ShadowPac extends AbstractGame {
                     Player.setTotalScore(Player.getTotalScore() + level2.getPlayer().getPlayerScore());
                     if (highScore < Player.getTotalScore()) {
                         highScore = Player.getTotalScore();
-                        FileUtils.saveScore("Player1", highScore);
+                        FileUtils.saveScore(nombreUsuario.getName(), highScore);
                     }
                     playerWin = true;
                     background = WIN_IMAGE;
@@ -301,7 +317,7 @@ public class ShadowPac extends AbstractGame {
             Player.setTotalScore(Player.getTotalScore() + level.getPlayer().getPlayerScore());
             if (highScore < Player.getTotalScore()) {
                 highScore = Player.getTotalScore();
-                FileUtils.saveScore("Player1", highScore);
+                FileUtils.saveScore(nombreUsuario.getName(), highScore);
             }
             gameOver = true;
             background = LOSE_IMAGE;
@@ -309,7 +325,7 @@ public class ShadowPac extends AbstractGame {
             Player.setTotalScore(Player.getTotalScore() + level.getPlayer().getPlayerScore());
             if (highScore < Player.getTotalScore()) {
                 highScore = Player.getTotalScore();
-                FileUtils.saveScore("Player1", highScore);
+                FileUtils.saveScore(nombreUsuario.getName(), highScore);
             }
             timesUp = true;
             background = TIMESUP_IMAGE;
