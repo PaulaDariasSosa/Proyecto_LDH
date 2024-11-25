@@ -2,6 +2,8 @@ package es.ull.app;
 
 import bagel.Image;
 import bagel.util.Point;
+
+import java.security.SecureRandom;
 import java.util.Random;
 
 /**
@@ -10,7 +12,7 @@ import java.util.Random;
 public class GhostPink extends Ghost {
     private final static Image GHOST_PINK_IMAGE = new Image("res/ghostPink.png");
     private final static double SPEED = 5;
-    private final Random rand = new Random();
+    private final SecureRandom rand = new SecureRandom();
 
     /**
      * Constructor for es.ull.app.GhostPink

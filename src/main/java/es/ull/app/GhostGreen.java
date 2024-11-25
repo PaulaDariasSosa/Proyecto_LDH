@@ -2,6 +2,8 @@ package es.ull.app;
 
 import bagel.Image;
 import bagel.util.Point;
+
+import java.security.SecureRandom;
 import java.util.Random;
 
 /**
@@ -19,7 +21,7 @@ public class GhostGreen extends Ghost {
         super(topLeft, SPEED);
         setImage(GHOST_GREEN_IMAGE);
         // randomly generation direction between DOWN and RIGHT
-        Random rand = new Random();
+        Random rand = new SecureRandom();
         setDirection(rand.nextInt(2));
     }
 
