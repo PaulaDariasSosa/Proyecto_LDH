@@ -1,10 +1,7 @@
 package es.ull.app;
 
 import bagel.*;
-
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import utilities.FileUtils;
 
 /**
  * @brief The es.ull.app.ShadowPac class is the main class of the game.
@@ -196,14 +193,7 @@ public class ShadowPac extends AbstractGame {
                     Player.setTotalScore(Player.getTotalScore() + level2.getPlayer().getPlayerScore());
                     if (highScore < Player.getTotalScore()) {
                         highScore = Player.getTotalScore();
-                        try (BufferedWriter bw = new BufferedWriter(new FileWriter("puntuaciones.txt", true))) {
-                            bw.write("Nombre: " + "Player1");
-                            bw.newLine();
-                            bw.write("Highscore: " + highScore);
-                            bw.newLine();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                        FileUtils.saveScore("Player1", highScore);
                     }
                     playerWin = true;
                     background = WIN_IMAGE;
@@ -311,14 +301,7 @@ public class ShadowPac extends AbstractGame {
             Player.setTotalScore(Player.getTotalScore() + level.getPlayer().getPlayerScore());
             if (highScore < Player.getTotalScore()) {
                 highScore = Player.getTotalScore();
-                try (BufferedWriter bw = new BufferedWriter(new FileWriter("puntuaciones.txt", true))) {
-                    bw.write("Nombre: " + "Player1");
-                    bw.newLine();
-                    bw.write("Highscore: " + highScore);
-                    bw.newLine();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                FileUtils.saveScore("Player1", highScore);
             }
             gameOver = true;
             background = LOSE_IMAGE;
@@ -326,14 +309,7 @@ public class ShadowPac extends AbstractGame {
             Player.setTotalScore(Player.getTotalScore() + level.getPlayer().getPlayerScore());
             if (highScore < Player.getTotalScore()) {
                 highScore = Player.getTotalScore();
-                try (BufferedWriter bw = new BufferedWriter(new FileWriter("puntuaciones.txt", true))) {
-                    bw.write("Nombre: " + "Player1");
-                    bw.newLine();
-                    bw.write("Highscore: " + highScore);
-                    bw.newLine();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                FileUtils.saveScore("Player1", highScore);
             }
             timesUp = true;
             background = TIMESUP_IMAGE;
