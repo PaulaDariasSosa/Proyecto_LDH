@@ -41,8 +41,8 @@ public class ShadowPac extends AbstractGame {
 
     private final static int COMPLETE_MESSAGE_FRAMES = 150;
     private int levelCompleteFrameCount;
-    private final static String LVL_1_PASSWORD = "TUKA";
-    private final static String LVL_2_PASSWORD = "MANK";
+    private final static String LVL_1_CODE = "TUKA";
+    private final static String LVL_2_CODE = "MANK";
 
     private final static int TARGET_SCORE_LVL_0 = 1210;
     private final static int TARGET_SCORE_LVL_1 = 1230;
@@ -151,10 +151,10 @@ public class ShadowPac extends AbstractGame {
             if (screenStatus == TITLE_SCREEN) {
                 Message.titleScreen(GAME_TITLE, highScore);
             } else if (screenStatus == LVL_0_COMPLETE_SCREEN) {
-                Message.levelComplete(0, LVL_1_PASSWORD);
+                Message.levelComplete(0, LVL_1_CODE);
                 levelCompleteFrameCount++;
             } else if (screenStatus == LVL_1_COMPLETE_SCREEN) {
-                Message.levelComplete(1, LVL_2_PASSWORD);
+                Message.levelComplete(1, LVL_2_CODE);
                 levelCompleteFrameCount++;
             } else if (screenStatus == INSTRUCTION_0_SCREEN) {
                 Message.instructionLevel0();

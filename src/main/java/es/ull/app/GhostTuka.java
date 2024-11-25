@@ -3,6 +3,8 @@ package es.ull.app;
 import bagel.DrawOptions;
 import bagel.Image;
 import bagel.util.Point;
+
+import java.security.SecureRandom;
 import java.util.Random;
 
 /**
@@ -18,7 +20,7 @@ public class GhostTuka extends Ghost {
     private boolean isOpen = false;
 
     private final static double SPEED = 7;
-    private final Random rand = new Random();
+    private final SecureRandom rand = new SecureRandom();
 
     /**
      * @brief Constructor for es.ull.app.GhostTuka

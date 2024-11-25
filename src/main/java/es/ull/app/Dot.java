@@ -3,6 +3,7 @@ package es.ull.app;
 import bagel.Image;
 import bagel.util.Point;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 /**
@@ -31,7 +32,7 @@ public class Dot extends GameEntity {
         super(topLeft);
         Image[] images = {DOT_RED_IMAGE, DOT_BLUE_IMAGE, DOT_GREEN_IMAGE, DOT_PINK_IMAGE, DOT_ORANGE_IMAGE,
                 DOT_PURPLE_IMAGE, DOT_WHITE_IMAGE, DOT_YELLOW_IMAGE};
-        Random rand = new Random();
+        Random rand = new SecureRandom();
         setImage(images[rand.nextInt(images.length)]);
     }
 }
