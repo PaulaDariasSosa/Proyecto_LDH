@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['wall_0',['Wall',['../class_wall.html',1,'Wall'],['../class_wall.html#a23444678888b2d1e3a487ddec9756061',1,'Wall.Wall()']]],
-  ['winscreen_1',['winScreen',['../class_message.html#af0f257ed6409f31b6d50b277386b4616',1,'Message']]]
+  ['update_0',['update',['../classes_1_1ull_1_1app_1_1_game_entity.html#addb75e65b0a9bc1fb2e4a208dd079920',1,'es.ull.app.GameEntity.update()'],['../classes_1_1ull_1_1app_1_1_ghost.html#a43b9bea3ff1096c5eb29df95b69d0c44',1,'es.ull.app.Ghost.update(boolean frenzyMode)'],['../classes_1_1ull_1_1app_1_1_ghost.html#a876b7b56670ec12a8517e7a2166ca16c',1,'es.ull.app.Ghost.update(boolean frenzyMode, boolean timeFrozen)'],['../classes_1_1ull_1_1app_1_1_ghost_tuka.html#aef1bf8072e673b1b1ca6fd5db6649df8',1,'es.ull.app.GhostTuka.update()'],['../classes_1_1ull_1_1app_1_1_player.html#a6012b64995f4ebd6e469dbe3fa4f6f50',1,'es.ull.app.Player.update()'],['../classes_1_1ull_1_1app_1_1_shadow_pac.html#adbda08f0d07b0f9f5350505e320792f5',1,'es.ull.app.ShadowPac.update()'],['../classes_1_1ull_1_1app_1_1_star.html#a2698b1a6a69b08211027b52b8e36edbb',1,'es.ull.app.Star.update()'],['../classes_1_1ull_1_1app_1_1_timer.html#a28e5f3580e1a20cb7d669ccc5c43084a',1,'es.ull.app.Timer.update()']]],
+  ['user_1',['User',['../classes_1_1ull_1_1app_1_1_user.html',1,'es.ull.app.User'],['../classes_1_1ull_1_1app_1_1_user.html#ac6e9cf922825d789a8287b25b5a63b7b',1,'es.ull.app.User.User()'],['../classes_1_1ull_1_1app_1_1_user.html#a83a79fa82659a3449cef6d3fcca3ce52',1,'es.ull.app.User.User(String name)']]]
 ];

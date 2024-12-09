@@ -1,0 +1,355 @@
+\doxysection{es.\+ull.\+app.\+Player Class Reference}
+\hypertarget{classes_1_1ull_1_1app_1_1_player}{}\label{classes_1_1ull_1_1app_1_1_player}\index{es.ull.app.Player@{es.ull.app.Player}}
+
+
+Class for the player.  
+
+
+
+
+Inheritance diagram for es.\+ull.\+app.\+Player\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=198pt]{classes_1_1ull_1_1app_1_1_player__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for es.\+ull.\+app.\+Player\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=198pt]{classes_1_1ull_1_1app_1_1_player__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classes_1_1ull_1_1app_1_1_player_affcbf04a06a6109b12615200044c9543}{Player}} (Point top\+Left)
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{classes_1_1ull_1_1app_1_1_player}{es.\+ull.\+app.\+Player}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_player_a6012b64995f4ebd6e469dbe3fa4f6f50}{update}} (Input input)
+\begin{DoxyCompactList}\small\item\em Update the player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_player_a883608558bc9a435acac6af5991d5e50}{go\+Left}} (Array\+List$<$ \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_wall}{Wall}} $>$ walls, boolean frenzy\+Mode)
+\begin{DoxyCompactList}\small\item\em Method that moves the player left. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_player_a744041e0d86212625c1802522c524c0f}{go\+Right}} (Array\+List$<$ \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_wall}{Wall}} $>$ walls, boolean frenzy\+Mode)
+\begin{DoxyCompactList}\small\item\em Method that moves the player right. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_player_af8a33970886e030f8a7b8cda1e49d280}{go\+Up}} (Array\+List$<$ \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_wall}{Wall}} $>$ walls, boolean frenzy\+Mode)
+\begin{DoxyCompactList}\small\item\em Method that moves the player up. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_player_afccf44ee97c0a00c940c9412e5f85d67}{go\+Down}} (Array\+List$<$ \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_wall}{Wall}} $>$ walls, boolean frenzy\+Mode)
+\begin{DoxyCompactList}\small\item\em Method that moves the player down. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_player_aa509795031f9b54cd442733cc3b23d85}{can\+Move}} (Array\+List$<$ \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_wall}{Wall}} $>$ walls)
+\begin{DoxyCompactList}\small\item\em Method that checks if the player can move. \end{DoxyCompactList}\item 
+\Hypertarget{classes_1_1ull_1_1app_1_1_player_aee6772c689b5b0cb40eebbcd3c293105}\label{classes_1_1ull_1_1app_1_1_player_aee6772c689b5b0cb40eebbcd3c293105} 
+void {\bfseries render\+Score} ()
+\begin{DoxyCompactList}\small\item\em Method that renders the player\textquotesingle{}s score. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_player_a55583b7245975145c14799bbfd9b324b}{collides\+Ghost}} ()
+\begin{DoxyCompactList}\small\item\em Method that checks if the player has collided with a ghost. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_player_a8e7ff25dbd254dd768a84243ebdc59ec}{get\+Player\+Score}} ()
+\begin{DoxyCompactList}\small\item\em Method that gets the player\textquotesingle{}s score. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_player_af1594230adff01ec797fc10335fb733c}{increase\+Score}} (int score)
+\begin{DoxyCompactList}\small\item\em Method that increases the player\textquotesingle{}s score. \end{DoxyCompactList}\item 
+\Hypertarget{classes_1_1ull_1_1app_1_1_player_a650511fdb9f99bf813088c5c682a4121}\label{classes_1_1ull_1_1app_1_1_player_a650511fdb9f99bf813088c5c682a4121} 
+void {\bfseries shield\+On} ()
+\begin{DoxyCompactList}\small\item\em Method that turns the shield on. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_moving_entity}{es.\+ull.\+app.\+Moving\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classes_1_1ull_1_1app_1_1_moving_entity_a37786083efe0db29550687b0a178c9fa}{Moving\+Entity}} (Point top\+Left, double speed, double frenzy\+Speed)
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classes_1_1ull_1_1app_1_1_moving_entity}{es.\+ull.\+app.\+Moving\+Entity} class. \end{DoxyCompactList}\item 
+void {\bfseries start\+Respawn} ()
+\begin{DoxyCompactList}\small\item\em Method that resets the entity\textquotesingle{}s position to the starting location. \end{DoxyCompactList}\item 
+Point \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_moving_entity_a68eaa17b08b4072604b2de214fb7e200}{get\+Point\+Go}} ()
+\begin{DoxyCompactList}\small\item\em Method that returns the next point oh the moving entity. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_moving_entity_ac0aa9180202a31e37bc719f32c83607f}{is\+Active}} ()
+\begin{DoxyCompactList}\small\item\em Method that returns if the entity is active. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_moving_entity_ae40c9e15c0ef710e5f85d806c270424a}{set\+Active}} (boolean active)
+\begin{DoxyCompactList}\small\item\em Method that sets the entity to active or inactive. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_moving_entity_a23d31d25c4e5909516b4652702c0fef3}{respawn}} ()
+\begin{DoxyCompactList}\small\item\em Method that respawns the entity. \end{DoxyCompactList}\item 
+void {\bfseries reset\+Position} ()
+\begin{DoxyCompactList}\small\item\em Method that resets the entity\textquotesingle{}s position to the starting location. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_moving_entity_ade389ee19210391d1ce54681178bc533}{is\+Respawning}} ()
+\begin{DoxyCompactList}\small\item\em Method that returns if the entity is respawning. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_game_entity}{es.\+ull.\+app.\+Game\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classes_1_1ull_1_1app_1_1_game_entity_a324ca3c8331abfa859a6090db14206ce}{Game\+Entity}} (Point top\+Left)
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classes_1_1ull_1_1app_1_1_game_entity}{es.\+ull.\+app.\+Game\+Entity} class. \end{DoxyCompactList}\item 
+Image \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_game_entity_ada3adacc9b07aca7a827f943ec7dac55}{get\+Image}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the image field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_game_entity_addb75e65b0a9bc1fb2e4a208dd079920}{update}} ()
+\begin{DoxyCompactList}\small\item\em Method that performs state update. \end{DoxyCompactList}\item 
+boolean {\bfseries collides\+With} (\mbox{\hyperlink{classes_1_1ull_1_1app_1_1_moving_entity}{Moving\+Entity}} entity)
+\begin{DoxyCompactList}\small\item\em Checks if the object collides with the Moving entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_game_entity_a24a2ff88158ab42c37cb5d57d0f0515b}{set\+Image}} (Image image)
+\begin{DoxyCompactList}\small\item\em Setter for the image field. \end{DoxyCompactList}\item 
+Point \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_game_entity_ab254fcdf91ebed81612e9fd7fc62769a}{get\+Position}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the position field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_game_entity_af051813572b4216bdfd0b2410c289710}{set\+Position}} (Point position)
+\begin{DoxyCompactList}\small\item\em Setter for the position field. \end{DoxyCompactList}\item 
+Rectangle \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_game_entity_a6052fca2a3bcfccbb7c8be1f381026e3}{get\+Rectangle}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the rectangle of the \doxylink{classes_1_1ull_1_1app_1_1_game_entity}{es.\+ull.\+app.\+Game\+Entity}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classes_1_1ull_1_1app_1_1_player_a4d3f99051e811cc63b639f9f985e823d}\label{classes_1_1ull_1_1app_1_1_player_a4d3f99051e811cc63b639f9f985e823d} 
+static void {\bfseries render\+Lives} ()
+\begin{DoxyCompactList}\small\item\em Method that renders the player\textquotesingle{}s lives. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_player_a4425b196f1a68cae5e42773c732210de}{extra\+Life}} ()
+\begin{DoxyCompactList}\small\item\em Method that gives the player an extra life. \end{DoxyCompactList}\item 
+static boolean \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_player_abcaa797a8b6ca18c7d52b5c2b2f52b88}{has\+Lost}} ()
+\begin{DoxyCompactList}\small\item\em Method that checks if the player has 0 lives. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_player_aee3e7ed598b245e6ba8331a63b77a2fc}{get\+Total\+Score}} ()
+\begin{DoxyCompactList}\small\item\em Method that gets the total score. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_player_a9f5741837c48d99da47591bf1a62e2bd}{set\+Total\+Score}} (int total\+Score)
+\begin{DoxyCompactList}\small\item\em Method that sets the total score. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for the player. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classes_1_1ull_1_1app_1_1_player_affcbf04a06a6109b12615200044c9543}\index{es.ull.app.Player@{es.ull.app.Player}!Player@{Player}}
+\index{Player@{Player}!es.ull.app.Player@{es.ull.app.Player}}
+\doxysubsubsection{\texorpdfstring{Player()}{Player()}}
+{\footnotesize\ttfamily \label{classes_1_1ull_1_1app_1_1_player_affcbf04a06a6109b12615200044c9543} 
+es.\+ull.\+app.\+Player.\+Player (\begin{DoxyParamCaption}\item[{Point}]{top\+Left}{}\end{DoxyParamCaption})}
+
+
+
+Constructor for \doxylink{classes_1_1ull_1_1app_1_1_player}{es.\+ull.\+app.\+Player}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em top\+Left} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classes_1_1ull_1_1app_1_1_player_aa509795031f9b54cd442733cc3b23d85}\index{es.ull.app.Player@{es.ull.app.Player}!canMove@{canMove}}
+\index{canMove@{canMove}!es.ull.app.Player@{es.ull.app.Player}}
+\doxysubsubsection{\texorpdfstring{canMove()}{canMove()}}
+{\footnotesize\ttfamily \label{classes_1_1ull_1_1app_1_1_player_aa509795031f9b54cd442733cc3b23d85} 
+boolean es.\+ull.\+app.\+Player.\+can\+Move (\begin{DoxyParamCaption}\item[{Array\+List$<$ \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_wall}{Wall}} $>$}]{walls}{}\end{DoxyParamCaption})}
+
+
+
+Method that checks if the player can move. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em walls} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean if the player can move or not 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_moving_entity_a0c983a4c72f5b345d3e707f94a1ffae8}{es.\+ull.\+app.\+Moving\+Entity}}.
+
+\Hypertarget{classes_1_1ull_1_1app_1_1_player_a55583b7245975145c14799bbfd9b324b}\index{es.ull.app.Player@{es.ull.app.Player}!collidesGhost@{collidesGhost}}
+\index{collidesGhost@{collidesGhost}!es.ull.app.Player@{es.ull.app.Player}}
+\doxysubsubsection{\texorpdfstring{collidesGhost()}{collidesGhost()}}
+{\footnotesize\ttfamily \label{classes_1_1ull_1_1app_1_1_player_a55583b7245975145c14799bbfd9b324b} 
+void es.\+ull.\+app.\+Player.\+collides\+Ghost (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Method that checks if the player has collided with a ghost. 
+
+The player collides with a ghost
+
+If the player has a shield
+
+The shield is removed
+
+If the player does not have a shield
+
+The player loses a life
+
+Rotation is not reset\Hypertarget{classes_1_1ull_1_1app_1_1_player_a4425b196f1a68cae5e42773c732210de}\index{es.ull.app.Player@{es.ull.app.Player}!extraLife@{extraLife}}
+\index{extraLife@{extraLife}!es.ull.app.Player@{es.ull.app.Player}}
+\doxysubsubsection{\texorpdfstring{extraLife()}{extraLife()}}
+{\footnotesize\ttfamily \label{classes_1_1ull_1_1app_1_1_player_a4425b196f1a68cae5e42773c732210de} 
+static void es.\+ull.\+app.\+Player.\+extra\+Life (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Method that gives the player an extra life. 
+
+The player eats a cherry and gains an extra life\Hypertarget{classes_1_1ull_1_1app_1_1_player_a8e7ff25dbd254dd768a84243ebdc59ec}\index{es.ull.app.Player@{es.ull.app.Player}!getPlayerScore@{getPlayerScore}}
+\index{getPlayerScore@{getPlayerScore}!es.ull.app.Player@{es.ull.app.Player}}
+\doxysubsubsection{\texorpdfstring{getPlayerScore()}{getPlayerScore()}}
+{\footnotesize\ttfamily \label{classes_1_1ull_1_1app_1_1_player_a8e7ff25dbd254dd768a84243ebdc59ec} 
+int es.\+ull.\+app.\+Player.\+get\+Player\+Score (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Method that gets the player\textquotesingle{}s score. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{classes_1_1ull_1_1app_1_1_player_aee3e7ed598b245e6ba8331a63b77a2fc}\index{es.ull.app.Player@{es.ull.app.Player}!getTotalScore@{getTotalScore}}
+\index{getTotalScore@{getTotalScore}!es.ull.app.Player@{es.ull.app.Player}}
+\doxysubsubsection{\texorpdfstring{getTotalScore()}{getTotalScore()}}
+{\footnotesize\ttfamily \label{classes_1_1ull_1_1app_1_1_player_aee3e7ed598b245e6ba8331a63b77a2fc} 
+static int es.\+ull.\+app.\+Player.\+get\+Total\+Score (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Method that gets the total score. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{classes_1_1ull_1_1app_1_1_player_afccf44ee97c0a00c940c9412e5f85d67}\index{es.ull.app.Player@{es.ull.app.Player}!goDown@{goDown}}
+\index{goDown@{goDown}!es.ull.app.Player@{es.ull.app.Player}}
+\doxysubsubsection{\texorpdfstring{goDown()}{goDown()}}
+{\footnotesize\ttfamily \label{classes_1_1ull_1_1app_1_1_player_afccf44ee97c0a00c940c9412e5f85d67} 
+void es.\+ull.\+app.\+Player.\+go\+Down (\begin{DoxyParamCaption}\item[{Array\+List$<$ \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_wall}{Wall}} $>$}]{walls}{, }\item[{boolean}]{frenzy\+Mode}{}\end{DoxyParamCaption})}
+
+
+
+Method that moves the player down. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em walls} & \\
+\hline
+{\em frenzy\+Mode} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_moving_entity_a3a153d3d041154d89dab01238461e757}{es.\+ull.\+app.\+Moving\+Entity}}.
+
+\Hypertarget{classes_1_1ull_1_1app_1_1_player_a883608558bc9a435acac6af5991d5e50}\index{es.ull.app.Player@{es.ull.app.Player}!goLeft@{goLeft}}
+\index{goLeft@{goLeft}!es.ull.app.Player@{es.ull.app.Player}}
+\doxysubsubsection{\texorpdfstring{goLeft()}{goLeft()}}
+{\footnotesize\ttfamily \label{classes_1_1ull_1_1app_1_1_player_a883608558bc9a435acac6af5991d5e50} 
+void es.\+ull.\+app.\+Player.\+go\+Left (\begin{DoxyParamCaption}\item[{Array\+List$<$ \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_wall}{Wall}} $>$}]{walls}{, }\item[{boolean}]{frenzy\+Mode}{}\end{DoxyParamCaption})}
+
+
+
+Method that moves the player left. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em walls} & \\
+\hline
+{\em frenzy\+Mode} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_moving_entity_a1c3704d9c861c0febe6a26fffa426d89}{es.\+ull.\+app.\+Moving\+Entity}}.
+
+\Hypertarget{classes_1_1ull_1_1app_1_1_player_a744041e0d86212625c1802522c524c0f}\index{es.ull.app.Player@{es.ull.app.Player}!goRight@{goRight}}
+\index{goRight@{goRight}!es.ull.app.Player@{es.ull.app.Player}}
+\doxysubsubsection{\texorpdfstring{goRight()}{goRight()}}
+{\footnotesize\ttfamily \label{classes_1_1ull_1_1app_1_1_player_a744041e0d86212625c1802522c524c0f} 
+void es.\+ull.\+app.\+Player.\+go\+Right (\begin{DoxyParamCaption}\item[{Array\+List$<$ \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_wall}{Wall}} $>$}]{walls}{, }\item[{boolean}]{frenzy\+Mode}{}\end{DoxyParamCaption})}
+
+
+
+Method that moves the player right. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em walls} & \\
+\hline
+{\em frenzy\+Mode} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_moving_entity_a304691c085b03844ca3f41e6723dbead}{es.\+ull.\+app.\+Moving\+Entity}}.
+
+\Hypertarget{classes_1_1ull_1_1app_1_1_player_af8a33970886e030f8a7b8cda1e49d280}\index{es.ull.app.Player@{es.ull.app.Player}!goUp@{goUp}}
+\index{goUp@{goUp}!es.ull.app.Player@{es.ull.app.Player}}
+\doxysubsubsection{\texorpdfstring{goUp()}{goUp()}}
+{\footnotesize\ttfamily \label{classes_1_1ull_1_1app_1_1_player_af8a33970886e030f8a7b8cda1e49d280} 
+void es.\+ull.\+app.\+Player.\+go\+Up (\begin{DoxyParamCaption}\item[{Array\+List$<$ \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_wall}{Wall}} $>$}]{walls}{, }\item[{boolean}]{frenzy\+Mode}{}\end{DoxyParamCaption})}
+
+
+
+Method that moves the player up. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em walls} & \\
+\hline
+{\em frenzy\+Mode} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_moving_entity_a5f6aa5ee642c20af454af144bafe53ed}{es.\+ull.\+app.\+Moving\+Entity}}.
+
+\Hypertarget{classes_1_1ull_1_1app_1_1_player_abcaa797a8b6ca18c7d52b5c2b2f52b88}\index{es.ull.app.Player@{es.ull.app.Player}!hasLost@{hasLost}}
+\index{hasLost@{hasLost}!es.ull.app.Player@{es.ull.app.Player}}
+\doxysubsubsection{\texorpdfstring{hasLost()}{hasLost()}}
+{\footnotesize\ttfamily \label{classes_1_1ull_1_1app_1_1_player_abcaa797a8b6ca18c7d52b5c2b2f52b88} 
+static boolean es.\+ull.\+app.\+Player.\+has\+Lost (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Method that checks if the player has 0 lives. 
+
+\begin{DoxyReturn}{Returns}
+boolean if the player has lost or not 
+\end{DoxyReturn}
+\Hypertarget{classes_1_1ull_1_1app_1_1_player_af1594230adff01ec797fc10335fb733c}\index{es.ull.app.Player@{es.ull.app.Player}!increaseScore@{increaseScore}}
+\index{increaseScore@{increaseScore}!es.ull.app.Player@{es.ull.app.Player}}
+\doxysubsubsection{\texorpdfstring{increaseScore()}{increaseScore()}}
+{\footnotesize\ttfamily \label{classes_1_1ull_1_1app_1_1_player_af1594230adff01ec797fc10335fb733c} 
+void es.\+ull.\+app.\+Player.\+increase\+Score (\begin{DoxyParamCaption}\item[{int}]{score}{}\end{DoxyParamCaption})}
+
+
+
+Method that increases the player\textquotesingle{}s score. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em score} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classes_1_1ull_1_1app_1_1_player_a9f5741837c48d99da47591bf1a62e2bd}\index{es.ull.app.Player@{es.ull.app.Player}!setTotalScore@{setTotalScore}}
+\index{setTotalScore@{setTotalScore}!es.ull.app.Player@{es.ull.app.Player}}
+\doxysubsubsection{\texorpdfstring{setTotalScore()}{setTotalScore()}}
+{\footnotesize\ttfamily \label{classes_1_1ull_1_1app_1_1_player_a9f5741837c48d99da47591bf1a62e2bd} 
+static void es.\+ull.\+app.\+Player.\+set\+Total\+Score (\begin{DoxyParamCaption}\item[{int}]{total\+Score}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Method that sets the total score. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em total\+Score} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classes_1_1ull_1_1app_1_1_player_a6012b64995f4ebd6e469dbe3fa4f6f50}\index{es.ull.app.Player@{es.ull.app.Player}!update@{update}}
+\index{update@{update}!es.ull.app.Player@{es.ull.app.Player}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{classes_1_1ull_1_1app_1_1_player_a6012b64995f4ebd6e469dbe3fa4f6f50} 
+void es.\+ull.\+app.\+Player.\+update (\begin{DoxyParamCaption}\item[{Input}]{input}{}\end{DoxyParamCaption})}
+
+
+
+Update the player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/pmdso/\+One\+Drive/\+Practicas/\+Proyecto\+Final\+LDH/src/main/java/es/ull/app/Player.\+java\end{DoxyCompactItemize}

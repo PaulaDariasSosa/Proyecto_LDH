@@ -1,4 +1,32 @@
 var searchData=
 [
-  ['haslost_0',['hasLost',['../class_player.html#a32bcbf68ff92ba2287ee5066063d7c68',1,'Player']]]
+  ['gameentity_0',['GameEntity',['../classes_1_1ull_1_1app_1_1_game_entity.html',1,'es.ull.app.GameEntity'],['../classes_1_1ull_1_1app_1_1_game_entity.html#a324ca3c8331abfa859a6090db14206ce',1,'es.ull.app.GameEntity.GameEntity()']]],
+  ['getbombs_1',['getBombs',['../classes_1_1ull_1_1app_1_1_level.html#acba0670e90b8b90ed08d512321dad18d',1,'es::ull::app::Level']]],
+  ['getdirection_2',['getDirection',['../classes_1_1ull_1_1app_1_1_ghost.html#a122c65fb35cb4fd0a417879d0dde899c',1,'es::ull::app::Ghost']]],
+  ['getdots_3',['getDots',['../classes_1_1ull_1_1app_1_1_level.html#a0a65f23aea95e0ef239529b2cc480d54',1,'es::ull::app::Level']]],
+  ['getghosts_4',['getGhosts',['../classes_1_1ull_1_1app_1_1_level.html#a9d24115f3d307e0cf6b4fab29099620b',1,'es::ull::app::Level']]],
+  ['getimage_5',['getImage',['../classes_1_1ull_1_1app_1_1_game_entity.html#ada3adacc9b07aca7a827f943ec7dac55',1,'es::ull::app::GameEntity']]],
+  ['getname_6',['getName',['../classes_1_1ull_1_1app_1_1_user.html#afb0b1ad17b44434eec735272bdeaa07b',1,'es::ull::app::User']]],
+  ['getpellets_7',['getPellets',['../classes_1_1ull_1_1app_1_1_level.html#af0ac25c1a478465e0f565364eadb3762',1,'es::ull::app::Level']]],
+  ['getpizzas_8',['getPizzas',['../classes_1_1ull_1_1app_1_1_level.html#acb2a8e11ed5f40c91d6923571b14bf91',1,'es::ull::app::Level']]],
+  ['getplayer_9',['getPlayer',['../classes_1_1ull_1_1app_1_1_level.html#ae56190b3c96b4216086a803d8af9ce59',1,'es::ull::app::Level']]],
+  ['getplayerscore_10',['getPlayerScore',['../classes_1_1ull_1_1app_1_1_player.html#a8e7ff25dbd254dd768a84243ebdc59ec',1,'es::ull::app::Player']]],
+  ['getpointgo_11',['getPointGo',['../classes_1_1ull_1_1app_1_1_moving_entity.html#a68eaa17b08b4072604b2de214fb7e200',1,'es::ull::app::MovingEntity']]],
+  ['getposition_12',['getPosition',['../classes_1_1ull_1_1app_1_1_game_entity.html#ab254fcdf91ebed81612e9fd7fc62769a',1,'es::ull::app::GameEntity']]],
+  ['getrectangle_13',['getRectangle',['../classes_1_1ull_1_1app_1_1_game_entity.html#a6052fca2a3bcfccbb7c8be1f381026e3',1,'es::ull::app::GameEntity']]],
+  ['getshields_14',['getShields',['../classes_1_1ull_1_1app_1_1_level.html#a01292b63de8f114635779956979adc47',1,'es::ull::app::Level']]],
+  ['gettimefreezes_15',['getTimeFreezes',['../classes_1_1ull_1_1app_1_1_level.html#a677fa4cb50bc4915343c461278964dec',1,'es::ull::app::Level']]],
+  ['gettimer_16',['getTimer',['../classes_1_1ull_1_1app_1_1_level.html#a5ec04761dd5757b23cce5673dbdb0079',1,'es::ull::app::Level']]],
+  ['gettotalscore_17',['getTotalScore',['../classes_1_1ull_1_1app_1_1_player.html#aee3e7ed598b245e6ba8331a63b77a2fc',1,'es::ull::app::Player']]],
+  ['getwalls_18',['getWalls',['../classes_1_1ull_1_1app_1_1_level.html#a2512dc2036a8c9116c188b751948d4b9',1,'es::ull::app::Level']]],
+  ['ghost_19',['Ghost',['../classes_1_1ull_1_1app_1_1_ghost.html',1,'es.ull.app.Ghost'],['../classes_1_1ull_1_1app_1_1_ghost.html#a4ec59b6baf8fd39396a199a8ab5ff40c',1,'es.ull.app.Ghost.Ghost()']]],
+  ['ghostblue_20',['GhostBlue',['../classes_1_1ull_1_1app_1_1_ghost_blue.html',1,'es.ull.app.GhostBlue'],['../classes_1_1ull_1_1app_1_1_ghost_blue.html#a76d8faada69f89870b0330a3f6cdb214',1,'es.ull.app.GhostBlue.GhostBlue()']]],
+  ['ghostgreen_21',['GhostGreen',['../classes_1_1ull_1_1app_1_1_ghost_green.html',1,'es.ull.app.GhostGreen'],['../classes_1_1ull_1_1app_1_1_ghost_green.html#a2f7d48887a1b07c8e0d2f9ef93a72171',1,'es.ull.app.GhostGreen.GhostGreen()']]],
+  ['ghostpink_22',['GhostPink',['../classes_1_1ull_1_1app_1_1_ghost_pink.html',1,'es.ull.app.GhostPink'],['../classes_1_1ull_1_1app_1_1_ghost_pink.html#a9b69cf6022778032c2fade207c33c4ad',1,'es.ull.app.GhostPink.GhostPink()']]],
+  ['ghostred_23',['GhostRed',['../classes_1_1ull_1_1app_1_1_ghost_red.html',1,'es.ull.app.GhostRed'],['../classes_1_1ull_1_1app_1_1_ghost_red.html#a991cd6d9701457fdb9f7f874e5d224a5',1,'es.ull.app.GhostRed.GhostRed()']]],
+  ['ghosttuka_24',['GhostTuka',['../classes_1_1ull_1_1app_1_1_ghost_tuka.html',1,'es.ull.app.GhostTuka'],['../classes_1_1ull_1_1app_1_1_ghost_tuka.html#a62b977e9b5f6305195eb98e0f520a271',1,'es.ull.app.GhostTuka.GhostTuka()']]],
+  ['godown_25',['goDown',['../classes_1_1ull_1_1app_1_1_moving_entity.html#a3a153d3d041154d89dab01238461e757',1,'es.ull.app.MovingEntity.goDown()'],['../classes_1_1ull_1_1app_1_1_player.html#afccf44ee97c0a00c940c9412e5f85d67',1,'es.ull.app.Player.goDown()']]],
+  ['goleft_26',['goLeft',['../classes_1_1ull_1_1app_1_1_moving_entity.html#a1c3704d9c861c0febe6a26fffa426d89',1,'es.ull.app.MovingEntity.goLeft()'],['../classes_1_1ull_1_1app_1_1_player.html#a883608558bc9a435acac6af5991d5e50',1,'es.ull.app.Player.goLeft()']]],
+  ['goright_27',['goRight',['../classes_1_1ull_1_1app_1_1_moving_entity.html#a304691c085b03844ca3f41e6723dbead',1,'es.ull.app.MovingEntity.goRight()'],['../classes_1_1ull_1_1app_1_1_player.html#a744041e0d86212625c1802522c524c0f',1,'es.ull.app.Player.goRight()']]],
+  ['goup_28',['goUp',['../classes_1_1ull_1_1app_1_1_moving_entity.html#a5f6aa5ee642c20af454af144bafe53ed',1,'es.ull.app.MovingEntity.goUp()'],['../classes_1_1ull_1_1app_1_1_player.html#af8a33970886e030f8a7b8cda1e49d280',1,'es.ull.app.Player.goUp()']]]
 ];

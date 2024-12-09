@@ -1,0 +1,39 @@
+<map id="es.ull.app.GameEntity" name="es.ull.app.GameEntity">
+<area shape="rect" id="Node000001" title="Abstract class that represents a game entity." alt="" coords="5,208,156,235"/>
+<area shape="rect" id="Node000002" href="$classes_1_1ull_1_1app_1_1_bomb.html" title="The bomb class." alt="" coords="225,31,340,57"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,193,138,130,168,96,202,67,224,56,226,60,205,72,171,100,142,133,99,196"/>
+<area shape="rect" id="Node000003" href="$classes_1_1ull_1_1app_1_1_dot.html" title="A class representing a dot in the game." alt="" coords="231,81,334,108"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="104,195,148,156,202,118,230,106,232,111,205,122,151,160,107,199"/>
+<area shape="rect" id="Node000004" href="$classes_1_1ull_1_1app_1_1_moving_entity.html" title="Abstract class that represents a moving entity." alt="" coords="204,132,361,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="126,199,203,168,236,157,238,162,205,173,128,204"/>
+<area shape="rect" id="Node000012" href="$classes_1_1ull_1_1app_1_1_pizza.html" title="es.ull.app.Pizza class" alt="" coords="225,183,340,209"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="171,207,224,200,225,206,172,213"/>
+<area shape="rect" id="Node000013" href="$classes_1_1ull_1_1app_1_1_shield.html" title="es.ull.app.Shield class" alt="" coords="224,233,341,260"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="171,230,224,237,223,242,171,235"/>
+<area shape="rect" id="Node000014" href="$classes_1_1ull_1_1app_1_1_star.html" title="es.ull.app.Star class" alt="" coords="230,284,335,311"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="128,238,205,270,238,281,236,286,203,274,126,243"/>
+<area shape="rect" id="Node000015" href="$classes_1_1ull_1_1app_1_1_time_freeze.html" title="es.ull.app.TimeFreeze class that represents a es.ull.app.TimeFreeze powerup" alt="" coords="207,335,358,361"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="107,244,151,283,205,320,230,332,228,336,202,325,148,287,104,248"/>
+<area shape="rect" id="Node000016" href="$classes_1_1ull_1_1app_1_1_wall.html" title="Abstract class for es.ull.app.Wall." alt="" coords="229,385,336,412"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="99,247,142,309,171,343,205,371,230,384,227,389,202,376,168,346,138,313,94,250"/>
+<area shape="rect" id="Node000005" href="$classes_1_1ull_1_1app_1_1_ghost.html" title="Abstract class that represents a ghost." alt="" coords="410,107,526,133"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="376,130,409,125,410,131,377,135"/>
+<area shape="rect" id="Node000011" href="$classes_1_1ull_1_1app_1_1_player.html" title="Class for the player." alt="" coords="409,157,527,184"/>
+<area shape="poly" id="edge10_Node000004_Node000011" title=" " alt="" coords="377,155,409,160,408,165,376,161"/>
+<area shape="rect" id="Node000006" href="$classes_1_1ull_1_1app_1_1_ghost_blue.html" title="Class for the es.ull.app.GhostBlue object." alt="" coords="580,5,722,32"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="495,95,532,68,574,42,601,30,603,35,577,46,535,72,499,99"/>
+<area shape="rect" id="Node000007" href="$classes_1_1ull_1_1app_1_1_ghost_green.html" title="es.ull.app.GhostGreen class, a subclass" alt="" coords="575,56,727,83"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="533,99,599,81,601,86,535,104"/>
+<area shape="rect" id="Node000008" href="$classes_1_1ull_1_1app_1_1_ghost_pink.html" title="es.ull.app.GhostPink class, a subclass of es.ull.app.Ghost" alt="" coords="580,107,722,133"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="542,117,580,117,580,123,542,123"/>
+<area shape="rect" id="Node000009" href="$classes_1_1ull_1_1app_1_1_ghost_red.html" title="es.ull.app.GhostRed class" alt="" coords="581,157,721,184"/>
+<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="535,136,601,154,599,159,533,141"/>
+<area shape="rect" id="Node000010" href="$classes_1_1ull_1_1app_1_1_ghost_tuka.html" title="es.ull.app.GhostTuka class, a subclass" alt="" coords="578,208,724,235"/>
+<area shape="poly" id="edge9_Node000005_Node000010" title=" " alt="" coords="522,139,529,143,544,157,553,169,562,182,577,194,599,205,597,210,574,198,558,185,549,173,540,160,526,147,519,143"/>
+<area shape="rect" id="Node000017" href="$classes_1_1ull_1_1app_1_1_bus.html" title="A class representing a bus in the game." alt="" coords="416,335,520,361"/>
+<area shape="poly" id="edge16_Node000016_Node000017" title=" " alt="" coords="348,378,416,359,417,365,349,383"/>
+<area shape="rect" id="Node000018" href="$classes_1_1ull_1_1app_1_1_train.html" title="es.ull.app.Train class" alt="" coords="413,385,523,412"/>
+<area shape="poly" id="edge17_Node000016_Node000018" title=" " alt="" coords="351,396,412,396,412,401,351,401"/>
+<area shape="rect" id="Node000019" href="$classes_1_1ull_1_1app_1_1_tram.html" title="es.ull.app.Tram class" alt="" coords="412,436,524,463"/>
+<area shape="poly" id="edge18_Node000016_Node000019" title=" " alt="" coords="349,414,417,433,416,438,348,419"/>
+</map>

@@ -1,0 +1,278 @@
+\doxysection{es.\+ull.\+app.\+Moving\+Entity Class Reference}
+\hypertarget{classes_1_1ull_1_1app_1_1_moving_entity}{}\label{classes_1_1ull_1_1app_1_1_moving_entity}\index{es.ull.app.MovingEntity@{es.ull.app.MovingEntity}}
+
+
+Abstract class that represents a moving entity.  
+
+
+
+
+Inheritance diagram for es.\+ull.\+app.\+Moving\+Entity\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classes_1_1ull_1_1app_1_1_moving_entity__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for es.\+ull.\+app.\+Moving\+Entity\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=198pt]{classes_1_1ull_1_1app_1_1_moving_entity__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classes_1_1ull_1_1app_1_1_moving_entity_a37786083efe0db29550687b0a178c9fa}{Moving\+Entity}} (Point top\+Left, double speed, double frenzy\+Speed)
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classes_1_1ull_1_1app_1_1_moving_entity}{es.\+ull.\+app.\+Moving\+Entity} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_moving_entity_a1c3704d9c861c0febe6a26fffa426d89}{go\+Left}} (Array\+List$<$ \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_wall}{Wall}} $>$ walls, boolean frenzy\+Mode)
+\begin{DoxyCompactList}\small\item\em Method that moves the entity to the left given the walls and frenzy mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_moving_entity_a304691c085b03844ca3f41e6723dbead}{go\+Right}} (Array\+List$<$ \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_wall}{Wall}} $>$ walls, boolean frenzy\+Mode)
+\begin{DoxyCompactList}\small\item\em Method that moves the entity to the right given the walls and frenzy mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_moving_entity_a5f6aa5ee642c20af454af144bafe53ed}{go\+Up}} (Array\+List$<$ \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_wall}{Wall}} $>$ walls, boolean frenzy\+Mode)
+\begin{DoxyCompactList}\small\item\em Method that moves the entity up given the walls and frenzy mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_moving_entity_a3a153d3d041154d89dab01238461e757}{go\+Down}} (Array\+List$<$ \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_wall}{Wall}} $>$ walls, boolean frenzy\+Mode)
+\begin{DoxyCompactList}\small\item\em Method that moves the entity down given the walls and frenzy mode. \end{DoxyCompactList}\item 
+abstract boolean \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_moving_entity_a0c983a4c72f5b345d3e707f94a1ffae8}{can\+Move}} (Array\+List$<$ \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_wall}{Wall}} $>$ walls)
+\begin{DoxyCompactList}\small\item\em Method that checks if the entity can move given the walls. \end{DoxyCompactList}\item 
+\Hypertarget{classes_1_1ull_1_1app_1_1_moving_entity_a9e4c7ad11ab1fd105b6b38f799806354}\label{classes_1_1ull_1_1app_1_1_moving_entity_a9e4c7ad11ab1fd105b6b38f799806354} 
+void {\bfseries start\+Respawn} ()
+\begin{DoxyCompactList}\small\item\em Method that resets the entity\textquotesingle{}s position to the starting location. \end{DoxyCompactList}\item 
+Point \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_moving_entity_a68eaa17b08b4072604b2de214fb7e200}{get\+Point\+Go}} ()
+\begin{DoxyCompactList}\small\item\em Method that returns the next point oh the moving entity. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_moving_entity_ac0aa9180202a31e37bc719f32c83607f}{is\+Active}} ()
+\begin{DoxyCompactList}\small\item\em Method that returns if the entity is active. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_moving_entity_ae40c9e15c0ef710e5f85d806c270424a}{set\+Active}} (boolean active)
+\begin{DoxyCompactList}\small\item\em Method that sets the entity to active or inactive. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_moving_entity_a23d31d25c4e5909516b4652702c0fef3}{respawn}} ()
+\begin{DoxyCompactList}\small\item\em Method that respawns the entity. \end{DoxyCompactList}\item 
+\Hypertarget{classes_1_1ull_1_1app_1_1_moving_entity_a649402c2c705ac2dbebe7b7ce7858205}\label{classes_1_1ull_1_1app_1_1_moving_entity_a649402c2c705ac2dbebe7b7ce7858205} 
+void {\bfseries reset\+Position} ()
+\begin{DoxyCompactList}\small\item\em Method that resets the entity\textquotesingle{}s position to the starting location. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_moving_entity_ade389ee19210391d1ce54681178bc533}{is\+Respawning}} ()
+\begin{DoxyCompactList}\small\item\em Method that returns if the entity is respawning. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_game_entity}{es.\+ull.\+app.\+Game\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classes_1_1ull_1_1app_1_1_game_entity_a324ca3c8331abfa859a6090db14206ce}{Game\+Entity}} (Point top\+Left)
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classes_1_1ull_1_1app_1_1_game_entity}{es.\+ull.\+app.\+Game\+Entity} class. \end{DoxyCompactList}\item 
+Image \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_game_entity_ada3adacc9b07aca7a827f943ec7dac55}{get\+Image}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the image field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_game_entity_addb75e65b0a9bc1fb2e4a208dd079920}{update}} ()
+\begin{DoxyCompactList}\small\item\em Method that performs state update. \end{DoxyCompactList}\item 
+boolean {\bfseries collides\+With} (\mbox{\hyperlink{classes_1_1ull_1_1app_1_1_moving_entity}{Moving\+Entity}} entity)
+\begin{DoxyCompactList}\small\item\em Checks if the object collides with the Moving entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_game_entity_a24a2ff88158ab42c37cb5d57d0f0515b}{set\+Image}} (Image image)
+\begin{DoxyCompactList}\small\item\em Setter for the image field. \end{DoxyCompactList}\item 
+Point \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_game_entity_ab254fcdf91ebed81612e9fd7fc62769a}{get\+Position}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the position field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_game_entity_af051813572b4216bdfd0b2410c289710}{set\+Position}} (Point position)
+\begin{DoxyCompactList}\small\item\em Setter for the position field. \end{DoxyCompactList}\item 
+Rectangle \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_game_entity_a6052fca2a3bcfccbb7c8be1f381026e3}{get\+Rectangle}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the rectangle of the \doxylink{classes_1_1ull_1_1app_1_1_game_entity}{es.\+ull.\+app.\+Game\+Entity}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract class that represents a moving entity. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classes_1_1ull_1_1app_1_1_moving_entity_a37786083efe0db29550687b0a178c9fa}\index{es.ull.app.MovingEntity@{es.ull.app.MovingEntity}!MovingEntity@{MovingEntity}}
+\index{MovingEntity@{MovingEntity}!es.ull.app.MovingEntity@{es.ull.app.MovingEntity}}
+\doxysubsubsection{\texorpdfstring{MovingEntity()}{MovingEntity()}}
+{\footnotesize\ttfamily \label{classes_1_1ull_1_1app_1_1_moving_entity_a37786083efe0db29550687b0a178c9fa} 
+es.\+ull.\+app.\+Moving\+Entity.\+Moving\+Entity (\begin{DoxyParamCaption}\item[{Point}]{top\+Left}{, }\item[{double}]{speed}{, }\item[{double}]{frenzy\+Speed}{}\end{DoxyParamCaption})}
+
+
+
+Constructor for the \doxylink{classes_1_1ull_1_1app_1_1_moving_entity}{es.\+ull.\+app.\+Moving\+Entity} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em top\+Left} & \\
+\hline
+{\em speed} & \\
+\hline
+{\em frenzy\+Speed} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classes_1_1ull_1_1app_1_1_moving_entity_a0c983a4c72f5b345d3e707f94a1ffae8}\index{es.ull.app.MovingEntity@{es.ull.app.MovingEntity}!canMove@{canMove}}
+\index{canMove@{canMove}!es.ull.app.MovingEntity@{es.ull.app.MovingEntity}}
+\doxysubsubsection{\texorpdfstring{canMove()}{canMove()}}
+{\footnotesize\ttfamily \label{classes_1_1ull_1_1app_1_1_moving_entity_a0c983a4c72f5b345d3e707f94a1ffae8} 
+abstract boolean es.\+ull.\+app.\+Moving\+Entity.\+can\+Move (\begin{DoxyParamCaption}\item[{Array\+List$<$ \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_wall}{Wall}} $>$}]{walls}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+
+
+Method that checks if the entity can move given the walls. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em walls} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean value indicating if the entity can move 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_ghost_adc8d0bda884507eff3b671b3b47028c9}{es.\+ull.\+app.\+Ghost}}, and \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_player_aa509795031f9b54cd442733cc3b23d85}{es.\+ull.\+app.\+Player}}.
+
+\Hypertarget{classes_1_1ull_1_1app_1_1_moving_entity_a68eaa17b08b4072604b2de214fb7e200}\index{es.ull.app.MovingEntity@{es.ull.app.MovingEntity}!getPointGo@{getPointGo}}
+\index{getPointGo@{getPointGo}!es.ull.app.MovingEntity@{es.ull.app.MovingEntity}}
+\doxysubsubsection{\texorpdfstring{getPointGo()}{getPointGo()}}
+{\footnotesize\ttfamily \label{classes_1_1ull_1_1app_1_1_moving_entity_a68eaa17b08b4072604b2de214fb7e200} 
+Point es.\+ull.\+app.\+Moving\+Entity.\+get\+Point\+Go (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Method that returns the next point oh the moving entity. 
+
+\begin{DoxyReturn}{Returns}
+Point object indicating the point the entity is going to move 
+\end{DoxyReturn}
+\Hypertarget{classes_1_1ull_1_1app_1_1_moving_entity_a3a153d3d041154d89dab01238461e757}\index{es.ull.app.MovingEntity@{es.ull.app.MovingEntity}!goDown@{goDown}}
+\index{goDown@{goDown}!es.ull.app.MovingEntity@{es.ull.app.MovingEntity}}
+\doxysubsubsection{\texorpdfstring{goDown()}{goDown()}}
+{\footnotesize\ttfamily \label{classes_1_1ull_1_1app_1_1_moving_entity_a3a153d3d041154d89dab01238461e757} 
+void es.\+ull.\+app.\+Moving\+Entity.\+go\+Down (\begin{DoxyParamCaption}\item[{Array\+List$<$ \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_wall}{Wall}} $>$}]{walls}{, }\item[{boolean}]{frenzy\+Mode}{}\end{DoxyParamCaption})}
+
+
+
+Method that moves the entity down given the walls and frenzy mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em walls} & \\
+\hline
+{\em frenzy\+Mode} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_player_afccf44ee97c0a00c940c9412e5f85d67}{es.\+ull.\+app.\+Player}}.
+
+\Hypertarget{classes_1_1ull_1_1app_1_1_moving_entity_a1c3704d9c861c0febe6a26fffa426d89}\index{es.ull.app.MovingEntity@{es.ull.app.MovingEntity}!goLeft@{goLeft}}
+\index{goLeft@{goLeft}!es.ull.app.MovingEntity@{es.ull.app.MovingEntity}}
+\doxysubsubsection{\texorpdfstring{goLeft()}{goLeft()}}
+{\footnotesize\ttfamily \label{classes_1_1ull_1_1app_1_1_moving_entity_a1c3704d9c861c0febe6a26fffa426d89} 
+void es.\+ull.\+app.\+Moving\+Entity.\+go\+Left (\begin{DoxyParamCaption}\item[{Array\+List$<$ \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_wall}{Wall}} $>$}]{walls}{, }\item[{boolean}]{frenzy\+Mode}{}\end{DoxyParamCaption})}
+
+
+
+Method that moves the entity to the left given the walls and frenzy mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em walls} & \\
+\hline
+{\em frenzy\+Mode} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_player_a883608558bc9a435acac6af5991d5e50}{es.\+ull.\+app.\+Player}}.
+
+\Hypertarget{classes_1_1ull_1_1app_1_1_moving_entity_a304691c085b03844ca3f41e6723dbead}\index{es.ull.app.MovingEntity@{es.ull.app.MovingEntity}!goRight@{goRight}}
+\index{goRight@{goRight}!es.ull.app.MovingEntity@{es.ull.app.MovingEntity}}
+\doxysubsubsection{\texorpdfstring{goRight()}{goRight()}}
+{\footnotesize\ttfamily \label{classes_1_1ull_1_1app_1_1_moving_entity_a304691c085b03844ca3f41e6723dbead} 
+void es.\+ull.\+app.\+Moving\+Entity.\+go\+Right (\begin{DoxyParamCaption}\item[{Array\+List$<$ \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_wall}{Wall}} $>$}]{walls}{, }\item[{boolean}]{frenzy\+Mode}{}\end{DoxyParamCaption})}
+
+
+
+Method that moves the entity to the right given the walls and frenzy mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em walls} & \\
+\hline
+{\em frenzy\+Mode} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_player_a744041e0d86212625c1802522c524c0f}{es.\+ull.\+app.\+Player}}.
+
+\Hypertarget{classes_1_1ull_1_1app_1_1_moving_entity_a5f6aa5ee642c20af454af144bafe53ed}\index{es.ull.app.MovingEntity@{es.ull.app.MovingEntity}!goUp@{goUp}}
+\index{goUp@{goUp}!es.ull.app.MovingEntity@{es.ull.app.MovingEntity}}
+\doxysubsubsection{\texorpdfstring{goUp()}{goUp()}}
+{\footnotesize\ttfamily \label{classes_1_1ull_1_1app_1_1_moving_entity_a5f6aa5ee642c20af454af144bafe53ed} 
+void es.\+ull.\+app.\+Moving\+Entity.\+go\+Up (\begin{DoxyParamCaption}\item[{Array\+List$<$ \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_wall}{Wall}} $>$}]{walls}{, }\item[{boolean}]{frenzy\+Mode}{}\end{DoxyParamCaption})}
+
+
+
+Method that moves the entity up given the walls and frenzy mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em walls} & \\
+\hline
+{\em frenzy\+Mode} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classes_1_1ull_1_1app_1_1_player_af8a33970886e030f8a7b8cda1e49d280}{es.\+ull.\+app.\+Player}}.
+
+\Hypertarget{classes_1_1ull_1_1app_1_1_moving_entity_ac0aa9180202a31e37bc719f32c83607f}\index{es.ull.app.MovingEntity@{es.ull.app.MovingEntity}!isActive@{isActive}}
+\index{isActive@{isActive}!es.ull.app.MovingEntity@{es.ull.app.MovingEntity}}
+\doxysubsubsection{\texorpdfstring{isActive()}{isActive()}}
+{\footnotesize\ttfamily \label{classes_1_1ull_1_1app_1_1_moving_entity_ac0aa9180202a31e37bc719f32c83607f} 
+boolean es.\+ull.\+app.\+Moving\+Entity.\+is\+Active (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Method that returns if the entity is active. 
+
+\begin{DoxyReturn}{Returns}
+boolean value indicating if the entity is active 
+\end{DoxyReturn}
+\Hypertarget{classes_1_1ull_1_1app_1_1_moving_entity_ade389ee19210391d1ce54681178bc533}\index{es.ull.app.MovingEntity@{es.ull.app.MovingEntity}!isRespawning@{isRespawning}}
+\index{isRespawning@{isRespawning}!es.ull.app.MovingEntity@{es.ull.app.MovingEntity}}
+\doxysubsubsection{\texorpdfstring{isRespawning()}{isRespawning()}}
+{\footnotesize\ttfamily \label{classes_1_1ull_1_1app_1_1_moving_entity_ade389ee19210391d1ce54681178bc533} 
+boolean es.\+ull.\+app.\+Moving\+Entity.\+is\+Respawning (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Method that returns if the entity is respawning. 
+
+\begin{DoxyReturn}{Returns}
+boolean value indicating if the entity is respawning 
+\end{DoxyReturn}
+\Hypertarget{classes_1_1ull_1_1app_1_1_moving_entity_a23d31d25c4e5909516b4652702c0fef3}\index{es.ull.app.MovingEntity@{es.ull.app.MovingEntity}!respawn@{respawn}}
+\index{respawn@{respawn}!es.ull.app.MovingEntity@{es.ull.app.MovingEntity}}
+\doxysubsubsection{\texorpdfstring{respawn()}{respawn()}}
+{\footnotesize\ttfamily \label{classes_1_1ull_1_1app_1_1_moving_entity_a23d31d25c4e5909516b4652702c0fef3} 
+void es.\+ull.\+app.\+Moving\+Entity.\+respawn (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Method that respawns the entity. 
+
+respawn\+Frame\+Count must be 0\Hypertarget{classes_1_1ull_1_1app_1_1_moving_entity_ae40c9e15c0ef710e5f85d806c270424a}\index{es.ull.app.MovingEntity@{es.ull.app.MovingEntity}!setActive@{setActive}}
+\index{setActive@{setActive}!es.ull.app.MovingEntity@{es.ull.app.MovingEntity}}
+\doxysubsubsection{\texorpdfstring{setActive()}{setActive()}}
+{\footnotesize\ttfamily \label{classes_1_1ull_1_1app_1_1_moving_entity_ae40c9e15c0ef710e5f85d806c270424a} 
+void es.\+ull.\+app.\+Moving\+Entity.\+set\+Active (\begin{DoxyParamCaption}\item[{boolean}]{active}{}\end{DoxyParamCaption})}
+
+
+
+Method that sets the entity to active or inactive. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em active} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/pmdso/\+One\+Drive/\+Practicas/\+Proyecto\+Final\+LDH/src/main/java/es/ull/app/Moving\+Entity.\+java\end{DoxyCompactItemize}

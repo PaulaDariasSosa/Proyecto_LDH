@@ -1,0 +1,5 @@
+<map id="es.ull.app.MovingEntity" name="es.ull.app.MovingEntity">
+<area shape="rect" id="Node000001" title="Abstract class that represents a moving entity." alt="" coords="5,80,163,107"/>
+<area shape="rect" id="Node000002" href="$classes_1_1ull_1_1app_1_1_game_entity.html" title="Abstract class that represents a game entity." alt="" coords="9,5,159,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,48,87,80,81,80,81,48"/>
+</map>

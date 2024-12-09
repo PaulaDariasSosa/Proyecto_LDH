@@ -1,0 +1,17 @@
+<map id="es.ull.app.Ghost" name="es.ull.app.Ghost">
+<area shape="rect" id="Node000001" title="Abstract class that represents a ghost." alt="" coords="409,107,525,133"/>
+<area shape="rect" id="Node000004" href="$classes_1_1ull_1_1app_1_1_ghost_blue.html" title="Class for the es.ull.app.GhostBlue object." alt="" coords="578,5,720,32"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="494,95,530,68,572,42,599,30,601,35,575,46,533,72,497,99"/>
+<area shape="rect" id="Node000005" href="$classes_1_1ull_1_1app_1_1_ghost_green.html" title="es.ull.app.GhostGreen class, a subclass" alt="" coords="573,56,725,83"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="532,99,598,81,599,86,533,104"/>
+<area shape="rect" id="Node000006" href="$classes_1_1ull_1_1app_1_1_ghost_pink.html" title="es.ull.app.GhostPink class, a subclass of es.ull.app.Ghost" alt="" coords="578,107,720,133"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="541,117,577,117,577,123,541,123"/>
+<area shape="rect" id="Node000007" href="$classes_1_1ull_1_1app_1_1_ghost_red.html" title="es.ull.app.GhostRed class" alt="" coords="579,157,719,184"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="533,136,599,154,598,159,532,141"/>
+<area shape="rect" id="Node000008" href="$classes_1_1ull_1_1app_1_1_ghost_tuka.html" title="es.ull.app.GhostTuka class, a subclass" alt="" coords="576,208,722,235"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="497,141,533,168,575,194,601,205,599,210,572,198,530,172,494,145"/>
+<area shape="rect" id="Node000002" href="$classes_1_1ull_1_1app_1_1_moving_entity.html" title="Abstract class that represents a moving entity." alt="" coords="204,107,361,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="377,117,409,117,409,123,377,123"/>
+<area shape="rect" id="Node000003" href="$classes_1_1ull_1_1app_1_1_game_entity.html" title="Abstract class that represents a game entity." alt="" coords="5,107,156,133"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="171,117,203,117,203,123,171,123"/>
+</map>

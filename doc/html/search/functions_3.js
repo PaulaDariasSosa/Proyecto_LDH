@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['extralife_0',['extraLife',['../class_player.html#a5e1911132511a55ec6114f64b4f788aa',1,'Player']]]
+  ['dot_0',['Dot',['../classes_1_1ull_1_1app_1_1_dot.html#a7aed1efbe85ab40166abb2509b55515b',1,'es::ull::app::Dot']]]
 ];

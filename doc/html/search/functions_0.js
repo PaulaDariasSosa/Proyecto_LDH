@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['bomb_0',['Bomb',['../class_bomb.html#ad597f17f2c7f4449421c93d90b01d11b',1,'Bomb']]],
-  ['bus_1',['Bus',['../class_bus.html#abec599eaea317dc483c8ac6e1f3092e2',1,'Bus']]]
+  ['askforname_0',['askForName',['../classes_1_1ull_1_1app_1_1_user.html#a5dfa86f7406e1a1cb6fb7c1acb1f96a8',1,'es::ull::app::User']]]
 ];
