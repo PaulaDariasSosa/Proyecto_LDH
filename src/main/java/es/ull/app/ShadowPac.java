@@ -101,7 +101,7 @@ public class ShadowPac extends AbstractGame {
      * @param input The input object
      */
     @Override
-    protected void update(Input input) {
+    public void update(Input input) {
         if (input.wasPressed(Keys.ESCAPE)) {
             Window.close();
         } else {
@@ -396,7 +396,7 @@ public class ShadowPac extends AbstractGame {
     /**
      * @brief Method that resets the game after finishing a game
      */
-    private void resetGame() {
+    public void resetGame() {
         level0 = new Level(LEVEL_0_FILE);
         level1 = new Level(LEVEL_1_FILE);
         level2 = new Level(LEVEL_2_FILE);
@@ -404,5 +404,9 @@ public class ShadowPac extends AbstractGame {
         playerWin = false;
         timesUp = false;
         Player.setTotalScore(0);
+    }
+
+    public int getPlayerScore() {
+        return Player.getTotalScore();
     }
 }

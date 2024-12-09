@@ -27,12 +27,12 @@ public class Player extends MovingEntity {
 
     private final DrawOptions rotation;
 
-    private static int lifeCount;
+    public static int lifeCount;
     private int switchFrameCount;
     private boolean isOpen = false;
     private int playerScore;
     private static int totalScore;
-    private static boolean shieldOn;
+    public static boolean shieldOn;
 
     /**
      * @brief Constructor for es.ull.app.Player
