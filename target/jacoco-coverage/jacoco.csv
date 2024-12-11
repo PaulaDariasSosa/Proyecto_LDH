@@ -1,6 +1,6 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
 bagel,test.java.ull.app,LogroPerderVidaTest,0,66,0,0,0,17,0,7,0,7
-bagel,test.java.ull.app,FileUtilsTest,3,94,2,2,1,30,2,5,0,5
+bagel,test.java.ull.app,FileUtilsTest,18,98,6,4,5,32,5,5,0,5
 bagel,test.java.ull.app,MovingEntityTest,0,180,0,2,0,37,0,12,0,11
 bagel,test.java.ull.app,LogroUltimaVidaTest,0,66,0,0,0,17,0,7,0,7
 bagel,test.java.ull.app,ShadowPacTest,0,59,0,0,0,18,0,5,0,5
@@ -40,7 +40,7 @@ bagel,es.ull.app,GhostTuka,99,41,18,0,25,10,11,2,2,2
 bagel,es.ull.app,Level,80,232,8,17,21,50,15,18,11,3
 bagel,es.ull.app,Message,307,0,4,0,63,0,15,0,13,0
 bagel,es.ull.app,Train,0,13,0,0,0,4,0,2,0,2
-bagel,es.ull.app,ShadowPac,1122,189,176,0,265,45,93,6,5,6
+bagel,es.ull.app,ShadowPac,1134,192,176,0,270,46,98,6,10,6
 bagel,es.ull.app,Tram,0,13,0,0,0,4,0,2,0,2
 bagel,es.ull.app,GhostGreen,27,23,6,0,8,6,4,2,1,2
 bagel,es.ull.app,GameEntity,42,23,0,0,7,8,4,4,4,4

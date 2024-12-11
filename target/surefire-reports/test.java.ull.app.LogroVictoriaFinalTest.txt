@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: test.java.ull.app.LogroVictoriaFinalTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.246 s -- in test.java.ull.app.LogroVictoriaFinalTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.104 s - in test.java.ull.app.LogroVictoriaFinalTest

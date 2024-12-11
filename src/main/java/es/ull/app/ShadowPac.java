@@ -3,7 +3,8 @@ package es.ull.app;
 import bagel.*;
 import logros.*;
 import utilities.FileUtils;
-
+import org.junit.platform.commons.logging.Logger;
+import org.junit.platform.commons.logging.LoggerFactory;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class ShadowPac extends AbstractGame {
     private static final List<AchievementObserver> observers = new ArrayList<>();
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(ShadowPac.class);
     private static final int WINDOW_WIDTH = 1024;
     private static final int WINDOW_HEIGHT = 768;
     private static final String GAME_TITLE = "SHADOW TUKA";
@@ -211,19 +212,22 @@ public class ShadowPac extends AbstractGame {
                 try {
                     playLevel(input, level0, 0, TARGET_SCORE_LVL_0);
                 } catch (InterruptedException | InvocationTargetException e) {
-                    throw new RuntimeException(e);
+                    LOGGER.error(() -> "Error");
+                    Thread.currentThread().interrupt();
                 }
             } else if (screenStatus == LEVEL_1) {
                 try {
                     playLevel(input, level1, 1, TARGET_SCORE_LVL_1);
                 } catch (InterruptedException | InvocationTargetException e) {
-                    throw new RuntimeException(e);
+                    LOGGER.error(() -> "Error");
+                    Thread.currentThread().interrupt();
                 }
             } else {
                 try {
                     playLevel(input, level2, 2, TARGET_SCORE_LVL_2);
                 } catch (InterruptedException | InvocationTargetException e) {
-                    throw new RuntimeException(e);
+                    LOGGER.error(() -> "Error");
+                    Thread.currentThread().interrupt();
                 }
                 if (level2.getPlayer().getPlayerScore() >= TARGET_SCORE_LVL_2) {
                     Player.setTotalScore(Player.getTotalScore() + level2.getPlayer().getPlayerScore());
@@ -237,7 +241,8 @@ public class ShadowPac extends AbstractGame {
                     try {
                         notifyObservers("LOGRO_ULTIMA_VIDA", Player.getLifeCount());
                     } catch (InterruptedException | InvocationTargetException e) {
-                        throw new RuntimeException(e);
+                        LOGGER.error(() -> "Error");
+                        Thread.currentThread().interrupt();
                     }
                 }
 
@@ -245,7 +250,8 @@ public class ShadowPac extends AbstractGame {
             try {
                 notifyObservers("LOGRO_VICTORIA_FINAL", playerWin); // 100 es el evento de completar el último nivel
             } catch (InterruptedException | InvocationTargetException e) {
-                throw new RuntimeException(e);
+                LOGGER.error(() -> "Error");
+                Thread.currentThread().interrupt();
             }
         }
     }

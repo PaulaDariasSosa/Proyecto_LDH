@@ -21,60 +21,70 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         // Elimina el archivo si existe antes de cada prueba
 <span class="fc" id="L22">        File testFile = new File(TEST_FILE_NAME);</span>
 <span class="pc bpc" id="L23" title="1 of 2 branches missed.">        if (testFile.exists()) {</span>
-<span class="nc" id="L24">            testFile.delete();</span>
+<span class="nc" id="L24">            boolean isDeleted = testFile.delete();</span>
+<span class="nc bnc" id="L25" title="All 2 branches missed.">            if (!isDeleted) {</span>
+<span class="nc" id="L26">                throw new IOException(&quot;No se pudo eliminar el archivo de prueba existente: &quot; + TEST_FILE_NAME);</span>
+            }
         }
-<span class="fc" id="L26">        testFile.createNewFile();</span>
-<span class="fc" id="L27">    }</span>
+
+<span class="fc" id="L30">        boolean isCreated = testFile.createNewFile();</span>
+<span class="pc bpc" id="L31" title="1 of 2 branches missed.">        if (!isCreated) {</span>
+<span class="nc" id="L32">            throw new IOException(&quot;El archivo de prueba no se pudo crear: &quot; + TEST_FILE_NAME);</span>
+        }
+<span class="fc" id="L34">    }</span>
 
     @AfterEach
     void tearDown() {
         // Limpia el archivo después de cada prueba
-<span class="fc" id="L32">        File testFile = new File(TEST_FILE_NAME);</span>
-<span class="pc bpc" id="L33" title="1 of 2 branches missed.">        if (testFile.exists()) {</span>
-<span class="fc" id="L34">            testFile.delete();</span>
+<span class="fc" id="L39">        File testFile = new File(TEST_FILE_NAME);</span>
+<span class="pc bpc" id="L40" title="1 of 2 branches missed.">        if (testFile.exists()) {</span>
+<span class="fc" id="L41">            boolean isDeleted = testFile.delete();</span>
+<span class="pc bpc" id="L42" title="1 of 2 branches missed.">            if (!isDeleted) {</span>
+<span class="nc" id="L43">                System.err.println(&quot;Advertencia: No se pudo eliminar el archivo de prueba: &quot; + TEST_FILE_NAME);</span>
+            }
         }
-<span class="fc" id="L36">    }</span>
+<span class="fc" id="L46">    }</span>
 
     @Test
     void testSaveScore() throws IOException {
-<span class="fc" id="L40">        String playerName = &quot;Player1&quot;;</span>
-<span class="fc" id="L41">        int highScore = 100;</span>
+<span class="fc" id="L50">        String playerName = &quot;Player1&quot;;</span>
+<span class="fc" id="L51">        int highScore = 100;</span>
 
         // Llama al método saveScore
-<span class="fc" id="L44">        FileUtils.saveScore(playerName, highScore);</span>
+<span class="fc" id="L54">        FileUtils.saveScore(playerName, highScore);</span>
 
         // Verifica que los datos se hayan guardado correctamente
-<span class="fc" id="L47">        try (BufferedReader br = new BufferedReader(new FileReader(TEST_FILE_NAME))) {</span>
-<span class="fc" id="L48">            String line1 = br.readLine();</span>
-<span class="fc" id="L49">            String line2 = br.readLine();</span>
+<span class="fc" id="L57">        try (BufferedReader br = new BufferedReader(new FileReader(TEST_FILE_NAME))) {</span>
+<span class="fc" id="L58">            String line1 = br.readLine();</span>
+<span class="fc" id="L59">            String line2 = br.readLine();</span>
 
-<span class="fc" id="L51">            assertEquals(&quot;Nombre: Player1&quot;, line1);</span>
-<span class="fc" id="L52">            assertEquals(&quot;Highscore: 100&quot;, line2);</span>
+<span class="fc" id="L61">            assertEquals(&quot;Nombre: Player1&quot;, line1);</span>
+<span class="fc" id="L62">            assertEquals(&quot;Highscore: 100&quot;, line2);</span>
         }
-<span class="fc" id="L54">    }</span>
+<span class="fc" id="L64">    }</span>
 
     @Test
     void testSaveScoreAppend() throws IOException {
         // Prueba para verificar que el archivo permite múltiples entradas
-<span class="fc" id="L59">        String playerName1 = &quot;Player1&quot;;</span>
-<span class="fc" id="L60">        int highScore1 = 100;</span>
-<span class="fc" id="L61">        String playerName2 = &quot;Player2&quot;;</span>
-<span class="fc" id="L62">        int highScore2 = 200;</span>
+<span class="fc" id="L69">        String playerName1 = &quot;Player1&quot;;</span>
+<span class="fc" id="L70">        int highScore1 = 100;</span>
+<span class="fc" id="L71">        String playerName2 = &quot;Player2&quot;;</span>
+<span class="fc" id="L72">        int highScore2 = 200;</span>
 
         // Llama al método saveScore dos veces
-<span class="fc" id="L65">        FileUtils.saveScore(playerName1, highScore1);</span>
-<span class="fc" id="L66">        FileUtils.saveScore(playerName2, highScore2);</span>
+<span class="fc" id="L75">        FileUtils.saveScore(playerName1, highScore1);</span>
+<span class="fc" id="L76">        FileUtils.saveScore(playerName2, highScore2);</span>
 
         // Verifica que ambas entradas se hayan guardado
-<span class="fc" id="L69">        try (BufferedReader br = new BufferedReader(new FileReader(TEST_FILE_NAME))) {</span>
-<span class="fc" id="L70">            assertEquals(&quot;Nombre: Player1&quot;, br.readLine());</span>
-<span class="fc" id="L71">            assertEquals(&quot;Highscore: 100&quot;, br.readLine());</span>
-<span class="fc" id="L72">            assertEquals(&quot;Nombre: Player2&quot;, br.readLine());</span>
-<span class="fc" id="L73">            assertEquals(&quot;Highscore: 200&quot;, br.readLine());</span>
+<span class="fc" id="L79">        try (BufferedReader br = new BufferedReader(new FileReader(TEST_FILE_NAME))) {</span>
+<span class="fc" id="L80">            assertEquals(&quot;Nombre: Player1&quot;, br.readLine());</span>
+<span class="fc" id="L81">            assertEquals(&quot;Highscore: 100&quot;, br.readLine());</span>
+<span class="fc" id="L82">            assertEquals(&quot;Nombre: Player2&quot;, br.readLine());</span>
+<span class="fc" id="L83">            assertEquals(&quot;Highscore: 200&quot;, br.readLine());</span>
         }
-<span class="fc" id="L75">    }</span>
+<span class="fc" id="L85">    }</span>
 
 }
 
 
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

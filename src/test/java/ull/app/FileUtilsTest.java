@@ -21,9 +21,16 @@ class FileUtilsTest {
         // Elimina el archivo si existe antes de cada prueba
         File testFile = new File(TEST_FILE_NAME);
         if (testFile.exists()) {
-            testFile.delete();
+            boolean isDeleted = testFile.delete();
+            if (!isDeleted) {
+                throw new IOException("No se pudo eliminar el archivo de prueba existente: " + TEST_FILE_NAME);
+            }
         }
-        testFile.createNewFile();
+
+        boolean isCreated = testFile.createNewFile();
+        if (!isCreated) {
+            throw new IOException("El archivo de prueba no se pudo crear: " + TEST_FILE_NAME);
+        }
     }
 
     @AfterEach
@@ -31,7 +38,10 @@ class FileUtilsTest {
         // Limpia el archivo después de cada prueba
         File testFile = new File(TEST_FILE_NAME);
         if (testFile.exists()) {
-            testFile.delete();
+            boolean isDeleted = testFile.delete();
+            if (!isDeleted) {
+                System.err.println("Advertencia: No se pudo eliminar el archivo de prueba: " + TEST_FILE_NAME);
+            }
         }
     }
 
