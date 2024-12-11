@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LogroVictoriaFinalTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">bagel</a> &gt; <a href="index.source.html" class="el_package">test.java.ull.app</a> &gt; <span class="el_source">LogroVictoriaFinalTest.java</span></div><h1>LogroVictoriaFinalTest.java</h1><pre class="source lang-java linenums">package test.java.ull.app;
+
+import logros.LogroVictoriaFinal;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+<span class="fc" id="L9">class LogroVictoriaFinalTest {</span>
+    private LogroVictoriaFinal logroVictoriaFinal;
+
+    @BeforeEach
+    void setUp() {
+<span class="fc" id="L14">        logroVictoriaFinal = new LogroVictoriaFinal();</span>
+<span class="fc" id="L15">    }</span>
+
+    @Test
+    void testInitialState() {
+        // Verificar que el logro no está desbloqueado inicialmente
+<span class="fc" id="L20">        assertFalse(logroVictoriaFinal.unlocked, &quot;El logro debería estar bloqueado inicialmente.&quot;);</span>
+<span class="fc" id="L21">    }</span>
+
+    @Test
+    void testOnEventUnlocksAchievementWhenGameIsWon() {
+        // Simular el evento &quot;LOGRO_VICTORIA_FINAL&quot; con data `true` (se gana la partida final)
+<span class="fc" id="L26">        logroVictoriaFinal.onEvent(&quot;LOGRO_VICTORIA_FINAL&quot;, true);</span>
+
+        // Verificar que el logro se desbloquea
+<span class="fc" id="L29">        assertTrue(logroVictoriaFinal.unlocked, &quot;El logro debería desbloquearse cuando el jugador gana la partida final.&quot;);</span>
+<span class="fc" id="L30">    }</span>
+
+    @Test
+    void testOnEventDoesNotUnlockWhenGameIsNotWon() {
+        // Simular el evento &quot;LOGRO_VICTORIA_FINAL&quot; con data `false` (no se gana la partida final)
+<span class="fc" id="L35">        logroVictoriaFinal.onEvent(&quot;LOGRO_VICTORIA_FINAL&quot;, false);</span>
+
+        // Verificar que el logro sigue bloqueado
+<span class="fc" id="L38">        assertFalse(logroVictoriaFinal.unlocked, &quot;El logro no debería desbloquearse si el jugador no gana la partida final.&quot;);</span>
+<span class="fc" id="L39">    }</span>
+
+    @Test
+    void testOnEventDoesNotUnlockForOtherEvents() {
+        // Simular un evento diferente
+<span class="fc" id="L44">        logroVictoriaFinal.onEvent(&quot;OTHER_EVENT&quot;, true);</span>
+
+        // Verificar que el logro no se desbloquea con otro evento
+<span class="fc" id="L47">        assertFalse(logroVictoriaFinal.unlocked, &quot;El logro no debería desbloquearse con eventos no esperados.&quot;);</span>
+<span class="fc" id="L48">    }</span>
+
+    @Test
+    void testShowNotificationAfterUnlock() {
+        // Desbloquear el logro cuando el jugador gana la partida final
+<span class="fc" id="L53">        logroVictoriaFinal.onEvent(&quot;LOGRO_VICTORIA_FINAL&quot;, true);</span>
+
+        // Verificar que no se lanzan excepciones al mostrar la notificación
+<span class="fc" id="L56">        assertDoesNotThrow(logroVictoriaFinal::showNotification,</span>
+                &quot;El método showNotification() no debería lanzar excepciones después de desbloquear el logro.&quot;);
+<span class="fc" id="L58">    }</span>
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

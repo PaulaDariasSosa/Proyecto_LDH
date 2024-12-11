@@ -1,6 +1,8 @@
 package logros;
 
 import es.ull.app.ShadowPac;
+import org.junit.platform.commons.logging.Logger;
+import org.junit.platform.commons.logging.LoggerFactory;
 
 import javax.swing.*;
 
@@ -8,6 +10,8 @@ public class Achievement implements AchievementObserver {
     private final String name;
     private final String description;
     public boolean unlocked;
+    private static final Logger LOGGER = LoggerFactory.getLogger(Achievement.class);
+
 
     public Achievement(String name, String description) {
         this.name = name;
@@ -40,7 +44,7 @@ public class Achievement implements AchievementObserver {
                 dialog.setVisible(true);
             });
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.error(() -> "Error al mostrar la notificación del logro: " + this.name);
         }
     }
 

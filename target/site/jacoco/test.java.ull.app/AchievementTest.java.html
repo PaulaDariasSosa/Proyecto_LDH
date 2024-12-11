@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AchievementTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">bagel</a> &gt; <a href="index.source.html" class="el_package">test.java.ull.app</a> &gt; <span class="el_source">AchievementTest.java</span></div><h1>AchievementTest.java</h1><pre class="source lang-java linenums">package test.java.ull.app;
+
+import logros.Achievement;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+<span class="fc" id="L9">class AchievementTest {</span>
+    private Achievement achievement;
+
+    @BeforeEach
+    void setUp() {
+<span class="fc" id="L14">        achievement = new Achievement(&quot;Primer Logro&quot;, &quot;Desbloquea tu primer logro.&quot;);</span>
+<span class="fc" id="L15">    }</span>
+
+    @Test
+    void testInitialState() {
+        // Verificar que el logro no está desbloqueado al inicio
+<span class="fc" id="L20">        assertFalse(achievement.unlocked, &quot;El logro debería estar bloqueado inicialmente.&quot;);</span>
+<span class="fc" id="L21">    }</span>
+
+    @Test
+    void testUnlock() {
+        // Desbloquear el logro
+<span class="fc" id="L26">        achievement.unlock();</span>
+        // Verificar que el logro ahora está desbloqueado
+<span class="fc" id="L28">        assertTrue(achievement.unlocked, &quot;El logro debería estar desbloqueado después de llamar a unlock().&quot;);</span>
+<span class="fc" id="L29">    }</span>
+
+    @Test
+    void testShowNotification() {
+        // Este test verifica que no se lanza una excepción al mostrar la notificación
+        // Aunque la ventana no puede verificarse directamente aquí, se asegura de que el método funcione sin errores.
+<span class="fc" id="L35">        achievement.unlock(); // Desbloquear antes de mostrar la notificación</span>
+<span class="fc" id="L36">        assertDoesNotThrow(achievement::showNotification, &quot;showNotification() no debería lanzar excepciones.&quot;);</span>
+<span class="fc" id="L37">    }</span>
+
+    @Test
+    void testOnEvent() {
+        // Test básico para verificar que onEvent no altera el estado por defecto
+<span class="fc" id="L42">        achievement.onEvent(&quot;EventoPrueba&quot;, null);</span>
+<span class="fc" id="L43">        assertFalse(achievement.unlocked, &quot;onEvent no debería modificar el estado del logro.&quot;);</span>
+<span class="fc" id="L44">    }</span>
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

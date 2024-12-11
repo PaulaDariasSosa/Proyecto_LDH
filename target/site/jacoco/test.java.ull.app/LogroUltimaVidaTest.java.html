@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LogroUltimaVidaTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">bagel</a> &gt; <a href="index.source.html" class="el_package">test.java.ull.app</a> &gt; <span class="el_source">LogroUltimaVidaTest.java</span></div><h1>LogroUltimaVidaTest.java</h1><pre class="source lang-java linenums">package test.java.ull.app;
+
+import logros.LogroUltimaVida;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+<span class="fc" id="L9">class LogroUltimaVidaTest {</span>
+    private LogroUltimaVida logroUltimaVida;
+
+    @BeforeEach
+    void setUp() {
+<span class="fc" id="L14">        logroUltimaVida = new LogroUltimaVida();</span>
+<span class="fc" id="L15">    }</span>
+
+    @Test
+    void testInitialState() {
+        // Verificar que el logro no está desbloqueado inicialmente
+<span class="fc" id="L20">        assertFalse(logroUltimaVida.unlocked, &quot;El logro debería estar bloqueado inicialmente.&quot;);</span>
+<span class="fc" id="L21">    }</span>
+
+    @Test
+    void testOnEventUnlocksAchievementWithOneLifeRemaining() {
+        // Simular el evento &quot;LOGRO_ULTIMA_VIDA&quot; con data 1 (una vida restante)
+<span class="fc" id="L26">        logroUltimaVida.onEvent(&quot;LOGRO_ULTIMA_VIDA&quot;, 1);</span>
+
+        // Verificar que el logro se desbloquea al tener una vida restante
+<span class="fc" id="L29">        assertTrue(logroUltimaVida.unlocked, &quot;El logro debería desbloquearse cuando el jugador tiene solo una vida restante.&quot;);</span>
+<span class="fc" id="L30">    }</span>
+
+    @Test
+    void testOnEventDoesNotUnlockWithMoreThanOneLifeRemaining() {
+        // Simular el evento &quot;LOGRO_ULTIMA_VIDA&quot; con data 2 (más de una vida restante)
+<span class="fc" id="L35">        logroUltimaVida.onEvent(&quot;LOGRO_ULTIMA_VIDA&quot;, 2);</span>
+
+        // Verificar que el logro no se desbloquea con más de una vida restante
+<span class="fc" id="L38">        assertFalse(logroUltimaVida.unlocked, &quot;El logro no debería desbloquearse si el jugador tiene más de una vida restante.&quot;);</span>
+<span class="fc" id="L39">    }</span>
+
+    @Test
+    void testOnEventDoesNotUnlockForOtherEvents() {
+        // Simular un evento diferente
+<span class="fc" id="L44">        logroUltimaVida.onEvent(&quot;OTHER_EVENT&quot;, 1);</span>
+
+        // Verificar que el logro no se desbloquea con otro evento
+<span class="fc" id="L47">        assertFalse(logroUltimaVida.unlocked, &quot;El logro no debería desbloquearse con eventos diferentes.&quot;);</span>
+<span class="fc" id="L48">    }</span>
+
+    @Test
+    void testShowNotificationAfterUnlock() {
+        // Desbloquear el logro cuando el jugador tiene una vida restante
+<span class="fc" id="L53">        logroUltimaVida.onEvent(&quot;LOGRO_ULTIMA_VIDA&quot;, 1);</span>
+
+        // Verificar que no se lanzan excepciones al mostrar la notificación
+<span class="fc" id="L56">        assertDoesNotThrow(logroUltimaVida::showNotification,</span>
+                &quot;El método showNotification() no debería lanzar excepciones después de desbloquear el logro.&quot;);
+<span class="fc" id="L58">    }</span>
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
