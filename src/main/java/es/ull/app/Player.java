@@ -230,4 +230,12 @@ public class Player extends MovingEntity {
     public void shieldOn() {
         shieldOn = true;
     }
+
+    public static int getLifeCount() {
+        return lifeCount;
+    }
+
+    public static boolean isShieldOn() {
+        return shieldOn;
+    }
 }

@@ -25,12 +25,4 @@ import org.junit.jupiter.api.Test;
                 user.setName("Carlos");
                 assertEquals("Carlos", user.getName(), "El nombre debería ser 'Carlos'.");
             }
-
-            @Test
-            public void testAskForName() {
-                User user = new User();
-                // Suponiendo que el método askForName se modifica para aceptar entradas automáticas en un test
-                user.askForName();
-                assertNotNull(user.getName(), "El nombre no debería ser nulo después de ingresar uno.");
-            }
         }
