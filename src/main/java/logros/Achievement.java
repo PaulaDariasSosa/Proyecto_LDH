@@ -5,6 +5,7 @@ import org.junit.platform.commons.logging.Logger;
 import org.junit.platform.commons.logging.LoggerFactory;
 
 import javax.swing.*;
+import java.lang.reflect.InvocationTargetException;
 
 public class Achievement implements AchievementObserver {
     private final String name;
@@ -27,7 +28,7 @@ public class Achievement implements AchievementObserver {
 
     }
 
-    public void showNotification() {
+    public void showNotification() throws InterruptedException, InvocationTargetException {
         try {
             SwingUtilities.invokeAndWait(() -> {
                 JDialog dialog = new JOptionPane(
@@ -43,8 +44,9 @@ public class Achievement implements AchievementObserver {
 
                 dialog.setVisible(true);
             });
-        } catch (Exception e) {
+        } catch (InterruptedException e) {
             LOGGER.error(() -> "Error al mostrar la notificación del logro: " + this.name);
+            throw e;
         }
     }
 
