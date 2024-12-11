@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: test.java.ull.app.LogroUltimaVidaTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.222 s -- in test.java.ull.app.LogroUltimaVidaTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.236 s -- in test.java.ull.app.LogroUltimaVidaTest
