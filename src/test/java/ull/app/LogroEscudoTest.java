@@ -4,6 +4,8 @@ import logros.LogroEscudo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class LogroEscudoTest {
@@ -21,7 +23,7 @@ public class LogroEscudoTest {
     }
 
     @Test
-    void testOnEventUnlocksAchievement() {
+    void testOnEventUnlocksAchievement() throws InterruptedException, InvocationTargetException {
         // Simular el evento "LOGRO_BOMBA" con al menos una bomba utilizada
         logroEscudo.onEvent("LOGRO_ESCUDO", true);
 
@@ -30,7 +32,7 @@ public class LogroEscudoTest {
     }
 
     @Test
-    void testOnEventDoesNotUnlockForOtherEvents() {
+    void testOnEventDoesNotUnlockForOtherEvents() throws InterruptedException, InvocationTargetException {
         // Simular un evento diferente
         logroEscudo.onEvent("OTHER_EVENT", true);
 
@@ -39,7 +41,7 @@ public class LogroEscudoTest {
     }
 
     @Test
-    void testOnEventDoesNotUnlockIfShieldsEatenIsZero() {
+    void testOnEventDoesNotUnlockIfShieldsEatenIsZero() throws InterruptedException, InvocationTargetException {
         logroEscudo.onEvent("LOGRO_ESCUDO", false);
 
         // Verificar que el logro sigue bloqueado
@@ -47,7 +49,7 @@ public class LogroEscudoTest {
     }
 
     @Test
-    void testShowNotificationAfterUnlock() {
+    void testShowNotificationAfterUnlock() throws InterruptedException, InvocationTargetException {
         // Simular el evento para desbloquear el logro
         logroEscudo.onEvent("LOGRO_ESCUDO", true);
 

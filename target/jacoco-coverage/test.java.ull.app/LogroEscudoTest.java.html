@@ -4,56 +4,58 @@ import logros.LogroEscudo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-<span class="fc" id="L9">public class LogroEscudoTest {</span>
+<span class="fc" id="L11">public class LogroEscudoTest {</span>
     private LogroEscudo logroEscudo;
 
     @BeforeEach
     void setUp() {
-<span class="fc" id="L14">        logroEscudo = new LogroEscudo();</span>
-<span class="fc" id="L15">    }</span>
+<span class="fc" id="L16">        logroEscudo = new LogroEscudo();</span>
+<span class="fc" id="L17">    }</span>
 
     @Test
     void testInitialState() {
         // Verificar que el logro no está desbloqueado inicialmente
-<span class="fc" id="L20">        assertFalse(logroEscudo.unlocked, &quot;El logro debería estar bloqueado inicialmente.&quot;);</span>
-<span class="fc" id="L21">    }</span>
+<span class="fc" id="L22">        assertFalse(logroEscudo.unlocked, &quot;El logro debería estar bloqueado inicialmente.&quot;);</span>
+<span class="fc" id="L23">    }</span>
 
     @Test
-    void testOnEventUnlocksAchievement() {
+    void testOnEventUnlocksAchievement() throws InterruptedException, InvocationTargetException {
         // Simular el evento &quot;LOGRO_BOMBA&quot; con al menos una bomba utilizada
-<span class="fc" id="L26">        logroEscudo.onEvent(&quot;LOGRO_ESCUDO&quot;, true);</span>
+<span class="fc" id="L28">        logroEscudo.onEvent(&quot;LOGRO_ESCUDO&quot;, true);</span>
 
         // Verificar que el logro se desbloquea
-<span class="fc" id="L29">        assertTrue(logroEscudo.unlocked, &quot;El logro debería desbloquearse cuando se usa un escudo.&quot;);</span>
-<span class="fc" id="L30">    }</span>
+<span class="fc" id="L31">        assertTrue(logroEscudo.unlocked, &quot;El logro debería desbloquearse cuando se usa un escudo.&quot;);</span>
+<span class="fc" id="L32">    }</span>
 
     @Test
-    void testOnEventDoesNotUnlockForOtherEvents() {
+    void testOnEventDoesNotUnlockForOtherEvents() throws InterruptedException, InvocationTargetException {
         // Simular un evento diferente
-<span class="fc" id="L35">        logroEscudo.onEvent(&quot;OTHER_EVENT&quot;, true);</span>
+<span class="fc" id="L37">        logroEscudo.onEvent(&quot;OTHER_EVENT&quot;, true);</span>
 
         // Verificar que el logro sigue bloqueado
-<span class="fc" id="L38">        assertFalse(logroEscudo.unlocked, &quot;El logro no debería desbloquearse con un evento diferente.&quot;);</span>
-<span class="fc" id="L39">    }</span>
+<span class="fc" id="L40">        assertFalse(logroEscudo.unlocked, &quot;El logro no debería desbloquearse con un evento diferente.&quot;);</span>
+<span class="fc" id="L41">    }</span>
 
     @Test
-    void testOnEventDoesNotUnlockIfShieldsEatenIsZero() {
-<span class="fc" id="L43">        logroEscudo.onEvent(&quot;LOGRO_ESCUDO&quot;, false);</span>
+    void testOnEventDoesNotUnlockIfShieldsEatenIsZero() throws InterruptedException, InvocationTargetException {
+<span class="fc" id="L45">        logroEscudo.onEvent(&quot;LOGRO_ESCUDO&quot;, false);</span>
 
         // Verificar que el logro sigue bloqueado
-<span class="fc" id="L46">        assertFalse(logroEscudo.unlocked, &quot;El logro no debería desbloquearse si no se usan escudos.&quot;);</span>
-<span class="fc" id="L47">    }</span>
+<span class="fc" id="L48">        assertFalse(logroEscudo.unlocked, &quot;El logro no debería desbloquearse si no se usan escudos.&quot;);</span>
+<span class="fc" id="L49">    }</span>
 
     @Test
-    void testShowNotificationAfterUnlock() {
+    void testShowNotificationAfterUnlock() throws InterruptedException, InvocationTargetException {
         // Simular el evento para desbloquear el logro
-<span class="fc" id="L52">        logroEscudo.onEvent(&quot;LOGRO_ESCUDO&quot;, true);</span>
+<span class="fc" id="L54">        logroEscudo.onEvent(&quot;LOGRO_ESCUDO&quot;, true);</span>
 
         // Verificar que no se lanzan excepciones al mostrar la notificación
-<span class="fc" id="L55">        assertDoesNotThrow(logroEscudo::showNotification,</span>
+<span class="fc" id="L57">        assertDoesNotThrow(logroEscudo::showNotification,</span>
                 &quot;showNotification() no debería lanzar excepciones después de desbloquear el logro.&quot;);
-<span class="fc" id="L57">    }</span>
+<span class="fc" id="L59">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

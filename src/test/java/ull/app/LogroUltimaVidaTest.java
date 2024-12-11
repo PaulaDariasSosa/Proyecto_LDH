@@ -4,6 +4,8 @@ import logros.LogroUltimaVida;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class LogroUltimaVidaTest {
@@ -21,7 +23,7 @@ class LogroUltimaVidaTest {
     }
 
     @Test
-    void testOnEventUnlocksAchievementWithOneLifeRemaining() {
+    void testOnEventUnlocksAchievementWithOneLifeRemaining() throws InterruptedException, InvocationTargetException {
         // Simular el evento "LOGRO_ULTIMA_VIDA" con data 1 (una vida restante)
         logroUltimaVida.onEvent("LOGRO_ULTIMA_VIDA", 1);
 
@@ -30,7 +32,7 @@ class LogroUltimaVidaTest {
     }
 
     @Test
-    void testOnEventDoesNotUnlockWithMoreThanOneLifeRemaining() {
+    void testOnEventDoesNotUnlockWithMoreThanOneLifeRemaining() throws InterruptedException, InvocationTargetException {
         // Simular el evento "LOGRO_ULTIMA_VIDA" con data 2 (más de una vida restante)
         logroUltimaVida.onEvent("LOGRO_ULTIMA_VIDA", 2);
 
@@ -39,7 +41,7 @@ class LogroUltimaVidaTest {
     }
 
     @Test
-    void testOnEventDoesNotUnlockForOtherEvents() {
+    void testOnEventDoesNotUnlockForOtherEvents() throws InterruptedException, InvocationTargetException {
         // Simular un evento diferente
         logroUltimaVida.onEvent("OTHER_EVENT", 1);
 
@@ -48,7 +50,7 @@ class LogroUltimaVidaTest {
     }
 
     @Test
-    void testShowNotificationAfterUnlock() {
+    void testShowNotificationAfterUnlock() throws InterruptedException, InvocationTargetException {
         // Desbloquear el logro cuando el jugador tiene una vida restante
         logroUltimaVida.onEvent("LOGRO_ULTIMA_VIDA", 1);
 

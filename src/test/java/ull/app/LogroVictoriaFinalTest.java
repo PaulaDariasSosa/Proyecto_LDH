@@ -4,6 +4,8 @@ import logros.LogroVictoriaFinal;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class LogroVictoriaFinalTest {
@@ -21,7 +23,7 @@ class LogroVictoriaFinalTest {
     }
 
     @Test
-    void testOnEventUnlocksAchievementWhenGameIsWon() {
+    void testOnEventUnlocksAchievementWhenGameIsWon() throws InterruptedException, InvocationTargetException {
         // Simular el evento "LOGRO_VICTORIA_FINAL" con data `true` (se gana la partida final)
         logroVictoriaFinal.onEvent("LOGRO_VICTORIA_FINAL", true);
 
@@ -30,7 +32,7 @@ class LogroVictoriaFinalTest {
     }
 
     @Test
-    void testOnEventDoesNotUnlockWhenGameIsNotWon() {
+    void testOnEventDoesNotUnlockWhenGameIsNotWon() throws InterruptedException, InvocationTargetException {
         // Simular el evento "LOGRO_VICTORIA_FINAL" con data `false` (no se gana la partida final)
         logroVictoriaFinal.onEvent("LOGRO_VICTORIA_FINAL", false);
 
@@ -39,7 +41,7 @@ class LogroVictoriaFinalTest {
     }
 
     @Test
-    void testOnEventDoesNotUnlockForOtherEvents() {
+    void testOnEventDoesNotUnlockForOtherEvents() throws InterruptedException, InvocationTargetException {
         // Simular un evento diferente
         logroVictoriaFinal.onEvent("OTHER_EVENT", true);
 
@@ -48,7 +50,7 @@ class LogroVictoriaFinalTest {
     }
 
     @Test
-    void testShowNotificationAfterUnlock() {
+    void testShowNotificationAfterUnlock() throws InterruptedException, InvocationTargetException {
         // Desbloquear el logro cuando el jugador gana la partida final
         logroVictoriaFinal.onEvent("LOGRO_VICTORIA_FINAL", true);
 

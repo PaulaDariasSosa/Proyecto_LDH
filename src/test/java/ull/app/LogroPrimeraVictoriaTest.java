@@ -3,6 +3,8 @@ import logros.LogroPrimeraVictoria;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class LogroPrimeraVictoriaTest {
@@ -20,7 +22,7 @@ class LogroPrimeraVictoriaTest {
     }
 
     @Test
-    void testOnEventUnlocksAchievementAtLevel1() {
+    void testOnEventUnlocksAchievementAtLevel1() throws InterruptedException, InvocationTargetException {
         // Simular el evento "LOGRO_PRIMERA_VICTORIA" con nivel 1
         logroPrimeraVictoria.onEvent("LOGRO_PRIMERA_VICTORIA", 1);
 
@@ -29,7 +31,7 @@ class LogroPrimeraVictoriaTest {
     }
 
     @Test
-    void testOnEventUnlocksAchievementAtHigherLevel() {
+    void testOnEventUnlocksAchievementAtHigherLevel() throws InterruptedException, InvocationTargetException {
         // Simular el evento "LOGRO_PRIMERA_VICTORIA" con nivel 5
         logroPrimeraVictoria.onEvent("LOGRO_PRIMERA_VICTORIA", 5);
 
@@ -38,7 +40,7 @@ class LogroPrimeraVictoriaTest {
     }
 
     @Test
-    void testOnEventDoesNotUnlockForLevelZero() {
+    void testOnEventDoesNotUnlockForLevelZero() throws InterruptedException, InvocationTargetException {
         // Simular el evento "LOGRO_PRIMERA_VICTORIA" con nivel 0
         logroPrimeraVictoria.onEvent("LOGRO_PRIMERA_VICTORIA", 0);
 
@@ -47,7 +49,7 @@ class LogroPrimeraVictoriaTest {
     }
 
     @Test
-    void testOnEventDoesNotUnlockForOtherEvents() {
+    void testOnEventDoesNotUnlockForOtherEvents() throws InterruptedException, InvocationTargetException {
         // Simular un evento diferente
         logroPrimeraVictoria.onEvent("OTHER_EVENT", 1);
 
@@ -56,7 +58,7 @@ class LogroPrimeraVictoriaTest {
     }
 
     @Test
-    void testShowNotificationAfterUnlock() {
+    void testShowNotificationAfterUnlock() throws InterruptedException, InvocationTargetException {
         // Desbloquear el logro al alcanzar el nivel 1
         logroPrimeraVictoria.onEvent("LOGRO_PRIMERA_VICTORIA", 1);
 

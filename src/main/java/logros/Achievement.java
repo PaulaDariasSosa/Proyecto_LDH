@@ -21,7 +21,7 @@ public class Achievement implements AchievementObserver {
     }
 
     @Override
-    public void onEvent(String event, Object data) {}
+    public void onEvent(String event, Object data) throws InterruptedException, InvocationTargetException {}
 
     public void unlock() {
         this.unlocked = true;

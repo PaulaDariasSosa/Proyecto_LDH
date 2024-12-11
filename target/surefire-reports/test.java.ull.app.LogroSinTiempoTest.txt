@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: test.java.ull.app.LogroSinTiempoTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.137 s -- in test.java.ull.app.LogroSinTiempoTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.252 s -- in test.java.ull.app.LogroSinTiempoTest

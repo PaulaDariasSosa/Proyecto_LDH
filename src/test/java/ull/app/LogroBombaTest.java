@@ -4,6 +4,8 @@ import logros.LogroBomba;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class LogroBombaTest {
@@ -21,7 +23,7 @@ class LogroBombaTest {
     }
 
     @Test
-    void testOnEventUnlocksAchievement() {
+    void testOnEventUnlocksAchievement() throws InterruptedException, InvocationTargetException {
         // Simular el evento "LOGRO_BOMBA" con al menos una bomba utilizada
         logroBomba.onEvent("LOGRO_BOMBA", 1);
 
@@ -30,7 +32,7 @@ class LogroBombaTest {
     }
 
     @Test
-    void testOnEventDoesNotUnlockForOtherEvents() {
+    void testOnEventDoesNotUnlockForOtherEvents() throws InterruptedException, InvocationTargetException {
         // Simular un evento diferente
         logroBomba.onEvent("OTHER_EVENT", 1);
 
@@ -39,7 +41,7 @@ class LogroBombaTest {
     }
 
     @Test
-    void testOnEventDoesNotUnlockIfBombsEatenIsZero() {
+    void testOnEventDoesNotUnlockIfBombsEatenIsZero() throws InterruptedException, InvocationTargetException {
         // Simular el evento "LOGRO_BOMBA" con 0 bombas utilizadas
         logroBomba.onEvent("LOGRO_BOMBA", 0);
 
@@ -48,7 +50,7 @@ class LogroBombaTest {
     }
 
     @Test
-    void testShowNotificationAfterUnlock() {
+    void testShowNotificationAfterUnlock() throws InterruptedException, InvocationTargetException {
         // Simular el evento para desbloquear el logro
         logroBomba.onEvent("LOGRO_BOMBA", 1);
 
