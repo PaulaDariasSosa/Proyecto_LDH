@@ -3,58 +3,60 @@ import logros.LogroPerder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-<span class="fc" id="L8">class LogroPerderTest {</span>
+<span class="fc" id="L10">class LogroPerderTest {</span>
     private LogroPerder logroPerder;
 
     @BeforeEach
     void setUp() {
-<span class="fc" id="L13">        logroPerder = new LogroPerder();</span>
-<span class="fc" id="L14">    }</span>
+<span class="fc" id="L15">        logroPerder = new LogroPerder();</span>
+<span class="fc" id="L16">    }</span>
 
     @Test
     void testInitialState() {
         // Verificar que el logro no está desbloqueado inicialmente
-<span class="fc" id="L19">        assertFalse(logroPerder.unlocked, &quot;El logro debería estar bloqueado inicialmente.&quot;);</span>
-<span class="fc" id="L20">    }</span>
+<span class="fc" id="L21">        assertFalse(logroPerder.unlocked, &quot;El logro debería estar bloqueado inicialmente.&quot;);</span>
+<span class="fc" id="L22">    }</span>
 
     @Test
-    void testOnEventUnlocksAchievementWhenPlayerLosesLife() {
+    void testOnEventUnlocksAchievementWhenPlayerLosesLife() throws InterruptedException, InvocationTargetException {
         // Simular el evento &quot;LOGRO_PERDER&quot; con data `true` (el jugador pierde una vida)
-<span class="fc" id="L25">        logroPerder.onEvent(&quot;LOGRO_PERDER&quot;, true);</span>
+<span class="fc" id="L27">        logroPerder.onEvent(&quot;LOGRO_PERDER&quot;, true);</span>
 
         // Verificar que el logro se desbloquea
-<span class="fc" id="L28">        assertTrue(logroPerder.unlocked, &quot;El logro debería desbloquearse cuando el jugador pierde una vida.&quot;);</span>
-<span class="fc" id="L29">    }</span>
+<span class="fc" id="L30">        assertTrue(logroPerder.unlocked, &quot;El logro debería desbloquearse cuando el jugador pierde una vida.&quot;);</span>
+<span class="fc" id="L31">    }</span>
 
     @Test
-    void testOnEventDoesNotUnlockWhenPlayerDoesNotLoseLife() {
+    void testOnEventDoesNotUnlockWhenPlayerDoesNotLoseLife() throws InterruptedException, InvocationTargetException {
         // Simular el evento &quot;LOGRO_PERDER&quot; con data `false` (el jugador no pierde vida)
-<span class="fc" id="L34">        logroPerder.onEvent(&quot;LOGRO_PERDER&quot;, false);</span>
+<span class="fc" id="L36">        logroPerder.onEvent(&quot;LOGRO_PERDER&quot;, false);</span>
 
         // Verificar que el logro sigue bloqueado
-<span class="fc" id="L37">        assertFalse(logroPerder.unlocked, &quot;El logro no debería desbloquearse si el jugador no pierde una vida.&quot;);</span>
-<span class="fc" id="L38">    }</span>
+<span class="fc" id="L39">        assertFalse(logroPerder.unlocked, &quot;El logro no debería desbloquearse si el jugador no pierde una vida.&quot;);</span>
+<span class="fc" id="L40">    }</span>
 
     @Test
-    void testOnEventDoesNotUnlockForOtherEvents() {
+    void testOnEventDoesNotUnlockForOtherEvents() throws InterruptedException, InvocationTargetException {
         // Simular un evento diferente
-<span class="fc" id="L43">        logroPerder.onEvent(&quot;OTHER_EVENT&quot;, true);</span>
+<span class="fc" id="L45">        logroPerder.onEvent(&quot;OTHER_EVENT&quot;, true);</span>
 
         // Verificar que el logro no se desbloquea
-<span class="fc" id="L46">        assertFalse(logroPerder.unlocked, &quot;El logro no debería desbloquearse con un evento diferente.&quot;);</span>
-<span class="fc" id="L47">    }</span>
+<span class="fc" id="L48">        assertFalse(logroPerder.unlocked, &quot;El logro no debería desbloquearse con un evento diferente.&quot;);</span>
+<span class="fc" id="L49">    }</span>
 
     @Test
-    void testShowNotificationAfterUnlock() {
+    void testShowNotificationAfterUnlock() throws InterruptedException, InvocationTargetException {
         // Desbloquear el logro al perder una vida
-<span class="fc" id="L52">        logroPerder.onEvent(&quot;LOGRO_PERDER&quot;, true);</span>
+<span class="fc" id="L54">        logroPerder.onEvent(&quot;LOGRO_PERDER&quot;, true);</span>
 
         // Verificar que no se lanzan excepciones al mostrar la notificación
-<span class="fc" id="L55">        assertDoesNotThrow(logroPerder::showNotification,</span>
+<span class="fc" id="L57">        assertDoesNotThrow(logroPerder::showNotification,</span>
                 &quot;showNotification() no debería lanzar excepciones después de desbloquear el logro.&quot;);
-<span class="fc" id="L57">    }</span>
+<span class="fc" id="L59">    }</span>
 }
 
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

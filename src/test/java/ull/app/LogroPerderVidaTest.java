@@ -4,6 +4,8 @@ import logros.LogroPerderVida;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class LogroPerderVidaTest {
@@ -21,7 +23,7 @@ class LogroPerderVidaTest {
     }
 
     @Test
-    void testOnEventUnlocksAchievementWhenPlayerLosesLife() {
+    void testOnEventUnlocksAchievementWhenPlayerLosesLife() throws InterruptedException, InvocationTargetException {
         // Simular el evento "LOGRO_PERDER_VIDA" con data `true` (el jugador pierde una vida)
         logroPerderVida.onEvent("LOGRO_PERDER_VIDA", true);
 
@@ -30,7 +32,7 @@ class LogroPerderVidaTest {
     }
 
     @Test
-    void testOnEventDoesNotUnlockWhenPlayerDoesNotLoseLife() {
+    void testOnEventDoesNotUnlockWhenPlayerDoesNotLoseLife() throws InterruptedException, InvocationTargetException {
         // Simular el evento "LOGRO_PERDER_VIDA" con data `false` (el jugador no pierde vida)
         logroPerderVida.onEvent("LOGRO_PERDER_VIDA", false);
 
@@ -39,7 +41,7 @@ class LogroPerderVidaTest {
     }
 
     @Test
-    void testOnEventDoesNotUnlockForOtherEvents() {
+    void testOnEventDoesNotUnlockForOtherEvents() throws InterruptedException, InvocationTargetException {
         // Simular un evento diferente al esperado
         logroPerderVida.onEvent("OTHER_EVENT", true);
 
@@ -48,7 +50,7 @@ class LogroPerderVidaTest {
     }
 
     @Test
-    void testShowNotificationAfterUnlock() {
+    void testShowNotificationAfterUnlock() throws InterruptedException, InvocationTargetException {
         // Desbloquear el logro al perder una vida
         logroPerderVida.onEvent("LOGRO_PERDER_VIDA", true);
 

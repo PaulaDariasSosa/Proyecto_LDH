@@ -3,67 +3,69 @@ import logros.LogroPrimeraVictoria;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-<span class="fc" id="L8">class LogroPrimeraVictoriaTest {</span>
+<span class="fc" id="L10">class LogroPrimeraVictoriaTest {</span>
     private LogroPrimeraVictoria logroPrimeraVictoria;
 
     @BeforeEach
     void setUp() {
-<span class="fc" id="L13">        logroPrimeraVictoria = new LogroPrimeraVictoria();</span>
-<span class="fc" id="L14">    }</span>
+<span class="fc" id="L15">        logroPrimeraVictoria = new LogroPrimeraVictoria();</span>
+<span class="fc" id="L16">    }</span>
 
     @Test
     void testInitialState() {
         // Verificar que el logro no está desbloqueado inicialmente
-<span class="fc" id="L19">        assertFalse(logroPrimeraVictoria.unlocked, &quot;El logro debería estar bloqueado inicialmente.&quot;);</span>
-<span class="fc" id="L20">    }</span>
+<span class="fc" id="L21">        assertFalse(logroPrimeraVictoria.unlocked, &quot;El logro debería estar bloqueado inicialmente.&quot;);</span>
+<span class="fc" id="L22">    }</span>
 
     @Test
-    void testOnEventUnlocksAchievementAtLevel1() {
+    void testOnEventUnlocksAchievementAtLevel1() throws InterruptedException, InvocationTargetException {
         // Simular el evento &quot;LOGRO_PRIMERA_VICTORIA&quot; con nivel 1
-<span class="fc" id="L25">        logroPrimeraVictoria.onEvent(&quot;LOGRO_PRIMERA_VICTORIA&quot;, 1);</span>
+<span class="fc" id="L27">        logroPrimeraVictoria.onEvent(&quot;LOGRO_PRIMERA_VICTORIA&quot;, 1);</span>
 
         // Verificar que el logro se desbloquea
-<span class="fc" id="L28">        assertTrue(logroPrimeraVictoria.unlocked, &quot;El logro debería desbloquearse al alcanzar el nivel 1.&quot;);</span>
-<span class="fc" id="L29">    }</span>
+<span class="fc" id="L30">        assertTrue(logroPrimeraVictoria.unlocked, &quot;El logro debería desbloquearse al alcanzar el nivel 1.&quot;);</span>
+<span class="fc" id="L31">    }</span>
 
     @Test
-    void testOnEventUnlocksAchievementAtHigherLevel() {
+    void testOnEventUnlocksAchievementAtHigherLevel() throws InterruptedException, InvocationTargetException {
         // Simular el evento &quot;LOGRO_PRIMERA_VICTORIA&quot; con nivel 5
-<span class="fc" id="L34">        logroPrimeraVictoria.onEvent(&quot;LOGRO_PRIMERA_VICTORIA&quot;, 5);</span>
+<span class="fc" id="L36">        logroPrimeraVictoria.onEvent(&quot;LOGRO_PRIMERA_VICTORIA&quot;, 5);</span>
 
         // Verificar que el logro también se desbloquea en niveles superiores
-<span class="fc" id="L37">        assertTrue(logroPrimeraVictoria.unlocked, &quot;El logro debería desbloquearse al alcanzar niveles superiores.&quot;);</span>
-<span class="fc" id="L38">    }</span>
+<span class="fc" id="L39">        assertTrue(logroPrimeraVictoria.unlocked, &quot;El logro debería desbloquearse al alcanzar niveles superiores.&quot;);</span>
+<span class="fc" id="L40">    }</span>
 
     @Test
-    void testOnEventDoesNotUnlockForLevelZero() {
+    void testOnEventDoesNotUnlockForLevelZero() throws InterruptedException, InvocationTargetException {
         // Simular el evento &quot;LOGRO_PRIMERA_VICTORIA&quot; con nivel 0
-<span class="fc" id="L43">        logroPrimeraVictoria.onEvent(&quot;LOGRO_PRIMERA_VICTORIA&quot;, 0);</span>
+<span class="fc" id="L45">        logroPrimeraVictoria.onEvent(&quot;LOGRO_PRIMERA_VICTORIA&quot;, 0);</span>
 
         // Verificar que el logro sigue bloqueado
-<span class="fc" id="L46">        assertFalse(logroPrimeraVictoria.unlocked, &quot;El logro no debería desbloquearse si el nivel es menor a 1.&quot;);</span>
-<span class="fc" id="L47">    }</span>
+<span class="fc" id="L48">        assertFalse(logroPrimeraVictoria.unlocked, &quot;El logro no debería desbloquearse si el nivel es menor a 1.&quot;);</span>
+<span class="fc" id="L49">    }</span>
 
     @Test
-    void testOnEventDoesNotUnlockForOtherEvents() {
+    void testOnEventDoesNotUnlockForOtherEvents() throws InterruptedException, InvocationTargetException {
         // Simular un evento diferente
-<span class="fc" id="L52">        logroPrimeraVictoria.onEvent(&quot;OTHER_EVENT&quot;, 1);</span>
+<span class="fc" id="L54">        logroPrimeraVictoria.onEvent(&quot;OTHER_EVENT&quot;, 1);</span>
 
         // Verificar que el logro no se desbloquea con otro evento
-<span class="fc" id="L55">        assertFalse(logroPrimeraVictoria.unlocked, &quot;El logro no debería desbloquearse con eventos diferentes.&quot;);</span>
-<span class="fc" id="L56">    }</span>
+<span class="fc" id="L57">        assertFalse(logroPrimeraVictoria.unlocked, &quot;El logro no debería desbloquearse con eventos diferentes.&quot;);</span>
+<span class="fc" id="L58">    }</span>
 
     @Test
-    void testShowNotificationAfterUnlock() {
+    void testShowNotificationAfterUnlock() throws InterruptedException, InvocationTargetException {
         // Desbloquear el logro al alcanzar el nivel 1
-<span class="fc" id="L61">        logroPrimeraVictoria.onEvent(&quot;LOGRO_PRIMERA_VICTORIA&quot;, 1);</span>
+<span class="fc" id="L63">        logroPrimeraVictoria.onEvent(&quot;LOGRO_PRIMERA_VICTORIA&quot;, 1);</span>
 
         // Verificar que no se lanzan excepciones al mostrar la notificación
-<span class="fc" id="L64">        assertDoesNotThrow(logroPrimeraVictoria::showNotification,</span>
+<span class="fc" id="L66">        assertDoesNotThrow(logroPrimeraVictoria::showNotification,</span>
                 &quot;El método showNotification() no debería lanzar excepciones después de desbloquear el logro.&quot;);
-<span class="fc" id="L66">    }</span>
+<span class="fc" id="L68">    }</span>
 }
 
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -4,6 +4,8 @@ import logros.LogroFantasma;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class LogroFantasmaTest {
@@ -21,7 +23,7 @@ class LogroFantasmaTest {
     }
 
     @Test
-    void testOnEventUnlocksAchievement() {
+    void testOnEventUnlocksAchievement() throws InterruptedException, InvocationTargetException {
         // Simular el evento "LOGRO_FANTASMA" con al menos un fantasma comido
         logroFantasma.onEvent("LOGRO_FANTASMA", 1);
 
@@ -30,7 +32,7 @@ class LogroFantasmaTest {
     }
 
     @Test
-    void testOnEventUnlocksAchievementWithZeroGhosts() {
+    void testOnEventUnlocksAchievementWithZeroGhosts() throws InterruptedException, InvocationTargetException {
         // Simular el evento "LOGRO_FANTASMA" con 0 fantasmas comidos
         logroFantasma.onEvent("LOGRO_FANTASMA", 0);
 
@@ -39,7 +41,7 @@ class LogroFantasmaTest {
     }
 
     @Test
-    void testOnEventDoesNotUnlockForOtherEvents() {
+    void testOnEventDoesNotUnlockForOtherEvents() throws InterruptedException, InvocationTargetException {
         // Simular un evento diferente
         logroFantasma.onEvent("OTHER_EVENT", 1);
 
@@ -48,7 +50,7 @@ class LogroFantasmaTest {
     }
 
     @Test
-    void testShowNotificationAfterUnlock() {
+    void testShowNotificationAfterUnlock() throws InterruptedException, InvocationTargetException {
         // Desbloquear el logro
         logroFantasma.onEvent("LOGRO_FANTASMA", 1);
 

@@ -4,6 +4,8 @@ import logros.LogroSinTiempo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class LogroSinTiempoTest {
@@ -21,7 +23,7 @@ class LogroSinTiempoTest {
     }
 
     @Test
-    void testOnEventUnlocksAchievementWhenTimeRunsOut() {
+    void testOnEventUnlocksAchievementWhenTimeRunsOut() throws InterruptedException, InvocationTargetException {
         // Simular el evento "LOGRO_SIN_TIEMPO" con data `true` (se queda sin tiempo)
         logroSinTiempo.onEvent("LOGRO_SIN_TIEMPO", true);
 
@@ -30,7 +32,7 @@ class LogroSinTiempoTest {
     }
 
     @Test
-    void testOnEventDoesNotUnlockWhenTimeIsNotExpired() {
+    void testOnEventDoesNotUnlockWhenTimeIsNotExpired() throws InterruptedException, InvocationTargetException {
         // Simular el evento "LOGRO_SIN_TIEMPO" con data `false` (el tiempo no se ha acabado)
         logroSinTiempo.onEvent("LOGRO_SIN_TIEMPO", false);
 
@@ -39,7 +41,7 @@ class LogroSinTiempoTest {
     }
 
     @Test
-    void testOnEventDoesNotUnlockForOtherEvents() {
+    void testOnEventDoesNotUnlockForOtherEvents() throws InterruptedException, InvocationTargetException {
         // Simular un evento diferente al esperado
         logroSinTiempo.onEvent("OTHER_EVENT", true);
 
@@ -48,7 +50,7 @@ class LogroSinTiempoTest {
     }
 
     @Test
-    void testShowNotificationAfterUnlock() {
+    void testShowNotificationAfterUnlock() throws InterruptedException, InvocationTargetException {
         // Desbloquear el logro cuando el tiempo se acaba
         logroSinTiempo.onEvent("LOGRO_SIN_TIEMPO", true);
 

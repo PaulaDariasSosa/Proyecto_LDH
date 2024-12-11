@@ -4,58 +4,60 @@ import logros.LogroBomba;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-<span class="fc" id="L9">class LogroBombaTest {</span>
+<span class="fc" id="L11">class LogroBombaTest {</span>
     private LogroBomba logroBomba;
 
     @BeforeEach
     void setUp() {
-<span class="fc" id="L14">        logroBomba = new LogroBomba();</span>
-<span class="fc" id="L15">    }</span>
+<span class="fc" id="L16">        logroBomba = new LogroBomba();</span>
+<span class="fc" id="L17">    }</span>
 
     @Test
     void testInitialState() {
         // Verificar que el logro no está desbloqueado inicialmente
-<span class="fc" id="L20">        assertFalse(logroBomba.unlocked, &quot;El logro debería estar bloqueado inicialmente.&quot;);</span>
-<span class="fc" id="L21">    }</span>
+<span class="fc" id="L22">        assertFalse(logroBomba.unlocked, &quot;El logro debería estar bloqueado inicialmente.&quot;);</span>
+<span class="fc" id="L23">    }</span>
 
     @Test
-    void testOnEventUnlocksAchievement() {
+    void testOnEventUnlocksAchievement() throws InterruptedException, InvocationTargetException {
         // Simular el evento &quot;LOGRO_BOMBA&quot; con al menos una bomba utilizada
-<span class="fc" id="L26">        logroBomba.onEvent(&quot;LOGRO_BOMBA&quot;, 1);</span>
+<span class="fc" id="L28">        logroBomba.onEvent(&quot;LOGRO_BOMBA&quot;, 1);</span>
 
         // Verificar que el logro se desbloquea
-<span class="fc" id="L29">        assertTrue(logroBomba.unlocked, &quot;El logro debería desbloquearse cuando se usa una bomba.&quot;);</span>
-<span class="fc" id="L30">    }</span>
+<span class="fc" id="L31">        assertTrue(logroBomba.unlocked, &quot;El logro debería desbloquearse cuando se usa una bomba.&quot;);</span>
+<span class="fc" id="L32">    }</span>
 
     @Test
-    void testOnEventDoesNotUnlockForOtherEvents() {
+    void testOnEventDoesNotUnlockForOtherEvents() throws InterruptedException, InvocationTargetException {
         // Simular un evento diferente
-<span class="fc" id="L35">        logroBomba.onEvent(&quot;OTHER_EVENT&quot;, 1);</span>
+<span class="fc" id="L37">        logroBomba.onEvent(&quot;OTHER_EVENT&quot;, 1);</span>
 
         // Verificar que el logro sigue bloqueado
-<span class="fc" id="L38">        assertFalse(logroBomba.unlocked, &quot;El logro no debería desbloquearse con un evento diferente.&quot;);</span>
-<span class="fc" id="L39">    }</span>
+<span class="fc" id="L40">        assertFalse(logroBomba.unlocked, &quot;El logro no debería desbloquearse con un evento diferente.&quot;);</span>
+<span class="fc" id="L41">    }</span>
 
     @Test
-    void testOnEventDoesNotUnlockIfBombsEatenIsZero() {
+    void testOnEventDoesNotUnlockIfBombsEatenIsZero() throws InterruptedException, InvocationTargetException {
         // Simular el evento &quot;LOGRO_BOMBA&quot; con 0 bombas utilizadas
-<span class="fc" id="L44">        logroBomba.onEvent(&quot;LOGRO_BOMBA&quot;, 0);</span>
+<span class="fc" id="L46">        logroBomba.onEvent(&quot;LOGRO_BOMBA&quot;, 0);</span>
 
         // Verificar que el logro sigue bloqueado
-<span class="fc" id="L47">        assertFalse(logroBomba.unlocked, &quot;El logro no debería desbloquearse si no se usan bombas.&quot;);</span>
-<span class="fc" id="L48">    }</span>
+<span class="fc" id="L49">        assertFalse(logroBomba.unlocked, &quot;El logro no debería desbloquearse si no se usan bombas.&quot;);</span>
+<span class="fc" id="L50">    }</span>
 
     @Test
-    void testShowNotificationAfterUnlock() {
+    void testShowNotificationAfterUnlock() throws InterruptedException, InvocationTargetException {
         // Simular el evento para desbloquear el logro
-<span class="fc" id="L53">        logroBomba.onEvent(&quot;LOGRO_BOMBA&quot;, 1);</span>
+<span class="fc" id="L55">        logroBomba.onEvent(&quot;LOGRO_BOMBA&quot;, 1);</span>
 
         // Verificar que no se lanzan excepciones al mostrar la notificación
-<span class="fc" id="L56">        assertDoesNotThrow(logroBomba::showNotification,</span>
+<span class="fc" id="L58">        assertDoesNotThrow(logroBomba::showNotification,</span>
                 &quot;showNotification() no debería lanzar excepciones después de desbloquear el logro.&quot;);
-<span class="fc" id="L58">    }</span>
+<span class="fc" id="L60">    }</span>
 }
 
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

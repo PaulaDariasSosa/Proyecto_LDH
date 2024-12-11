@@ -4,58 +4,60 @@ import logros.LogroVictoriaFinal;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-<span class="fc" id="L9">class LogroVictoriaFinalTest {</span>
+<span class="fc" id="L11">class LogroVictoriaFinalTest {</span>
     private LogroVictoriaFinal logroVictoriaFinal;
 
     @BeforeEach
     void setUp() {
-<span class="fc" id="L14">        logroVictoriaFinal = new LogroVictoriaFinal();</span>
-<span class="fc" id="L15">    }</span>
+<span class="fc" id="L16">        logroVictoriaFinal = new LogroVictoriaFinal();</span>
+<span class="fc" id="L17">    }</span>
 
     @Test
     void testInitialState() {
         // Verificar que el logro no está desbloqueado inicialmente
-<span class="fc" id="L20">        assertFalse(logroVictoriaFinal.unlocked, &quot;El logro debería estar bloqueado inicialmente.&quot;);</span>
-<span class="fc" id="L21">    }</span>
+<span class="fc" id="L22">        assertFalse(logroVictoriaFinal.unlocked, &quot;El logro debería estar bloqueado inicialmente.&quot;);</span>
+<span class="fc" id="L23">    }</span>
 
     @Test
-    void testOnEventUnlocksAchievementWhenGameIsWon() {
+    void testOnEventUnlocksAchievementWhenGameIsWon() throws InterruptedException, InvocationTargetException {
         // Simular el evento &quot;LOGRO_VICTORIA_FINAL&quot; con data `true` (se gana la partida final)
-<span class="fc" id="L26">        logroVictoriaFinal.onEvent(&quot;LOGRO_VICTORIA_FINAL&quot;, true);</span>
+<span class="fc" id="L28">        logroVictoriaFinal.onEvent(&quot;LOGRO_VICTORIA_FINAL&quot;, true);</span>
 
         // Verificar que el logro se desbloquea
-<span class="fc" id="L29">        assertTrue(logroVictoriaFinal.unlocked, &quot;El logro debería desbloquearse cuando el jugador gana la partida final.&quot;);</span>
-<span class="fc" id="L30">    }</span>
+<span class="fc" id="L31">        assertTrue(logroVictoriaFinal.unlocked, &quot;El logro debería desbloquearse cuando el jugador gana la partida final.&quot;);</span>
+<span class="fc" id="L32">    }</span>
 
     @Test
-    void testOnEventDoesNotUnlockWhenGameIsNotWon() {
+    void testOnEventDoesNotUnlockWhenGameIsNotWon() throws InterruptedException, InvocationTargetException {
         // Simular el evento &quot;LOGRO_VICTORIA_FINAL&quot; con data `false` (no se gana la partida final)
-<span class="fc" id="L35">        logroVictoriaFinal.onEvent(&quot;LOGRO_VICTORIA_FINAL&quot;, false);</span>
+<span class="fc" id="L37">        logroVictoriaFinal.onEvent(&quot;LOGRO_VICTORIA_FINAL&quot;, false);</span>
 
         // Verificar que el logro sigue bloqueado
-<span class="fc" id="L38">        assertFalse(logroVictoriaFinal.unlocked, &quot;El logro no debería desbloquearse si el jugador no gana la partida final.&quot;);</span>
-<span class="fc" id="L39">    }</span>
+<span class="fc" id="L40">        assertFalse(logroVictoriaFinal.unlocked, &quot;El logro no debería desbloquearse si el jugador no gana la partida final.&quot;);</span>
+<span class="fc" id="L41">    }</span>
 
     @Test
-    void testOnEventDoesNotUnlockForOtherEvents() {
+    void testOnEventDoesNotUnlockForOtherEvents() throws InterruptedException, InvocationTargetException {
         // Simular un evento diferente
-<span class="fc" id="L44">        logroVictoriaFinal.onEvent(&quot;OTHER_EVENT&quot;, true);</span>
+<span class="fc" id="L46">        logroVictoriaFinal.onEvent(&quot;OTHER_EVENT&quot;, true);</span>
 
         // Verificar que el logro no se desbloquea con otro evento
-<span class="fc" id="L47">        assertFalse(logroVictoriaFinal.unlocked, &quot;El logro no debería desbloquearse con eventos no esperados.&quot;);</span>
-<span class="fc" id="L48">    }</span>
+<span class="fc" id="L49">        assertFalse(logroVictoriaFinal.unlocked, &quot;El logro no debería desbloquearse con eventos no esperados.&quot;);</span>
+<span class="fc" id="L50">    }</span>
 
     @Test
-    void testShowNotificationAfterUnlock() {
+    void testShowNotificationAfterUnlock() throws InterruptedException, InvocationTargetException {
         // Desbloquear el logro cuando el jugador gana la partida final
-<span class="fc" id="L53">        logroVictoriaFinal.onEvent(&quot;LOGRO_VICTORIA_FINAL&quot;, true);</span>
+<span class="fc" id="L55">        logroVictoriaFinal.onEvent(&quot;LOGRO_VICTORIA_FINAL&quot;, true);</span>
 
         // Verificar que no se lanzan excepciones al mostrar la notificación
-<span class="fc" id="L56">        assertDoesNotThrow(logroVictoriaFinal::showNotification,</span>
+<span class="fc" id="L58">        assertDoesNotThrow(logroVictoriaFinal::showNotification,</span>
                 &quot;El método showNotification() no debería lanzar excepciones después de desbloquear el logro.&quot;);
-<span class="fc" id="L58">    }</span>
+<span class="fc" id="L60">    }</span>
 }
 
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -4,6 +4,7 @@ import bagel.*;
 import logros.*;
 import utilities.FileUtils;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -207,11 +208,23 @@ public class ShadowPac extends AbstractGame {
                     screenStatus = TITLE_SCREEN;
                 }
             } else if (screenStatus == LEVEL_0) {
-                playLevel(input, level0, 0, TARGET_SCORE_LVL_0);
+                try {
+                    playLevel(input, level0, 0, TARGET_SCORE_LVL_0);
+                } catch (InterruptedException | InvocationTargetException e) {
+                    throw new RuntimeException(e);
+                }
             } else if (screenStatus == LEVEL_1) {
-                playLevel(input, level1, 1, TARGET_SCORE_LVL_1);
+                try {
+                    playLevel(input, level1, 1, TARGET_SCORE_LVL_1);
+                } catch (InterruptedException | InvocationTargetException e) {
+                    throw new RuntimeException(e);
+                }
             } else {
-                playLevel(input, level2, 2, TARGET_SCORE_LVL_2);
+                try {
+                    playLevel(input, level2, 2, TARGET_SCORE_LVL_2);
+                } catch (InterruptedException | InvocationTargetException e) {
+                    throw new RuntimeException(e);
+                }
                 if (level2.getPlayer().getPlayerScore() >= TARGET_SCORE_LVL_2) {
                     Player.setTotalScore(Player.getTotalScore() + level2.getPlayer().getPlayerScore());
                     if (highScore < Player.getTotalScore()) {
@@ -221,11 +234,19 @@ public class ShadowPac extends AbstractGame {
                     // este si
                     playerWin = true;
                     background = WIN_IMAGE;
-                    notifyObservers("LOGRO_ULTIMA_VIDA", Player.getLifeCount());
+                    try {
+                        notifyObservers("LOGRO_ULTIMA_VIDA", Player.getLifeCount());
+                    } catch (InterruptedException | InvocationTargetException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
 
             }
-            notifyObservers("LOGRO_VICTORIA_FINAL", playerWin); // 100 es el evento de completar el último nivel
+            try {
+                notifyObservers("LOGRO_VICTORIA_FINAL", playerWin); // 100 es el evento de completar el último nivel
+            } catch (InterruptedException | InvocationTargetException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
@@ -236,7 +257,7 @@ public class ShadowPac extends AbstractGame {
      * @param levelNum The level number
      * @param targetScore The target score for the level
      */
-    private void playLevel(Input input, Level level, int levelNum, int targetScore) {
+    private void playLevel(Input input, Level level, int levelNum, int targetScore) throws InterruptedException, InvocationTargetException {
         level.playerInput(input, frenzyMode);
 
         // Notificar a los observadores si el puntaje cambia
@@ -453,7 +474,7 @@ public class ShadowPac extends AbstractGame {
         observers.add(observer);
     }
 
-    public void notifyObservers(String event, Object data) {
+    public void notifyObservers(String event, Object data) throws InterruptedException, InvocationTargetException {
         for (AchievementObserver observer : observers) {
             observer.onEvent(event, data);
         }

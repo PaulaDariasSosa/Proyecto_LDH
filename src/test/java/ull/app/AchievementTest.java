@@ -4,6 +4,8 @@ import logros.Achievement;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class AchievementTest {
@@ -37,7 +39,7 @@ class AchievementTest {
     }
 
     @Test
-    void testOnEvent() {
+    void testOnEvent() throws InterruptedException, InvocationTargetException {
         // Test básico para verificar que onEvent no altera el estado por defecto
         achievement.onEvent("EventoPrueba", null);
         assertFalse(achievement.unlocked, "onEvent no debería modificar el estado del logro.");

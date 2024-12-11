@@ -1,5 +1,6 @@
 package logros;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Objects;
 
 public class LogroSinTiempo extends Achievement {
@@ -8,7 +9,7 @@ public class LogroSinTiempo extends Achievement {
     }
 
     @Override
-    public void onEvent(String event, Object data) {
+    public void onEvent(String event, Object data) throws InterruptedException, InvocationTargetException {
         if (!this.unlocked && Objects.equals(event, "LOGRO_SIN_TIEMPO")) {
             boolean sinTiempo = (boolean) data;
             if (sinTiempo) {
