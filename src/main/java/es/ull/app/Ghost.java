@@ -31,7 +31,7 @@ public abstract class Ghost extends MovingEntity {
      * @param topLeft The top left corner of the ghost
      * @param speed The speed of the ghost
      */
-    public Ghost(Point topLeft, double speed) {
+    protected Ghost(Point topLeft, double speed) {
         super(topLeft, speed, speed - FRENZY_SPEED_DECREASE);
         setPosition(topLeft);
     }
@@ -74,10 +74,8 @@ public abstract class Ghost extends MovingEntity {
             respawn();
         }
         else {
-            if (isActive()) {
-                if (frenzyMode) {
-                    GHOST_FRENZY_IMAGE.drawFromTopLeft(getPosition().x, getPosition().y);
-                }
+            if (isActive() && frenzyMode) {
+                GHOST_FRENZY_IMAGE.drawFromTopLeft(getPosition().x, getPosition().y);
             }
         }
     }

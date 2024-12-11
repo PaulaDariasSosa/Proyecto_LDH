@@ -15,7 +15,7 @@ public abstract class GameEntity {
      * @brief Constructor for the es.ull.app.GameEntity class
      * @param topLeft
      */
-    public GameEntity(Point topLeft) {
+    protected GameEntity(Point topLeft) {
         position = new Point(topLeft.x, topLeft.y);
     }
 

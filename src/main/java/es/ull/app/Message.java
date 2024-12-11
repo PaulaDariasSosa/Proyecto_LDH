@@ -8,12 +8,13 @@ import bagel.util.Point;
  * @brief Class used to render messages on the screen
  */
 public class Message {
-
+    
+    private static final String FS_BIT = "res/FSO8BITR.ttf";
     private static final int DEFAULT_FONT_SIZE = 140;
     private static final Font DEFAULT_FONT = new Font("res/SourceSansPro-Bold.ttf", DEFAULT_FONT_SIZE);
     private static final Point DEFAULT_POINT = new Point(140, 350);
 
-    private static final Font HIGH_SCORE_FONT = new Font("res/FSO8BITR.ttf", 35);
+    private static final Font HIGH_SCORE_FONT = new Font(FS_BIT, 35);
     private static final Point HIGH_SCORE_POINT = new Point(300, 450);
 
     private static final Image CROWN_IMAGE = new Image("res/crown.png");
@@ -22,18 +23,18 @@ public class Message {
     private static final int TITLE_MESSAGE_SIZE = 24;
     private static final String TITLE_MESSAGE = "USE ARROW KEYS TO MOVE\nPRESS SPACE TO START THE GAME\n" +
             "COMPLETE BEFORE TIME RUNS OUT";
-    private static final Font TITLE_MESSAGE_FONT = new Font("res/FSO8BITR.ttf", TITLE_MESSAGE_SIZE);
+    private static final Font TITLE_MESSAGE_FONT = new Font(FS_BIT, TITLE_MESSAGE_SIZE);
     private static final Point TITLE_MESSAGE_POINT = new Point(250, 530);
 
-    private static final Font COMPLETE_FONT = new Font("res/FSO8BITR.ttf", 60);
+    private static final Font COMPLETE_FONT = new Font(FS_BIT, 60);
     private static final Point COMPLETE_POINT = new Point(140, 350);
     private static final int PASSWORD_OFFSET = 150;
 
     private static final int LEVEL_INS_FONT_SIZE = 60;
-    private static final Font LEVEL_INS_FONT = new Font("res/FSO8BITR.ttf", LEVEL_INS_FONT_SIZE);
+    private static final Font LEVEL_INS_FONT = new Font(FS_BIT, LEVEL_INS_FONT_SIZE);
     private static final Point LEVEL_INS_POINT = new Point(340, 240);
     private static final int INSTRUCTION_FONT_SIZE = 40;
-    private static final Font INSTRUCTION_FONT = new Font("res/FSO8BITR.ttf", INSTRUCTION_FONT_SIZE);
+    private static final Font INSTRUCTION_FONT = new Font(FS_BIT, INSTRUCTION_FONT_SIZE);
     private static final double INSTRUCTION_X = 100;
     private static final double INSTRUCTION_Y = 350;
 
@@ -43,13 +44,13 @@ public class Message {
             "GET SUPER STAR TO ATTACK\n\n\nPRESS SPACE TO START";
     private static final String INSTRUCTION_2_MESSAGE = "USE 'THE WORLD' TO FREEZE TIME\n\n\n\nPRESS SPACE TO START";
 
-    private static final Font TARGET_FONT = new Font("res/FSO8BITR.ttf", 20);
+    private static final Font TARGET_FONT = new Font(FS_BIT, 20);
     private static final Point TARGET_POINT = new Point(220, 25);
 
-    private static final Font LEVEL_INGAME_FONT = new Font("res/FSO8BITR.ttf", 40);
+    private static final Font LEVEL_INGAME_FONT = new Font(FS_BIT, 40);
     private static final Point LEVEL_INGAME_POINT = new Point(450, 40);
 
-    private static final Font FINAL_SCORE_FONT = new Font("res/FSO8BITR.ttf", 40);
+    private static final Font FINAL_SCORE_FONT = new Font(FS_BIT, 40);
     private static final Point FINAL_SCORE_POINT = new Point(250, 450);
 
 
@@ -63,7 +64,7 @@ public class Message {
 
     private static final String RETRY_MESSAGE = "PRESS SPACE TO\nRETURN TO TITLE SCREEN";
     private static final int RETRY_FONT_SIZE = 30;
-    private static final Font RETRY_FONT = new Font("res/FSO8BITR.ttf", RETRY_FONT_SIZE);
+    private static final Font RETRY_FONT = new Font(FS_BIT, RETRY_FONT_SIZE);
     private static final double RETURN_X = 250;
     private static final double RETURN_Y = 550;
 

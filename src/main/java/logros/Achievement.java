@@ -1,6 +1,5 @@
 package logros;
 
-import es.ull.app.ShadowPac;
 import org.junit.platform.commons.logging.Logger;
 import org.junit.platform.commons.logging.LoggerFactory;
 

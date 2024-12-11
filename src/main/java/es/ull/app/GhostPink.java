@@ -4,7 +4,6 @@ import bagel.Image;
 import bagel.util.Point;
 
 import java.security.SecureRandom;
-import java.util.Random;
 
 /**
  * @brief es.ull.app.GhostPink class, a subclass of es.ull.app.Ghost

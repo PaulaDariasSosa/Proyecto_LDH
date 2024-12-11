@@ -65,16 +65,13 @@ public class User {
         dialog.add(inputPanel, BorderLayout.CENTER);
 
         // Acción al hacer clic en el botón
-        submitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String enteredName = nameField.getText().trim();
-                if (!enteredName.isEmpty()) {
-                    name = enteredName;
-                    dialog.dispose(); // Cierra el diálogo
-                } else {
-                    JOptionPane.showMessageDialog(dialog, "Por favor, introduce un nombre válido.");
-                }
+        submitButton.addActionListener(e -> {
+            String enteredName = nameField.getText().trim();
+            if (!enteredName.isEmpty()) {
+                name = enteredName;
+                dialog.dispose(); // Cierra el diálogo
+            } else {
+                JOptionPane.showMessageDialog(dialog, "Por favor, introduce un nombre válido.");
             }
         });
 

@@ -2,7 +2,8 @@ package test.java.ull.app;
 
 import es.ull.app.Dot;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DotTest {
 

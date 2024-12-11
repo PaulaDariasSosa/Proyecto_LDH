@@ -25,7 +25,7 @@ public abstract class MovingEntity extends GameEntity {
      * @param speed
      * @param frenzySpeed
      */
-    public MovingEntity(Point topLeft, double speed, double frenzySpeed) {
+    protected MovingEntity(Point topLeft, double speed, double frenzySpeed) {
         super(topLeft);
         startingPosition = topLeft;
         pointGo = topLeft;

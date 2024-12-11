@@ -5,7 +5,6 @@ import bagel.Image;
 import bagel.util.Point;
 
 import java.security.SecureRandom;
-import java.util.Random;
 
 /**
  * @brief es.ull.app.GhostTuka class, a subclass
@@ -40,6 +39,7 @@ public class GhostTuka extends Ghost {
      * @param frenzyMode
      * @param timeFrozen
      */
+    @Override
     public void update(boolean frenzyMode, boolean timeFrozen) {
         if (isRespawning()) {
             respawn();

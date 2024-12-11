@@ -1,12 +1,14 @@
 package test.java.ull.app;
 
+import bagel.util.Point;
 import es.ull.app.MovingEntity;
 import es.ull.app.Wall;
-import bagel.util.Point;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class MovingEntityTest {
 

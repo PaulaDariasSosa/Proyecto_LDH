@@ -11,7 +11,7 @@ public abstract class Wall extends GameEntity {
      * @brief Constructor for es.ull.app.Wall
      * @param topLeft
      */
-    public Wall(Point topLeft) {
+    protected Wall(Point topLeft) {
         super(topLeft);
     }
 

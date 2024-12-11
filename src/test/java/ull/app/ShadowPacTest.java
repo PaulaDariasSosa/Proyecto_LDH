@@ -1,11 +1,11 @@
 package test.java.ull.app;
 
-import bagel.Input;
-import bagel.Keys;
 import es.ull.app.ShadowPac;
 import es.ull.app.User;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class ShadowPacTest {
     @Test

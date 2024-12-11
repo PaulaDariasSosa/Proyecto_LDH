@@ -1,19 +1,19 @@
 package es.ull.app;
 
+import bagel.Input;
+import bagel.Keys;
+import bagel.util.Point;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
-import bagel.Input;
-import bagel.Keys;
-import bagel.util.Point;
-
 /**
  * @brief Class that represents a level
  */
 public class Level {
-    private static final Logger logger = Logger.getLogger(utilities.FileUtils.class.getName());
+    private static final Logger logger = Logger.getLogger(Level.class.getName());
     private final Timer timer = new Timer();
     private Player player;
     private final ArrayList<Wall> walls = new ArrayList<>();
