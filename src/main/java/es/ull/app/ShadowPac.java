@@ -1,12 +1,18 @@
 package es.ull.app;
 
 import bagel.*;
+import logros.*;
 import utilities.FileUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @brief The es.ull.app.ShadowPac class is the main class of the game.
  */
 public class ShadowPac extends AbstractGame {
+    private static final List<AchievementObserver> observers = new ArrayList<>();
+
     private static final int WINDOW_WIDTH = 1024;
     private static final int WINDOW_HEIGHT = 768;
     private static final String GAME_TITLE = "SHADOW TUKA";
@@ -93,6 +99,17 @@ public class ShadowPac extends AbstractGame {
         User usuario = new User();
         usuario.askForName();
         ShadowPac game = new ShadowPac(usuario);
+
+        // Crear y registrar logros
+        game.addObserver(new LogroPrimeraVictoria());
+        game.addObserver(new LogroUltimaVida());
+        game.addObserver(new LogroVictoriaFinal());
+        game.addObserver(new LogroBomba());
+        game.addObserver(new LogroFantasma());
+        game.addObserver(new LogroEscudo());
+        game.addObserver(new LogroPerderVida());
+        game.addObserver(new LogroSinTiempo());
+        game.addObserver(new LogroPerder());
         game.run();
     }
 
@@ -101,11 +118,10 @@ public class ShadowPac extends AbstractGame {
      * @param input The input object
      */
     @Override
-    public void update(Input input) {
+    protected void update(Input input) {
         if (input.wasPressed(Keys.ESCAPE)) {
             Window.close();
         } else {
-
             if (screenStatus == TITLE_SCREEN) {
                 if (input.wasPressed(Keys.SPACE)) {
                     resetGame();
@@ -202,10 +218,14 @@ public class ShadowPac extends AbstractGame {
                         highScore = Player.getTotalScore();
                         FileUtils.saveScore(nombreUsuario.getName(), highScore);
                     }
+                    // este si
                     playerWin = true;
                     background = WIN_IMAGE;
+                    notifyObservers("LOGRO_ULTIMA_VIDA", Player.getLifeCount());
                 }
+
             }
+            notifyObservers("LOGRO_VICTORIA_FINAL", playerWin); // 100 es el evento de completar el último nivel
         }
     }
 
@@ -219,12 +239,24 @@ public class ShadowPac extends AbstractGame {
     private void playLevel(Input input, Level level, int levelNum, int targetScore) {
         level.playerInput(input, frenzyMode);
 
+        // Notificar a los observadores si el puntaje cambia
+        int playerScore = level.getPlayer().getPlayerScore();
+        notifyObservers("LOGRO_PRIMERA_VICTORIA", levelNum); // 1234 es el evento de completar el primer nivel
+
+        if (playerScore >= targetScore) {
+            Player.setTotalScore(Player.getTotalScore() + playerScore);
+            screenStatus = levelNum == 0 ? LVL_0_COMPLETE_SCREEN : LVL_1_COMPLETE_SCREEN;
+            levelCompleteFrameCount = 0;
+
+        }
+
         for (Bomb bomb : level.getBombs()) {
             if (bomb.collidesWith(level.getPlayer())) {
                 level.getBombs().remove(bomb);
                 exploding = true;
                 frenzyMode = false;
                 explosionFrameCount = 0;
+                notifyObservers("LOGRO_BOMBA", 1);
                 for (Ghost ghost : level.getGhosts()) {
                     ghost.setActive(false);
                 }
@@ -277,11 +309,15 @@ public class ShadowPac extends AbstractGame {
                     if (frenzyMode) {
                         level.getPlayer().increaseScore(Ghost.FRENZY_SCORE);
                         ghost.setActive(false);
+                        notifyObservers("LOGRO_FANTASMA", 1);
                     } else {
+                        notifyObservers("LOGRO_ESCUDO", Player.isShieldOn());
+                        notifyObservers("LOGRO_PERDER_VIDA", !Player.isShieldOn());
                         level.getPlayer().collidesGhost();
                         if (!timeFrozen) {
                             ghost.startRespawn();
                         }
+
                     }
                 }
             }
@@ -319,6 +355,8 @@ public class ShadowPac extends AbstractGame {
                 FileUtils.saveScore(nombreUsuario.getName(), highScore);
             }
             timesUp = true;
+            // notificacion de tiempo
+
             background = TIMESUP_IMAGE;
         } else {
             Message.renderLevel(levelNum, targetScore);
@@ -389,8 +427,9 @@ public class ShadowPac extends AbstractGame {
                 timeFrozen = false;
                 timeFrozenFrameCount = 0;
             }
-
         }
+        notifyObservers("LOGRO_PERDER", gameOver);
+        notifyObservers("LOGRO_SIN_TIEMPO", timesUp);
     }
 
     /**
@@ -400,10 +439,37 @@ public class ShadowPac extends AbstractGame {
         level0 = new Level(LEVEL_0_FILE);
         level1 = new Level(LEVEL_1_FILE);
         level2 = new Level(LEVEL_2_FILE);
+
+        resetObservers();
+
         gameOver = false;
         playerWin = false;
         timesUp = false;
         Player.setTotalScore(0);
+    }
+
+    /// ####################################################################
+    public void addObserver(AchievementObserver observer) {
+        observers.add(observer);
+    }
+
+    public void notifyObservers(String event, Object data) {
+        for (AchievementObserver observer : observers) {
+            observer.onEvent(event, data);
+        }
+    }
+
+    public static void resetObservers() {
+        observers.clear();
+        observers.add(new LogroPrimeraVictoria());
+        observers.add(new LogroUltimaVida());
+        observers.add(new LogroVictoriaFinal());
+        observers.add(new LogroBomba());
+        observers.add(new LogroFantasma());
+        observers.add(new LogroEscudo());
+        observers.add(new LogroPerderVida());
+        observers.add(new LogroSinTiempo());
+        observers.add(new LogroPerder());
     }
 
     public int getPlayerScore() {
