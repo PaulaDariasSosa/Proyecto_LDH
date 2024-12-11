@@ -58,16 +58,30 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.8</version>
+
+                <configuration>
+                    <!-- Carpeta personalizada para reportes -->
+                    <outputDirectory>${project.build.directory}/jacoco-coverage</outputDirectory>
+                    <append>false</append>
+                </configuration>
+
                 <executions>
+                    <!-- Preparar el agente JaCoCo -->
                     <execution>
+                        <id>prepare-agent</id>
+                        <phase>initialize</phase>
                         <goals>
                             <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+
+                    <!-- Ejecutar el reporte de cobertura -->
+                    <execution>
+                        <id>report</id>
+                        <phase>package</phase>
+                        <goals>
                             <goal>report</goal>
                         </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/jacoco-coverage</outputDirectory>
-                            <append>false</append>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -85,7 +99,6 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <lwjgl.version>3.3.1</lwjgl.version>
-        <sonar.coverage.jacoco.xmlReportPaths>${project.build.directory}/jacoco-coverage/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
         <sonar.projectKey>PaulaDariasSosa_Proyecto_LDH</sonar.projectKey>
         <sonar.organization>ldhequipopacman</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
