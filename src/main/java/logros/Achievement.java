@@ -26,12 +26,24 @@ public class Achievement implements AchievementObserver {
     public void showNotification() {
         try {
             SwingUtilities.invokeAndWait(() -> {
-                JOptionPane.showMessageDialog(null, "¡Logro desbloqueado!: " + this.name + " - " + this.description);
+                JDialog dialog = new JOptionPane(
+                        "¡Logro desbloqueado!: " + this.name + " - " + this.description,
+                        JOptionPane.INFORMATION_MESSAGE
+                ).createDialog(null, "Logro Desbloqueado");
+
+                // Muestra el diálogo y lo cierra automáticamente después de 1 segundo
+                new Timer(1000, e -> {
+                    dialog.setVisible(false);
+                    dialog.dispose();
+                }).start();
+
+                dialog.setVisible(true);
             });
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 
 }
 
