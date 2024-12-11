@@ -5,7 +5,7 @@ bagel,test.java.ull.app,MovingEntityTest,0,180,0,2,0,37,0,12,0,11
 bagel,test.java.ull.app,LogroUltimaVidaTest,0,66,0,0,0,17,0,7,0,7
 bagel,test.java.ull.app,ShadowPacTest,0,59,0,0,0,18,0,5,0,5
 bagel,test.java.ull.app,LogroPrimeraVictoriaTest,0,78,0,0,0,20,0,8,0,8
-bagel,test.java.ull.app,LogroFantasmaTest,0,66,0,0,0,17,0,7,0,7
+bagel,test.java.ull.app,LogroFantasmaTest,0,78,0,0,0,20,0,8,0,8
 bagel,test.java.ull.app,LogroPerderTest,0,66,0,0,0,17,0,7,0,7
 bagel,test.java.ull.app,UserTest,0,37,0,0,0,11,0,4,0,4
 bagel,test.java.ull.app,LogroSinTiempoTest,0,66,0,0,0,17,0,7,0,7
@@ -20,7 +20,7 @@ bagel,test.java.ull.app,MovingEntityTest.new MovingEntity() {...},11,0,0,0,2,0,2
 bagel,logros,LogroPrimeraVictoria,0,24,1,5,0,8,1,4,0,2
 bagel,logros,LogroSinTiempo,0,23,1,5,0,8,1,4,0,2
 bagel,logros,LogroUltimaVida,0,24,1,5,0,8,1,4,0,2
-bagel,logros,LogroFantasma,0,23,2,4,0,8,2,3,0,2
+bagel,logros,LogroFantasma,0,23,1,5,0,8,1,4,0,2
 bagel,logros,LogroEscudo,0,23,1,5,0,8,1,4,0,2
 bagel,logros,LogroVictoriaFinal,0,23,1,5,0,8,1,4,0,2
 bagel,logros,Achievement,11,56,0,0,3,20,1,7,1,7
@@ -28,14 +28,13 @@ bagel,logros,LogroBomba,0,24,1,5,0,8,1,4,0,2
 bagel,logros,LogroPerderVida,0,23,1,5,0,8,1,4,0,2
 bagel,logros,LogroPerder,0,23,1,5,0,8,1,4,0,2
 bagel,utilities,FileUtils,9,28,0,0,3,8,1,2,1,2
-bagel,es.ull.app,User.new ActionListener() {...},33,0,2,0,7,0,3,0,2,0
 bagel,es.ull.app,GhostPink,7,25,0,0,2,6,1,2,1,2
 bagel,es.ull.app,GhostBlue,11,17,2,0,4,5,2,2,1,2
 bagel,es.ull.app,Wall,0,4,0,0,0,2,0,1,0,1
 bagel,es.ull.app,Bomb,0,13,0,0,0,4,0,2,0,2
-bagel,es.ull.app,User,75,19,0,0,17,9,1,4,1,4
+bagel,es.ull.app,User,90,19,2,0,23,9,3,4,2,4
 bagel,es.ull.app,Star,38,24,4,0,10,7,3,2,1,2
-bagel,es.ull.app,Ghost,149,41,28,0,37,10,19,3,5,3
+bagel,es.ull.app,Ghost,149,41,28,0,36,10,19,3,5,3
 bagel,es.ull.app,GhostTuka,99,41,18,0,25,10,11,2,2,2
 bagel,es.ull.app,Level,80,232,8,17,21,50,15,18,11,3
 bagel,es.ull.app,Message,307,0,4,0,63,0,15,0,13,0

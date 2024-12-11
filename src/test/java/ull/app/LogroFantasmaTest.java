@@ -58,4 +58,13 @@ class LogroFantasmaTest {
         assertDoesNotThrow(logroFantasma::showNotification,
                 "showNotification() no debería lanzar excepciones después de desbloquear el logro.");
     }
+
+    @Test
+    void testOnEventDoesNotUnlockForNegativeGhosts() throws InterruptedException, InvocationTargetException {
+        // Simular un evento con un número negativo de fantasmas
+        logroFantasma.onEvent("LOGRO_FANTASMA", -1);
+
+        // Verificar que el logro sigue bloqueado
+        assertFalse(logroFantasma.unlocked, "El logro no debería desbloquearse con un número negativo de fantasmas.");
+    }
 }

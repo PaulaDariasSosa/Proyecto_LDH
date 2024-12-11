@@ -4,35 +4,30 @@ import bagel.util.Point;
 import es.ull.app.Ghost;
 import es.ull.app.Wall;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.ArrayList;
-
-<span class="nc" id="L15">public class GhostTest {</span>
+<span class="nc" id="L10">public class GhostTest {</span>
 
     private Ghost ghost;
     private ArrayList&lt;Wall&gt; walls;
 
     // Clase de prueba para Ghost
     class TestGhost extends Ghost {
-<span class="nc" id="L22">        public TestGhost(Point topLeft, double speed) {</span>
-<span class="nc" id="L23">            super(topLeft, speed);</span>
-<span class="nc" id="L24">        }</span>
+<span class="nc" id="L17">        public TestGhost(Point topLeft, double speed) {</span>
+<span class="nc" id="L18">            super(topLeft, speed);</span>
+<span class="nc" id="L19">        }</span>
 
         @Override
         public void changeDirection() {
-<span class="nc" id="L28">            setDirection((getDirection() + 1) % 4); // Cambio simple de dirección</span>
-<span class="nc" id="L29">        }</span>
+<span class="nc" id="L23">            setDirection((getDirection() + 1) % 4); // Cambio simple de dirección</span>
+<span class="nc" id="L24">        }</span>
     }
 
     @BeforeEach
     void setUp() {
-<span class="nc" id="L34">        ghost = new TestGhost(new Point(100, 100), 2.0);</span>
-<span class="nc" id="L35">        walls = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L36">    }</span>
+<span class="nc" id="L29">        ghost = new TestGhost(new Point(100, 100), 2.0);</span>
+<span class="nc" id="L30">        walls = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L31">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

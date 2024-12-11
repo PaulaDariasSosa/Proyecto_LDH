@@ -58,5 +58,14 @@ import static org.junit.jupiter.api.Assertions.*;
 <span class="fc" id="L58">        assertDoesNotThrow(logroFantasma::showNotification,</span>
                 &quot;showNotification() no debería lanzar excepciones después de desbloquear el logro.&quot;);
 <span class="fc" id="L60">    }</span>
+
+    @Test
+    void testOnEventDoesNotUnlockForNegativeGhosts() throws InterruptedException, InvocationTargetException {
+        // Simular un evento con un número negativo de fantasmas
+<span class="fc" id="L65">        logroFantasma.onEvent(&quot;LOGRO_FANTASMA&quot;, -1);</span>
+
+        // Verificar que el logro sigue bloqueado
+<span class="fc" id="L68">        assertFalse(logroFantasma.unlocked, &quot;El logro no debería desbloquearse con un número negativo de fantasmas.&quot;);</span>
+<span class="fc" id="L69">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

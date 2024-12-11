@@ -17,7 +17,6 @@ test\java\ull\app\MovingEntityTest.class
 logros\Achievement.class
 logros\AchievementObserver.class
 test\java\ull\app\LogroPerderVidaTest.class
-es\ull\app\User$1.class
 test\java\ull\app\LogroFantasmaTest.class
 es\ull\app\Ghost.class
 es\ull\app\Message.class
