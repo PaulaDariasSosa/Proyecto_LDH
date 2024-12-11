@@ -20,8 +20,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
     void setUp() throws IOException {
         // Elimina el archivo si existe antes de cada prueba
 <span class="fc" id="L22">        File testFile = new File(TEST_FILE_NAME);</span>
-<span class="fc bfc" id="L23" title="All 2 branches covered.">        if (testFile.exists()) {</span>
-<span class="fc" id="L24">            testFile.delete();</span>
+<span class="pc bpc" id="L23" title="1 of 2 branches missed.">        if (testFile.exists()) {</span>
+<span class="nc" id="L24">            testFile.delete();</span>
         }
 <span class="fc" id="L26">        testFile.createNewFile();</span>
 <span class="fc" id="L27">    }</span>
