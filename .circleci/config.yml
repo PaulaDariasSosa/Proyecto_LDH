@@ -31,6 +31,19 @@ jobs:
       - run:
           name: deploy
           command: '#e.g. ./deploy.sh'
+  build:
+    docker:
+      - image: circleci/python:3.8
+    steps:
+      - run:
+          name: Install Xvfb
+          command: sudo apt-get install -y xvfb
+      - run:
+          name: Start Xvfb
+          command: Xvfb :99 -screen 0 1024x768x16 &
+      - run:
+          name: Set DISPLAY variable
+          command: export DISPLAY=:99
 workflows:
   build-and-test:
     jobs:
