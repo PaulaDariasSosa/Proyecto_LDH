@@ -6,9 +6,9 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Xvfb and Run Tests
+          name: Install Dependencies and Run Tests
           command: |-
-            sudo apt-get update && sudo apt-get install -y xvfb
+            sudo apt-get update && sudo apt-get install -y xvfb libxtst6 libxi6
             Xvfb :99 -screen 0 1024x768x16 &
             export DISPLAY=:99
             mvn verify
