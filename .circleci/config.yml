@@ -15,20 +15,6 @@ jobs:
       - restore_cache:
           key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
       - run:
-          command: mvn verify
-      - store_test_results:
-          path: target/surefire-reports
-      - save_cache:
-          key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
-          paths:
-            - ~/.m2/repository
-
-  test-java-xvfb:
-    docker:
-      - image: cimg/openjdk:17.0
-    steps:
-      - checkout
-      - run:
           name: Install Xvfb
           command: sudo apt-get update && sudo apt-get install -y xvfb
       - run:
@@ -38,10 +24,13 @@ jobs:
           name: Set DISPLAY variable
           command: export DISPLAY=:99
       - run:
-          name: Run Java Tests with Xvfb
           command: mvn verify
       - store_test_results:
           path: target/surefire-reports
+      - save_cache:
+          key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
+          paths:
+            - ~/.m2/repository
 
   deploy:
     # This is an example deploy job, not actually used by the workflow
@@ -57,9 +46,6 @@ workflows:
   build-and-test:
     jobs:
       - test-java
-      - test-java-xvfb:
-          requires:
-            - test-java
     # - deploy:
     #     requires:
-    #       - test-java-xvfb
+    #       - test-java
