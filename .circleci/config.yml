@@ -23,27 +23,32 @@ jobs:
           paths:
             - ~/.m2/repository
 
-  build:
+  test-java-xvfb:
     docker:
-      - image: circleci/python:3.8
+      - image: cimg/openjdk:17.0
     steps:
       - checkout
       - run:
           name: Install Xvfb
-          command: sudo apt-get install -y xvfb
+          command: sudo apt-get update && sudo apt-get install -y xvfb
       - run:
           name: Start Xvfb
           command: Xvfb :99 -screen 0 1024x768x16 &
       - run:
           name: Set DISPLAY variable
           command: export DISPLAY=:99
-      # Agrega aquí los pasos necesarios para construir tu proyecto
+      - run:
+          name: Run Java Tests with Xvfb
+          command: mvn verify
+      - store_test_results:
+          path: target/surefire-reports
 
   deploy:
+    # This is an example deploy job, not actually used by the workflow
     docker:
       - image: cimg/base:stable
     steps:
-      - checkout
+      # Replace this with steps to deploy to users
       - run:
           name: deploy
           command: '#e.g. ./deploy.sh'
@@ -52,9 +57,9 @@ workflows:
   build-and-test:
     jobs:
       - test-java
-      - build:
+      - test-java-xvfb:
           requires:
             - test-java
-      - deploy:
-          requires:
-            - build
+    # - deploy:
+    #     requires:
+    #       - test-java-xvfb
