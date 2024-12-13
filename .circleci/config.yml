@@ -1,3 +1,5 @@
+# This config was automatically generated from your source code
+# Stacks detected: deps:java:.
 version: 2.1
 jobs:
   test-java:
@@ -5,6 +7,9 @@ jobs:
       - image: cimg/openjdk:17.0
     steps:
       - checkout
+      - run:
+          name: Verify Resources
+          command: ls -l res || echo "Resource folder not found"
       - run:
           name: Install Dependencies and Run Tests
           command: |-
@@ -18,6 +23,16 @@ jobs:
           key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
           paths:
             - ~/.m2/repository
+
+  deploy:
+    # This is an example deploy job, not actually used by the workflow
+    docker:
+      - image: cimg/base:stable
+    steps:
+      # Replace this with steps to deploy to users
+      - run:
+          name: deploy
+          command: '#e.g. ./deploy.sh'
 
 workflows:
   build-and-test:
