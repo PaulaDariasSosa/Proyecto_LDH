@@ -22,19 +22,12 @@ jobs:
           key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
           paths:
             - ~/.m2/repository
-  deploy:
-    # This is an example deploy job, not actually used by the workflow
-    docker:
-      - image: cimg/base:stable
-    steps:
-      # Replace this with steps to deploy to users
-      - run:
-          name: deploy
-          command: '#e.g. ./deploy.sh'
+
   build:
     docker:
       - image: circleci/python:3.8
     steps:
+      - checkout
       - run:
           name: Install Xvfb
           command: sudo apt-get install -y xvfb
@@ -44,10 +37,24 @@ jobs:
       - run:
           name: Set DISPLAY variable
           command: export DISPLAY=:99
+      # Agrega aquí los pasos necesarios para construir tu proyecto
+
+  deploy:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run:
+          name: deploy
+          command: '#e.g. ./deploy.sh'
+
 workflows:
   build-and-test:
     jobs:
       - test-java
-    # - deploy:
-    #     requires:
-    #       - test-java
+      - build:
+          requires:
+            - test-java
+      - deploy:
+          requires:
+            - build
