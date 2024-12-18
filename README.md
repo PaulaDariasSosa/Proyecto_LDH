@@ -45,5 +45,12 @@ El comando `mvn clean` elimina todos los archivos generados en construcciones an
 mvn clean
 ```
 
+### Compilar y crear el Jar: `mvn clean`
+
+El comando `mvn clean package` elimina todos los archivos generados en construcciones anteriores y crea el jar en target/bagel-0.1-SNAPSHOT.jar
+```bash
+mvn clean package
+```
+
 ## Análisis SonarCloud
 [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=PaulaDariasSosa_Proyecto_LDH)](https://sonarcloud.io/summary/new_code?id=PaulaDariasSosa_Proyecto_LDH)
